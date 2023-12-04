@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IDPBookApp.Pages.Historial"
+             xmlns:model="clr-namespace:IDPBookApp.Models"
+             xmlns:viewmodel="clr-namespace:IDPBookApp.ViewModel"
+             x:DataType="viewmodel:DetailPageViewModel"
+             Title="Historial">
+    <ScrollView>
+        <VerticalStackLayout BackgroundColor="#e2f0d9" Spacing="0">
+            <HorizontalStackLayout VerticalOptions="Center" Margin="20,20,0,10">
+                <Image Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30"/>
+                <Label Text="NUEVA HISTORIA" FontSize="Large" FontAttributes="Bold" Margin="45,0" VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+            <Frame HasShadow="True" Margin="10,10" BackgroundColor="#e2f0d9" Padding="10,10">
+                <VerticalStackLayout Spacing="5">
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40">
+                        <Label Text="Año de diangostico" FontAttributes="Bold" VerticalOptions="Center"/>
+                        <Frame HeightRequest="40" WidthRequest="70" Margin="24,0" CornerRadius="5" Padding="0">
+                            <Entry VerticalOptions="Center" Placeholder="Año" WidthRequest="60" HorizontalTextAlignment="Center"/>
+                        </Frame>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40">
+                        <Label Text="¿Historial activo?" FontAttributes="Bold" VerticalOptions="Center"/>
+                        <Switch VerticalOptions="Center" Margin="35,0"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40">
+                        <Label VerticalOptions="Center" Text="Tipo Diagnostico." FontAttributes="Bold"/>
+                        <Picker Title="Seleccionar diagnostico" Margin="35,0">
+                            <Picker.Items>
+                                <x:String>Enfermedad Infecciosa</x:String>
+                                <x:String>Enfermedad Hematológica</x:String>
+                                <x:String>Enfermedad del Aparato Digestivo</x:String>
+                                <x:String>Enfermedad Pulmonar</x:String>
+                                <x:String>Enfermedad Hepática</x:String>
+                                <x:String>Enfermedad Oncológica</x:String>
+                                <x:String>Enfermedad Endocrinológica</x:String>
+                                <x:String>Enfermedad Cardiovascular</x:String>
+                                <x:String>Enfermedad Autoinmune/Autoinflamatoria</x:String>
+                                <x:String>Enfermedad Neurológica</x:String>
+                                <x:String>Enfermedad Cutánea</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40">
+                        <Label VerticalOptions="Center" Text="E. Infecciosa." FontAttributes="Bold"/>
+                        <Picker Title="Seleccionar diagnostico" Margin="65,0">
+                            <Picker.Items>
+                                <x:String>Neumonía</x:String>
+                                <x:String>Meningitis</x:String>
+                                <x:String>Osteomielitis</x:String>
+                                <x:String>Infección gastrointestinal</x:String>
+                                <x:String>Celulitis o piel y partes blandas</x:String>
+                                <x:String>Infección vía urinaria con fiebre</x:String>
+                                <x:String>Infecciones oportunistas</x:String>
+                                <x:String>Otro</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40">
+                        <Label VerticalOptions="Center" Text="E. Hematológica." FontAttributes="Bold"/>
+                        <Picker Title="Seleccionar diagnostico" Margin="41,0">
+                            <Picker.Items>
+                                <x:String>Masculino</x:String>
+                                <x:String>Femenino</x:String>
+                                <x:String>No interesa</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40">
+                        <Label VerticalOptions="Center" Text="E. Aparato digestivo." FontAttributes="Bold"/>
+                        <Picker Title="Seleccionar diagnostico" Margin="15,0">
+                            <Picker.Items>
+                                <x:String>Masculino</x:String>
+                                <x:String>Femenino</x:String>
+                                <x:String>No interesa</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40">
+                        <Label VerticalOptions="Center" Text="E. Pulmonar." FontAttributes="Bold"/>
+                        <Picker Title="Seleccionar diagnostico" Margin="66,0">
+                            <Picker.Items>
+                                <x:String>Masculino</x:String>
+                                <x:String>Femenino</x:String>
+                                <x:String>No interesa</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40">
+                        <Label VerticalOptions="Center" Text="E. Hepática." FontAttributes="Bold"/>
+                        <Picker Title="Seleccionar diagnostico" Margin="73,0">
+                            <Picker.Items>
+                                <x:String>Masculino</x:String>
+                                <x:String>Femenino</x:String>
+                                <x:String>No interesa</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40">
+                        <Label VerticalOptions="Center" Text="E. Oncológica." FontAttributes="Bold"/>
+                        <Picker Title="Seleccionar diagnostico" Margin="59,0">
+                            <Picker.Items>
+                                <x:String>Masculino</x:String>
+                                <x:String>Femenino</x:String>
+                                <x:String>No interesa</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40">
+                        <Label VerticalOptions="Center" Text="E. Endocrinológica." FontAttributes="Bold"/>
+                        <Picker Title="Seleccionar diagnostico" Margin="27,0">
+                            <Picker.Items>
+                                <x:String>Masculino</x:String>
+                                <x:String>Femenino</x:String>
+                                <x:String>No interesa</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40">
+                        <Label VerticalOptions="Center" Text="E. Cardiovascular." FontAttributes="Bold"/>
+                        <Picker Title="Seleccionar diagnostico" Margin="35,0">
+                            <Picker.Items>
+                                <x:String>Masculino</x:String>
+                                <x:String>Femenino</x:String>
+                                <x:String>No interesa</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40">
+                        <Label VerticalOptions="Center" Text="E. Autoinmune/Autoinflamatoria" FontAttributes="Bold" WidthRequest="111"/>
+                        <Picker Title="Seleccionar diagnostico" Margin="40,0">
+                            <Picker.Items>
+                                <x:String>Masculino</x:String>
+                                <x:String>Femenino</x:String>
+                                <x:String>No interesa</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40">
+                        <Label VerticalOptions="Center" Text="E. Neurológica." FontAttributes="Bold"/>
+                        <Picker Title="Seleccionar diagnostico" Margin="53,0">
+                            <Picker.Items>
+                                <x:String>Masculino</x:String>
+                                <x:String>Femenino</x:String>
+                                <x:String>No interesa</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40">
+                        <Label VerticalOptions="Center" Text="E. Cutánea." FontAttributes="Bold"/>
+                        <Picker Title="Seleccionar diagnostico" Margin="77,0">
+                            <Picker.Items>
+                                <x:String>Masculino</x:String>
+                                <x:String>Femenino</x:String>
+                                <x:String>No interesa</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40">
+                        <Label VerticalOptions="Center" Text="Alergias" FontAttributes="Bold"/>
+                        <Frame HeightRequest="40" WidthRequest="160" Margin="100,0,0,0" CornerRadius="5" Padding="0">
+                            <Entry VerticalOptions="Center" Placeholder="Escribe alergias" WidthRequest="155" HorizontalTextAlignment="Start"/>
+                        </Frame>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Spacing="20" Margin="0,20,0,0">
+                        <Button Text="Agregar" BackgroundColor="Green" WidthRequest="90" Margin="50,0,0,0" BorderColor="Black"/>
+                        <Button Text="Salir" BackgroundColor="PaleVioletRed" WidthRequest="90"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,38 @@
+﻿using IDPBookApp.DataBase;
+using IDPBookApp.Pages;
+using IDPBookApp.ViewModel;
+using Microsoft.Extensions.Logging;
+
+namespace IDPBookApp;
+
+public static class MauiProgram
+{
+	public static MauiApp CreateMauiApp()
+	{
+		var builder = MauiApp.CreateBuilder();
+		builder
+			.UseMauiApp<App>()
+			.ConfigureFonts(fonts =>
+			{
+				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+			});
+
+#if DEBUG
+		builder.Logging.AddDebug();
+
+		builder.Services.AddSingleton<BaseViewModel>();
+		builder.Services.AddSingleton<IconViewModel>();
+		builder.Services.AddTransient<DetailPageViewModel>();
+
+		builder.Services.AddSingleton<MainPage>();
+        builder.Services.AddTransient<DetailPage>();
+		builder.Services.AddSingleton<FirebaseConnecty>();
+        builder.Services.AddSingleton<Estado>();
+        builder.Services.AddSingleton<TipoLista>();
+
+#endif
+
+        return builder.Build();
+	}
+}

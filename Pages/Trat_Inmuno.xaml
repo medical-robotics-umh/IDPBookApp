@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IDPBookApp.Pages.Trat_Inmuno"
+             Title="Trat_Inmuno">
+    <ScrollView>
+        <VerticalStackLayout BackgroundColor="#fbe5d6" Spacing="0">
+            <HorizontalStackLayout VerticalOptions="Center" Margin="20,10" Spacing="0">
+                <Image Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" VerticalOptions="Center" HorizontalOptions="Start"/>
+                <Label Text="NUEVO TRATAMIENTO CON INMUNOGLOBULINAS VIA INTRAVENOSA" FontSize="Body" FontAttributes="Bold" WidthRequest="270" HorizontalTextAlignment="Center" VerticalOptions="Center" HorizontalOptions="Center"/>
+            </HorizontalStackLayout>
+
+            <Frame HasShadow="True" Margin="10,10" BackgroundColor="#fbe5d6" Padding="10,10">
+                <VerticalStackLayout Spacing="5">
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="100" Margin="0,0" Spacing="10">
+                        <Label VerticalOptions="Start" Text="Preparado:" FontAttributes="Bold" WidthRequest="83"/>
+                        <Frame HeightRequest="100" WidthRequest="220" CornerRadius="5" Padding="0">
+                            <Editor Placeholder="Descripción" WidthRequest="210" HorizontalTextAlignment="Start"/>
+                        </Frame>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="0,0" Spacing="10">
+                        <Label VerticalOptions="Center" Text="Dosis (gr):" FontAttributes="Bold" WidthRequest="83"/>
+                        <Frame HeightRequest="40" WidthRequest="220" CornerRadius="5" Padding="0">
+                            <Entry VerticalOptions="Center" Placeholder="Introduce dosis" WidthRequest="210" HorizontalTextAlignment="Start"/>
+                        </Frame>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Spacing="10">
+                        <Label VerticalOptions="Center" Text="Cadencia:" FontAttributes="Bold" WidthRequest="83"/>
+                        <Picker Title="Seleccionar cadencia" WidthRequest="150">
+                            <Picker.Items>
+                                <x:String>Cada 2 semanas</x:String>
+                                <x:String>Cada 3 semanas</x:String>
+                                <x:String>Cada 4 semanas</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Spacing="10">
+                        <Label VerticalOptions="Center" Text="Efectos secundarios:" FontAttributes="Bold" WidthRequest="83"/>
+                        <Picker Title="Seleccionar efectos" WidthRequest="150">
+                            <Picker.Items>
+                                <x:String>Reacción cutánea</x:String>
+                                <x:String>Fiebre</x:String>
+                                <x:String>Dolor articular</x:String>
+                                <x:String>Cefalea</x:String>
+                                <x:String>Malestar general</x:String>
+                                <x:String>Tensión arterial baja</x:String>
+                                <x:String>Anafilaxia</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Center" HeightRequest="40" Spacing="20" Margin="0,20,0,0">
+                        <Button Text="Agregar" BackgroundColor="Green" WidthRequest="90" BorderColor="Black"/>
+                        <Button Text="Cancelar" BackgroundColor="PaleVioletRed" WidthRequest="90"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

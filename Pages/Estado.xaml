@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IDPBookApp.Pages.Estado"
+             xmlns:model="clr-namespace:IDPBookApp.Models"
+             xmlns:viewmodel="clr-namespace:IDPBookApp.ViewModel"
+             x:DataType="viewmodel:IconViewModel"
+             Title="Estado">
+    <VerticalStackLayout BackgroundColor="#fffbef">
+        <HorizontalStackLayout VerticalOptions="Center" Margin="20,20,0,20">
+            <Image Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30"/>
+            <Label Text="ESTADO DE LA ENFERMEDAD" FontSize="Medium" FontAttributes="Bold" Margin="20,0" VerticalOptions="Center"/>
+        </HorizontalStackLayout>
+        <CollectionView x:Name="listaIconos" ItemsLayout="VerticalGrid, 2" Margin="0,10,0,0">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:IconModel">
+                    <VerticalStackLayout >
+                        <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                            <VerticalStackLayout Spacing="5">
+                                <Image Source="{Binding Icono}" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+                            </VerticalStackLayout>
+                        </Frame>
+                        <Label Text="{Binding Nombre}" HorizontalOptions="Center" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <HorizontalStackLayout Spacing="20" HorizontalOptions="Center" Margin="40">
+            <Image
+                            Aspect="AspectFit"
+                            HeightRequest="80"
+                            Source="ic_logo_lafe.png"
+                            WidthRequest="60" />
+            <Image
+                            VerticalOptions="Start"
+                            Aspect="AspectFit"
+                            HeightRequest="80"
+                            Source="ic_logo_umh.png"
+                            WidthRequest="60" />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

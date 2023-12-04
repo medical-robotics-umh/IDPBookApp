@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IDPBookApp.Pages.NuevaAnalitica"
+             Title="NuevaAnalitica">
+    <ScrollView>
+        <VerticalStackLayout BackgroundColor="#fffbef" Spacing="0">
+            <HorizontalStackLayout VerticalOptions="Center" Margin="20,20,0,20">
+                <Image Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30"/>
+                <Label Text="NUEVA PRUEBA" FontSize="Large" FontAttributes="Bold" Margin="54,0" VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+
+            <Frame HasShadow="True" Margin="10,0,10,30" BackgroundColor="#fffbef" Padding="10,10">
+                <VerticalStackLayout Spacing="5">
+                    
+                    <Label VerticalOptions="Center" Text="Gammaglobulinas valle (mg/L)" FontAttributes="Bold" Margin="0,0,0,5"/>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="15,0" Spacing="30">
+                        <Label VerticalOptions="Center" Text="IgG" FontAttributes="Bold" WidthRequest="80"/>
+                        <Frame HeightRequest="40" WidthRequest="150" CornerRadius="5" Padding="0">
+                            <Entry VerticalOptions="Center" Placeholder="Rango [0-10000]" WidthRequest="140" HorizontalTextAlignment="Start"/>
+                        </Frame>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="45,0" Spacing="0">
+                        <Label VerticalOptions="Center" Text="IgG1" FontAttributes="Bold" WidthRequest="80"/>
+                        <Frame HeightRequest="40" WidthRequest="150" CornerRadius="5" Padding="0">
+                            <Entry VerticalOptions="Center" Placeholder="Rango [0-10000]" WidthRequest="140" HorizontalTextAlignment="Start"/>
+                        </Frame>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="45,0" Spacing="0">
+                        <Label VerticalOptions="Center" Text="IgG2" FontAttributes="Bold" WidthRequest="80"/>
+                        <Frame HeightRequest="40" WidthRequest="150" CornerRadius="5" Padding="0">
+                            <Entry VerticalOptions="Center" Placeholder="Rango [0-10000]" WidthRequest="140" HorizontalTextAlignment="Start"/>
+                        </Frame>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="45,0" Spacing="0">
+                        <Label VerticalOptions="Center" Text="IgG3" FontAttributes="Bold" WidthRequest="80"/>
+                        <Frame HeightRequest="40" WidthRequest="150" CornerRadius="5" Padding="0">
+                            <Entry VerticalOptions="Center" Placeholder="Rango [0-10000]" WidthRequest="140" HorizontalTextAlignment="Start"/>
+                        </Frame>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="45,0,0,10" Spacing="0">
+                        <Label VerticalOptions="Center" Text="IgG4" FontAttributes="Bold" WidthRequest="80"/>
+                        <Frame HeightRequest="40" WidthRequest="150" CornerRadius="5" Padding="0">
+                            <Entry VerticalOptions="Center" Placeholder="Rango [0-10000]" WidthRequest="140" HorizontalTextAlignment="Start"/>
+                        </Frame>
+                    </HorizontalStackLayout>
+
+                    <BoxView Color="Gray"
+                         HeightRequest="2"
+                         HorizontalOptions="Fill" />
+                        
+                    <Label VerticalOptions="Center" Text="Perfil metabólico" FontAttributes="Bold" Margin="0,10,0,5"/>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="15,0" Spacing="30">
+                        <Label VerticalOptions="Center" Text="HbA1c (%)" FontAttributes="Bold" WidthRequest="100"/>
+                        <Frame HeightRequest="40" WidthRequest="150" CornerRadius="5" Padding="0">
+                            <Entry VerticalOptions="Center" Placeholder="Rango [1-20]" WidthRequest="140" HorizontalTextAlignment="Start"/>
+                        </Frame>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="15,0" Spacing="30">
+                        <Label VerticalOptions="Center" Text="HDL (mg/L)" FontAttributes="Bold" WidthRequest="100"/>
+                        <Frame HeightRequest="40" WidthRequest="150" CornerRadius="5" Padding="0">
+                            <Entry VerticalOptions="Center" Placeholder="Rango [0-200]" WidthRequest="140" HorizontalTextAlignment="Start"/>
+                        </Frame>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="15,0" Spacing="30">
+                        <Label VerticalOptions="Center" Text="LDL (mg/L)" FontAttributes="Bold" WidthRequest="100"/>
+                        <Frame HeightRequest="40" WidthRequest="150" CornerRadius="5" Padding="0">
+                            <Entry VerticalOptions="Center" Placeholder="Rango [0-500]" WidthRequest="140" HorizontalTextAlignment="Start"/>
+                        </Frame>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="15,0" Spacing="30">
+                        <Label VerticalOptions="Center" Text="TG (mg/L)" FontAttributes="Bold" WidthRequest="100"/>
+                        <Frame HeightRequest="40" WidthRequest="150" CornerRadius="5" Padding="0">
+                            <Entry VerticalOptions="Center" Placeholder="Rango [0-1000]" WidthRequest="140" HorizontalTextAlignment="Start"/>
+                        </Frame>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="15,0,0,10" Spacing="30">
+                        <Label VerticalOptions="Center" Text="Colesterol total (mg/L)" FontAttributes="Bold" WidthRequest="100"/>
+                        <Frame HeightRequest="40" WidthRequest="150" CornerRadius="5" Padding="0">
+                            <Entry VerticalOptions="Center" Placeholder="Rango [0-500]" WidthRequest="140" HorizontalTextAlignment="Start"/>
+                        </Frame>
+                    </HorizontalStackLayout>
+
+                    <BoxView Color="Gray"
+                         HeightRequest="2"
+                         HorizontalOptions="Fill" />
+
+                    <Label VerticalOptions="Center" Text="Hemograma" FontAttributes="Bold" Margin="0,10,0,5"/>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="15,0" Spacing="30">
+                        <Label VerticalOptions="Center" Text="Hemoglobina (g/dL)" FontAttributes="Bold" WidthRequest="100"/>
+                        <Frame HeightRequest="40" WidthRequest="150" CornerRadius="5" Padding="0">
+                            <Entry VerticalOptions="Center" Placeholder="Rango [2-30]" WidthRequest="140" HorizontalTextAlignment="Start"/>
+                        </Frame>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="15,0" Spacing="30">
+                        <Label VerticalOptions="Center" Text="Linfocitos (células/uL)" FontAttributes="Bold" WidthRequest="100"/>
+                        <Frame HeightRequest="40" WidthRequest="150" CornerRadius="5" Padding="0">
+                            <Entry VerticalOptions="Center" Placeholder="Rango [0-100000]" WidthRequest="140" HorizontalTextAlignment="Start"/>
+                        </Frame>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="15,0" Spacing="30">
+                        <Label VerticalOptions="Center" Text="Neurotrófilos (células/uL)" FontAttributes="Bold" WidthRequest="100"/>
+                        <Frame HeightRequest="40" WidthRequest="150" CornerRadius="5" Padding="0">
+                            <Entry VerticalOptions="Center" Placeholder="Rango [0-100000]" WidthRequest="140" HorizontalTextAlignment="Start"/>
+                        </Frame>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="15,0" Spacing="30">
+                        <Label VerticalOptions="Center" Text="Plaquetas (células/uL)" FontAttributes="Bold" WidthRequest="100"/>
+                        <Frame HeightRequest="40" WidthRequest="150" CornerRadius="5" Padding="0">
+                            <Entry VerticalOptions="Center" Placeholder="Rango [0-2000000]" WidthRequest="140" HorizontalTextAlignment="Start"/>
+                        </Frame>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Center" HeightRequest="40" Spacing="20" Margin="0,20,0,0">
+                        <Button Text="Registrar" BackgroundColor="Green" WidthRequest="90" BorderColor="Black"/>
+                        <Button Text="Cancelar" BackgroundColor="PaleVioletRed" WidthRequest="90"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
