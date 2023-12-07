@@ -24,12 +24,14 @@ public static class MauiProgram
 		builder.Services.AddSingleton<BaseViewModel>();
 		builder.Services.AddSingleton<IconViewModel>();
 		builder.Services.AddTransient<DetailPageViewModel>();
+        builder.Services.AddTransient<LoginViewModel>();
 
-		builder.Services.AddSingleton<MainPage>();
+        builder.Services.AddSingleton<MainPage>();
         builder.Services.AddTransient<DetailPage>();
 		builder.Services.AddSingleton<FirebaseConnecty>();
         builder.Services.AddSingleton<Estado>();
         builder.Services.AddSingleton<TipoLista>();
+        builder.Services.AddSingleton<LoginPage>();
 
 #endif
 

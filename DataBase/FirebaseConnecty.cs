@@ -4,20 +4,21 @@ using Firebase.Auth;
 namespace IDPBookApp.DataBase;
 public class FirebaseConnecty
 {
-    public FirebaseAuthClient ConectarFirebase()
+    public static FirebaseAuthConfig config = new FirebaseAuthConfig()
     {
-        var config = new FirebaseAuthConfig
+        ApiKey = "AIzaSyCrqRG1QeBhVY9hRATjaqRZ8Cw_fqEjBwo",
+        AuthDomain = "testdb-9da53.firebaseapp.com",
+        Providers = new FirebaseAuthProvider[]
         {
-            ApiKey = "AIzaSyCrqRG1QeBhVY9hRATjaqRZ8Cw_fqEjBwo",
-            AuthDomain = "testdb-9da53.firebaseapp.com",
-            Providers = new FirebaseAuthProvider[]
-                    {
-                    new GoogleProvider().AddScopes(),
-                    new EmailProvider()
-                    },
-        };
-        var cliente = new FirebaseAuthClient(config);
+            new GoogleProvider().AddScopes(),
+            new EmailProvider()
+        }
+    };
+    FirebaseAuthClient client = new FirebaseAuthClient(config);
 
-        return cliente;
+    public async Task<UserCredential>Login(string username, string password)
+    {
+        var userCredential = await client.SignInWithEmailAndPasswordAsync(username, password);
+        return userCredential;
     }
 }

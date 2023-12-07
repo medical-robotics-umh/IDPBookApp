@@ -9,6 +9,6 @@
     <ShellContent
         Shell.NavBarIsVisible="True"
         Title="IDPBook"
-        ContentTemplate="{DataTemplate pages:Nueva_Vacuna}"
+        ContentTemplate="{DataTemplate pages:LoginPage}"
         Route="MainPage" />
 </Shell>
