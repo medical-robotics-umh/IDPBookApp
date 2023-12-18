@@ -24,4 +24,6 @@ public partial class MainPage : ContentPage
             new IconModel{Nombre="Redes de pacientes",Icono="redes_pacientes.png"},
         };
     }
+
+
 }

@@ -21,5 +21,8 @@ namespace IDPBookApp.ViewModel
                     {"Icono", icon}
                 });
         }
+
+        [RelayCommand]
+        Task SingOut() => Shell.Current.GoToAsync("..");
     }
 }

@@ -9,7 +9,11 @@
 
     <VerticalStackLayout BackgroundColor="#dae3f3" Spacing="0">
         <!--<HorizontalStackLayout Margin="0,10,0,0">-->
-        <Image Source="ic_close_sesion.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="End" Margin="0,10,10,0"/>
+        <Image Source="ic_close_sesion.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="End" Margin="0,10,10,0">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding SingOutCommand}"/>
+            </Image.GestureRecognizers>
+        </Image>
         <Image Source="logo_idpbook.png" Scale="0.38" Aspect="Fill" Margin="0,-20,0,0"/>
         <!--</HorizontalStackLayout>-->
         <CollectionView x:Name="listaIconos" ItemsLayout="VerticalGrid, 2" Margin="0,-10,0,0">
@@ -28,7 +32,7 @@
                     </VerticalStackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
-        </CollectionView>
+        </CollectionView> 
         <HorizontalStackLayout Spacing="20" HorizontalOptions="Center" Margin="40">
             <Image
                             Aspect="AspectFit"

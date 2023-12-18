@@ -5,7 +5,7 @@
              xmlns:model="clr-namespace:IDPBookApp.Models"
              xmlns:viewmodel="clr-namespace:IDPBookApp.ViewModel"
              x:DataType="viewmodel:LoginViewModel"
-             NavigationPage.HasNavigationBar="True"
+             NavigationPage.HasNavigationBar="False"
              Title="LoginPage">
     <ContentPage.Content>
         <Grid
