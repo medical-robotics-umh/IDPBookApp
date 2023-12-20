@@ -7,7 +7,6 @@ namespace IDPBookApp.ViewModel;
 public partial class LoginViewModel : ObservableObject
 {
     FirebaseConnecty firebaseConnecty;
-    private INavigation navigation;
     public LoginViewModel(FirebaseConnecty firebaseConnecty)
     {
         this.firebaseConnecty = firebaseConnecty;
@@ -30,7 +29,8 @@ public partial class LoginViewModel : ObservableObject
         {
             await firebaseConnecty.Login(UserName, UserPassword);
             await App.Current.MainPage.DisplayAlert("Bienvenid@.", "Sesión iniciada correctamente", "Ok");
-            
+            await Shell.Current.GoToAsync(nameof(MainPage));
+            UserName = string.Empty; UserPassword = string.Empty;
         }
         catch (Exception ex)
         {
@@ -45,15 +45,8 @@ public partial class LoginViewModel : ObservableObject
         }
     }
 
-   [RelayCommand]
-   void LogOutBtn()
-    { 
-        firebaseConnecty.LogOut();
-        App.Current.MainPage.DisplayAlert("Aviso", "Sesión finalizada correctamente", "Ok");
-    }
-
     [RelayCommand]
-    Task ChangePassBtn() => Shell.Current.GoToAsync(nameof(MainPage));
+    Task ChangePassBtn() => Shell.Current.GoToAsync(nameof(CambiarPass));
     
 }
 

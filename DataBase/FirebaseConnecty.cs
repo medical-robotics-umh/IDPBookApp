@@ -1,6 +1,7 @@
 ﻿using Firebase.Auth.Providers;
 using Firebase.Auth;
 using Firebase.Auth.Repository;
+using IDPBookApp.Pages;
 
 namespace IDPBookApp.DataBase;
 public class FirebaseConnecty
@@ -36,7 +37,8 @@ public class FirebaseConnecty
             (userInfo, firebaseCredential) = repository.ReadUser();
             var name = userInfo.DisplayName.ToString();
             //Falta asignar "userCredential" a "client", porque el metodo de SignOut() no reconoce ningun objeto, es decir no se ha inicado sesión explicitamente, si no por el repositorio.
-            await App.Current.MainPage.DisplayAlert("Bienvenid@", "Hola "+name+", has iniciado sesión correctamente.", "Ok");
+            await Shell.Current.GoToAsync(nameof(MainPage));
+            await App.Current.MainPage.DisplayAlert("Bienvenid@", "Hola "+name+", has iniciado sesión correctamente.", "Ok");            
         }
         else
         {

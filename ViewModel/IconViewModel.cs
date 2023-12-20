@@ -2,14 +2,17 @@
 using IDPBookApp.Models;
 using IDPBookApp.Pages;
 using System.Collections.ObjectModel;
+using IDPBookApp.DataBase;
 
 namespace IDPBookApp.ViewModel
 {
     public partial class IconViewModel : BaseViewModel
     {
+        FirebaseConnecty firebaseConnecty;
         public ObservableCollection<IconModel> Icon { get; } = new();
-        public IconViewModel() 
+        public IconViewModel(FirebaseConnecty firebaseConnecty) 
         {
+            this.firebaseConnecty = firebaseConnecty;
             Title = "IDPBook";
         }
         [RelayCommand]
@@ -23,6 +26,12 @@ namespace IDPBookApp.ViewModel
         }
 
         [RelayCommand]
-        Task SingOut() => Shell.Current.GoToAsync("..");
+        async Task LogOutBtn()
+        {
+            firebaseConnecty.LogOut();
+            await App.Current.MainPage.DisplayAlert("Aviso", "Sesión finalizada correctamente", "Ok");
+            await Shell.Current.GoToAsync("..");
+        }
+
     }
 }

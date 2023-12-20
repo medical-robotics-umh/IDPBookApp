@@ -25,5 +25,9 @@ public partial class MainPage : ContentPage
         };
     }
 
-
+    //HACK Metodo para deshabilitar el gesto/botón atrás propio del dispositivo.
+    protected override bool OnBackButtonPressed()
+    {
+        return true;
+    }
 }
