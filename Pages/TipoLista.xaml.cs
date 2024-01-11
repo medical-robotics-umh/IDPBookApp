@@ -24,7 +24,6 @@ public partial class TipoLista : ContentPage
 
     private List<ItemModel> getItems()
     {
-
         return new List<ItemModel>()
         {
             new ItemModel{Fecha="10/05/23",Icono="ic_logo_vacunacion.png",Episodio="Vacuna 10"},

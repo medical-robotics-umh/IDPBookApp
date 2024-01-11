@@ -5,11 +5,11 @@ namespace IDPBookApp.Pages;
 
 public partial class MainPage : ContentPage
 {
-    public MainPage(IconViewModel iconViewModel)
+    public MainPage(MainViewModel MainViewModel)
     {
         InitializeComponent();
         listaIconos.ItemsSource = getIcons();
-        BindingContext = iconViewModel;
+        BindingContext = MainViewModel;
     }
 
     private List<IconModel> getIcons()

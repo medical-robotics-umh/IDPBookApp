@@ -5,7 +5,7 @@ namespace IDPBookApp.Pages;
 
 public partial class Estado : ContentPage
 {
-	public Estado(IconViewModel iconViewModel)
+	public Estado(MainViewModel iconViewModel)
 	{
 		InitializeComponent();
         listaIconos.ItemsSource = getIcons();

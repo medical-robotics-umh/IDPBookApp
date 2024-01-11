@@ -6,15 +6,16 @@ using IDPBookApp.DataBase;
 
 namespace IDPBookApp.ViewModel
 {
-    public partial class IconViewModel : BaseViewModel
+    public partial class MainViewModel : BaseViewModel
     {
         FirebaseConnecty firebaseConnecty;
         public ObservableCollection<IconModel> Icon { get; } = new();
-        public IconViewModel(FirebaseConnecty firebaseConnecty) 
+        public MainViewModel(FirebaseConnecty firebaseConnecty) 
         {
             this.firebaseConnecty = firebaseConnecty;
             Title = "IDPBook";
         }
+
         [RelayCommand]
         async Task Navegar(IconModel icon)
         {

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:model="clr-namespace:IDPBookApp.Models"
              xmlns:viewmodel="clr-namespace:IDPBookApp.ViewModel"
-             x:DataType="viewmodel:IconViewModel"
+             x:DataType="viewmodel:MainViewModel"
              x:Class="IDPBookApp.Pages.MainPage">
     <Shell.BackButtonBehavior>
         <BackButtonBehavior Command="{Binding LogOutBtnCommand}"/>
@@ -23,7 +23,8 @@
                     <VerticalStackLayout >
                         <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:IconViewModel}}, Path=Navegar}"/>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=NavegarCommand}"
+                                                      CommandParameter="{Binding .}"/>
                             </Frame.GestureRecognizers>
                             <VerticalStackLayout Spacing="5">
                                 <Image Source="{Binding Icono}" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
