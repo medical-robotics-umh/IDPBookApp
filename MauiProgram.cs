@@ -25,7 +25,6 @@ public static class MauiProgram
 		builder.Services.AddSingleton<MainViewModel>();
 		builder.Services.AddTransient<DetailPageViewModel>();
         builder.Services.AddTransient<LoginViewModel>();
-
         builder.Services.AddSingleton<MainPage>();
         builder.Services.AddTransient<DetailPage>();
 		builder.Services.AddSingleton<FirebaseConnecty>();
@@ -34,7 +33,6 @@ public static class MauiProgram
         builder.Services.AddSingleton<LoginPage>();
 
 #endif
-
         return builder.Build();
 	}
 }
