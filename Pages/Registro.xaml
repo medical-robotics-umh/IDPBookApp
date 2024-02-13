@@ -2,14 +2,17 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IDPBookApp.Pages.Registro"
-             xmlns:model="clr-namespace:IDPBookApp.Models"
              xmlns:viewmodel="clr-namespace:IDPBookApp.ViewModel"
-             x:DataType="viewmodel:DetailPageViewModel"
+             x:DataType="viewmodel:MainViewModel"
              Title="Registro">
     <ScrollView>
         <VerticalStackLayout BackgroundColor="#dae3f3" Spacing="0">
             <HorizontalStackLayout VerticalOptions="Center" Margin="20,20,0,20">
-                <Image Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30"/>
+                <Image Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackBtnCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
                 <Label Text="REGISTRO PACIENTE" FontSize="Large" FontAttributes="Bold" Margin="32,0"/>
             </HorizontalStackLayout>
             
@@ -19,17 +22,20 @@
                     <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40">
                         <Label VerticalOptions="Center" Text="Nombre." FontAttributes="Bold"/>
                         <Frame HeightRequest="40" WidthRequest="200" Margin="50,0" CornerRadius="5" Padding="0">
-                            <Entry VerticalOptions="Center" Placeholder="Ingresa nombre" WidthRequest="190" HorizontalTextAlignment="Start"/>
+                            <HorizontalStackLayout HorizontalOptions="Center">
+                                <Entry VerticalOptions="Center" Placeholder="Ingresa nombre" WidthRequest="190" HorizontalTextAlignment="Start"/>
+                            </HorizontalStackLayout>
                         </Frame>
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40">
                         <Label VerticalOptions="Center" Text="Apellidos." FontAttributes="Bold"/>
                         <Frame HeightRequest="40" WidthRequest="200" Margin="44,0" CornerRadius="5" Padding="0">
-                            <Entry VerticalOptions="Center" Placeholder="Ingresa Apellidos" WidthRequest="190" HorizontalTextAlignment="Start"/>
+                            <HorizontalStackLayout HorizontalOptions="Center">
+                                <Entry VerticalOptions="Center" Placeholder="Ingresa Apellidos" WidthRequest="190" HorizontalTextAlignment="Start"/>
+                            </HorizontalStackLayout>
                         </Frame>
                     </HorizontalStackLayout>
-
 
                     <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40">
                         <Label VerticalOptions="Center" Text="Sexo." FontAttributes="Bold"/>
@@ -72,7 +78,9 @@
                     <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40">
                         <Label VerticalOptions="Center" Text="Otro Diag." FontAttributes="Bold"/>
                         <Frame HeightRequest="40" WidthRequest="200" Margin="45,0" CornerRadius="5" Padding="0">
-                            <Entry VerticalOptions="Center" Placeholder="Otro diagnostico" WidthRequest="190" HorizontalTextAlignment="Start"/>
+                            <HorizontalStackLayout HorizontalOptions="Center">
+                                <Entry VerticalOptions="Center" Placeholder="Otro diagnostico" WidthRequest="190" HorizontalTextAlignment="Start"/>
+                            </HorizontalStackLayout>
                         </Frame>
                     </HorizontalStackLayout>
 
@@ -84,7 +92,9 @@
                     <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40">
                         <Label VerticalOptions="Center" Text="Correo." FontAttributes="Bold"/>
                         <Frame HeightRequest="40" WidthRequest="200" Margin="60,0" CornerRadius="5" Padding="0">
-                            <Entry VerticalOptions="Center" Placeholder="Ingresa correo" WidthRequest="190" HorizontalTextAlignment="Start"/>
+                            <HorizontalStackLayout HorizontalOptions="Center">
+                                <Entry VerticalOptions="Center" Placeholder="Ingresa correo" WidthRequest="190" HorizontalTextAlignment="Start"/>
+                            </HorizontalStackLayout>
                         </Frame>
                     </HorizontalStackLayout>
 

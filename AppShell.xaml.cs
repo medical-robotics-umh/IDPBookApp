@@ -10,5 +10,9 @@ public partial class AppShell : Shell
 		Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
         Routing.RegisterRoute(nameof(CambiarPass), typeof(CambiarPass));
         Routing.RegisterRoute(nameof(DetailPage), typeof(DetailPage));
+        Routing.RegisterRoute(nameof(Estado), typeof(Estado));
+        Routing.RegisterRoute(nameof(Registro), typeof(Registro));
+        Routing.RegisterRoute(nameof(CitasPage), typeof(CitasPage));
+        Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
     }
 }

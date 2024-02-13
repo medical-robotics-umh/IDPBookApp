@@ -1,8 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
-using IDPBookApp.Models;
-using IDPBookApp.Pages;
-using System.Collections.ObjectModel;
 using IDPBookApp.DataBase;
+using IDPBookApp.Models;
+using System.Collections.ObjectModel;
 
 namespace IDPBookApp.ViewModel
 {
@@ -17,13 +16,9 @@ namespace IDPBookApp.ViewModel
         }
 
         [RelayCommand]
-        async Task Navegar(IconModel icon)
+        async static Task Navegar(string ruta)
         {
-            await Shell.Current.GoToAsync($"{nameof(DetailPage)}", true,
-                new Dictionary<string, object>
-                {
-                    {"Icono", icon}
-                });
+            await Shell.Current.GoToAsync(ruta);
         }
 
         [RelayCommand]
@@ -31,8 +26,13 @@ namespace IDPBookApp.ViewModel
         {
             firebaseConnecty.LogOut();
             await App.Current.MainPage.DisplayAlert("Aviso", "Sesión finalizada correctamente", "Ok");
-            await Shell.Current.GoToAsync("..");
+            await Shell.Current.GoToAsync("///LoginPage");
         }
 
+        [RelayCommand]
+        async Task BackBtn()
+        {
+            await Shell.Current.GoToAsync("..");
+        }
     }
 }

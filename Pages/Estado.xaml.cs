@@ -8,7 +8,7 @@ public partial class Estado : ContentPage
 	public Estado(MainViewModel iconViewModel)
 	{
 		InitializeComponent();
-        listaIconos.ItemsSource = getIcons();
+        //listaIconos.ItemsSource = getIcons();
         BindingContext = iconViewModel;
     }
 

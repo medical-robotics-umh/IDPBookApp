@@ -9,15 +9,88 @@
         <BackButtonBehavior Command="{Binding LogOutBtnCommand}"/>
     </Shell.BackButtonBehavior>
     <VerticalStackLayout BackgroundColor="#dae3f3" Spacing="0">
-        <!--<HorizontalStackLayout Margin="0,10,0,0">-->
         <Image Source="ic_close_sesion.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="End" Margin="0,10,10,0">
             <Image.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding LogOutBtnCommand}"/>
             </Image.GestureRecognizers>
         </Image>
         <Image Source="logo_idpbook.png" Scale="0.38" Aspect="Fill" Margin="0,-20,0,0"/>
-        <!--</HorizontalStackLayout>-->
-        <CollectionView x:Name="listaIconos" ItemsLayout="VerticalGrid, 2" Margin="0,-10,0,0">
+        <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*" VerticalOptions="Center" HorizontalOptions="Center" ColumnSpacing="40">
+            <VerticalStackLayout>
+                <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="Registro"/>
+                    </Frame.GestureRecognizers>
+                    <VerticalStackLayout Spacing="5">
+                        <Image Source="registro.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+                    </VerticalStackLayout>
+                </Frame>
+                <Label Text="Información" HorizontalOptions="Center" FontAttributes="Bold"/>
+                <Label Text="personal" HorizontalOptions="Center" FontAttributes="Bold"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Column="1">
+                <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="Estado"/>
+                    </Frame.GestureRecognizers>
+                    <VerticalStackLayout Spacing="5">
+                        <Image Source="estado.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+                    </VerticalStackLayout>
+                </Frame>
+                <Label Text="Estado de la" HorizontalOptions="Center" FontAttributes="Bold"/>
+                <Label Text="enfermedad" HorizontalOptions="Center" FontAttributes="Bold"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Row="1" Grid.Column="0">
+                <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="CitasPage"/>
+                    </Frame.GestureRecognizers>
+                    <VerticalStackLayout Spacing="5">
+                        <Image Source="calendario.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+                    </VerticalStackLayout>
+                </Frame>
+                <Label Text="Citas" HorizontalOptions="Center" FontAttributes="Bold"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Row="1" Grid.Column="1">
+                <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="Estado"/>
+                    </Frame.GestureRecognizers>
+                    <VerticalStackLayout Spacing="5">
+                        <Image Source="bibliografia.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+                    </VerticalStackLayout>
+                </Frame>
+                <Label Text="Documentación" HorizontalOptions="Center" FontAttributes="Bold"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Row="2" Grid.Column="0">
+                <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="Estado"/>
+                    </Frame.GestureRecognizers>
+                    <VerticalStackLayout Spacing="5">
+                        <Image Source="contacto.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+                    </VerticalStackLayout>
+                </Frame>
+                <Label Text="Contacto sanitario" HorizontalOptions="Center" FontAttributes="Bold"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Row="2" Grid.Column="1">
+                <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="Estado"/>
+                    </Frame.GestureRecognizers>
+                    <VerticalStackLayout Spacing="5">
+                        <Image Source="redes_pacientes.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+                    </VerticalStackLayout>
+                </Frame>
+                <Label Text="Redes de pacientes" HorizontalOptions="Center" FontAttributes="Bold"/>
+            </VerticalStackLayout>
+        </Grid>
+        <!--<CollectionView x:Name="listaIconos" ItemsLayout="VerticalGrid, 2" Margin="0,-10,0,0">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:IconModel">
                     <VerticalStackLayout >
@@ -34,7 +107,7 @@
                     </VerticalStackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
-        </CollectionView>
+        </CollectionView>-->
         <HorizontalStackLayout Spacing="20" HorizontalOptions="Center" Margin="40">
             <Image
                             Aspect="AspectFit"
@@ -48,6 +121,6 @@
                             Source="ic_logo_umh.png"
                             WidthRequest="60" />
         </HorizontalStackLayout>
-        <Image Source="background.png" Scale="0.2" Aspect="Fill" Margin="0,0,0,0"/>
+        <!--<Image Source="background.png" Scale="0.2" Aspect="Fill" Margin="0,0,0,0"/>-->
     </VerticalStackLayout>
 </ContentPage>

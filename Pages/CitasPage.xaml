@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IDPBookApp.Pages.CitasPage"
+             xmlns:viewmodel="clr-namespace:IDPBookApp.ViewModel"
+             x:DataType="viewmodel:MainViewModel"
+             Title="CitasPage">
+    <ScrollView>
+    <VerticalStackLayout BackgroundColor="#BDD7EE" VerticalOptions="FillAndExpand" Spacing="120">
+        <HorizontalStackLayout VerticalOptions="Start" Margin="20,20,0,20" HorizontalOptions="Start">
+            <Image Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackBtnCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Text="CITAS" FontSize="Medium" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" Margin="105,0,0,0"/>
+        </HorizontalStackLayout>
+        <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*" VerticalOptions="Center" HorizontalOptions="Center" ColumnSpacing="20">
+            <VerticalStackLayout>
+                <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="Registro"/>
+                    </Frame.GestureRecognizers>
+                    <VerticalStackLayout Spacing="5">
+                        <Image Source="ic_logo_citas_consultas_externas.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+                    </VerticalStackLayout>
+                </Frame>
+                <Label Text="Citas consulta externa" HorizontalOptions="Center" FontAttributes="Bold"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Column="1">
+                <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125" x:Name="estado">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="Estado"/>
+                    </Frame.GestureRecognizers>
+                    <VerticalStackLayout Spacing="5">
+                        <Image Source="ic_logo_citas_extracciones.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+                    </VerticalStackLayout>
+                </Frame>
+                <Label Text="Citas extracciones" HorizontalOptions="Center" FontAttributes="Bold"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Row="1" Grid.Column="0">
+                <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="Estado"/>
+                    </Frame.GestureRecognizers>
+                    <VerticalStackLayout Spacing="5">
+                        <Image Source="ic_enfermera.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+                    </VerticalStackLayout>
+                </Frame>
+                <Label Text="Citas enfermera" HorizontalOptions="Center" FontAttributes="Bold"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Row="1" Grid.Column="1">
+                <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="Estado"/>
+                    </Frame.GestureRecognizers>
+                    <VerticalStackLayout Spacing="5">
+                        <Image Source="ic_otros.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+                    </VerticalStackLayout>
+                </Frame>
+                <Label Text="Otras citas" HorizontalOptions="Center" FontAttributes="Bold"/>
+            </VerticalStackLayout>
+        </Grid>
+        <HorizontalStackLayout Spacing="20" HorizontalOptions="Center" VerticalOptions="End">
+            <Image
+                    Aspect="AspectFit"
+                    HeightRequest="80"
+                    Source="ic_logo_lafe.png"
+                    WidthRequest="60" />
+            <Image
+                    VerticalOptions="Start"
+                    Aspect="AspectFit"
+                    HeightRequest="80"
+                    Source="ic_logo_umh.png"
+                    WidthRequest="60" />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

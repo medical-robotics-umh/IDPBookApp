@@ -1,9 +1,9 @@
 namespace IDPBookApp.Pages;
 using IDPBookApp.ViewModel;
 
-public partial class Registro : ContentPage
+public partial class CitasPage : ContentPage
 {
-	public Registro(MainViewModel mainViewModel)
+	public CitasPage(MainViewModel mainViewModel)
 	{
 		InitializeComponent();
 		BindingContext = mainViewModel;

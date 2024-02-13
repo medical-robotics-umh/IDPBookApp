@@ -8,7 +8,7 @@ public partial class MainPage : ContentPage
     public MainPage(MainViewModel MainViewModel)
     {
         InitializeComponent();
-        listaIconos.ItemsSource = getIcons();
+        //listaIconos.ItemsSource = getIcons();
         BindingContext = MainViewModel;
     }
 
