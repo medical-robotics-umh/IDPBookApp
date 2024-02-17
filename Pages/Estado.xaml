@@ -6,20 +6,19 @@
              xmlns:viewmodel="clr-namespace:IDPBookApp.ViewModel"
              x:DataType="viewmodel:MainViewModel"
              Title="Estado">
-    <VerticalStackLayout BackgroundColor="#fffbef" Spacing="40">
-        <HorizontalStackLayout VerticalOptions="Center" Margin="20,20,0,0">
-            <Image Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding BackBtnCommand}"/>
-                </Image.GestureRecognizers>
-            </Image>
-            <Label Text="ESTADO DE LA ENFERMEDAD" FontSize="Medium" FontAttributes="Bold" Margin="20,0" VerticalOptions="Center"/>
-        </HorizontalStackLayout>
-        <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*" VerticalOptions="Center" HorizontalOptions="Center" ColumnSpacing="40">
+    <VerticalStackLayout BackgroundColor="#fffbef">
+        <Image Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding BackBtnCommand}"/>
+            </Image.GestureRecognizers>
+        </Image>
+        <Label Text="ESTADO DE LA ENFERMEDAD" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-28,0,0"/>
+        
+        <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*" VerticalOptions="Center" HorizontalOptions="Center" ColumnSpacing="40" Margin="0,40,0,0">
             <VerticalStackLayout>
                 <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                     <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="DetailPage"/>
+                        <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="EpisodiosPage"/>
                     </Frame.GestureRecognizers>
                     <VerticalStackLayout Spacing="5">
                         <Image Source="ic_logo_episodios.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
@@ -91,7 +90,7 @@
                 <Label Text="de vida" HorizontalOptions="Center" FontAttributes="Bold"/>
             </VerticalStackLayout>
         </Grid>
-        <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
+        <HorizontalStackLayout Spacing="20" HorizontalOptions="Center" Margin="0,40,0,0">
             <Image
                             Aspect="AspectFit"
                             HeightRequest="80"

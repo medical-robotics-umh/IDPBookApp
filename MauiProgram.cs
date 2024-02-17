@@ -33,6 +33,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<LoginPage>();
         builder.Services.AddSingleton<CitasPage>();
         builder.Services.AddSingleton<Registro>();
+        builder.Services.AddSingleton<EpisodiosPage>();
 
 #endif
         return builder.Build();

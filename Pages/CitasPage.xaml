@@ -6,16 +6,15 @@
              x:DataType="viewmodel:MainViewModel"
              Title="CitasPage">
     <ScrollView>
-    <VerticalStackLayout BackgroundColor="#BDD7EE" VerticalOptions="FillAndExpand" Spacing="120">
-        <HorizontalStackLayout VerticalOptions="Start" Margin="20,20,0,20" HorizontalOptions="Start">
-            <Image Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30">
+    <VerticalStackLayout BackgroundColor="#BDD7EE" VerticalOptions="FillAndExpand">
+            <Image Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding BackBtnCommand}"/>
                 </Image.GestureRecognizers>
             </Image>
-            <Label Text="CITAS" FontSize="Medium" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" Margin="105,0,0,0"/>
-        </HorizontalStackLayout>
-        <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*" VerticalOptions="Center" HorizontalOptions="Center" ColumnSpacing="20">
+            <Label Text="CITAS" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
+        
+            <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*" VerticalOptions="Center" HorizontalOptions="Center" ColumnSpacing="40" Margin="0,120,0,0">
             <VerticalStackLayout>
                 <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                     <Frame.GestureRecognizers>
@@ -64,7 +63,7 @@
                 <Label Text="Otras citas" HorizontalOptions="Center" FontAttributes="Bold"/>
             </VerticalStackLayout>
         </Grid>
-        <HorizontalStackLayout Spacing="20" HorizontalOptions="Center" VerticalOptions="End">
+        <HorizontalStackLayout Spacing="20" HorizontalOptions="Center" VerticalOptions="End" Margin="0,120,0,0">
             <Image
                     Aspect="AspectFit"
                     HeightRequest="80"

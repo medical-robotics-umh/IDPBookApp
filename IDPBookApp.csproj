@@ -49,18 +49,35 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiAsset Remove="Resources\Raw\google-services.json" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="Resources\Images\background.png" />
 	  <None Remove="Resources\Images\ic_back_button.png" />
 	  <None Remove="Resources\Images\ic_episode_list.png" />
 	  <None Remove="Resources\Images\ic_logo_agregar.png" />
 	  <None Remove="Resources\Images\ic_logo_historial_medico.png" />
 	  <None Remove="Resources\Images\triangle.png" />
+	  <None Remove="Resources\Raw\google-services.json" />
+	  <None Remove="testdb-9da53.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="testdb-9da53.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <GoogleServicesJson Include="Resources\Raw\google-services.json" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="FirebaseAuthentication.net" Version="4.1.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="Plugin.CloudFirestore" Version="4.1.0" />
 	</ItemGroup>
 
 	<ItemGroup>

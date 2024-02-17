@@ -7,16 +7,14 @@
              Title="Registro">
     <ScrollView>
         <VerticalStackLayout BackgroundColor="#dae3f3" Spacing="0">
-            <HorizontalStackLayout VerticalOptions="Center" Margin="20,20,0,20">
-                <Image Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding BackBtnCommand}"/>
-                    </Image.GestureRecognizers>
-                </Image>
-                <Label Text="REGISTRO PACIENTE" FontSize="Large" FontAttributes="Bold" Margin="32,0"/>
-            </HorizontalStackLayout>
-            
-            <Frame HasShadow="True" Margin="10,10" BackgroundColor="#dae3f3" Padding="10,5,0,10">
+            <Image Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackBtnCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Text="REGISTRO PACIENTE" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
+
+            <Frame HasShadow="True" Margin="10,30" BackgroundColor="#dae3f3" Padding="10,5,0,10">
                 <VerticalStackLayout Spacing="5">
                     
                     <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40">
