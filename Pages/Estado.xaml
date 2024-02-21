@@ -6,102 +6,104 @@
              xmlns:viewmodel="clr-namespace:IDPBookApp.ViewModel"
              x:DataType="viewmodel:MainViewModel"
              Title="Estado">
-    <VerticalStackLayout BackgroundColor="#fffbef">
-        <Image Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0">
-            <Image.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding BackBtnCommand}"/>
-            </Image.GestureRecognizers>
-        </Image>
-        <Label Text="ESTADO DE LA ENFERMEDAD" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-28,0,0"/>
-        
-        <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*" VerticalOptions="Center" HorizontalOptions="Center" ColumnSpacing="40" Margin="0,40,0,0">
-            <VerticalStackLayout>
-                <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="EpisodiosPage"/>
-                    </Frame.GestureRecognizers>
-                    <VerticalStackLayout Spacing="5">
-                        <Image Source="ic_logo_episodios.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
-                    </VerticalStackLayout>
-                </Frame>
-                <Label Text="Episodios" HorizontalOptions="Center" FontAttributes="Bold"/>
-            </VerticalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout BackgroundColor="#fffbef">
+            <Image Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackBtnCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Text="ESTADO DE LA ENFERMEDAD" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-28,0,0"/>
 
-            <VerticalStackLayout Grid.Column="1">
-                <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="MainPage"/>
-                    </Frame.GestureRecognizers>
-                    <VerticalStackLayout Spacing="5">
-                        <Image Source="ic_logo_laboratorio.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
-                    </VerticalStackLayout>
-                </Frame>
-                <Label Text="Pruebas de" HorizontalOptions="Center" FontAttributes="Bold"/>
-                <Label Text="laboratorio" HorizontalOptions="Center" FontAttributes="Bold"/>
-            </VerticalStackLayout>
+            <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*" VerticalOptions="Center" HorizontalOptions="Center" ColumnSpacing="40" Margin="0,40,0,0">
+                <VerticalStackLayout>
+                    <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="EpisodiosPage"/>
+                        </Frame.GestureRecognizers>
+                        <VerticalStackLayout Spacing="5">
+                            <Image Source="ic_logo_episodios.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                    <Label Text="Episodios" HorizontalOptions="Center" FontAttributes="Bold"/>
+                </VerticalStackLayout>
 
-            <VerticalStackLayout Grid.Row="1" Grid.Column="0">
-                <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="MainPage"/>
-                    </Frame.GestureRecognizers>
-                    <VerticalStackLayout Spacing="5">
-                        <Image Source="ic_logo_tratamiento_inmunoglobulinas.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
-                    </VerticalStackLayout>
-                </Frame>
-                <Label Text="Tratamiento con" HorizontalOptions="Center" FontAttributes="Bold"/>
-                <Label Text="Inmunoglobulinas" HorizontalOptions="Center" FontAttributes="Bold"/>
-            </VerticalStackLayout>
+                <VerticalStackLayout Grid.Column="1">
+                    <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="MainPage"/>
+                        </Frame.GestureRecognizers>
+                        <VerticalStackLayout Spacing="5">
+                            <Image Source="ic_logo_laboratorio.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                    <Label Text="Pruebas de" HorizontalOptions="Center" FontAttributes="Bold"/>
+                    <Label Text="laboratorio" HorizontalOptions="Center" FontAttributes="Bold"/>
+                </VerticalStackLayout>
 
-            <VerticalStackLayout Grid.Row="1" Grid.Column="1">
-                <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="MainPage"/>
-                    </Frame.GestureRecognizers>
-                    <VerticalStackLayout Spacing="5">
-                        <Image Source="ic_logo_otros_tratamientos.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
-                    </VerticalStackLayout>
-                </Frame>
-                <Label Text="Otros tratamientos" HorizontalOptions="Center" FontAttributes="Bold"/>
-            </VerticalStackLayout>
+                <VerticalStackLayout Grid.Row="1" Grid.Column="0">
+                    <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="MainPage"/>
+                        </Frame.GestureRecognizers>
+                        <VerticalStackLayout Spacing="5">
+                            <Image Source="ic_logo_tratamiento_inmunoglobulinas.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                    <Label Text="Tratamiento con" HorizontalOptions="Center" FontAttributes="Bold"/>
+                    <Label Text="Inmunoglobulinas" HorizontalOptions="Center" FontAttributes="Bold"/>
+                </VerticalStackLayout>
 
-            <VerticalStackLayout Grid.Row="2" Grid.Column="0">
-                <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="MainPage"/>
-                    </Frame.GestureRecognizers>
-                    <VerticalStackLayout Spacing="5">
-                        <Image Source="ic_logo_vacunacion.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
-                    </VerticalStackLayout>
-                </Frame>
-                <Label Text="Vacunación" HorizontalOptions="Center" FontAttributes="Bold"/>
-            </VerticalStackLayout>
+                <VerticalStackLayout Grid.Row="1" Grid.Column="1">
+                    <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="MainPage"/>
+                        </Frame.GestureRecognizers>
+                        <VerticalStackLayout Spacing="5">
+                            <Image Source="ic_logo_otros_tratamientos.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                    <Label Text="Otros tratamientos" HorizontalOptions="Center" FontAttributes="Bold"/>
+                </VerticalStackLayout>
 
-            <VerticalStackLayout Grid.Row="2" Grid.Column="1">
-                <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="MainPage"/>
-                    </Frame.GestureRecognizers>
-                    <VerticalStackLayout Spacing="5">
-                        <Image Source="ic_logo_calidad_vida.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
-                    </VerticalStackLayout>
-                </Frame>
-                <Label Text="Encuesta calidad" HorizontalOptions="Center" FontAttributes="Bold"/>
-                <Label Text="de vida" HorizontalOptions="Center" FontAttributes="Bold"/>
-            </VerticalStackLayout>
-        </Grid>
-        <HorizontalStackLayout Spacing="20" HorizontalOptions="Center" Margin="0,40,0,0">
-            <Image
+                <VerticalStackLayout Grid.Row="2" Grid.Column="0">
+                    <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="MainPage"/>
+                        </Frame.GestureRecognizers>
+                        <VerticalStackLayout Spacing="5">
+                            <Image Source="ic_logo_vacunacion.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                    <Label Text="Vacunación" HorizontalOptions="Center" FontAttributes="Bold"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Row="2" Grid.Column="1">
+                    <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="MainPage"/>
+                        </Frame.GestureRecognizers>
+                        <VerticalStackLayout Spacing="5">
+                            <Image Source="ic_logo_calidad_vida.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                    <Label Text="Encuesta calidad" HorizontalOptions="Center" FontAttributes="Bold"/>
+                    <Label Text="de vida" HorizontalOptions="Center" FontAttributes="Bold"/>
+                </VerticalStackLayout>
+            </Grid>
+            <HorizontalStackLayout Spacing="20" HorizontalOptions="Center" Margin="0,40,0,0">
+                <Image
                             Aspect="AspectFit"
                             HeightRequest="80"
                             Source="ic_logo_lafe.png"
                             WidthRequest="60" />
-            <Image
+                <Image
                             VerticalOptions="Start"
                             Aspect="AspectFit"
                             HeightRequest="80"
                             Source="ic_logo_umh.png"
                             WidthRequest="60" />
-        </HorizontalStackLayout>
-    </VerticalStackLayout>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

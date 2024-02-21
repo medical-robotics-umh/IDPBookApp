@@ -10,7 +10,7 @@
         <StackLayout BackgroundColor="#e2f0d9" Spacing="0">
             <Image Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0">
                 <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding CargarCommand}"/>
+                    <TapGestureRecognizer Command="{Binding BackBtnCommand}"/>
                 </Image.GestureRecognizers>
             </Image>
             <Label Text="NUEVO EPISODIO" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
@@ -79,8 +79,8 @@
                     <Label Grid.Row="14" VerticalOptions="Center" Text="Otros" FontAttributes="Bold"/>
                     <Entry Grid.Row="14" Grid.Column="1" Grid.ColumnSpan="2" WidthRequest="165" Margin="0,0,15,0" VerticalOptions="Center" Placeholder="N/A" HorizontalTextAlignment="Center" Keyboard="Text" HorizontalOptions="End"/>
 
-                    <Button Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Center" Margin="-100,0,0,0" Text="Agregar" BackgroundColor="Green" WidthRequest="90" HeightRequest="45"/>
-                    <Button Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Center" Margin="100,0,0,0" Text="Salir" BackgroundColor="PaleVioletRed" WidthRequest="90" HeightRequest="45"/>
+                    <Button Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Center" Margin="-100,0,0,0" Text="Agregar" BackgroundColor="Green" WidthRequest="90" HeightRequest="45" Command="{Binding CargarCommand}"/>
+                    <Button Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Center" Margin="100,0,0,0" Text="Salir" BackgroundColor="PaleVioletRed" WidthRequest="90" HeightRequest="45" Command="{Binding BackBtnCommand}"/>
                 </Grid>
             </Frame>
         </StackLayout>

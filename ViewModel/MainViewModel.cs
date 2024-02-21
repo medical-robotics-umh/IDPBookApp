@@ -5,7 +5,7 @@ namespace IDPBookApp.ViewModel;
 
 public partial class MainViewModel : BaseViewModel
 {
-    FirebaseConnecty firebaseConnecty;
+    readonly FirebaseConnecty firebaseConnecty;
     public MainViewModel(FirebaseConnecty firebaseConnecty) 
     {
         this.firebaseConnecty = firebaseConnecty;

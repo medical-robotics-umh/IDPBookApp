@@ -6,7 +6,7 @@ using IDPBookApp.Pages;
 namespace IDPBookApp.ViewModel;
 public partial class LoginViewModel : ObservableObject
 {
-    FirebaseConnecty firebaseConnecty;
+    readonly FirebaseConnecty firebaseConnecty;
     public LoginViewModel(FirebaseConnecty firebaseConnecty)
     {
         this.firebaseConnecty = firebaseConnecty;
