@@ -81,10 +81,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\NEpisPage.xaml.cs">
+	    <DependentUpon>NEpisPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Pages\CitasPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\DatosPage.xaml">
+	  <MauiXaml Update="Pages\NEpisPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\DetailPage.xaml">

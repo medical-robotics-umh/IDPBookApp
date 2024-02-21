@@ -1,9 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CommunityToolkit.Mvvm.Input;
+using IDPBookApp.DataBase;
+using IDPBookApp.Models;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace IDPBookApp.ViewModel;
 public partial class BaseViewModel : ObservableObject
@@ -12,6 +12,18 @@ public partial class BaseViewModel : ObservableObject
     {
     }
 
-    [ObservableProperty]
-    string title;
+    public ObservableCollection<EpisodioModel> Episodios { get; set; } = new ObservableCollection<EpisodioModel>();
+
+
+    [RelayCommand]
+    async static Task Navegar(string ruta)
+    {
+        await Shell.Current.GoToAsync(ruta);
+    }
+
+    [RelayCommand]
+    async static Task BackBtn()
+    {
+        await Shell.Current.GoToAsync("..");
+    }
 }

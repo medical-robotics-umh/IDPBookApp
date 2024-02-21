@@ -3,9 +3,9 @@ namespace IDPBookApp.Pages;
 
 public partial class EpisodiosPage : ContentPage
 {
-	public EpisodiosPage(MainViewModel mainViewModel)
+	public EpisodiosPage(ListViewModel listViewModel)
 	{
 		InitializeComponent();
-		BindingContext = mainViewModel;
+		BindingContext = listViewModel;
     }
 }

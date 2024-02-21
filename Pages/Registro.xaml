@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IDPBookApp.Pages.Registro"
              xmlns:viewmodel="clr-namespace:IDPBookApp.ViewModel"
-             x:DataType="viewmodel:MainViewModel"
+             x:DataType="viewmodel:NewDataViewModel"
              Title="Registro">
     <ScrollView>
         <VerticalStackLayout BackgroundColor="#dae3f3" Spacing="0">
