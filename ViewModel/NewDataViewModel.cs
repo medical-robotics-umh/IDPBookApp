@@ -14,6 +14,14 @@ public partial class NewDataViewModel : BaseViewModel
     public NewDataViewModel(FirebaseConnecty firebaseConnecty) 
     { 
         this.firebaseConnecty = firebaseConnecty;
+        Items = new ObservableCollection<string>()
+        {
+            "Tos",
+            "Moco",
+            "Dolor de garganta",
+            "Dolor torácico",
+            "Sensación de ahogo"
+        };
     }
 
     [RelayCommand]
@@ -28,6 +36,8 @@ public partial class NewDataViewModel : BaseViewModel
         Navigation.InsertPageBefore(EP, Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
         await Shell.Current.GoToAsync("..");
     }
+
+    public ObservableCollection<string> Items { get; set; }
 
     [ObservableProperty]
     private bool isExpand;
