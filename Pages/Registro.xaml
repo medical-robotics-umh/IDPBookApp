@@ -14,93 +14,58 @@
             </Image>
             <Label Text="REGISTRO PACIENTE" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
-            <Frame HasShadow="True" Margin="10,30" BackgroundColor="#dae3f3" Padding="10,5,0,10">
-                <VerticalStackLayout Spacing="5">
-                    
-                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40">
-                        <Label VerticalOptions="Center" Text="Nombre." FontAttributes="Bold"/>
-                        <Frame HeightRequest="40" WidthRequest="200" Margin="50,0" CornerRadius="5" Padding="0">
-                            <HorizontalStackLayout HorizontalOptions="Center">
-                                <Entry VerticalOptions="Center" Placeholder="Ingresa nombre" WidthRequest="190" HorizontalTextAlignment="Start"/>
-                            </HorizontalStackLayout>
-                        </Frame>
-                    </HorizontalStackLayout>
+            <Frame HasShadow="True" Margin="10,20" BackgroundColor="Transparent" Padding="10,1,10,10" VerticalOptions="CenterAndExpand">
+                <Grid ColumnDefinitions="Auto,*" RowDefinitions="45,45,45,45,45,45,45,45,80">
+                    <Label Text="Nombre:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Entry Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa nombre" HorizontalTextAlignment="Start" BackgroundColor="White" HeightRequest="35"/>
 
-                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40">
-                        <Label VerticalOptions="Center" Text="Apellidos." FontAttributes="Bold"/>
-                        <Frame HeightRequest="40" WidthRequest="200" Margin="44,0" CornerRadius="5" Padding="0">
-                            <HorizontalStackLayout HorizontalOptions="Center">
-                                <Entry VerticalOptions="Center" Placeholder="Ingresa Apellidos" WidthRequest="190" HorizontalTextAlignment="Start"/>
-                            </HorizontalStackLayout>
-                        </Frame>
-                    </HorizontalStackLayout>
+                    <Label Grid.Row="1" Text="Apellidos:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Entry Grid.Row="1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa apellidos" HorizontalTextAlignment="Start" BackgroundColor="White" HeightRequest="35"/>
 
-                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40">
-                        <Label VerticalOptions="Center" Text="Sexo." FontAttributes="Bold"/>
-                        <Picker Title="Seleccionar sexo" Margin="75,0">
-                            <Picker.Items>
-                                <x:String>Masculino</x:String>
-                                <x:String>Femenino</x:String>
-                                <x:String>No interesa</x:String>
-                            </Picker.Items>
-                        </Picker>
-                    </HorizontalStackLayout>
+                    <Label Grid.Row="2" Text="Sexo:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Picker Grid.Row="2" Grid.Column="1" Title="▼ Seleccionar sexo" BackgroundColor="White" HeightRequest="35">
+                        <Picker.Items>
+                            <x:String>Masculino</x:String>
+                            <x:String>Femenino</x:String>
+                            <x:String>No interesa</x:String>
+                        </Picker.Items>
+                    </Picker>
 
-                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40">
-                        <Label VerticalOptions="Center" Text="F. Nacimiento." FontAttributes="Bold"/>
-                        <DatePicker Margin="18,0"/>
-                    </HorizontalStackLayout>
+                    <Label Grid.Row="3" Text="F. nacimiento:   " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <DatePicker Grid.Row="3" Grid.Column="1" HorizontalOptions="Start"/>
 
-                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40">
-                        <Label VerticalOptions="Center" Text="Diagnostico." FontAttributes="Bold"/>
-                        <Picker Title="Seleccionar diagnostico" Margin="30,0,0,0" FontAutoScalingEnabled="True" WidthRequest="200">
-                            <Picker.Items>
-                                <x:String>Inmunodeficiencia Común Variable</x:String>
-                                <x:String>Agammaglobulinemia</x:String>
-                                <x:String>Déficit de IgA</x:String>
-                                <x:String>Déficit de Subclases de Inmunoglobulinas</x:String>
-                                <x:String>Déficit de respuesta a antígenos específicos</x:String>
-                                <x:String>Inmunodeficiencia Combinada</x:String>
-                                <x:String>Enfermedad Granulomatosa Crónica</x:String>
-                                <x:String>Microdelección 22q</x:String>
-                                <x:String>Síndrome de Wiscott-Aldrich</x:String>
-                                <x:String>Síndrome de Hiper-IgE</x:String>
-                                <x:String>Síndrome de Hiper-IgM</x:String>
-                                <x:String>ALPS</x:String>
-                                <x:String>Candidiasis Mucocutanea Crónica</x:String>
-                                <x:String>Otro</x:String>
-                            </Picker.Items>
-                        </Picker>
-                    </HorizontalStackLayout>
+                    <Label Grid.Row="4" Text="Diagnóstico:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Picker Grid.Row="4" Grid.Column="1" Title="▼ Seleccionar diagnostico" BackgroundColor="White" HeightRequest="35">
+                        <Picker.Items>
+                            <x:String>Inmunodeficiencia Común Variable</x:String>
+                            <x:String>Agammaglobulinemia</x:String>
+                            <x:String>Déficit de IgA</x:String>
+                            <x:String>Déficit de Subclases de Inmunoglobulinas</x:String>
+                            <x:String>Déficit de respuesta a antígenos específicos</x:String>
+                            <x:String>Inmunodeficiencia Combinada</x:String>
+                            <x:String>Enfermedad Granulomatosa Crónica</x:String>
+                            <x:String>Microdelección 22q</x:String>
+                            <x:String>Síndrome de Wiscott-Aldrich</x:String>
+                            <x:String>Síndrome de Hiper-IgE</x:String>
+                            <x:String>Síndrome de Hiper-IgM</x:String>
+                            <x:String>ALPS</x:String>
+                            <x:String>Candidiasis Mucocutanea Crónica</x:String>
+                            <x:String>Otro</x:String>
+                        </Picker.Items>
+                    </Picker>
 
-                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40">
-                        <Label VerticalOptions="Center" Text="Otro Diag." FontAttributes="Bold"/>
-                        <Frame HeightRequest="40" WidthRequest="200" Margin="45,0" CornerRadius="5" Padding="0">
-                            <HorizontalStackLayout HorizontalOptions="Center">
-                                <Entry VerticalOptions="Center" Placeholder="Otro diagnostico" WidthRequest="190" HorizontalTextAlignment="Start"/>
-                            </HorizontalStackLayout>
-                        </Frame>
-                    </HorizontalStackLayout>
+                    <Label Grid.Row="5" Text="Otro Diag:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Entry Grid.Row="5" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Otro diagnóstico" HorizontalTextAlignment="Start" BackgroundColor="White" HeightRequest="35"/>
 
-                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40">
-                        <Label VerticalOptions="Center" Text="F. Diagnostico." FontAttributes="Bold"/>
-                        <DatePicker Margin="18,0"/>
-                    </HorizontalStackLayout>
+                    <Label Grid.Row="6" Text="F. diagnóstico:   " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <DatePicker Grid.Row="6" Grid.Column="1" HorizontalOptions="Start"/>
 
-                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40">
-                        <Label VerticalOptions="Center" Text="Correo." FontAttributes="Bold"/>
-                        <Frame HeightRequest="40" WidthRequest="200" Margin="60,0" CornerRadius="5" Padding="0">
-                            <HorizontalStackLayout HorizontalOptions="Center">
-                                <Entry VerticalOptions="Center" Placeholder="Ingresa correo" WidthRequest="190" HorizontalTextAlignment="Start"/>
-                            </HorizontalStackLayout>
-                        </Frame>
-                    </HorizontalStackLayout>
+                    <Label Grid.Row="7" Text="Correo:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Entry Grid.Row="7" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa correo" HorizontalTextAlignment="Start" BackgroundColor="White" HeightRequest="35"/>
 
-                    <HorizontalStackLayout HorizontalOptions="Center" HeightRequest="40" Spacing="20" Margin="0,20,0,0">
-                        <Button Text="Registrar" BackgroundColor="Green" WidthRequest="90" BorderColor="Black"/>
-                        <Button Text="Cancelar" BackgroundColor="PaleVioletRed" WidthRequest="90"/>
-                    </HorizontalStackLayout>
-                </VerticalStackLayout>
+                    <Button Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="-100,0,0,0" Text="Agregar" BackgroundColor="Green" WidthRequest="90" HeightRequest="45" Command="{Binding BackBtnCommand}"/>
+                    <Button Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="100,0,0,0" Text="Salir" BackgroundColor="PaleVioletRed" WidthRequest="90" HeightRequest="45" Command="{Binding BackBtnCommand}"/>
+                </Grid>
             </Frame>
         </VerticalStackLayout>
     </ScrollView>

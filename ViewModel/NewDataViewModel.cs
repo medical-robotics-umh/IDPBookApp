@@ -1,7 +1,8 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using IDPBookApp.DataBase;
 using IDPBookApp.Pages;
-using System.Diagnostics;
+using System.Collections.ObjectModel;
 
 namespace IDPBookApp.ViewModel;
 
@@ -27,4 +28,14 @@ public partial class NewDataViewModel : BaseViewModel
         Navigation.InsertPageBefore(EP, Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
         await Shell.Current.GoToAsync("..");
     }
+
+    [ObservableProperty]
+    private bool isExpand;
+
+    [RelayCommand]
+    private void Visible()
+    {
+        IsExpand = !IsExpand;
+    }
+
 }
