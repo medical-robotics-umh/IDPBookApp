@@ -19,7 +19,7 @@
                 <Grid ColumnDefinitions="Auto,*,*" RowDefinitions="40,40,40,40,40,Auto,Auto,Auto,Auto,40,40,40,40,40,40,80" RowSpacing="3">
                     <Label Text="¿Visita a atención&#10;primaria?" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
                     <Label Grid.Column="1" Grid.ColumnSpan="2" Text="No" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Margin="0,0,0,0"/>
-                    <Switch Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0"/>
+                    <Switch Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsToggled="{Binding Aten_bool}"/>
                     <Label Grid.Column="1" Grid.ColumnSpan="2" Text="Si" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Margin="70,0,0,0"/>
 
                     <Label Grid.Row="1" Text="¿Visita a urgencias&#10;hospitalarias?" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
@@ -28,7 +28,7 @@
                     <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="Si" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Margin="70,0,0,0"/>
 
                     <Label Grid.Row="2" VerticalOptions="Center" Text="Dias de duración:" FontAttributes="Bold"/>
-                    <Entry Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,0,0" VerticalOptions="Center" Placeholder="N/A" HorizontalTextAlignment="Start" Keyboard="Numeric" HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="35"/>
+                    <Entry Text="{Binding Durac_entry}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,0,0" VerticalOptions="Center" Placeholder="N/A" HorizontalTextAlignment="Start" Keyboard="Numeric" HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="35"/>
 
                     <Label Grid.Row="3" Text="¿Ingreso?" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
                     <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Text="No" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Margin="0,0,0,0"/>
@@ -47,13 +47,13 @@
 
                     <Label Grid.Row="5" Text="Sintomas catarrales: " FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start" Margin="0,10,0,0"/>
                     <Button Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Text="▼ Seleccionar" Command="{Binding VisibleCommand}" BackgroundColor="LightGray" TextColor="Black" HeightRequest="38"/>
-                    <CollectionView x:Name="lista_uno" IsVisible="{Binding IsExpand}" ItemsSource="{Binding Items}" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" SelectionMode="Multiple" Margin="0,42,0,0">
+                    <CollectionView x:Name="lista_uno" SelectionChanged="Lista_uno_SelectionChanged" IsVisible="{Binding IsExpand}" ItemsSource="{Binding Items}" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" SelectionMode="Multiple" Margin="0,42,0,0">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <Grid Margin="0,2">
-                                    <Grid.GestureRecognizers>
+                                <Grid Margin="0,2" Style="{DynamicResource SelectedGridStyle}">
+                                    <!--<Grid.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:NewDataViewModel}}, Path=ItemSelectedCommand}" CommandParameter="{Binding .}" />
-                                    </Grid.GestureRecognizers>
+                                    </Grid.GestureRecognizers>-->
                                     <Label Grid.Column="1" Text="{Binding .}"/>
                                 </Grid>
                             </DataTemplate>

@@ -13,7 +13,6 @@ public partial class BaseViewModel : ObservableObject
     public ObservableCollection<EpisodioModel> Episodios { get; set; } = new ObservableCollection<EpisodioModel>();
     
 
-
     [RelayCommand]
     async static Task Navegar(string ruta)
     {

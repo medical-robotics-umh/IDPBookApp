@@ -57,9 +57,9 @@
 
                 <VerticalStackLayout Grid.Row="1" Grid.Column="1">
                     <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
-                        <Frame.GestureRecognizers>
+                        <!--<Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="Estado"/>
-                        </Frame.GestureRecognizers>
+                        </Frame.GestureRecognizers>-->
                         <VerticalStackLayout Spacing="5">
                             <Image Source="bibliografia.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
                         </VerticalStackLayout>
@@ -69,9 +69,9 @@
 
                 <VerticalStackLayout Grid.Row="2" Grid.Column="0">
                     <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
-                        <Frame.GestureRecognizers>
+                        <!--<Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="Estado"/>
-                        </Frame.GestureRecognizers>
+                        </Frame.GestureRecognizers>-->
                         <VerticalStackLayout Spacing="5">
                             <Image Source="contacto.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
                         </VerticalStackLayout>
@@ -81,9 +81,9 @@
 
                 <VerticalStackLayout Grid.Row="2" Grid.Column="1">
                     <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
-                        <Frame.GestureRecognizers>
+                        <!--<Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="Estado"/>
-                        </Frame.GestureRecognizers>
+                        </Frame.GestureRecognizers>-->
                         <VerticalStackLayout Spacing="5">
                             <Image Source="redes_pacientes.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
                         </VerticalStackLayout>
