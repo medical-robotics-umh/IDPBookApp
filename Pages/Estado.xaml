@@ -30,9 +30,9 @@
 
                 <VerticalStackLayout Grid.Column="1">
                     <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
-                        <Frame.GestureRecognizers>
+                        <!--<Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="MainPage"/>
-                        </Frame.GestureRecognizers>
+                        </Frame.GestureRecognizers>-->
                         <VerticalStackLayout Spacing="5">
                             <Image Source="ic_logo_laboratorio.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
                         </VerticalStackLayout>
@@ -43,9 +43,9 @@
 
                 <VerticalStackLayout Grid.Row="1" Grid.Column="0">
                     <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
-                        <Frame.GestureRecognizers>
+                        <!--<Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="MainPage"/>
-                        </Frame.GestureRecognizers>
+                        </Frame.GestureRecognizers>-->
                         <VerticalStackLayout Spacing="5">
                             <Image Source="ic_logo_tratamiento_inmunoglobulinas.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
                         </VerticalStackLayout>
@@ -56,9 +56,9 @@
 
                 <VerticalStackLayout Grid.Row="1" Grid.Column="1">
                     <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
-                        <Frame.GestureRecognizers>
+                        <!--<Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="MainPage"/>
-                        </Frame.GestureRecognizers>
+                        </Frame.GestureRecognizers>-->
                         <VerticalStackLayout Spacing="5">
                             <Image Source="ic_logo_otros_tratamientos.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
                         </VerticalStackLayout>
@@ -68,9 +68,9 @@
 
                 <VerticalStackLayout Grid.Row="2" Grid.Column="0">
                     <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
-                        <Frame.GestureRecognizers>
+                        <!--<Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="MainPage"/>
-                        </Frame.GestureRecognizers>
+                        </Frame.GestureRecognizers>-->
                         <VerticalStackLayout Spacing="5">
                             <Image Source="ic_logo_vacunacion.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
                         </VerticalStackLayout>
@@ -80,9 +80,9 @@
 
                 <VerticalStackLayout Grid.Row="2" Grid.Column="1">
                     <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
-                        <Frame.GestureRecognizers>
+                        <!--<Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="MainPage"/>
-                        </Frame.GestureRecognizers>
+                        </Frame.GestureRecognizers>-->
                         <VerticalStackLayout Spacing="5">
                             <Image Source="ic_logo_calidad_vida.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
                         </VerticalStackLayout>

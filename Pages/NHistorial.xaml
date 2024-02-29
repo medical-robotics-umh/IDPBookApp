@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="IDPBookApp.Pages.Historial"
+             x:Class="IDPBookApp.Pages.NHistorial"
              xmlns:model="clr-namespace:IDPBookApp.Models"
              xmlns:viewmodel="clr-namespace:IDPBookApp.ViewModel"
              x:DataType="viewmodel:DetailPageViewModel"

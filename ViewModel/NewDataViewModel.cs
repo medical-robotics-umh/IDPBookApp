@@ -13,7 +13,7 @@ public partial class NewDataViewModel : BaseViewModel
     readonly FirebaseConnecty firebaseConnecty;
     readonly ListViewModel listViewModel;
 
-    public ObservableCollection<string> Items { get; set; }
+   
 
     [ObservableProperty]
     private bool isExpand;
@@ -32,16 +32,7 @@ public partial class NewDataViewModel : BaseViewModel
     INavigation Navigation => Shell.Current.Navigation;
     public NewDataViewModel(FirebaseConnecty firebaseConnecty)
     {
-        this.firebaseConnecty = firebaseConnecty;
-        Items = new ObservableCollection<string>()
-        {
-            "Tos",
-            "Moco",
-            "Dolor de garganta",
-            "Dolor torácico",
-            "Sensación de ahogo"
-        };
-
+        this.firebaseConnecty = firebaseConnecty;       
         SelectItems = new bool[Items.Count];
     }
 

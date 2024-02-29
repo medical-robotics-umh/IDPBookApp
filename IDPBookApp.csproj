@@ -81,6 +81,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\NHistorial.xaml.cs">
+	    <DependentUpon>NHistorial.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\NEpisPage.xaml.cs">
 	    <DependentUpon>NEpisPage.xaml</DependentUpon>
 	  </Compile>
@@ -88,6 +91,12 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="Pages\CitasPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\EpisodioViewPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\HistorialPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\NEpisPage.xaml">
@@ -102,7 +111,7 @@
 	  <MauiXaml Update="Pages\Estado.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\Historial.xaml">
+	  <MauiXaml Update="Pages\NHistorial.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\LoginPage.xaml">

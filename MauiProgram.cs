@@ -37,6 +37,7 @@ public static class MauiProgram
         builder.Services.AddTransient<NEpisPage>();
         builder.Services.AddTransient<ListViewModel>();
         builder.Services.AddTransient<NewDataViewModel>();
+        builder.Services.AddTransient<EpisodioViewPage>();
 
 #endif
         return builder.Build();

@@ -52,6 +52,10 @@
                         <DataTemplate x:DataType="model:EpisodioModel">
                             <HorizontalStackLayout>
                                 <Frame CornerRadius="10" HasShadow="True" WidthRequest="50" HeightRequest="50" Margin="5,4">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ListViewModel}}, Path=Navegar_EpisodioCommand}"
+                                                              CommandParameter="{Binding .}"/>
+                                    </Frame.GestureRecognizers>
                                     <Image Source="ic_episode_list.png" Aspect="Fill" WidthRequest="50" HeightRequest="50"/>
                                 </Frame>
                                 <Label Text="{Binding Enum}" FontAttributes="Bold" VerticalOptions="Center"/>

@@ -1,4 +1,7 @@
-﻿using IDPBookApp.DataBase;
+﻿using CommunityToolkit.Mvvm.Input;
+using IDPBookApp.DataBase;
+using IDPBookApp.Models;
+using IDPBookApp.Pages;
 using System.Diagnostics;
 
 namespace IDPBookApp.ViewModel;
@@ -35,5 +38,17 @@ public partial class ListViewModel : BaseViewModel
             Debug.WriteLine(ex);
             await Shell.Current.DisplayAlert("Alerta", $"No se pudo accerder a la base de datos: {ex.Message}", "Ok");
         }
+    }
+
+    [RelayCommand]
+    async Task Navegar_EpisodioAsync(EpisodioModel episodio)
+    {
+        //if (episodio != null)
+        //    return;
+        await Shell.Current.GoToAsync(nameof(EpisodioViewPage),true,
+            new Dictionary<string,object>
+            {
+                ["Episodio"] = episodio
+            });
     }
 }
