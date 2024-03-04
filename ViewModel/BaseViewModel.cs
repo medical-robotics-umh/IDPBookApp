@@ -8,7 +8,7 @@ public partial class BaseViewModel : ObservableObject
 {
     public BaseViewModel()
     {
-        Items = new ObservableCollection<string>()
+        ListaSinCat = new ObservableCollection<string>()
         {
             "Tos",
             "Moco",
@@ -16,10 +16,48 @@ public partial class BaseViewModel : ObservableObject
             "Dolor torácico",
             "Sensación de ahogo"
         };
+
+        ListaSinDigest = new ObservableCollection<string>()
+        {
+            "Diarrea",
+            "Nauseas o vómitos",
+            "Estreñimiento",
+            "Dolor abdominal"
+        };
+
+        ListaSinUri = new ObservableCollection<string>()
+        {
+            "Escozor al orinar",
+            "Orina oscura",
+            "Orina maloliente"
+        };
+
+        ListaSinCut = new ObservableCollection<string>()
+        {
+            "Picor",
+            "Dolor",
+            "Coloración rojiza"
+        };
     }
+    [ObservableProperty]
+    public int contador;
+
+    [ObservableProperty]
+    public string id_user;
 
     public ObservableCollection<EpisodioModel> Episodios { get; set; } = new ObservableCollection<EpisodioModel>();
-    public ObservableCollection<string> Items { get; set; }
+
+    [ObservableProperty]
+    ObservableCollection<string> listaSinCat;
+
+    [ObservableProperty]
+    ObservableCollection<string> listaSinDigest;
+
+    [ObservableProperty]
+    ObservableCollection<string> listaSinUri;
+
+    [ObservableProperty]
+    ObservableCollection<string> listaSinCut;
 
     [RelayCommand]
     async static Task Navegar(string ruta)

@@ -19,7 +19,7 @@ public partial class ListViewModel : BaseViewModel
     {
         try
         {
-            var episodios = await firebaseConnecty.GetEpisodiosModel("/IDPbookDB/info_pacientes/DARL01/episodios/idEpis");
+            var episodios = await firebaseConnecty.GetEpisodiosModel("/IDPbookDB/info_pacientes/"+firebaseConnecty.userInfo.Uid+"/episodios/idEpis");
             if (episodios != null && episodios.Count > 0)
             {
                 Episodios.Clear();
@@ -27,10 +27,12 @@ public partial class ListViewModel : BaseViewModel
                 {
                     Episodios.Add(episodio);
                 }
+                Contador = Episodios.Count;
             }
             else
             {
-                await Shell.Current.DisplayAlert("Alerta", "No se encontraron pacientes", "Ok");
+                //await Shell.Current.DisplayAlert("Alerta", "No se encontraron pacientes", "Ok");
+                //Crear una propiedad string y enlazarla a la propiedad EmptyView del CollectionView para que muestre un mensaje cuando no haya elementos en la base de datos
             }
         }
         catch (Exception ex)

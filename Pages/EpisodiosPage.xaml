@@ -20,7 +20,7 @@
                 <VerticalStackLayout>
                     <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="Registro"/>
+                            <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="HistorialPage"/>
                         </Frame.GestureRecognizers>
                         <VerticalStackLayout Spacing="5">
                             <Image Source="ic_logo_historial_medico.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
@@ -47,7 +47,7 @@
             </HorizontalStackLayout>
 
             <Frame Margin="25,20,25,10" HasShadow="True" BackgroundColor="#e2f0d9" VerticalOptions="FillAndExpand">
-                <CollectionView ItemsSource="{Binding Episodios}">
+                <CollectionView ItemsSource="{Binding Episodios}" EmptyView="Aún no hay episodios">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:EpisodioModel">
                             <HorizontalStackLayout>
@@ -58,7 +58,7 @@
                                     </Frame.GestureRecognizers>
                                     <Image Source="ic_episode_list.png" Aspect="Fill" WidthRequest="50" HeightRequest="50"/>
                                 </Frame>
-                                <Label Text="{Binding Enum}" FontAttributes="Bold" VerticalOptions="Center"/>
+                                <Label Text="{Binding EId}" FontAttributes="Bold" VerticalOptions="Center"/>
                                 <Label Text="{Binding EDurac}" FontAttributes="Bold" VerticalOptions="Center"/>
                             </HorizontalStackLayout>
                         </DataTemplate>

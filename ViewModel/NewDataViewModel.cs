@@ -4,7 +4,6 @@ using IDPBookApp.DataBase;
 using IDPBookApp.Models;
 using IDPBookApp.Pages;
 using Plugin.CloudFirestore;
-using System.Collections.ObjectModel;
 
 namespace IDPBookApp.ViewModel;
 
@@ -12,57 +11,113 @@ public partial class NewDataViewModel : BaseViewModel
 {
     readonly FirebaseConnecty firebaseConnecty;
     readonly ListViewModel listViewModel;
-
-   
-
+       
     [ObservableProperty]
-    private bool isExpand;
-
+    private bool cata_visbl;
     [ObservableProperty]
-    private bool[] selectItems;
+    private bool digest_visbl;
+    [ObservableProperty]
+    private bool uri_visbl;
+    [ObservableProperty]
+    private bool cut_visbl;
+    [ObservableProperty]
+    private bool trat_visbl;
+        
 
     [ObservableProperty]
     private string durac_entry;
-
-    [ObservableProperty]
-    private string enum_entry = "Episodio5";
-
     [ObservableProperty]
     private bool aten_bool;
+    [ObservableProperty]
+    private bool urg_bool;
+    [ObservableProperty]
+    private bool ingreso_bool;
+    [ObservableProperty]
+    private bool fiebre_bool;
+    [ObservableProperty]
+    private bool[] selectSinCat;
+    [ObservableProperty]
+    private string otroSinCat;
+    [ObservableProperty]
+    private bool[] selectSinDigest;
+    [ObservableProperty]
+    private string otroSinDigest;
+    [ObservableProperty]
+    private bool[] selectSinUri;
+    [ObservableProperty]
+    private string otroSinUri;
+    [ObservableProperty]
+    private bool[] selectSinCut;
+    [ObservableProperty]
+    private string otroSinCut;
+    [ObservableProperty]
+    private string otroSin;
+    [ObservableProperty]
+    private bool trat_bool;
+    [ObservableProperty]
+    private string antibio;
+    [ObservableProperty]
+    private string antibioDias;
+    [ObservableProperty]
+    private string otroTrat;
+
+
     INavigation Navigation => Shell.Current.Navigation;
+
     public NewDataViewModel(FirebaseConnecty firebaseConnecty)
     {
-        this.firebaseConnecty = firebaseConnecty;       
-        SelectItems = new bool[Items.Count];
+        this.firebaseConnecty = firebaseConnecty;
+        SelectSinCat = new bool[ListaSinCat.Count];
+        SelectSinDigest = new bool[ListaSinDigest.Count];
+        SelectSinUri = new bool[ListaSinUri.Count];
+        SelectSinCut = new bool[ListaSinCut.Count];
     }
 
+    //HACK Metodo para subir episodios a Firebase
     [RelayCommand]
     async Task Cargar()
     {
+        Contador = ++Contador;
         try
         {
-            var Dany = new EpisodioModel
+            var NuevoEpisodio = new EpisodioModel
             {
+                EId = "Episodio " + Contador.ToString(),
                 EAtenPrim = Aten_bool,
+                EUrgHosp = Urg_bool,
                 EDurac = Durac_entry,
-                Enum = "Episodio 5",
-                ESinCata = SelectItems
+                EIngreso =  Ingreso_bool,
+                EFiebre = Fiebre_bool,
+                ESinCata = SelectSinCat,
+                ESinCataChar = OtroSinCat,
+                ESinDigest = SelectSinDigest,
+                ESinDigestChar = OtroSinDigest,
+                ESinUri = SelectSinUri,
+                ESinUriChar = OtroSinUri,
+                ESinCut = SelectSinCut,
+                ESinCutChar = OtroSinCut,
+                EOtroSin = OtroSin,
+                ETrat = Trat_bool,
+                ETratAntibio = Antibio,
+                ETratDias = AntibioDias,
+                ETratOtros = OtroTrat,
             };
             await CrossCloudFirestore.Current
                              .Instance
                              .Collection("IDPbookDB")
                              .Document("info_pacientes")
-                             .Collection("DARL01")
+                             .Collection(firebaseConnecty.userInfo.Uid)
                              .Document("episodios")
                              .Collection("idEpis")
-                             .Document(Enum_entry)
-                             .SetAsync(Dany);
+                             .Document("Ep"+Contador.ToString())
+                             .SetAsync(NuevoEpisodio);
         }
         catch (Exception ex)
         {
-            await App.Current.MainPage.DisplayAlert("Alerta", ex.Message, "Ok");
+            await App.Current.MainPage.DisplayAlert("Error NewDataVM", ex.Message, "Ok");
         }
-        //HACK Metodo para reemplazar el viewmodel y cargar automaticamente la lista de objetos.
+
+        //HACK Función para reemplazar el viewmodel y cargar automaticamente la lista de episodios.
         await Navigation.PopAsync();
         var EP = new EpisodiosPage(listViewModel)
         {
@@ -73,8 +128,23 @@ public partial class NewDataViewModel : BaseViewModel
     }
 
     [RelayCommand]
-    private void Visible()
+    private void VisibleCat()
     {
-        IsExpand = !IsExpand;
+        Cata_visbl = !Cata_visbl;
+    }
+    [RelayCommand]
+    private void VisibleDigest()
+    {
+        Digest_visbl = !Digest_visbl;
+    }
+    [RelayCommand]
+    private void VisibleUri()
+    {
+        Uri_visbl = !Uri_visbl;
+    }
+    [RelayCommand]
+    private void VisibleCutan()
+    {
+        Cut_visbl = !Cut_visbl;
     }
 }

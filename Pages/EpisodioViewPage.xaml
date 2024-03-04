@@ -12,10 +12,10 @@
                     <TapGestureRecognizer Command="{Binding BackBtnCommand}"/>
                 </Image.GestureRecognizers>
             </Image>
-            <Label Text="{Binding Episodio.Enum}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
+            <Label Text="{Binding Episodio.EId}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
             <Frame HasShadow="True" Margin="10,20" BackgroundColor="Transparent" Padding="10,1,10,10" VerticalOptions="CenterAndExpand">
-                <Grid ColumnDefinitions="Auto,*,*" RowDefinitions="40,40,40,40,40,Auto,Auto,Auto,Auto,40,40,40,40,40,40,80" RowSpacing="3">
+                <Grid ColumnDefinitions="Auto,*,*" RowDefinitions="40,40,40,40,40,Auto,Auto,Auto,Auto,40,40,40,40,40,40" RowSpacing="3">
                     <Label Text="¿Visita a atención&#10;primaria?" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
                     <Label Grid.Column="1" Grid.ColumnSpan="2" Text="No" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Margin="0,0,0,0"/>
                     <Switch Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsToggled="{Binding Episodio.EAtenPrim}"/>
@@ -39,8 +39,8 @@
                     <Switch Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsToggled="{Binding Episodio.EFiebre}"/>
                     <Label Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Text="Si" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Margin="70,0,0,0"/>
 
-                    <Label Grid.Row="5" Text="Sintomas catarrales: " FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start" Margin="0,10,0,0"/>
-                    <CollectionView x:Name="lista_uno" ItemsSource="{Binding Items}" SelectedItems="{Binding SelectSinCat}" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" SelectionMode="Multiple" Margin="0,0,0,0">
+                    <Label Grid.Row="5" Text="Sintomas catarrales: " FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start" Margin="0,0,0,0"/>
+                    <CollectionView x:Name="SinCat" ItemsSource="{Binding ListaSinCat}" SelectedItems="{Binding SinCatSelect}" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" SelectionMode="Multiple" Margin="0,0,0,0">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Grid Margin="0,2" Style="{DynamicResource SelectedGridStyle}">
@@ -49,7 +49,7 @@
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-                    <Entry Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,160,0,0" VerticalOptions="Start" Placeholder="Otro sintoma" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="35" Keyboard="Text"/>
+                    <Entry Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,120,0,0" VerticalOptions="Start" Placeholder="Otro sintoma" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="35" Keyboard="Text"/>
 
                     <Label Grid.Row="6" Text="Sintomas digestivos:" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start"/>
                     <Picker Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" BackgroundColor="White" HeightRequest="35" Title="▼ Seleccionar sintomas"/>
@@ -81,9 +81,6 @@
 
                     <Label Grid.Row="14" VerticalOptions="Center" Text="Otros" FontAttributes="Bold"/>
                     <Entry Grid.Row="14" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,0,0" VerticalOptions="Center" Placeholder="N/A" HorizontalTextAlignment="Start" Keyboard="Numeric" HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="35"/>
-
-                    <!--<Button Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Center" Margin="-100,0,0,0" Text="Agregar" BackgroundColor="Green" WidthRequest="90" HeightRequest="45" Command="{Binding CargarCommand}"/>
-                    <Button Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Center" Margin="100,0,0,0" Text="Salir" BackgroundColor="PaleVioletRed" WidthRequest="90" HeightRequest="45" Command="{Binding BackBtnCommand}"/>-->
                 </Grid>
             </Frame>
         </StackLayout>

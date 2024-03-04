@@ -21,7 +21,7 @@ public class FirebaseConnecty
     };
 
     private FileUserRepository repository = new("FirebaseSample");
-    private UserInfo userInfo;
+    public UserInfo userInfo;
     private FirebaseCredential firebaseCredential;
     private UserCredential firebaseUserCredential;
     private readonly FirebaseAuthClient client = new FirebaseAuthClient(config);
@@ -37,7 +37,7 @@ public class FirebaseConnecty
         if (repository.UserExists())
         {
             (userInfo, firebaseCredential) = repository.ReadUser();
-            var name = userInfo.DisplayName.ToString();
+            var name = userInfo.DisplayName;
             //Falta asignar "userCredential" a "client", porque el metodo de SignOut() no reconoce ningun objeto, es decir no se ha inicado sesión explicitamente, si no por el repositorio.
             await Shell.Current.GoToAsync(nameof(MainPage));
             await App.Current.MainPage.DisplayAlert("Bienvenid@", "Hola " + name + ", has iniciado sesión correctamente.", "Ok");
