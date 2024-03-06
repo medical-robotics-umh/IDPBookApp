@@ -1,5 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 using IDPBookApp.DataBase;
 using IDPBookApp.Models;
 using IDPBookApp.Pages;
@@ -7,28 +6,19 @@ using System.Diagnostics;
 
 namespace IDPBookApp.ViewModel;
 
-
 public partial class ListViewModel : BaseViewModel
 {
     readonly FirebaseConnecty firebaseConnecty;
-
-    [ObservableProperty]
-    int contador = 0;
-
     public ListViewModel(FirebaseConnecty firebaseConnecty)
     {        
         this.firebaseConnecty = firebaseConnecty;
         GetEpisodios();
     }
-
     async void GetEpisodios()
     {
         try
         {
             var episodios = await firebaseConnecty.GetEpisodiosModel("/IDPbookDB/info_pacientes/"+firebaseConnecty.userInfo.Uid+"/episodios/idEpis");
-            Contador = episodios.Count;
-            Contador++;
-            Console.WriteLine(Contador);
             if (episodios != null && episodios.Count > 0)
             {
                 Episodios.Clear();
@@ -65,6 +55,6 @@ public partial class ListViewModel : BaseViewModel
     [RelayCommand]
     async Task NavegarNEpi()
     {
-        await Shell.Current.GoToAsync($"{nameof(NEpisPage)}?Contador={Contador}");
+        await Shell.Current.GoToAsync($"{nameof(NEpisPage)}?Contador={Episodios.Count}");
     }
 }

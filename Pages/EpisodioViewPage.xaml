@@ -15,32 +15,35 @@
             <Label Text="{Binding Episodio.EId}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
             <Frame HasShadow="True" Margin="10,20" BackgroundColor="Transparent" Padding="10,1,10,10" VerticalOptions="CenterAndExpand">
-                <Grid ColumnDefinitions="Auto,*,*" RowDefinitions="40,40,40,40,40,Auto,Auto,Auto,Auto,40,40,40,40,40,40" RowSpacing="3">
-                    <Label Text="¿Visita a atención&#10;primaria?" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Label Grid.Column="1" Grid.ColumnSpan="2" Text="No" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Margin="0,0,0,0"/>
-                    <Switch Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsToggled="{Binding Episodio.EAtenPrim}"/>
-                    <Label Grid.Column="1" Grid.ColumnSpan="2" Text="Si" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Margin="70,0,0,0"/>
+                <Grid ColumnDefinitions="Auto,*,*" RowDefinitions="40,40,40,40,40,40,Auto,Auto,Auto,Auto,40,40,40,40,40,40" RowSpacing="3">
+                    <Label Text="Fecha de episodio:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Label Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="{Binding Episodio.EFecha}"/>
 
-                    <Label Grid.Row="1" Text="¿Visita a urgencias&#10;hospitalarias?" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="No" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Margin="0,0,0,0"/>
-                    <Switch Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsToggled="{Binding Episodio.EUrgHosp}"/>
+                    <Label Grid.Row="1" Text="¿Visita a atención&#10;primaria?" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="No" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" />
+                    <Switch Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsToggled="{Binding Episodio.EAtenPrim}" IsEnabled="False"/>
                     <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="Si" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Margin="70,0,0,0"/>
 
-                    <Label Grid.Row="2" VerticalOptions="Center" Text="Dias de duración:" FontAttributes="Bold"/>
-                    <Entry Text="{Binding Episodio.EDurac}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,0,0" VerticalOptions="Center" Placeholder="N/A" HorizontalTextAlignment="Start" Keyboard="Numeric" HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="35"/>
+                    <Label Grid.Row="2" Text="¿Visita a urgencias&#10;hospitalarias?" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="No" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" />
+                    <Switch Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsToggled="{Binding Episodio.EUrgHosp}" IsEnabled="False"/>
+                    <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="Si" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Margin="70,0,0,0"/>
 
-                    <Label Grid.Row="3" Text="¿Ingreso?" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Text="No" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Margin="0,0,0,0"/>
-                    <Switch Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsToggled="{Binding Episodio.EIngreso}"/>
-                    <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Text="Si" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Margin="70,0,0,0"/>
+                    <Label Grid.Row="3" VerticalOptions="Center" Text="Dias de duración:" FontAttributes="Bold"/>
+                    <Entry Text="{Binding Episodio.EDurac}" IsReadOnly="True" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" Placeholder="N/A" HorizontalTextAlignment="Start" Keyboard="Numeric" HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="35"/>
 
-                    <Label Grid.Row="4" Text="¿Fiebre?" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Label Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Text="No" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Margin="0,0,0,0"/>
-                    <Switch Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsToggled="{Binding Episodio.EFiebre}"/>
+                    <Label Grid.Row="4" Text="¿Ingreso?" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Label Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Text="No" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" />
+                    <Switch Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsToggled="{Binding Episodio.EIngreso}" IsEnabled="False"/>
                     <Label Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Text="Si" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Margin="70,0,0,0"/>
 
-                    <Label Grid.Row="5" Text="Sintomas catarrales: " FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start" Margin="0,0,0,0"/>
-                    <CollectionView x:Name="SinCat" ItemsSource="{Binding ListaSinCat}" SelectedItems="{Binding SinCatSelect}" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" SelectionMode="Multiple" Margin="0,0,0,0">
+                    <Label Grid.Row="5" Text="¿Fiebre?" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Label Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Text="No" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" />
+                    <Switch Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsToggled="{Binding Episodio.EFiebre}" IsEnabled="False"/>
+                    <Label Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Text="Si" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Margin="70,0,0,0"/>
+
+                    <Label Grid.Row="6" Text="Sintomas catarrales: " FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start" />
+                    <CollectionView x:Name="SinCat" ItemsSource="{Binding ListaSinCat}" SelectedItems="{Binding SinCatSelect}" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" SelectionMode="Multiple" >
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Grid Margin="0,2" Style="{DynamicResource SelectedGridStyle}">
@@ -49,38 +52,39 @@
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-                    <Entry Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,120,0,0" VerticalOptions="Start" Placeholder="Otro sintoma" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="35" Keyboard="Text"/>
+                    <Label Grid.Row="6" Text="Otro sintoma: " FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="End" Margin="0,125,0,0"/>
+                    <Entry Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Episodio.ESinCataChar}" IsReadOnly="True" Margin="0,120,0,0" VerticalOptions="Start" Placeholder="N/A" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="35" Keyboard="Text"/>
 
-                    <Label Grid.Row="6" Text="Sintomas digestivos:" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start"/>
-                    <Picker Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" BackgroundColor="White" HeightRequest="35" Title="▼ Seleccionar sintomas"/>
+                    <Label Grid.Row="7" Text="Sintomas digestivos:" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start"/>
+                    
 
-                    <Label Grid.Row="7" Text="Sintomas urinarios:" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start"/>
-                    <Picker Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" BackgroundColor="White" HeightRequest="35" Title="▼ Seleccionar sintomas"/>
+                    <Label Grid.Row="8" Text="Sintomas urinarios:" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start"/>
+                    
 
-                    <Label Grid.Row="8" Text="Sintomas cutaneos:" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start"/>
-                    <Picker Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" BackgroundColor="White" HeightRequest="35" Title="▼ Seleccionar sintomas"/>
+                    <Label Grid.Row="9" Text="Sintomas cutaneos:" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start"/>
+                    
 
-                    <Label Grid.Row="9" VerticalOptions="Center" Text="Otros sintomas:" FontAttributes="Bold"/>
-                    <Entry Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,0,0" VerticalOptions="Center" Placeholder="N/A" HorizontalTextAlignment="Start" Keyboard="Numeric" HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="35"/>
+                    <Label Grid.Row="10" VerticalOptions="Center" Text="Otros sintomas:" FontAttributes="Bold"/>
+                    <Entry Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Episodio.EOtroSin}" IsReadOnly="True" VerticalOptions="Center" Placeholder="N/A" HorizontalTextAlignment="Start" Keyboard="Numeric" HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="35"/>
 
-                    <Label Grid.Row="10" Text="¿Tratamiento&#10;durante episodio?" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Label Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2" Text="No" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Margin="0,0,0,0"/>
-                    <Switch Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0"/>
-                    <Label Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2" Text="Si" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Margin="70,0,0,0"/>
-
-                    <Label Grid.Row="11" Text="¿Tratamiento con &#10;antibiótico?" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Label Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="2" Text="No" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Margin="0,0,0,0"/>
-                    <Switch Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0"/>
+                    <Label Grid.Row="11" Text="¿Tratamiento&#10;durante episodio?" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Label Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="2" Text="No" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Switch Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsEnabled="False" IsToggled="{Binding Episodio.ETrat}"/>
                     <Label Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="2" Text="Si" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Margin="70,0,0,0"/>
 
-                    <Label Grid.Row="12" VerticalOptions="Center" Text="Antibiótico" FontAttributes="Bold"/>
-                    <Entry Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,0,0" VerticalOptions="Center" Placeholder="N/A" HorizontalTextAlignment="Start" Keyboard="Numeric" HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="35"/>
+                    <Label Grid.Row="12" Text="¿Tratamiento con &#10;antibiótico?" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Label Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="2" Text="No" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" />
+                    <Switch Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsEnabled="False" IsToggled="{Binding Episodio.ETrat}"/>
+                    <Label Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="2" Text="Si" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Margin="70,0,0,0"/>
 
-                    <Label Grid.Row="13" VerticalOptions="Center" Text="Días con antibiótico" FontAttributes="Bold"/>
-                    <Entry Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,0,0" VerticalOptions="Center" Placeholder="N/A" HorizontalTextAlignment="Start" Keyboard="Numeric" HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="35"/>
+                    <Label Grid.Row="13" VerticalOptions="Center" Text="Antibiótico" FontAttributes="Bold"/>
+                    <Entry Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Episodio.ETratAntibio}" IsReadOnly="True" VerticalOptions="Center" Placeholder="N/A" HorizontalTextAlignment="Start" Keyboard="Numeric" HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="35"/>
 
-                    <Label Grid.Row="14" VerticalOptions="Center" Text="Otros" FontAttributes="Bold"/>
-                    <Entry Grid.Row="14" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,0,0" VerticalOptions="Center" Placeholder="N/A" HorizontalTextAlignment="Start" Keyboard="Numeric" HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="35"/>
+                    <Label Grid.Row="14" VerticalOptions="Center" Text="Días con antibiótico" FontAttributes="Bold"/>
+                    <Entry Grid.Row="14" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Episodio.ETratDias}" IsReadOnly="True" VerticalOptions="Center" Placeholder="N/A" HorizontalTextAlignment="Start" Keyboard="Numeric" HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="35"/>
+
+                    <Label Grid.Row="15" VerticalOptions="Center" Text="Otros" FontAttributes="Bold"/>
+                    <Entry Grid.Row="15" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Episodio.ETratOtros}" IsReadOnly="True" VerticalOptions="Center" Placeholder="N/A" HorizontalTextAlignment="Start" Keyboard="Numeric" HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="35"/>
                 </Grid>
             </Frame>
         </StackLayout>

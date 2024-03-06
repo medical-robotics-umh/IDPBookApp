@@ -41,7 +41,8 @@ public partial class BaseViewModel : ObservableObject
         };
     }
 
-    
+    [ObservableProperty]
+    int contador;
 
     public ObservableCollection<EpisodioModel> Episodios { get; set; } = new ObservableCollection<EpisodioModel>();
 
