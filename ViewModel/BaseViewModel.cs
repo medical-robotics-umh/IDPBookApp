@@ -4,6 +4,7 @@ using IDPBookApp.Models;
 using System.Collections.ObjectModel;
 
 namespace IDPBookApp.ViewModel;
+
 public partial class BaseViewModel : ObservableObject
 {
     public BaseViewModel()
@@ -39,11 +40,8 @@ public partial class BaseViewModel : ObservableObject
             "Coloración rojiza"
         };
     }
-    [ObservableProperty]
-    public int contador;
 
-    [ObservableProperty]
-    public string id_user;
+    
 
     public ObservableCollection<EpisodioModel> Episodios { get; set; } = new ObservableCollection<EpisodioModel>();
 

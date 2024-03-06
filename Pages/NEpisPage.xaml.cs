@@ -9,6 +9,11 @@ public partial class NEpisPage : ContentPage
         BindingContext = newDataViewModel;
     }
 
+    protected override void OnNavigatedTo(NavigatedToEventArgs args)
+    {
+        base.OnNavigatedTo(args);
+    }
+
     private void Lista_SinCat_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         if (BindingContext is NewDataViewModel viewModel)

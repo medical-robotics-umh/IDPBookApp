@@ -7,11 +7,15 @@ using Plugin.CloudFirestore;
 
 namespace IDPBookApp.ViewModel;
 
+[QueryProperty(nameof(Contador), nameof(Contador))]
 public partial class NewDataViewModel : BaseViewModel
 {
     readonly FirebaseConnecty firebaseConnecty;
     readonly ListViewModel listViewModel;
-       
+
+    [ObservableProperty]
+    int contador;
+
     [ObservableProperty]
     private bool cata_visbl;
     [ObservableProperty]
@@ -22,8 +26,9 @@ public partial class NewDataViewModel : BaseViewModel
     private bool cut_visbl;
     [ObservableProperty]
     private bool trat_visbl;
-        
-
+                
+    [ObservableProperty]
+    private Timestamp fecha_Epis;
     [ObservableProperty]
     private string durac_entry;
     [ObservableProperty]
@@ -61,7 +66,6 @@ public partial class NewDataViewModel : BaseViewModel
     [ObservableProperty]
     private string otroTrat;
 
-
     INavigation Navigation => Shell.Current.Navigation;
 
     public NewDataViewModel(FirebaseConnecty firebaseConnecty)
@@ -75,14 +79,14 @@ public partial class NewDataViewModel : BaseViewModel
 
     //HACK Metodo para subir episodios a Firebase
     [RelayCommand]
-    async Task Cargar()
+    async Task Cargar(int cont)
     {
-        Contador = ++Contador;
         try
         {
             var NuevoEpisodio = new EpisodioModel
             {
-                EId = "Episodio " + Contador.ToString(),
+                EId = "Episodio "+cont.ToString(),
+                EFecha = Fecha_Epis,
                 EAtenPrim = Aten_bool,
                 EUrgHosp = Urg_bool,
                 EDurac = Durac_entry,
@@ -109,7 +113,7 @@ public partial class NewDataViewModel : BaseViewModel
                              .Collection(firebaseConnecty.userInfo.Uid)
                              .Document("episodios")
                              .Collection("idEpis")
-                             .Document("Ep"+Contador.ToString())
+                             .Document("Ep"+cont.ToString())
                              .SetAsync(NuevoEpisodio);
         }
         catch (Exception ex)

@@ -32,7 +32,7 @@
                 <VerticalStackLayout Grid.Column="1">
                     <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125" x:Name="estado">
                         <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="NEpisPage"/>
+                            <TapGestureRecognizer Command="{Binding NavegarNEpiCommand}"/>
                         </Frame.GestureRecognizers>
                         <VerticalStackLayout Spacing="5">
                             <Image Source="ic_logo_agregar.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
@@ -51,15 +51,14 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:EpisodioModel">
                             <HorizontalStackLayout>
+                                <HorizontalStackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ListViewModel}}, Path=Navegar_EpisodioCommand}"
+                                                          CommandParameter="{Binding .}"/>
+                                </HorizontalStackLayout.GestureRecognizers>
                                 <Frame CornerRadius="10" HasShadow="True" WidthRequest="50" HeightRequest="50" Margin="5,4">
-                                    <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ListViewModel}}, Path=Navegar_EpisodioCommand}"
-                                                              CommandParameter="{Binding .}"/>
-                                    </Frame.GestureRecognizers>
                                     <Image Source="ic_episode_list.png" Aspect="Fill" WidthRequest="50" HeightRequest="50"/>
                                 </Frame>
                                 <Label Text="{Binding EId}" FontAttributes="Bold" VerticalOptions="Center"/>
-                                <Label Text="{Binding EDurac}" FontAttributes="Bold" VerticalOptions="Center"/>
                             </HorizontalStackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>

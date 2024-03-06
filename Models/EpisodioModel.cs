@@ -1,8 +1,11 @@
-﻿namespace IDPBookApp.Models;
+﻿using Plugin.CloudFirestore;
+
+namespace IDPBookApp.Models;
 
 public class EpisodioModel
 {
     public string EId {  get; set; }
+    public Timestamp EFecha { get; set; }
     public bool EAtenPrim { get; set; }
     public bool EUrgHosp{ get; set; }
     public string EDurac { get; set; }
