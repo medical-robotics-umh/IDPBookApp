@@ -17,7 +17,7 @@
 
             <Frame HasShadow="True" Margin="10,20" BackgroundColor="Transparent" Padding="10,1,10,10" VerticalOptions="StartAndExpand">
                 <Grid ColumnDefinitions="Auto,*,*" RowDefinitions="40,40,40,40,40,40,Auto,Auto,Auto,Auto,40,40,Auto,Auto,Auto,Auto,80" RowSpacing="3">
-                    <Label Text="{Binding Contador}" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Label Text="Fecha de episodio:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
                     <DatePicker Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="StartAndExpand" CharacterSpacing="2" Format="d" Date="{Binding Fecha_Epis}"/>
 
                     <Label Grid.Row="1" Text="¿Visita a atención&#10;primaria?" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>

@@ -80,13 +80,21 @@ public partial class NewDataViewModel : BaseViewModel
     [RelayCommand]
     async Task Cargar()
     {
+        if(Contador==0)
+        {
+            await CrossCloudFirestore.Current
+                             .Instance
+                             .Collection("IDPbookDB")
+                             .Document(firebaseConnecty.userInfo.Uid)
+                             .SetAsync(new {Date = DateTimeOffset.Now.ToUnixTimeSeconds().ToString()});
+        }
         Contador++;
         try
         {
             var NuevoEpisodio = new EpisodioModel
             {
                 EId = "Episodio "+Contador.ToString(),
-                EFecha = Fecha_Epis.ToLongDateString(),
+                EFecha = Fecha_Epis.ToShortDateString(),
                 EAtenPrim = Aten_bool,
                 EUrgHosp = Urg_bool,
                 EDurac = Durac_entry,
@@ -109,10 +117,8 @@ public partial class NewDataViewModel : BaseViewModel
             await CrossCloudFirestore.Current
                              .Instance
                              .Collection("IDPbookDB")
-                             .Document("info_pacientes")
-                             .Collection(firebaseConnecty.userInfo.Uid)
-                             .Document("episodios")
-                             .Collection("idEpis")
+                             .Document(firebaseConnecty.userInfo.Uid)
+                             .Collection("episodios")
                              .Document("Ep"+Contador.ToString())
                              .SetAsync(NuevoEpisodio);
         }
