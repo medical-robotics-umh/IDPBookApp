@@ -12,7 +12,7 @@
                     <TapGestureRecognizer Command="{Binding BackBtnCommand}"/>
                 </Image.GestureRecognizers>
             </Image>
-            <Label Text="REGISTRO PACIENTE" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
+            <Label Text="REGISTRO PACIENTE" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0" IsVisible="{Binding Auth}"/>
 
             <Frame HasShadow="True" Margin="10,20" BackgroundColor="Transparent" Padding="10,1,10,10" VerticalOptions="CenterAndExpand">
                 <Grid ColumnDefinitions="Auto,*" RowDefinitions="45,45,45,45,45,45,45,45,80">
@@ -61,7 +61,7 @@
                     <DatePicker Grid.Row="6" Grid.Column="1" HorizontalOptions="Start"/>
 
                     <Label Grid.Row="7" Text="Correo:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry Grid.Row="7" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa correo" HorizontalTextAlignment="Start" BackgroundColor="White" HeightRequest="35"/>
+                    <Entry Grid.Row="7" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa correo" HorizontalTextAlignment="Start" BackgroundColor="White" HeightRequest="35" Keyboard="Email"/>
 
                     <Button Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="-100,0,0,0" Text="Agregar" BackgroundColor="Green" WidthRequest="90" HeightRequest="45" Command="{Binding BackBtnCommand}"/>
                     <Button Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="100,0,0,0" Text="Salir" BackgroundColor="PaleVioletRed" WidthRequest="90" HeightRequest="45" Command="{Binding BackBtnCommand}"/>

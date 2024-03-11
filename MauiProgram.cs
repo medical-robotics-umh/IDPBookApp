@@ -22,10 +22,10 @@ public static class MauiProgram
 		builder.Logging.AddDebug();
 
 		builder.Services.AddSingleton<BaseViewModel>();
-		builder.Services.AddSingleton<MainViewModel>();
+		builder.Services.AddTransient<MainViewModel>();
 		builder.Services.AddTransient<DetailPageViewModel>();
         builder.Services.AddTransient<LoginViewModel>();
-        builder.Services.AddSingleton<MainPage>();
+        builder.Services.AddTransient<MainPage>();
         builder.Services.AddTransient<DetailPage>();
 		builder.Services.AddSingleton<FirebaseConnecty>();
         builder.Services.AddSingleton<Estado>();

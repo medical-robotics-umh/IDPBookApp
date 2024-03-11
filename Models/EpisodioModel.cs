@@ -1,6 +1,4 @@
-﻿using Plugin.CloudFirestore;
-
-namespace IDPBookApp.Models;
+﻿namespace IDPBookApp.Models;
 
 public class EpisodioModel
 {
@@ -21,6 +19,7 @@ public class EpisodioModel
     public string ESinCutChar { get; set; }
     public string EOtroSin { get; set; }
     public bool ETrat { get; set; }
+    public bool ETratAnt { get; set; }
     public string ETratAntibio { get; set; }
     public string ETratDias { get; set; }
     public string ETratOtros { get; set; }

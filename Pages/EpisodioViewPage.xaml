@@ -15,7 +15,7 @@
             <Label Text="{Binding Episodio.EId}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
             <Frame HasShadow="True" Margin="10,20" BackgroundColor="Transparent" Padding="10,1,10,10" VerticalOptions="CenterAndExpand">
-                <Grid ColumnDefinitions="Auto,*,*" RowDefinitions="40,40,40,40,40,40,Auto,Auto,Auto,Auto,40,40,40,40,40,40" RowSpacing="3">
+                <Grid ColumnDefinitions="Auto,*,*" RowDefinitions="40,40,40,40,40,40,Auto,Auto,Auto,Auto,40,40,40,40,40,40" RowSpacing="8">
                     <Label Text="Fecha de episodio:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
                     <Label Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="{Binding Episodio.EFecha}"/>
 
@@ -42,8 +42,8 @@
                     <Switch Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsToggled="{Binding Episodio.EFiebre}" IsEnabled="False"/>
                     <Label Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Text="Si" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Margin="70,0,0,0"/>
 
-                    <Label Grid.Row="6" Text="Sintomas catarrales: " FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start" />
-                    <CollectionView x:Name="SinCat" ItemsSource="{Binding ListaSinCat}" SelectedItems="{Binding SinCatSelect}" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" SelectionMode="Multiple" >
+                    <Label Grid.Row="6" Text="Sintomas catarrales:  " FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start"/>
+                    <CollectionView x:Name="SinCat" ItemsSource="{Binding ListaSinCat}" SelectedItems="{Binding SinCatSelect}" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" SelectionMode="Multiple">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Grid Margin="0,2" Style="{DynamicResource SelectedGridStyle}">
@@ -52,17 +52,47 @@
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-                    <Label Grid.Row="6" Text="Otro sintoma: " FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="End" Margin="0,125,0,0"/>
-                    <Entry Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Episodio.ESinCataChar}" IsReadOnly="True" Margin="0,120,0,0" VerticalOptions="Start" Placeholder="N/A" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="35" Keyboard="Text"/>
+                    <Label Grid.Row="6" Text="Otro sintoma:  " FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="End" Margin="0,122,0,0"/>
+                    <Entry Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Episodio.ESinCataChar}" IsReadOnly="True" Margin="0,118,0,0" VerticalOptions="Start" Placeholder="N/A" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="35" Keyboard="Text"/>
 
                     <Label Grid.Row="7" Text="Sintomas digestivos:" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start"/>
-                    
+                    <CollectionView ItemsSource="{Binding ListaSinDigest}" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" SelectionMode="Multiple">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0,2" Style="{DynamicResource SelectedGridStyle}">
+                                    <Label Grid.Column="1" Text="{Binding .}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <Label Grid.Row="7" Text="Otro sintoma:  " FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="End" Margin="0,100,0,0"/>
+                    <Entry Text="{Binding Episodio.ESinDigestChar}" IsReadOnly="True" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,95,0,0" VerticalOptions="Start" Placeholder="N/A" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="35" Keyboard="Text"/>
 
                     <Label Grid.Row="8" Text="Sintomas urinarios:" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start"/>
-                    
+                    <CollectionView ItemsSource="{Binding ListaSinUri}" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" SelectionMode="Multiple">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0,2" Style="{DynamicResource SelectedGridStyle}">
+                                    <Label Grid.Column="1" Text="{Binding .}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <Label Grid.Row="8" Text="Otro sintoma:  " FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="End" Margin="0,77,0,0"/>
+                    <Entry Text="{Binding Episodio.ESinUriChar}" IsReadOnly="True" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,72,0,0" VerticalOptions="Start" Placeholder="N/A" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="35" Keyboard="Text"/>
 
                     <Label Grid.Row="9" Text="Sintomas cutaneos:" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start"/>
-                    
+                    <CollectionView ItemsSource="{Binding ListaSinCut}" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" SelectionMode="Multiple">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0,2" Style="{DynamicResource SelectedGridStyle}">
+                                    <Label Grid.Column="1" Text="{Binding .}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <Label Grid.Row="9" Text="Otro sintoma:  " FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="End" Margin="0,77,0,0"/>
+                    <Entry Text="{Binding Episodio.ESinCutChar}" IsReadOnly="True" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,72,0,0" VerticalOptions="Start" Placeholder="N/A" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="35" Keyboard="Text"/>
 
                     <Label Grid.Row="10" VerticalOptions="Center" Text="Otros sintomas:" FontAttributes="Bold"/>
                     <Entry Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Episodio.EOtroSin}" IsReadOnly="True" VerticalOptions="Center" Placeholder="N/A" HorizontalTextAlignment="Start" Keyboard="Numeric" HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="35"/>
@@ -74,7 +104,7 @@
 
                     <Label Grid.Row="12" Text="¿Tratamiento con &#10;antibiótico?" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
                     <Label Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="2" Text="No" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" />
-                    <Switch Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsEnabled="False" IsToggled="{Binding Episodio.ETrat}"/>
+                    <Switch Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsEnabled="False" IsToggled="{Binding Episodio.ETratAntibio}"/>
                     <Label Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="2" Text="Si" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Margin="70,0,0,0"/>
 
                     <Label Grid.Row="13" VerticalOptions="Center" Text="Antibiótico" FontAttributes="Bold"/>

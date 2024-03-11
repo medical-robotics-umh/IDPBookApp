@@ -4,7 +4,6 @@ using IDPBookApp.DataBase;
 using IDPBookApp.Models;
 using IDPBookApp.Pages;
 using Plugin.CloudFirestore;
-using System.Data;
 
 namespace IDPBookApp.ViewModel;
 
@@ -58,6 +57,8 @@ public partial class NewDataViewModel : BaseViewModel
     [ObservableProperty]
     private bool trat_bool;
     [ObservableProperty]
+    private bool tratAnti_bool;
+    [ObservableProperty]
     private string antibio;
     [ObservableProperty]
     private string antibioDias;
@@ -110,6 +111,7 @@ public partial class NewDataViewModel : BaseViewModel
                 ESinCutChar = OtroSinCut,
                 EOtroSin = OtroSin,
                 ETrat = Trat_bool,
+                ETratAnt = TratAnti_bool,
                 ETratAntibio = Antibio,
                 ETratDias = AntibioDias,
                 ETratOtros = OtroTrat,

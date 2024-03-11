@@ -84,11 +84,11 @@
                         HorizontalOptions="CenterAndExpand"
                         Text="Ingresa con tu cuenta de Google."
                         TextColor="#1C375C" />
-                        <Image
+                        <ImageButton
                         Aspect="AspectFit"
                         HeightRequest="30"
                         Source="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-icon-png-transparent-background-osteopathy-16.png"
-                        WidthRequest="30" />
+                        WidthRequest="30"/>
                     </StackLayout>
                     <Label
                     Grid.Row="6"

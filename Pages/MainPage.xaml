@@ -5,25 +5,16 @@
              xmlns:viewmodel="clr-namespace:IDPBookApp.ViewModel"
              x:DataType="viewmodel:MainViewModel"
              x:Class="IDPBookApp.Pages.MainPage">
-    <Shell.BackButtonBehavior>
-        <BackButtonBehavior Command="{Binding LogOutBtnCommand}"/>
-    </Shell.BackButtonBehavior>
     <ScrollView>
         <VerticalStackLayout BackgroundColor="#dae3f3" Spacing="0">
-            <Image Source="ic_close_sesion.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="End" Margin="0,10,10,0">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding LogOutBtnCommand}"/>
-                </Image.GestureRecognizers>
-            </Image>
+            <ImageButton Source="ic_close_sesion.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="End" Margin="0,10,10,0" Command="{Binding LogOutBtnCommand}"/>
             <Image Source="logo_idpbook.png" Scale="0.38" Aspect="Fill" Margin="0,-20,0,0"/>
             <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*" VerticalOptions="Center" HorizontalOptions="Center" ColumnSpacing="40">
                 <VerticalStackLayout>
-                    <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="Registro"/>
-                        </Frame.GestureRecognizers>
-                        <VerticalStackLayout Spacing="5">
-                            <Image Source="registro.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+                    <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125" IsEnabled="{Binding Auth}">
+                        <VerticalStackLayout>
+                            <ImageButton Source="registro.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="Registro" IsVisible="{Binding Auth}"/>
+                            <ImageButton Source="registro.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" IsVisible="{Binding AuthAux}"/>
                         </VerticalStackLayout>
                     </Frame>
                     <Label Text="Información" HorizontalOptions="Center" FontAttributes="Bold"/>
@@ -32,11 +23,8 @@
 
                 <VerticalStackLayout Grid.Column="1">
                     <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="Estado"/>
-                        </Frame.GestureRecognizers>
-                        <VerticalStackLayout Spacing="5">
-                            <Image Source="estado.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+                        <VerticalStackLayout>
+                            <ImageButton Source="estado.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="Estado"/>
                         </VerticalStackLayout>
                     </Frame>
                     <Label Text="Estado de la" HorizontalOptions="Center" FontAttributes="Bold"/>
@@ -45,11 +33,8 @@
 
                 <VerticalStackLayout Grid.Row="1" Grid.Column="0">
                     <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="CitasPage"/>
-                        </Frame.GestureRecognizers>
-                        <VerticalStackLayout Spacing="5">
-                            <Image Source="calendario.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+                        <VerticalStackLayout>
+                            <ImageButton Source="calendario.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="CitasPage"/>
                         </VerticalStackLayout>
                     </Frame>
                     <Label Text="Citas" HorizontalOptions="Center" FontAttributes="Bold"/>

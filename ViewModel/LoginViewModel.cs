@@ -4,7 +4,7 @@ using IDPBookApp.DataBase;
 using IDPBookApp.Pages;
 
 namespace IDPBookApp.ViewModel;
-public partial class LoginViewModel : ObservableObject
+public partial class LoginViewModel : BaseViewModel
 {
     readonly FirebaseConnecty firebaseConnecty;
     public LoginViewModel(FirebaseConnecty firebaseConnecty)
@@ -28,8 +28,9 @@ public partial class LoginViewModel : ObservableObject
         try
         {
             await firebaseConnecty.Login(UserName, UserPassword);
-            await App.Current.MainPage.DisplayAlert("Bienvenid@.", "Sesión iniciada correctamente", "Ok");
-            await Shell.Current.GoToAsync(nameof(MainPage));
+            await App.Current.MainPage.DisplayAlert("Bienvenid@.", "Sesión iniciada correctamente "+firebaseConnecty.userInfo.IsEmailVerified.ToString(), "Ok");
+            Auth = firebaseConnecty.userInfo.IsEmailVerified;
+            await Shell.Current.GoToAsync($"{nameof(MainPage)}?Auth={Auth}");
             UserName = string.Empty; UserPassword = string.Empty;
         }
         catch (Exception ex)
@@ -46,6 +47,7 @@ public partial class LoginViewModel : ObservableObject
     }
 
     [RelayCommand]
+    //Aqui podria pasar el correo hacia la pag de cambiar pswd
     Task ChangePassBtn() => Shell.Current.GoToAsync(nameof(CambiarPass));
     
 }

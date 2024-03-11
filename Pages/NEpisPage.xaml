@@ -109,7 +109,7 @@
 
                     <Label Grid.Row="12" Text="¿Tratamiento con &#10;antibiótico?" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" IsVisible="{Binding Trat_visbl}"/>
                     <Label Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="2" Text="No" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" IsVisible="{Binding Trat_visbl}"/>
-                    <Switch Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsVisible="{Binding Trat_visbl}"/>
+                    <Switch Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsVisible="{Binding Trat_visbl}" IsToggled="{Binding TratAnti_bool}"/>
                     <Label Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="2" Text="Si" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" Margin="70,0,0,0" IsVisible="{Binding Trat_visbl}"/>
 
                     <Label Grid.Row="13" VerticalOptions="Center" Text="Antibiótico:" FontAttributes="Bold" IsVisible="{Binding Trat_visbl}"/>

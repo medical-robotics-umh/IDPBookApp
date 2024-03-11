@@ -25,7 +25,7 @@ public partial class ListViewModel : BaseViewModel
                 foreach (var episodio in episodios)
                 {
                     Episodios.Add(episodio);
-                }                
+                }
             }
             else
             {
