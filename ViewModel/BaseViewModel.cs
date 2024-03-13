@@ -10,7 +10,7 @@ public partial class BaseViewModel : ObservableObject
     public BaseViewModel()
     {
 
-    }
+    }    
 
     [ObservableProperty]
     int contador;

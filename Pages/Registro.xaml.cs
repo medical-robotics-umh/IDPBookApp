@@ -8,4 +8,17 @@ public partial class Registro : ContentPage
 		InitializeComponent();
 		BindingContext = newPac;
     }
+
+    private void DatePicker_DateSelected(object sender, DateChangedEventArgs e)
+    {
+        if (BindingContext is NewPacViewModel vm)
+        {
+            int añosTranscurridos = DateTime.Today.Year - vm.FNac.Year;
+            if (DateTime.Today.Month < vm.FNac.Month || (DateTime.Today.Month == vm.FNac.Month && DateTime.Today.Day < vm.FNac.Day))
+            {
+                añosTranscurridos--; // Resta un año si el cumpleaños aún no ha ocurrido este año
+            }
+            vm.EdadPac = añosTranscurridos;
+        }
+    }
 }

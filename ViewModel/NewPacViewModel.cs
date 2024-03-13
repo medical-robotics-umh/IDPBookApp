@@ -12,7 +12,6 @@ public partial class NewPacViewModel : BaseViewModel
     public NewPacViewModel(FirebaseConnecty firebaseConnecty)
     {
         this.firebaseConnecty = firebaseConnecty;
-        FNac = FDiag = DateTime.Today;
     }
 
     [ObservableProperty]
@@ -22,11 +21,11 @@ public partial class NewPacViewModel : BaseViewModel
     [ObservableProperty]
     string emailPac;
     [ObservableProperty]
-    bool sexPac;
+    int sexPac = -1;
     [ObservableProperty]
-    string sex;
+    DateTime fNac = DateTime.Today;
     [ObservableProperty]
-    DateTime fNac;
+    int edadPac;
     [ObservableProperty]
     bool tratPac;
     [ObservableProperty]
@@ -34,7 +33,7 @@ public partial class NewPacViewModel : BaseViewModel
     [ObservableProperty]
     string otroDiag;
     [ObservableProperty]
-    DateTime fDiag;
+    DateTime fDiag = DateTime.Today;
 
     [RelayCommand]
     async Task NewPac()
@@ -49,6 +48,7 @@ public partial class NewPacViewModel : BaseViewModel
         }
         try
         {
+            //TimeSpan Date = DateTimeOffset.Now.ToUnixTimeSeconds().ToString()
             var NuevoPaciente = new Paciente
             {
                 IdMed = firebaseConnecty.userInfo.Uid,
@@ -72,16 +72,9 @@ public partial class NewPacViewModel : BaseViewModel
         {
             await App.Current.MainPage.DisplayAlert("Firestore", ex.Message, "Ok");
         }
-        NombPac = ApllPac = EmailPac =  string.Empty;
+        await App.Current.MainPage.DisplayAlert("Correcto", "Se ha creado usuario: "+NombPac, "Ok");
+        NombPac = ApllPac = EmailPac = OtroDiag = string.Empty;
         FNac = FDiag = DateTime.Today;
-    }
-
-    [RelayCommand]
-    private void SelectSex()
-    {
-        if (Sex == "Masculino")
-            SexPac = true;
-        SexPac = false;
-        Console.WriteLine(SexPac);
+        SexPac = -1;
     }
 }

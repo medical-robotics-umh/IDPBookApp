@@ -81,14 +81,6 @@ public partial class NewDataViewModel : BaseViewModel
     [RelayCommand]
     async Task Cargar()
     {
-        if(Contador==0)
-        {
-            await CrossCloudFirestore.Current
-                             .Instance
-                             .Collection("IDPbookDB")
-                             .Document(firebaseConnecty.userInfo.Uid)
-                             .SetAsync(new {Date = DateTimeOffset.Now.ToUnixTimeSeconds().ToString()});
-        }
         Contador++;
         try
         {
