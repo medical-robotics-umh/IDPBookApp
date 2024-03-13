@@ -99,6 +99,9 @@
 	  <MauiXaml Update="Pages\HistorialPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\ListaPacientesPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\NEpisPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

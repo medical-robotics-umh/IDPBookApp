@@ -20,5 +20,4 @@ public partial class DetailPageViewModel : BaseViewModel
 
     [ObservableProperty]
     ObservableCollection<object> sinCatSelect;
-
 }

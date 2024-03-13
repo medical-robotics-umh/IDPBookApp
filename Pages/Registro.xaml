@@ -3,27 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IDPBookApp.Pages.Registro"
              xmlns:viewmodel="clr-namespace:IDPBookApp.ViewModel"
-             x:DataType="viewmodel:NewDataViewModel"
+             x:DataType="viewmodel:NewPacViewModel"
              Title="Registro">
     <ScrollView>
         <VerticalStackLayout BackgroundColor="#dae3f3" Spacing="0">
-            <Image Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding BackBtnCommand}"/>
-                </Image.GestureRecognizers>
-            </Image>
-            <Label Text="REGISTRO PACIENTE" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0" IsVisible="{Binding Auth}"/>
+            <ImageButton Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}"/>
+            <Label Text="REGISTRO PACIENTE" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
             <Frame HasShadow="True" Margin="10,20" BackgroundColor="Transparent" Padding="10,1,10,10" VerticalOptions="CenterAndExpand">
                 <Grid ColumnDefinitions="Auto,*" RowDefinitions="45,45,45,45,45,45,45,45,80">
                     <Label Text="Nombre:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa nombre" HorizontalTextAlignment="Start" BackgroundColor="White" HeightRequest="35"/>
+                    <Entry Text="{Binding NombPac}"  Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa nombre" HorizontalTextAlignment="Start" BackgroundColor="White" HeightRequest="35"/>
 
                     <Label Grid.Row="1" Text="Apellidos:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry Grid.Row="1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa apellidos" HorizontalTextAlignment="Start" BackgroundColor="White" HeightRequest="35"/>
+                    <Entry Text="{Binding ApllPac}" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa apellidos" HorizontalTextAlignment="Start" BackgroundColor="White" HeightRequest="35"/>
 
-                    <Label Grid.Row="2" Text="Sexo:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Picker Grid.Row="2" Grid.Column="1" Title="▼ Seleccionar sexo" BackgroundColor="White" HeightRequest="35">
+                    <Label Grid.Row="2" Text="Correo:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Entry Text="{Binding EmailPac}" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa correo" HorizontalTextAlignment="Start" BackgroundColor="White" HeightRequest="35" Keyboard="Email"/>
+
+                    <Label Grid.Row="3" Text="Sexo:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Picker Grid.Row="3" Grid.Column="1" Title="▼ Seleccionar sexo" BackgroundColor="White" HeightRequest="35" ItemDisplayBinding="{Binding Sex}" SelectedItem="{Binding SelectSexCommand}">
                         <Picker.Items>
                             <x:String>Masculino</x:String>
                             <x:String>Femenino</x:String>
@@ -31,11 +30,11 @@
                         </Picker.Items>
                     </Picker>
 
-                    <Label Grid.Row="3" Text="F. nacimiento:   " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <DatePicker Grid.Row="3" Grid.Column="1" HorizontalOptions="Start"/>
+                    <Label Grid.Row="4" Text="F. nacimiento:   " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <DatePicker Date="{Binding FNac}" CharacterSpacing="2" Format="d" Grid.Row="4" Grid.Column="1" HorizontalOptions="Start"/>
 
-                    <Label Grid.Row="4" Text="Diagnóstico:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Picker Grid.Row="4" Grid.Column="1" Title="▼ Seleccionar diagnostico" BackgroundColor="White" HeightRequest="35">
+                    <Label Grid.Row="5" Text="Diagnóstico:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Picker Grid.Row="5" Grid.Column="1" Title="▼ Seleccionar diagnostico" BackgroundColor="White" HeightRequest="35">
                         <Picker.Items>
                             <x:String>Inmunodeficiencia Común Variable</x:String>
                             <x:String>Agammaglobulinemia</x:String>
@@ -54,16 +53,13 @@
                         </Picker.Items>
                     </Picker>
 
-                    <Label Grid.Row="5" Text="Otro Diag:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry Grid.Row="5" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Otro diagnóstico" HorizontalTextAlignment="Start" BackgroundColor="White" HeightRequest="35"/>
+                    <Label Grid.Row="6" Text="Otro Diag:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Entry Text="{Binding OtroDiag}" Grid.Row="6" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Otro diagnóstico" HorizontalTextAlignment="Start" BackgroundColor="White" HeightRequest="35"/>
 
-                    <Label Grid.Row="6" Text="F. diagnóstico:   " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <DatePicker Grid.Row="6" Grid.Column="1" HorizontalOptions="Start"/>
+                    <Label Grid.Row="7" Text="F. diagnóstico:   " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <DatePicker Date="{Binding FDiag}" CharacterSpacing="2" Format="d" Grid.Row="7" Grid.Column="1" HorizontalOptions="Start"/>                    
 
-                    <Label Grid.Row="7" Text="Correo:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry Grid.Row="7" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa correo" HorizontalTextAlignment="Start" BackgroundColor="White" HeightRequest="35" Keyboard="Email"/>
-
-                    <Button Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="-100,0,0,0" Text="Agregar" BackgroundColor="Green" WidthRequest="90" HeightRequest="45" Command="{Binding BackBtnCommand}"/>
+                    <Button Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="-100,0,0,0" Text="Agregar" BackgroundColor="Green" WidthRequest="90" HeightRequest="45" Command="{Binding NewPacCommand}"/>
                     <Button Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="100,0,0,0" Text="Salir" BackgroundColor="PaleVioletRed" WidthRequest="90" HeightRequest="45" Command="{Binding BackBtnCommand}"/>
                 </Grid>
             </Frame>

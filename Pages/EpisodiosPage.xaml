@@ -9,21 +9,14 @@
              Title="EpisodiosPage">
     <ScrollView>
         <VerticalStackLayout VerticalOptions="FillAndExpand" BackgroundColor="#e2f0d9">
-            <Image Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding BackBtnCommand}"/>
-                </Image.GestureRecognizers>
-            </Image>
+            <ImageButton Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}"/>
             <Label Text="EPISODIOS" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
             <Grid ColumnDefinitions="*,*" RowDefinitions="*" VerticalOptions="Center" HorizontalOptions="Center" ColumnSpacing="40" Margin="0,30,0,0">
                 <VerticalStackLayout>
                     <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="HistorialPage"/>
-                        </Frame.GestureRecognizers>
                         <VerticalStackLayout>
-                            <Image Source="ic_logo_historial_medico.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+                            <ImageButton Source="ic_logo_historial_medico.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
                         </VerticalStackLayout>
                     </Frame>
                     <Label Text="Historial" HorizontalOptions="Center" FontAttributes="Bold"/>
@@ -31,11 +24,8 @@
 
                 <VerticalStackLayout Grid.Column="1">
                     <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125" x:Name="estado">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding NavegarNEpiCommand}"/>
-                        </Frame.GestureRecognizers>
-                        <VerticalStackLayout Spacing="5">
-                            <Image Source="ic_logo_agregar.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+                        <VerticalStackLayout>
+                            <ImageButton Source="ic_logo_agregar.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarNEpiCommand}"/>
                         </VerticalStackLayout>
                     </Frame>
                     <Label Text="Agregar episodio" HorizontalOptions="Center" FontAttributes="Bold"/>

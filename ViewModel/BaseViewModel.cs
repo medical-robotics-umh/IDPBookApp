@@ -9,36 +9,7 @@ public partial class BaseViewModel : ObservableObject
 {
     public BaseViewModel()
     {
-        ListaSinCat = new ObservableCollection<string>()
-        {
-            "Tos",
-            "Moco",
-            "Dolor de garganta",
-            "Dolor torácico",
-            "Sensación de ahogo"
-        };
 
-        ListaSinDigest = new ObservableCollection<string>()
-        {
-            "Diarrea",
-            "Nauseas o vómitos",
-            "Estreñimiento",
-            "Dolor abdominal"
-        };
-
-        ListaSinUri = new ObservableCollection<string>()
-        {
-            "Escozor al orinar",
-            "Orina oscura",
-            "Orina maloliente"
-        };
-
-        ListaSinCut = new ObservableCollection<string>()
-        {
-            "Picor",
-            "Dolor",
-            "Coloración rojiza"
-        };
     }
 
     [ObservableProperty]
@@ -49,16 +20,39 @@ public partial class BaseViewModel : ObservableObject
     public ObservableCollection<EpisodioModel> Episodios { get; set; } = new ObservableCollection<EpisodioModel>();
 
     [ObservableProperty]
-    ObservableCollection<string> listaSinCat;
+    ObservableCollection<string> listaSinCat = new()
+    {
+        "Tos",
+        "Moco",
+        "Dolor de garganta",
+        "Dolor torácico",
+        "Sensación de ahogo"
+    };
 
     [ObservableProperty]
-    ObservableCollection<string> listaSinDigest;
+    ObservableCollection<string> listaSinDigest = new()
+    {
+        "Diarrea",
+        "Nauseas o vómitos",
+        "Estreñimiento",
+        "Dolor abdominal"
+    };
 
     [ObservableProperty]
-    ObservableCollection<string> listaSinUri;
+    ObservableCollection<string> listaSinUri = new()
+    {
+        "Escozor al orinar",
+        "Orina oscura",
+        "Orina maloliente"
+    };
 
     [ObservableProperty]
-    ObservableCollection<string> listaSinCut;
+    ObservableCollection<string> listaSinCut = new()
+    {
+        "Picor",
+        "Dolor",
+        "Coloración rojiza"
+    };
 
     [RelayCommand]
     async static Task Navegar(string ruta)

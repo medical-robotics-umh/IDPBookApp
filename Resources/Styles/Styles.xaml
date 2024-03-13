@@ -173,7 +173,7 @@
                     </VisualState>
                     <VisualState x:Name="Pressed">
                         <VisualState.Setters>
-                            <Setter Property="Scale" Value="0.9"/>
+                            <Setter Property="Scale" Value="0.93"/>
                         </VisualState.Setters>
                     </VisualState>
                 </VisualStateGroup>

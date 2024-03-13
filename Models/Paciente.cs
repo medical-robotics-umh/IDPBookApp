@@ -2,6 +2,15 @@
 {
     public class Paciente
     {
-        public int Id { get; set; }
+        public string IdMed { get; set; }
+        public string Nombre { get; set; }
+        public string Apelld { get; set; }
+        public string Correo { get; set; }
+        public bool Sexo { get; set; }
+        public string FechNac {  get; set; }
+        public bool TratAct { get; set; }
+        public bool[] Diagnsc { get; set; }
+        public string OtroDiag { get; set; }
+        public string FechDiag { get; set; }
     }
 }

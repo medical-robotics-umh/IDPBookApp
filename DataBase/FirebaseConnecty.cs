@@ -22,8 +22,10 @@ public class FirebaseConnecty
 
     private FileUserRepository repository = new("FirebaseSample");
     public UserInfo userInfo;
+    public UserInfo pacInfo;
     private FirebaseCredential firebaseCredential;
     private UserCredential firebaseUserCredential;
+    private UserCredential firebaseUserCredential2;
     private readonly FirebaseAuthClient client = new(config);
 
     public async Task Login(string username, string password)
@@ -33,9 +35,11 @@ public class FirebaseConnecty
         (userInfo, firebaseCredential) = repository.ReadUser();
     }
 
-    public async Task RegistPac(string username, string password)
+    public async Task RegistPac(string username, string password,string name)
     {
-        await client.CreateUserWithEmailAndPasswordAsync(username,password);
+       firebaseUserCredential2 = await client.CreateUserWithEmailAndPasswordAsync(username,password,name);
+        repository.SaveUser(firebaseUserCredential2.User);
+        (pacInfo, firebaseCredential) = repository.ReadUser();
     }
 
     //public async Task<UserCredential> LoginWithGoogle()

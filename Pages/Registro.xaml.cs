@@ -3,9 +3,9 @@ using IDPBookApp.ViewModel;
 
 public partial class Registro : ContentPage
 {
-	public Registro(MainViewModel viewModel)
+	public Registro(NewPacViewModel newPac)
 	{
 		InitializeComponent();
-		BindingContext = viewModel;
+		BindingContext = newPac;
     }
 }

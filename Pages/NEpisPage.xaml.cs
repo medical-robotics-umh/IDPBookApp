@@ -37,11 +37,11 @@ public partial class NEpisPage : ContentPage
             }
 
             // Mostrar en consola el arreglo de estados de selección
-            Console.WriteLine("Arreglo de estados de selección:");
-            foreach (var isSelected in viewModel.SelectSinCat)
-            {
-                Console.WriteLine(isSelected);
-            }
+            //Console.WriteLine("Arreglo de estados de selección:");
+            //foreach (var isSelected in viewModel.SelectSinCat)
+            //{
+            //    Console.WriteLine(isSelected);
+            //}
         }
     }
 
@@ -65,13 +65,6 @@ public partial class NEpisPage : ContentPage
                 {
                     viewModel.SelectSinDigest[index] = true;
                 }
-            }
-
-            // Mostrar en consola el arreglo de estados de selección
-            Console.WriteLine("Arreglo de estados de selección:");
-            foreach (var isSelected in viewModel.SelectSinDigest)
-            {
-                Console.WriteLine(isSelected);
             }
         }
     }
@@ -97,13 +90,6 @@ public partial class NEpisPage : ContentPage
                     viewModel.SelectSinUri[index] = true;
                 }
             }
-
-            // Mostrar en consola el arreglo de estados de selección
-            Console.WriteLine("Arreglo de estados de selección:");
-            foreach (var isSelected in viewModel.SelectSinUri)
-            {
-                Console.WriteLine(isSelected);
-            }
         }
     }
 
@@ -127,13 +113,6 @@ public partial class NEpisPage : ContentPage
                 {
                     viewModel.SelectSinCut[index] = true;
                 }
-            }
-
-            // Mostrar en consola el arreglo de estados de selección
-            Console.WriteLine("Arreglo de estados de selección:");
-            foreach (var isSelected in viewModel.SelectSinCut)
-            {
-                Console.WriteLine(isSelected);
             }
         }
     }
