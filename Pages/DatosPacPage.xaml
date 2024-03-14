@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="IDPBookApp.Pages.Registro"
+             x:Class="IDPBookApp.Pages.DatosPacPage"
              xmlns:viewmodel="clr-namespace:IDPBookApp.ViewModel"
              x:DataType="viewmodel:NewPacViewModel"
-             Title="Registro">
+             Title="DatosPacPage">
     <ScrollView>
         <VerticalStackLayout BackgroundColor="#dae3f3" Spacing="0">
             <ImageButton Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}"/>
@@ -23,7 +23,7 @@
 
                     <Label Grid.Row="3" Text="Sexo:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
                     <Picker Grid.Row="3" Grid.Column="1" Title="▼ Seleccionar sexo" BackgroundColor="White" HeightRequest="35" SelectedIndex="{Binding SexPac}" >
-                        <Picker.Items>                            
+                        <Picker.Items>
                             <x:String>Femenino</x:String>
                             <x:String>Masculino</x:String>
                             <x:String>No interesa</x:String>
@@ -31,7 +31,7 @@
                     </Picker>
 
                     <Label Grid.Row="4" Text="F. nacimiento:   " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <DatePicker Date="{Binding FNac}" DateSelected="DatePicker_DateSelected"  CharacterSpacing="2" Format="d" Grid.Row="4" Grid.Column="1" HorizontalOptions="Start"/>
+                    <DatePicker Date="{Binding FNac}" CharacterSpacing="2" Format="d" Grid.Row="4" Grid.Column="1" HorizontalOptions="Start"/>
 
                     <Label Grid.Row="5" Text="Edad:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
                     <Entry Text="{Binding EdadPac}" Grid.Row="5" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa correo" HorizontalTextAlignment="Start" BackgroundColor="White" HeightRequest="35" IsEnabled="False"/>
@@ -60,10 +60,7 @@
                     <Entry Text="{Binding OtroDiag}" Grid.Row="7" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="N/A" HorizontalTextAlignment="Start" BackgroundColor="White" HeightRequest="35"/>
 
                     <Label Grid.Row="8" Text="F. diagnóstico:   " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <DatePicker Date="{Binding FDiag}" CharacterSpacing="2" Format="d" Grid.Row="8" Grid.Column="1" HorizontalOptions="Start"/>                    
-
-                    <Button Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="-100,0,0,0" Text="Agregar" BackgroundColor="Green" WidthRequest="90" HeightRequest="45" Command="{Binding NPacienteCommand}"/>
-                    <Button Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="100,0,0,0" Text="Salir" BackgroundColor="PaleVioletRed" WidthRequest="90" HeightRequest="45" Command="{Binding BackBtnCommand}"/>
+                    <DatePicker Date="{Binding FDiag}" CharacterSpacing="2" Format="d" Grid.Row="8" Grid.Column="1" HorizontalOptions="Start"/>
                 </Grid>
             </Frame>
         </VerticalStackLayout>

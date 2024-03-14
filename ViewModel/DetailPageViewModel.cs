@@ -30,7 +30,7 @@ public partial class DetailPageViewModel : BaseViewModel
         foreach (var item in ListaSinCat)
         {
             var index = ListaSinCat.IndexOf(item.ToString());
-            if (Episodio.ESinCata[index]==true)
+            if (Episodio.ESinCata[index] == true)
             {
                 SinCatSelect.Add(ListaSinCat[index]);
             }

@@ -12,6 +12,7 @@ public partial class NewDataViewModel : BaseViewModel
 {
     readonly FirebaseConnecty firebaseConnecty;
     readonly ListViewModel listViewModel;
+    INavigation Navigation => Shell.Current.Navigation;
 
     [ObservableProperty]
     private bool cata_visbl;
@@ -63,9 +64,7 @@ public partial class NewDataViewModel : BaseViewModel
     [ObservableProperty]
     private string antibioDias;
     [ObservableProperty]
-    private string otroTrat;
-
-    INavigation Navigation => Shell.Current.Navigation;
+    private string otroTrat;     
 
     public NewDataViewModel(FirebaseConnecty firebaseConnecty)
     {
@@ -121,12 +120,12 @@ public partial class NewDataViewModel : BaseViewModel
             await App.Current.MainPage.DisplayAlert("Error NewDataVM", ex.Message, "Ok");
         }
 
-        //HACK Función para reemplazar el viewmodel y cargar automaticamente la lista de episodios.
-        await Navigation.PopAsync();
+        //HACK Función para reemplazar el viewmodel y cargar automaticamente la lista de episodios.  
         var EP = new EpisodiosPage(listViewModel)
         {
             BindingContext = new ListViewModel(firebaseConnecty)
         };
+        await Navigation.PopAsync();
         Navigation.InsertPageBefore(EP, Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
         await Shell.Current.GoToAsync("..");
     }

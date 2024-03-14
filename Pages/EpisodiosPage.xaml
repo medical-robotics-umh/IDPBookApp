@@ -5,7 +5,6 @@
              xmlns:viewmodel="clr-namespace:IDPBookApp.ViewModel"
              xmlns:model="clr-namespace:IDPBookApp.Models"
              x:DataType="viewmodel:ListViewModel"
-             Shell.PresentationMode="NotAnimated"
              Title="EpisodiosPage">
     <ScrollView>
         <VerticalStackLayout VerticalOptions="FillAndExpand" BackgroundColor="#e2f0d9">

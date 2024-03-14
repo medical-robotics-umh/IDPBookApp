@@ -28,8 +28,8 @@ public partial class LoginViewModel : BaseViewModel
         try
         {
             await firebaseConnecty.Login(UserName, UserPassword);
-            await App.Current.MainPage.DisplayAlert("Bienvenid@.", "Sesión iniciada correctamente "+firebaseConnecty.userInfo.IsEmailVerified.ToString(), "Ok");
-            Auth = firebaseConnecty.userInfo.IsEmailVerified;
+            await App.Current.MainPage.DisplayAlert("Bienvenid@.", "Sesión iniciada correctamente", "Ok");
+            Auth = firebaseConnecty.firebaseUserCredential.User.Info.IsEmailVerified;
             await Shell.Current.GoToAsync($"{nameof(MainPage)}?Auth={Auth}");
             UserName = string.Empty; UserPassword = string.Empty;
         }

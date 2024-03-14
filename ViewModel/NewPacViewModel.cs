@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using IDPBookApp.DataBase;
 using IDPBookApp.Models;
+using IDPBookApp.Pages;
 using Plugin.CloudFirestore;
 
 namespace IDPBookApp.ViewModel;
@@ -9,6 +10,8 @@ namespace IDPBookApp.ViewModel;
 public partial class NewPacViewModel : BaseViewModel
 {
     readonly FirebaseConnecty firebaseConnecty;
+    readonly ListaPacViewModel listaPacViewModel;
+    INavigation Navigation => Shell.Current.Navigation;
     public NewPacViewModel(FirebaseConnecty firebaseConnecty)
     {
         this.firebaseConnecty = firebaseConnecty;
@@ -36,7 +39,7 @@ public partial class NewPacViewModel : BaseViewModel
     DateTime fDiag = DateTime.Today;
 
     [RelayCommand]
-    async Task NewPac()
+    async Task NPaciente()
     {
         try
         {
@@ -76,5 +79,13 @@ public partial class NewPacViewModel : BaseViewModel
         NombPac = ApllPac = EmailPac = OtroDiag = string.Empty;
         FNac = FDiag = DateTime.Today;
         SexPac = -1;
+
+        var Pac = new ListaPacientesPage(listaPacViewModel)
+        {
+            BindingContext = new ListaPacViewModel(firebaseConnecty)
+        };
+        await Navigation.PopAsync();
+        Navigation.InsertPageBefore(Pac, Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
+        await Shell.Current.GoToAsync("..");
     }
 }

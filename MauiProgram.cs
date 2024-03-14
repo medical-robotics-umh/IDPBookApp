@@ -41,8 +41,6 @@ public static class MauiProgram
         builder.Services.AddTransient<ListaPacientesPage>();
         builder.Services.AddTransient<ListaPacViewModel>();
         builder.Services.AddTransient<NewPacViewModel>();
-
-
 #endif
         return builder.Build();
 	}

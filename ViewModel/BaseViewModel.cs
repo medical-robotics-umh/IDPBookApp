@@ -17,7 +17,12 @@ public partial class BaseViewModel : ObservableObject
 
     [ObservableProperty]
     bool auth;
-    public ObservableCollection<EpisodioModel> Episodios { get; set; } = new ObservableCollection<EpisodioModel>();
+    
+    public ObservableCollection<EpisodioModel> Episodios { get; set; } = new();
+    public ObservableCollection<Paciente> Pacientes { get; set; } = new();
+
+    [ObservableProperty]
+    Paciente paciente = new();
 
     [ObservableProperty]
     ObservableCollection<string> listaSinCat = new()

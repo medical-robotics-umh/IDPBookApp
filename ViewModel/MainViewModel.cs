@@ -8,17 +8,15 @@ namespace IDPBookApp.ViewModel;
 public partial class MainViewModel : BaseViewModel
 {
     [ObservableProperty]
-    bool authAux;
-
-    [ObservableProperty]
     string nPac;
+    [ObservableProperty]
+    string nMed;
 
     readonly FirebaseConnecty firebaseConnecty;
     public MainViewModel(FirebaseConnecty firebaseConnecty)
     {
         this.firebaseConnecty = firebaseConnecty;
         Auth = firebaseConnecty.userInfo.IsEmailVerified;
-        AuthAux = !Auth;
         NPac = firebaseConnecty.userInfo.DisplayName;
     }
 

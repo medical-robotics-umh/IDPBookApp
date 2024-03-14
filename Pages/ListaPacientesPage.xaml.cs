@@ -5,7 +5,7 @@ public partial class ListaPacientesPage : ContentPage
 {
 	public ListaPacientesPage(ListaPacViewModel listaPac)
 	{
-        //InitializeComponent();
+        InitializeComponent();
 		BindingContext = listaPac;
 	}
 }

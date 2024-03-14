@@ -1,9 +1,9 @@
-﻿using Firebase.Auth.Providers;
-using Firebase.Auth;
+﻿using Firebase.Auth;
+using Firebase.Auth.Providers;
 using Firebase.Auth.Repository;
+using IDPBookApp.Models;
 using IDPBookApp.Pages;
 using Plugin.CloudFirestore;
-using IDPBookApp.Models;
 using System.Diagnostics;
 
 namespace IDPBookApp.DataBase;
@@ -20,26 +20,27 @@ public class FirebaseConnecty
         },
     };
 
-    private FileUserRepository repository = new("FirebaseSample");
+    private readonly FileUserRepository repository = new("MedUsers");
+    private readonly FileUserRepository PacRepo = new("ListPac");
     public UserInfo userInfo;
     public UserInfo pacInfo;
     private FirebaseCredential firebaseCredential;
-    private UserCredential firebaseUserCredential;
+    public UserCredential firebaseUserCredential;
     private UserCredential firebaseUserCredential2;
     private readonly FirebaseAuthClient client = new(config);
 
     public async Task Login(string username, string password)
     {
-        firebaseUserCredential = await client.SignInWithEmailAndPasswordAsync(username,password);
+        firebaseUserCredential = await client.SignInWithEmailAndPasswordAsync(username, password);
         repository.SaveUser(firebaseUserCredential.User);
         (userInfo, firebaseCredential) = repository.ReadUser();
     }
 
-    public async Task RegistPac(string username, string password,string name)
+    public async Task RegistPac(string username, string password, string name)
     {
-       firebaseUserCredential2 = await client.CreateUserWithEmailAndPasswordAsync(username,password,name);
-        repository.SaveUser(firebaseUserCredential2.User);
-        (pacInfo, firebaseCredential) = repository.ReadUser();
+        firebaseUserCredential2 = await client.CreateUserWithEmailAndPasswordAsync(username, password, name);
+        PacRepo.SaveUser(firebaseUserCredential2.User);
+        (pacInfo, firebaseCredential) = PacRepo.ReadUser();
     }
 
     //public async Task<UserCredential> LoginWithGoogle()
@@ -92,11 +93,13 @@ public class FirebaseConnecty
         {
             await App.Current.MainPage.DisplayAlert("Aviso", "Sesión caducada", "Ok");
         }
+
     }
 
     public void LogOut()
     {
         repository.DeleteUser();
+        PacRepo.DeleteUser();
         //client.SignOut();
     }
 
@@ -105,13 +108,13 @@ public class FirebaseConnecty
         firebaseUserCredential.User.ChangePasswordAsync(password);
     }
 
-    public async Task<List<EpisodioModel>> GetEpisodiosModel(string rutaEpis)
+    public static async Task<List<EpisodioModel>> GetEpisodiosModel(string rutaEpis)
     {
         try
         {
-            var query = CrossCloudFirestore.Current.Instance
-                                           .Collection(rutaEpis);
-            var snapshot = await query.GetAsync();
+            var snapshot = await CrossCloudFirestore.Current.Instance
+                                                    .Collection(rutaEpis)
+                                                    .GetAsync();
 
             var episodios = new List<EpisodioModel>();
             foreach (var episodio in snapshot.Documents)
@@ -123,7 +126,32 @@ public class FirebaseConnecty
         catch (Exception ex)
         {
             Debug.WriteLine(ex);
-            await Shell.Current.DisplayAlert("Error", $"No se pudo accerder: {ex.Message}", "Ok");
+            await Shell.Current.DisplayAlert("Episodios", $"No se pudo accerder: {ex.Message}", "Ok");
+            return null;
+        }
+    }
+
+    public static async Task<List<Paciente>> GetPacientesModel(string idMed)
+    {
+        try
+        {
+            var query = await CrossCloudFirestore.Current
+                                     .Instance
+                                     .Collection("/IDPbookDB")
+                                     .WhereEqualsTo("IdMed", idMed)
+                                     .GetAsync();
+
+            var pacientes = new List<Paciente>();
+            foreach (var paciente in query.Documents)
+            {
+                pacientes.Add(paciente.ToObject<Paciente>());
+            }
+            return pacientes;
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex);
+            await Shell.Current.DisplayAlert("Pacientes", $"No se pudo accerder: {ex.Message}", "Ok");
             return null;
         }
     }
