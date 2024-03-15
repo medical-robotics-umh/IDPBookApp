@@ -17,14 +17,15 @@ public partial class MainViewModel : BaseViewModel
     {
         this.firebaseConnecty = firebaseConnecty;
         Auth = firebaseConnecty.userInfo.IsEmailVerified;
-        NPac = firebaseConnecty.userInfo.DisplayName;
+        NPac = firebaseConnecty.pacInfo.DisplayName;
+        NMed = firebaseConnecty.userInfo.DisplayName;
     }
 
     [RelayCommand]
     async Task LogOutBtn()
     {
-        bool ans = await App.Current.MainPage.DisplayAlert("Aviso.","¿Desea cerrar sesión?","Aceptar","Cancelar");
-        if (ans==true)
+        bool ans = await App.Current.MainPage.DisplayAlert("Aviso.", "¿Desea cerrar sesión?", "Aceptar", "Cancelar");
+        if (ans == true)
         {
             firebaseConnecty.LogOut();
             //await App.Current.MainPage.DisplayAlert("Aviso", "Sesión finalizada correctamente", "Ok");

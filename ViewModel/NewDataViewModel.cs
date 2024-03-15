@@ -110,7 +110,7 @@ public partial class NewDataViewModel : BaseViewModel
             await CrossCloudFirestore.Current
                              .Instance
                              .Collection("IDPbookDB")
-                             .Document(firebaseConnecty.userInfo.Uid)
+                             .Document(firebaseConnecty.pacInfo.Uid)
                              .Collection("episodios")
                              .Document("Ep"+Contador.ToString())
                              .SetAsync(NuevoEpisodio);

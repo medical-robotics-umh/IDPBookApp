@@ -20,27 +20,41 @@ public class FirebaseConnecty
         },
     };
 
-    private readonly FileUserRepository repository = new("MedUsers");
+    private readonly FileUserRepository MedRepo = new("MedUsers");
     private readonly FileUserRepository PacRepo = new("ListPac");
     public UserInfo userInfo;
     public UserInfo pacInfo;
     private FirebaseCredential firebaseCredential;
+    private FirebaseCredential firebaseCredential2;
     public UserCredential firebaseUserCredential;
-    private UserCredential firebaseUserCredential2;
     private readonly FirebaseAuthClient client = new(config);
 
     public async Task Login(string username, string password)
     {
         firebaseUserCredential = await client.SignInWithEmailAndPasswordAsync(username, password);
-        repository.SaveUser(firebaseUserCredential.User);
-        (userInfo, firebaseCredential) = repository.ReadUser();
+        if(firebaseUserCredential.User.Info.IsEmailVerified==true)
+        {
+            MedRepo.SaveUser(firebaseUserCredential.User);
+            (userInfo, firebaseCredential) = MedRepo.ReadUser();
+            var anonimo = await client.SignInAnonymouslyAsync();
+            PacRepo.SaveUser(anonimo.User);
+            (pacInfo, firebaseCredential2) = PacRepo.ReadUser();
+            await anonimo.User.DeleteAsync();
+        }
+        else
+        {
+            PacRepo.SaveUser(firebaseUserCredential.User);
+            (pacInfo, firebaseCredential2) = PacRepo.ReadUser();
+            MedRepo.SaveUser(firebaseUserCredential.User);
+            (userInfo, firebaseCredential) = MedRepo.ReadUser();
+        }        
     }
 
     public async Task RegistPac(string username, string password, string name)
     {
-        firebaseUserCredential2 = await client.CreateUserWithEmailAndPasswordAsync(username, password, name);
-        PacRepo.SaveUser(firebaseUserCredential2.User);
-        (pacInfo, firebaseCredential) = PacRepo.ReadUser();
+        firebaseUserCredential = await client.CreateUserWithEmailAndPasswordAsync(username, password, name);
+        MedRepo.SaveUser(firebaseUserCredential.User);
+        (pacInfo,firebaseCredential2) = MedRepo.ReadUser();
     }
 
     //public async Task<UserCredential> LoginWithGoogle()
@@ -81,9 +95,10 @@ public class FirebaseConnecty
 
     public async void CheckUser()
     {
-        if (repository.UserExists())
+        if (MedRepo.UserExists() || PacRepo.UserExists())
         {
-            (userInfo, firebaseCredential) = repository.ReadUser();
+            (pacInfo, firebaseCredential2) = PacRepo.ReadUser();
+            (userInfo, firebaseCredential) = MedRepo.ReadUser();
             var name = userInfo.DisplayName;
             //Falta asignar "userCredential" a "client", porque el metodo de SignOut() no reconoce ningun objeto, es decir no se ha inicado sesión explicitamente, si no por el repositorio.
             await Shell.Current.GoToAsync(nameof(MainPage));
@@ -93,12 +108,11 @@ public class FirebaseConnecty
         {
             await App.Current.MainPage.DisplayAlert("Aviso", "Sesión caducada", "Ok");
         }
-
     }
 
     public void LogOut()
     {
-        repository.DeleteUser();
+        MedRepo.DeleteUser();
         PacRepo.DeleteUser();
         //client.SignOut();
     }

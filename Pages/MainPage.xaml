@@ -10,7 +10,7 @@
             <Grid ColumnDefinitions="Auto,Auto,*,*" RowDefinitions="*,*" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Margin="10,10,10,0" ColumnSpacing="5" RowSpacing="0">
                 <ImageButton Grid.RowSpan="2" Source="registro.png" Aspect="Fill" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="End" Command="{Binding NavegarCommand}" CommandParameter="ListaPacientesPage" IsVisible="{Binding Auth}"/>
                 <Label Grid.Column="1" Text="Médico: " VerticalOptions="Center" HorizontalOptions="Start" FontAttributes="Italic" IsVisible="{Binding Auth}"/>
-                <Label Grid.Column="2" Text="{Binding NPac}" VerticalOptions="Center" HorizontalOptions="Start" FontAttributes="None" IsVisible="{Binding Auth}"/>
+                <Label Grid.Column="2" Text="{Binding NMed}" VerticalOptions="Center" HorizontalOptions="Start" FontAttributes="None" IsVisible="{Binding Auth}"/>
                 <Label Grid.Column="1" Grid.Row="1" Text="Usuario:" VerticalOptions="Center" HorizontalOptions="Start" FontAttributes="Bold"/>
                 <Label Grid.Column="2" Grid.Row="1" Text="{Binding NPac}" VerticalOptions="Center" HorizontalOptions="Start" FontAttributes="Bold"/>
                 <ImageButton Grid.Column="3" Grid.RowSpan="2" Source="ic_close_sesion.png" Aspect="Fill" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="End" Command="{Binding LogOutBtnCommand}"/>                
