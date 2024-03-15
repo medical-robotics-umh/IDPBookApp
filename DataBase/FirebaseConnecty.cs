@@ -21,7 +21,7 @@ public class FirebaseConnecty
     };
 
     private readonly FileUserRepository MedRepo = new("MedUsers");
-    private readonly FileUserRepository PacRepo = new("ListPac");
+    public readonly FileUserRepository PacRepo = new("ListPac");
     public UserInfo userInfo;
     public UserInfo pacInfo;
     private FirebaseCredential firebaseCredential;
@@ -97,7 +97,7 @@ public class FirebaseConnecty
     {
         if (MedRepo.UserExists() || PacRepo.UserExists())
         {
-            (pacInfo, firebaseCredential2) = PacRepo.ReadUser();
+            (pacInfo, firebaseCredential2) = PacRepo.ReadUser();            
             (userInfo, firebaseCredential) = MedRepo.ReadUser();
             var name = userInfo.DisplayName;
             //Falta asignar "userCredential" a "client", porque el metodo de SignOut() no reconoce ningun objeto, es decir no se ha inicado sesión explicitamente, si no por el repositorio.
@@ -108,6 +108,14 @@ public class FirebaseConnecty
         {
             await App.Current.MainPage.DisplayAlert("Aviso", "Sesión caducada", "Ok");
         }
+    }
+
+    public async Task ChangePac(string username, string password)
+    {
+        PacRepo.DeleteUser();
+        firebaseUserCredential = await client.SignInWithEmailAndPasswordAsync(username, password);
+        PacRepo.SaveUser(firebaseUserCredential.User);
+        (pacInfo, firebaseCredential2) = PacRepo.ReadUser();
     }
 
     public void LogOut()
@@ -127,7 +135,7 @@ public class FirebaseConnecty
         try
         {
             var snapshot = await CrossCloudFirestore.Current.Instance
-                                                    .Collection(rutaEpis)
+                                                    .Collection("/IDPbookDB/"+rutaEpis+"/episodios")
                                                     .GetAsync();
 
             var episodios = new List<EpisodioModel>();
@@ -140,7 +148,7 @@ public class FirebaseConnecty
         catch (Exception ex)
         {
             Debug.WriteLine(ex);
-            await Shell.Current.DisplayAlert("Episodios", $"No se pudo accerder: {ex.Message}", "Ok");
+            await Shell.Current.DisplayAlert("GetEpisodiosModel", $"No se pudo accerder: {ex.Message}", "Ok");
             return null;
         }
     }
@@ -165,7 +173,29 @@ public class FirebaseConnecty
         catch (Exception ex)
         {
             Debug.WriteLine(ex);
-            await Shell.Current.DisplayAlert("Pacientes", $"No se pudo accerder: {ex.Message}", "Ok");
+            await Shell.Current.DisplayAlert("GetPacientesModel", $"No se pudo accerder: {ex.Message}", "Ok");
+            return null;
+        }
+    }
+
+    public static async Task<Paciente> GetPacienteModel(string idPac)
+    {
+        try
+        {
+            var datos = await CrossCloudFirestore.Current
+                                     .Instance
+                                     .Collection("/IDPbookDB")
+                                     .Document(idPac)
+                                     .GetAsync();
+
+            var paciente = datos.ToObject<Paciente>();
+            
+            return paciente;
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex);
+            await Shell.Current.DisplayAlert("GetPaciente", $"No se pudo obtener paciente: {ex.Message}", "Ok");
             return null;
         }
     }

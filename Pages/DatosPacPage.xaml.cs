@@ -1,9 +1,13 @@
+using IDPBookApp.ViewModel;
+
 namespace IDPBookApp.Pages;
 
 public partial class DatosPacPage : ContentPage
 {
-	public DatosPacPage()
+	public DatosPacPage(DatosPacViewModel vm)
 	{
-		//InitializeComponent();
+		InitializeComponent();
+		BindingContext = vm;	
 	}
+
 }

@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using IDPBookApp.DataBase;
 using IDPBookApp.Models;
+using IDPBookApp.Pages;
 
 namespace IDPBookApp.ViewModel;
 
@@ -28,9 +29,7 @@ public partial class ListaPacViewModel:BaseViewModel
     [RelayCommand]
     private async Task GetIdPaciente(Paciente paciente)
     {
-        Paciente = paciente;
-        await Shell.Current.DisplayAlert("Aviso","Paciente "+Paciente.Nombre+", se ha descargado exitosamente", "Ok");
+        await firebaseConnecty.ChangePac(paciente.Correo,"12345678");
+        await Shell.Current.DisplayAlert("Aviso","Paciente "+paciente.Nombre+", se ha descargado exitosamente", "Ok");
     }
-
-
 }

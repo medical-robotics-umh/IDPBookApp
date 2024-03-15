@@ -15,7 +15,7 @@ public partial class ListViewModel : BaseViewModel
     }
     async void GetEpisodios()
     {
-        var episodios = await FirebaseConnecty.GetEpisodiosModel("/IDPbookDB/"+firebaseConnecty.pacInfo.Uid+ "/episodios");
+        var episodios = await FirebaseConnecty.GetEpisodiosModel(firebaseConnecty.pacInfo.Uid);
         if (episodios != null && episodios.Count > 0)
         {
             Episodios.Clear();

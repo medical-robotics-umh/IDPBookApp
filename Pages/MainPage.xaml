@@ -20,7 +20,7 @@
                 <VerticalStackLayout>
                     <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout>
-                            <ImageButton Source="ic_logo_registro_nuevo.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="Registro"/>                         
+                            <ImageButton Source="ic_logo_registro_nuevo.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="DatosPacPage"/>                         
                         </VerticalStackLayout>
                     </Frame>
                     <Label Text="Información" HorizontalOptions="Center" FontAttributes="Bold"/>

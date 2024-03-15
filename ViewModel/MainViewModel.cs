@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using IDPBookApp.DataBase;
+using IDPBookApp.Models;
+using IDPBookApp.Pages;
 
 namespace IDPBookApp.ViewModel;
 
@@ -31,5 +33,5 @@ public partial class MainViewModel : BaseViewModel
             //await App.Current.MainPage.DisplayAlert("Aviso", "Sesión finalizada correctamente", "Ok");
             await Shell.Current.GoToAsync("///LoginPage");
         }
-    }
+    }    
 }
