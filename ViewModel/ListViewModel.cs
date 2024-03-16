@@ -2,12 +2,14 @@
 using IDPBookApp.DataBase;
 using IDPBookApp.Models;
 using IDPBookApp.Pages;
+using System.Collections.ObjectModel;
 
 namespace IDPBookApp.ViewModel;
 
 public partial class ListViewModel : BaseViewModel
 {
     readonly FirebaseConnecty firebaseConnecty;
+    public ObservableCollection<EpisodioModel> Episodios { get; set; } = new();
     public ListViewModel(FirebaseConnecty firebaseConnecty)
     {
         this.firebaseConnecty = firebaseConnecty;

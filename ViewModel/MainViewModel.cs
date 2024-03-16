@@ -9,11 +9,6 @@ namespace IDPBookApp.ViewModel;
 [QueryProperty(nameof(Auth), nameof(Auth))]
 public partial class MainViewModel : BaseViewModel
 {
-    [ObservableProperty]
-    string nPac;
-    [ObservableProperty]
-    string nMed;
-
     readonly FirebaseConnecty firebaseConnecty;
     public MainViewModel(FirebaseConnecty firebaseConnecty)
     {

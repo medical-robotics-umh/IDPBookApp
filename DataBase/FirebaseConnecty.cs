@@ -5,6 +5,7 @@ using IDPBookApp.Models;
 using IDPBookApp.Pages;
 using Plugin.CloudFirestore;
 using System.Diagnostics;
+using System.Net.Http.Headers;
 
 namespace IDPBookApp.DataBase;
 public class FirebaseConnecty
@@ -53,8 +54,25 @@ public class FirebaseConnecty
     public async Task RegistPac(string username, string password, string name)
     {
         firebaseUserCredential = await client.CreateUserWithEmailAndPasswordAsync(username, password, name);
-        MedRepo.SaveUser(firebaseUserCredential.User);
-        (pacInfo,firebaseCredential2) = MedRepo.ReadUser();
+        PacRepo.SaveUser(firebaseUserCredential.User);
+        (pacInfo,firebaseCredential2) = PacRepo.ReadUser();    
+    }
+    public async Task RegistMed(string username, string password, string name)
+    {
+        firebaseUserCredential = await client.CreateUserWithEmailAndPasswordAsync(username, password, name);
+        var apikey = config.ApiKey;
+        var requestUri = "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=" + apikey;
+        var idtoken = client.User.GetIdTokenAsync().Result;
+        using (var cliente = new HttpClient())
+        {
+            cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var content = new StringContent("{\"requestType\":\"VERIFY_EMAIL\",\"idToken\":\"" + idtoken + "\"}");
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            var response = await cliente.PostAsync(requestUri, content);
+            response.EnsureSuccessStatusCode();
+        }
     }
 
     //public async Task<UserCredential> LoginWithGoogle()

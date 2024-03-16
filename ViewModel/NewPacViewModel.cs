@@ -39,7 +39,7 @@ public partial class NewPacViewModel : BaseViewModel
     DateTime fDiag = DateTime.Today;
 
     [RelayCommand]
-    async Task NPaciente()
+    async Task NewUser()
     {
         try
         {

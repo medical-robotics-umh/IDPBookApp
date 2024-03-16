@@ -10,7 +10,12 @@ public partial class BaseViewModel : ObservableObject
     public BaseViewModel()
     {
 
-    }    
+    }
+    [ObservableProperty]
+    string nPac;
+
+    [ObservableProperty]
+    string nMed;
 
     [ObservableProperty]
     int contador;
@@ -19,10 +24,7 @@ public partial class BaseViewModel : ObservableObject
     bool auth;
 
     [ObservableProperty]
-    Paciente paciente;
-
-    public ObservableCollection<EpisodioModel> Episodios { get; set; } = new();
-    public ObservableCollection<Paciente> Pacientes { get; set; } = new();    
+    Paciente paciente;        
 
     [ObservableProperty]
     ObservableCollection<string> listaSinCat = new()
@@ -57,6 +59,25 @@ public partial class BaseViewModel : ObservableObject
         "Picor",
         "Dolor",
         "Coloración rojiza"
+    };
+    [ObservableProperty]
+
+    ObservableCollection<string> listaDiagcs = new()
+    {
+        "Inmunodeficiencia Común Variable",
+        "Agammaglobulinemia",
+        "Déficit de IgA",
+        "Déficit de Subclases de Inmunoglobulinas",
+        "Déficit de respuesta a antígenos específicos",
+        "Inmunodeficiencia Combinada",
+        "Enfermedad Granulomatosa Crónica",
+        "Microdelección 22q",
+        "Síndrome de Wiscott-Aldrich",
+        "Síndrome de Hiper-IgE",
+        "Síndrome de Hiper-IgM",
+        "ALPS",
+        "Candidiasis Mucocutanea Crónica",
+        "Otro"
     };
 
     [RelayCommand]
