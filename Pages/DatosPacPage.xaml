@@ -11,7 +11,7 @@
             <Label Text="DATOS PACIENTE" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
             <Frame HasShadow="True" Margin="10,20" BackgroundColor="Transparent" Padding="10,1,10,10" VerticalOptions="CenterAndExpand">
-                <Grid ColumnDefinitions="Auto,*" RowDefinitions="45,45,45,45,45,45,45,45,45,80">
+                <Grid ColumnDefinitions="Auto,*" RowDefinitions="45,45,45,45,45,45,45,Auto,45,45">
                     <Label Text="Nombre:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
                     <Entry Text="{Binding Paciente.Nombre}" IsEnabled="False" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa nombre" HorizontalTextAlignment="Start" BackgroundColor="White" HeightRequest="35" Keyboard="Text"/>
 
@@ -22,7 +22,7 @@
                     <Entry Text="{Binding Paciente.Correo}"  IsEnabled="False" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa correo" HorizontalTextAlignment="Start" BackgroundColor="White" HeightRequest="35" Keyboard="Email"/>
 
                     <Label Grid.Row="3" Text="Sexo:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Picker Grid.Row="3" Grid.Column="1" Title="▼ Seleccionar sexo" BackgroundColor="White" HeightRequest="35" SelectedIndex="{Binding Paciente.Sexo}" IsEnabled="False">
+                    <Picker SelectedIndex="{Binding Paciente.Sexo}" Grid.Row="3" Grid.Column="1" Title="▼ Seleccionar sexo" BackgroundColor="White" HeightRequest="35"  IsEnabled="False">
                         <Picker.Items>
                             <x:String>Femenino</x:String>
                             <x:String>Masculino</x:String>
@@ -36,31 +36,30 @@
                     <Label Grid.Row="5" Text="Edad:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
                     <Entry Text="{Binding Fecha}" Grid.Row="5" Grid.Column="1" HorizontalTextAlignment="Start" VerticalOptions="Center" HorizontalOptions="Fill" BackgroundColor="White" HeightRequest="35" IsEnabled="False"/>
 
-                    <Label Grid.Row="6" Text="Diagnóstico:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Picker Grid.Row="6" Grid.Column="1" Title="▼ Seleccionar diagnostico" BackgroundColor="White" HeightRequest="35" IsEnabled="False">
+                    <Label Grid.Row="6" Text="Trat. Actual:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Picker SelectedIndex="{Binding Paciente.TratAct}" IsEnabled="False" Grid.Row="6" Grid.Column="1" Title="▼ Seleccionar tratamiento" BackgroundColor="White" HeightRequest="35">
                         <Picker.Items>
-                            <x:String>Inmunodeficiencia Común Variable</x:String>
-                            <x:String>Agammaglobulinemia</x:String>
-                            <x:String>Déficit de IgA</x:String>
-                            <x:String>Déficit de Subclases de Inmunoglobulinas</x:String>
-                            <x:String>Déficit de respuesta a antígenos específicos</x:String>
-                            <x:String>Inmunodeficiencia Combinada</x:String>
-                            <x:String>Enfermedad Granulomatosa Crónica</x:String>
-                            <x:String>Microdelección 22q</x:String>
-                            <x:String>Síndrome de Wiscott-Aldrich</x:String>
-                            <x:String>Síndrome de Hiper-IgE</x:String>
-                            <x:String>Síndrome de Hiper-IgM</x:String>
-                            <x:String>ALPS</x:String>
-                            <x:String>Candidiasis Mucocutanea Crónica</x:String>
-                            <x:String>Otro</x:String>
+                            <x:String>Intravenoso</x:String>
+                            <x:String>Subcutáneo</x:String>
                         </Picker.Items>
                     </Picker>
 
-                    <Label Grid.Row="7" Text="Otro Diag:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry Text="{Binding Paciente.OtroDiag}" IsEnabled="False" Grid.Row="7" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="N/A" HorizontalTextAlignment="Start" BackgroundColor="White" HeightRequest="35"/>
+                    <Label Grid.Row="7" Text="Diagnóstico:" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start"/>
+                    <CollectionView SelectedItems="{Binding SelectDiag}"  ItemsSource="{Binding ListaDiagcs}" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" SelectionMode="Multiple">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0,2" Style="{DynamicResource SelectedGridStyle}">
+                                    <Label Grid.Column="1" Text="{Binding .}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
 
-                    <Label Grid.Row="8" Text="F. diagnóstico:   " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry Text="{Binding Paciente.FechDiag}" BackgroundColor="White" IsEnabled="False" CharacterSpacing="2" Grid.Row="8" Grid.Column="1" HorizontalOptions="Start"/>
+                    <Label Grid.Row="8" Text="Otro Diag:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Entry Text="{Binding Paciente.OtroDiag}" IsEnabled="False" Grid.Row="8" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="N/A" HorizontalTextAlignment="Start" BackgroundColor="White" HeightRequest="35"/>
+
+                    <Label Grid.Row="9" Text="F. diagnóstico:   " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Entry Text="{Binding Paciente.FechDiag}" BackgroundColor="White" IsEnabled="False" CharacterSpacing="2" Grid.Row="9" Grid.Column="1" HorizontalOptions="Start"/>
                 </Grid>
             </Frame>
         </VerticalStackLayout>

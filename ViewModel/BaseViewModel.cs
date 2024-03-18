@@ -76,8 +76,7 @@ public partial class BaseViewModel : ObservableObject
         "Síndrome de Hiper-IgE",
         "Síndrome de Hiper-IgM",
         "ALPS",
-        "Candidiasis Mucocutanea Crónica",
-        "Otro"
+        "Candidiasis Mucocutanea Crónica"
     };
 
     [RelayCommand]

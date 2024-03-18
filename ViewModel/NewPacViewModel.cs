@@ -15,7 +15,15 @@ public partial class NewPacViewModel : BaseViewModel
     public NewPacViewModel(FirebaseConnecty firebaseConnecty)
     {
         this.firebaseConnecty = firebaseConnecty;
+        DiagSelec = new bool[ListaDiagcs.Count];
     }
+
+    [ObservableProperty]
+    private bool diagncsVisbl;
+    [ObservableProperty]
+    private bool disable=true;
+    [ObservableProperty]
+    private bool medCheck;
 
     [ObservableProperty]
     string nombPac;
@@ -30,62 +38,85 @@ public partial class NewPacViewModel : BaseViewModel
     [ObservableProperty]
     int edadPac;
     [ObservableProperty]
-    bool tratPac;
+    int tratPac = -1;
     [ObservableProperty]
-    bool[] diagSelec = new bool[6];
+    bool[] diagSelec;
     [ObservableProperty]
     string otroDiag;
     [ObservableProperty]
     DateTime fDiag = DateTime.Today;
 
     [RelayCommand]
+    private void VisibleDiag()
+    {
+        DiagncsVisbl = !DiagncsVisbl;
+    }
+
+    [RelayCommand]
     async Task NewUser()
     {
-        try
+        if (Disable == true)
         {
-            await firebaseConnecty.RegistPac(EmailPac,"12345678",NombPac);
-        }
-        catch (Exception ex) 
-        {
-            await App.Current.MainPage.DisplayAlert("Auth", ex.Message, "Ok");
-        }
-        try
-        {
-            //TimeSpan Date = DateTimeOffset.Now.ToUnixTimeSeconds().ToString()
-            var NuevoPaciente = new Paciente
+            try
             {
-                IdMed = firebaseConnecty.userInfo.Uid,
-                Nombre = NombPac,
-                Apelld = ApllPac,
-                Correo = EmailPac,
-                Sexo = SexPac,
-                FechNac = FNac.ToShortDateString(),
-                TratAct = TratPac,
-                Diagnsc = DiagSelec,
-                OtroDiag = OtroDiag,
-                FechDiag = FDiag.ToShortDateString()
-            };
-            await CrossCloudFirestore.Current
-                            .Instance
-                            .Collection("IDPbookDB")
-                            .Document(firebaseConnecty.pacInfo.Uid)
-                            .SetAsync(NuevoPaciente);
-        }
-        catch (Exception ex)
-        {
-            await App.Current.MainPage.DisplayAlert("Firestore", ex.Message, "Ok");
-        }
-        await App.Current.MainPage.DisplayAlert("Correcto", "Se ha creado usuario: "+NombPac, "Ok");
-        NombPac = ApllPac = EmailPac = OtroDiag = string.Empty;
-        FNac = FDiag = DateTime.Today;
-        SexPac = -1;
+                await firebaseConnecty.RegistPac(EmailPac, "12345678", NombPac);
+            }
+            catch (Exception ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Auth", ex.Message, "Ok");
+            }
+            try
+            {
+                //TimeSpan Date = DateTimeOffset.Now.ToUnixTimeSeconds().ToString()
+                var NuevoPaciente = new Paciente
+                {
+                    IdMed = firebaseConnecty.userInfo.Uid,
+                    Nombre = NombPac,
+                    Apelld = ApllPac,
+                    Correo = EmailPac,
+                    Sexo = SexPac,
+                    FechNac = FNac.ToShortDateString(),
+                    TratAct = TratPac,
+                    Diagnsc = DiagSelec,
+                    OtroDiag = OtroDiag,
+                    FechDiag = FDiag.ToShortDateString()
+                };
+                await CrossCloudFirestore.Current
+                                .Instance
+                                .Collection("IDPbookDB")
+                                .Document(firebaseConnecty.pacInfo.Uid)
+                                .SetAsync(NuevoPaciente);
+            }
+            catch (Exception ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Firestore", ex.Message, "Ok");
+            }
+            await App.Current.MainPage.DisplayAlert("Correcto", "Se ha creado paciente: " + NombPac, "Ok");
+            NombPac = ApllPac = EmailPac = OtroDiag = string.Empty;
+            FNac = FDiag = DateTime.Today;
+            SexPac = -1;
 
-        var Pac = new ListaPacientesPage(listaPacViewModel)
+            var Pac = new ListaPacientesPage(listaPacViewModel)
+            {
+                BindingContext = new ListaPacViewModel(firebaseConnecty)
+            };
+            await Navigation.PopAsync();
+            Navigation.InsertPageBefore(Pac, Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
+            await Shell.Current.GoToAsync("..");
+        }
+        else if (Disable == false) 
         {
-            BindingContext = new ListaPacViewModel(firebaseConnecty)
-        };
-        await Navigation.PopAsync();
-        Navigation.InsertPageBefore(Pac, Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
-        await Shell.Current.GoToAsync("..");
+            try
+            {
+                await firebaseConnecty.RegistMed(EmailPac,"0987654", NombPac);
+            }
+            catch (Exception ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Auth", ex.Message, "Ok");
+            }
+            await App.Current.MainPage.DisplayAlert("Correcto", "Se ha creado personal médico: "+NombPac+". Se ha enviado correo de autenticación al correo del usuario.", "Ok");
+            NombPac = ApllPac = EmailPac = string.Empty;
+            MedCheck = false;
+        }
     }
 }

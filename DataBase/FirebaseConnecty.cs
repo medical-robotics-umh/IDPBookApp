@@ -48,7 +48,8 @@ public class FirebaseConnecty
             (pacInfo, firebaseCredential2) = PacRepo.ReadUser();
             MedRepo.SaveUser(firebaseUserCredential.User);
             (userInfo, firebaseCredential) = MedRepo.ReadUser();
-        }        
+        }
+        
     }
 
     public async Task RegistPac(string username, string password, string name)

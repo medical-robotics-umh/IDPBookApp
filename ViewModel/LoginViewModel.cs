@@ -25,6 +25,7 @@ public partial class LoginViewModel : BaseViewModel
     [RelayCommand]
     async Task LoginBtn()
     {
+
         try
         {
             await firebaseConnecty.Login(UserName, UserPassword);

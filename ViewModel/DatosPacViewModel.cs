@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using IDPBookApp.DataBase;
+using System.Collections.ObjectModel;
 
 namespace IDPBookApp.ViewModel;
 public partial class DatosPacViewModel : BaseViewModel
@@ -13,6 +14,8 @@ public partial class DatosPacViewModel : BaseViewModel
 
     [ObservableProperty]
     int fecha;
+    [ObservableProperty]
+    ObservableCollection<object> selectDiag = new();
     async void GetPac()
     {
         //HACK Falta una condición que evite entrar a la info si el paciente es anonimo
@@ -26,6 +29,15 @@ public partial class DatosPacViewModel : BaseViewModel
                 añosTranscurridos--; // Resta un año si el cumpleaños aún no ha ocurrido este año
             }
             Fecha = añosTranscurridos;
+
+            foreach (var item in ListaDiagcs)
+            {
+                var index = ListaDiagcs.IndexOf(item.ToString());
+                if (Paciente.Diagnsc[index] == true)
+                {
+                    SelectDiag.Add(ListaDiagcs[index]);
+                }
+            }
         }        
     }
 }

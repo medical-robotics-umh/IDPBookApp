@@ -56,12 +56,14 @@
                     Text="Ingresa con tu cuenta habitual."
                     TextColor="#1C375C" />
                     <Entry
+                        x:Name="nom"
                     Grid.Row="2"
                     Margin="0,20,0,0"
                     HorizontalOptions="FillAndExpand"
                     Placeholder="Correo"
                     Text="{Binding UserName}"
-                    VerticalOptions="FillAndExpand" />
+                    VerticalOptions="FillAndExpand"
+                        Unfocused="Entry_Unfocused"/>
                     <Entry
                     Grid.Row="3"
                     HorizontalOptions="FillAndExpand"
