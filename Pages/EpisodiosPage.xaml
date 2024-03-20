@@ -15,7 +15,7 @@
                 <VerticalStackLayout>
                     <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout>
-                            <ImageButton Source="ic_logo_historial_medico.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+                            <ImageButton Source="ic_logo_historial_medico.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="HistorialPage"/>
                         </VerticalStackLayout>
                     </Frame>
                     <Label Text="Historial" HorizontalOptions="Center" FontAttributes="Bold"/>

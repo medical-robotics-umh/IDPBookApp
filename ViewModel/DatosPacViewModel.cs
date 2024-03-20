@@ -18,7 +18,6 @@ public partial class DatosPacViewModel : BaseViewModel
     ObservableCollection<object> selectDiag = new();
     async void GetPac()
     {
-        //HACK Falta una condición que evite entrar a la info si el paciente es anonimo
         Paciente = await FirebaseConnecty.GetPacienteModel(firebaseConnecty.pacInfo.Uid);
         if(Paciente != null)
         {

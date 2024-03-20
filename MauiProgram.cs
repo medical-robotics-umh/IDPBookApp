@@ -2,6 +2,7 @@
 using IDPBookApp.Pages;
 using IDPBookApp.ViewModel;
 using Microsoft.Extensions.Logging;
+using CommunityToolkit.Maui;
 
 namespace IDPBookApp;
 
@@ -12,6 +13,7 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
+            .UseMauiCommunityToolkit()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -43,6 +45,11 @@ public static class MauiProgram
         builder.Services.AddTransient<NewPacViewModel>();
         builder.Services.AddTransient<DatosPacPage>();
         builder.Services.AddTransient<DatosPacViewModel>();
+        builder.Services.AddTransient<HistorialPage>();
+        builder.Services.AddTransient<HistoViewModel>();
+        builder.Services.AddTransient<NHistorial>();
+        builder.Services.AddTransient<NewHistoViewModel>();
+
 #endif
         return builder.Build();
 	}

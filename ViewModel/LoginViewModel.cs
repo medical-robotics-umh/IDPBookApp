@@ -38,11 +38,11 @@ public partial class LoginViewModel : BaseViewModel
         {
             if(ex.Message.Contains("INVALID_LOGIN_CREDENTIALS"))
             {
-                await App.Current.MainPage.DisplayAlert("Aviso.","INVALID_LOGIN_CREDENTIALS","Ok");
+                await App.Current.MainPage.DisplayAlert("Aviso.","Las credenciales propocionadas no coinciden con ningun usuario","Ok");
             }
-            else
+            else if (ex.Message.Contains("INVALID_EMAIL"))
             {
-                await App.Current.MainPage.DisplayAlert("Aviso.",ex.Message, "Ok");
+                await App.Current.MainPage.DisplayAlert("Aviso.","Revisa que el correo no contenga espacios en blanco o cualquier caracter especial no permitido.", "Ok");
             }            
         }
     }

@@ -62,9 +62,9 @@
                     HorizontalOptions="FillAndExpand"
                     Placeholder="Correo"
                     Text="{Binding UserName}"
-                    VerticalOptions="FillAndExpand"
-                        Unfocused="Entry_Unfocused"/>
+                    VerticalOptions="FillAndExpand"/>
                     <Entry
+                        x:Name="pas"
                     Grid.Row="3"
                     HorizontalOptions="FillAndExpand"
                     IsPassword="True"
@@ -75,6 +75,7 @@
                     Grid.Row="4"
                     BackgroundColor="#1C375C"
                     Command="{Binding LoginBtnCommand}"
+                        Pressed="Button_Pressed"
                     CornerRadius="20"
                     Text="Ingresar" />
                     <StackLayout
