@@ -172,6 +172,29 @@ public class FirebaseConnecty
         }
     }
 
+    public static async Task<List<HistoriaModel>> GetHistoriasModel(string ruta)
+    {
+        try
+        {
+            var snapshot = await CrossCloudFirestore.Current.Instance
+                                                    .Collection("/IDPbookDB/" + ruta + "/historial")
+                                                    .GetAsync();
+
+            var docs = new List<HistoriaModel>();
+            foreach (var doc in snapshot.Documents)
+            {
+                docs.Add(doc.ToObject<HistoriaModel>());
+            }
+            return docs;
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex);
+            await Shell.Current.DisplayAlert("GetEpisodiosModel", $"No se pudo accerder: {ex.Message}", "Ok");
+            return null;
+        }
+    }
+
     public static async Task<List<Paciente>> GetPacientesModel(string idMed)
     {
         try
