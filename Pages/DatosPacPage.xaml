@@ -13,16 +13,16 @@
             <Frame HasShadow="True" Margin="10,20" BackgroundColor="Transparent" Padding="10,1,10,10" VerticalOptions="CenterAndExpand">
                 <Grid ColumnDefinitions="Auto,*" RowDefinitions="45,45,45,45,45,45,45,Auto,45,45">
                     <Label Text="Nombre:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry Text="{Binding Paciente.Nombre}" IsEnabled="False" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa nombre" HorizontalTextAlignment="Start" BackgroundColor="White" HeightRequest="35" Keyboard="Text"/>
+                    <Entry Text="{Binding Paciente.Nombre}" IsEnabled="False" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa nombre" HorizontalTextAlignment="Start" HeightRequest="35" Keyboard="Text"/>
 
                     <Label Grid.Row="1" Text="Apellidos:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry Text="{Binding Paciente.Apelld}" IsEnabled="False" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa apellidos" HorizontalTextAlignment="Start" BackgroundColor="White" HeightRequest="35" Keyboard="Text"/>
+                    <Entry Text="{Binding Paciente.Apelld}" IsEnabled="False" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa apellidos" HorizontalTextAlignment="Start" HeightRequest="35" Keyboard="Text"/>
 
                     <Label Grid.Row="2" Text="Correo:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry Text="{Binding Paciente.Correo}"  IsEnabled="False" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa correo" HorizontalTextAlignment="Start" BackgroundColor="White" HeightRequest="35" Keyboard="Email"/>
+                    <Entry Text="{Binding Paciente.Correo}"  IsEnabled="False" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa correo" HorizontalTextAlignment="Start" HeightRequest="35" Keyboard="Email"/>
 
                     <Label Grid.Row="3" Text="Sexo:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Picker SelectedIndex="{Binding Paciente.Sexo}" Grid.Row="3" Grid.Column="1" Title="▼ Seleccionar sexo" BackgroundColor="White" HeightRequest="35"  IsEnabled="False">
+                    <Picker SelectedIndex="{Binding Paciente.Sexo}" Grid.Row="3" Grid.Column="1" Title="▼ Seleccionar sexo"  HeightRequest="35"  IsEnabled="False">
                         <Picker.Items>
                             <x:String>Femenino</x:String>
                             <x:String>Masculino</x:String>
@@ -31,13 +31,13 @@
                     </Picker>
 
                     <Label Grid.Row="4" Text="F. nacimiento:   " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry Text="{Binding Paciente.FechNac}" BackgroundColor="White" CharacterSpacing="2" Grid.Row="4" Grid.Column="1" HorizontalOptions="Start" IsEnabled="False"/>
+                    <Entry Text="{Binding Paciente.FechNac}"  CharacterSpacing="2" Grid.Row="4" Grid.Column="1" HorizontalOptions="Start" IsEnabled="False"/>
 
                     <Label Grid.Row="5" Text="Edad:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry Text="{Binding Fecha}" Grid.Row="5" Grid.Column="1" HorizontalTextAlignment="Start" VerticalOptions="Center" HorizontalOptions="Fill" BackgroundColor="White" HeightRequest="35" IsEnabled="False"/>
+                    <Entry Text="{Binding Fecha}" Grid.Row="5" Grid.Column="1" HorizontalTextAlignment="Start" VerticalOptions="Center" HorizontalOptions="Fill"  HeightRequest="35" IsEnabled="False"/>
 
                     <Label Grid.Row="6" Text="Trat. Actual:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Picker SelectedIndex="{Binding Paciente.TratAct}" IsEnabled="False" Grid.Row="6" Grid.Column="1" Title="▼ Seleccionar tratamiento" BackgroundColor="White" HeightRequest="35">
+                    <Picker SelectedIndex="{Binding Paciente.TratAct}" IsEnabled="False" Grid.Row="6" Grid.Column="1" Title="▼ Seleccionar tratamiento"  HeightRequest="35">
                         <Picker.Items>
                             <x:String>Intravenoso</x:String>
                             <x:String>Subcutáneo</x:String>
@@ -56,10 +56,10 @@
                     </CollectionView>
 
                     <Label Grid.Row="8" Text="Otro Diag:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry Text="{Binding Paciente.OtroDiag}" IsEnabled="False" Grid.Row="8" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="N/A" HorizontalTextAlignment="Start" BackgroundColor="White" HeightRequest="35"/>
+                    <Entry Text="{Binding Paciente.OtroDiag}" IsEnabled="False" Grid.Row="8" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="N/A" HorizontalTextAlignment="Start"  HeightRequest="35"/>
 
                     <Label Grid.Row="9" Text="F. diagnóstico:   " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry Text="{Binding Paciente.FechDiag}" BackgroundColor="White" IsEnabled="False" CharacterSpacing="2" Grid.Row="9" Grid.Column="1" HorizontalOptions="Start"/>
+                    <Entry Text="{Binding Paciente.FechDiag}"  IsEnabled="False" CharacterSpacing="2" Grid.Row="9" Grid.Column="1" HorizontalOptions="Start"/>
                 </Grid>
             </Frame>
         </VerticalStackLayout>

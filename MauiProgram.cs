@@ -49,6 +49,8 @@ public static class MauiProgram
         builder.Services.AddTransient<HistoViewModel>();
         builder.Services.AddTransient<NHistorial>();
         builder.Services.AddTransient<NewHistoViewModel>();
+        builder.Services.AddTransient<HistoDetailPage>();
+        builder.Services.AddTransient<HistoDetailViewModel>();
 
 #endif
         return builder.Build();

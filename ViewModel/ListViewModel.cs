@@ -31,12 +31,13 @@ public partial class ListViewModel : BaseViewModel
     [RelayCommand]
     async Task Navegar_EpisodioAsync(EpisodioModel episodio)
     {
-        //if (episodio != null)
-        //    return;
-        await Shell.Current.GoToAsync(nameof(EpisodioViewPage), true,
+        if (episodio is null)
+            return;
+
+        await Shell.Current.GoToAsync($"{nameof(EpisodioViewPage)}", true,
             new Dictionary<string, object>
             {
-                ["Episodio"] = episodio
+                {"Episodio",episodio}
             });
     }
 

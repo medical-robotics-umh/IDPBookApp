@@ -38,4 +38,17 @@ public partial class HistoViewModel : BaseViewModel
     {
         await Shell.Current.GoToAsync($"{nameof(NHistorial)}?Contador={Historias.Count}");
     }
+
+    [RelayCommand]
+    async Task NavHistoDtailAsync(HistoriaModel historia)
+    {
+        if (historia is null)
+            return;
+
+        await Shell.Current.GoToAsync($"{nameof(HistoDetailPage)}", true,
+            new Dictionary<string, object>
+            {
+                {"Historia",historia}
+            });
+    }
 }

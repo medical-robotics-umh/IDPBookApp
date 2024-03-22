@@ -21,5 +21,6 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(DatosPacPage), typeof(DatosPacPage));
         Routing.RegisterRoute(nameof(HistorialPage), typeof(HistorialPage));
         Routing.RegisterRoute(nameof(NHistorial), typeof(NHistorial));
+        Routing.RegisterRoute(nameof(HistoDetailPage), typeof(HistoDetailPage));        
     }
 }

@@ -26,7 +26,7 @@ public partial class DetailPageViewModel : BaseViewModel
 
     private async Task SeleSin()
     {
-        await Task.Delay(1000);
+        await Task.Delay(50);
         foreach (var item in ListaSinCat)
         {
             var index = ListaSinCat.IndexOf(item.ToString());

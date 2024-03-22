@@ -27,10 +27,9 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:HistoriaModel">
                             <HorizontalStackLayout Spacing="10" Margin="0,2" HorizontalOptions="CenterAndExpand">
-                                <!--<HorizontalStackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ListViewModel}}, Path=Navegar_EpisodioCommand}"
-                                                      CommandParameter="{Binding .}"/>
-                                </HorizontalStackLayout.GestureRecognizers>-->
+                                <HorizontalStackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:HistoViewModel}}, Path=NavHistoDtailCommand}"/>
+                                </HorizontalStackLayout.GestureRecognizers>
                                 <Frame CornerRadius="5" HasShadow="True" WidthRequest="50" HeightRequest="50">
                                     <Image Source="ic_logo_historial_medico.png" Aspect="Fill" WidthRequest="43" HeightRequest="43"/>
                                 </Frame>
