@@ -10,7 +10,7 @@ using System.Net.Http.Headers;
 namespace IDPBookApp.DataBase;
 public class FirebaseConnecty
 {
-    public static FirebaseAuthConfig config = new FirebaseAuthConfig()
+    public static FirebaseAuthConfig config = new()
     {
         ApiKey = "AIzaSyCrqRG1QeBhVY9hRATjaqRZ8Cw_fqEjBwo",
         AuthDomain = "testdb-9da53.firebaseapp.com",

@@ -7,11 +7,12 @@ using Plugin.CloudFirestore;
 
 namespace IDPBookApp.ViewModel;
 
+[QueryProperty(nameof(Contador), nameof(Contador))]
 public partial class NewHistoViewModel : BaseViewModel
 {
     readonly FirebaseConnecty firebaseConnecty;
-    readonly HistoViewModel histoViewModel;
-    INavigation Navigation => Shell.Current.Navigation;
+    private readonly HistoViewModel histoViewModel;
+    static INavigation Navigation => Shell.Current.Navigation;
     public NewHistoViewModel(FirebaseConnecty firebaseConnecty)
     {
         this.firebaseConnecty = firebaseConnecty;        
@@ -76,11 +77,12 @@ public partial class NewHistoViewModel : BaseViewModel
     [RelayCommand]
     async Task NewHisto()
     {
+        Contador++;
         try
         {
             var NuevaHisto = new HistoriaModel
             {
-                HId = "Historia 3",
+                HId = "Historia "+Contador.ToString(),
                 Hfecha = DateTime.Today.ToShortDateString(),
                 HfDiag = FDiag,
                 HActivo = Activ,
@@ -95,7 +97,7 @@ public partial class NewHistoViewModel : BaseViewModel
                              .Collection("IDPbookDB")
                              .Document(firebaseConnecty.pacInfo.Uid)
                              .Collection("historial")
-                             .Document("Hstr3")
+                             .Document("Hstr"+Contador.ToString())
                              .SetAsync(NuevaHisto);            
         }
         catch (Exception ex)
@@ -103,14 +105,11 @@ public partial class NewHistoViewModel : BaseViewModel
             await App.Current.MainPage.DisplayAlert("Error NewHistoVM", ex.Message, "Ok");
         }
 
-        
         var newPage = new HistorialPage(histoViewModel)
         {
             BindingContext = new HistoViewModel(firebaseConnecty)
         };
-        await Navigation.PopAsync();
-        Navigation.InsertPageBefore(newPage,Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
-        await Shell.Current.GoToAsync("..");
-
+        Navigation.InsertPageBefore(newPage, Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
+        await Shell.Current.GoToAsync("../..");
     }
 }

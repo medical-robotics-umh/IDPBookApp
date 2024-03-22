@@ -10,8 +10,8 @@ namespace IDPBookApp.ViewModel;
 public partial class NewPacViewModel : BaseViewModel
 {
     readonly FirebaseConnecty firebaseConnecty;
-    readonly ListaPacViewModel listaPacViewModel;
-    INavigation Navigation => Shell.Current.Navigation;
+    private readonly ListaPacViewModel listaPacViewModel;
+    static INavigation Navigation => Shell.Current.Navigation;
     public NewPacViewModel(FirebaseConnecty firebaseConnecty)
     {
         this.firebaseConnecty = firebaseConnecty;

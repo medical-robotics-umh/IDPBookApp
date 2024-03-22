@@ -11,8 +11,8 @@ namespace IDPBookApp.ViewModel;
 public partial class NewDataViewModel : BaseViewModel
 {
     readonly FirebaseConnecty firebaseConnecty;
-    readonly ListViewModel listViewModel;
-    INavigation Navigation => Shell.Current.Navigation;
+    private readonly ListViewModel listViewModel;
+    static INavigation Navigation => Shell.Current.Navigation;
 
     [ObservableProperty]
     private bool cata_visbl;
@@ -125,8 +125,8 @@ public partial class NewDataViewModel : BaseViewModel
         {
             BindingContext = new ListViewModel(firebaseConnecty)
         };
-        await Navigation.PopAsync();
-        Navigation.InsertPageBefore(EP, Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
+        await NewDataViewModel.Navigation.PopAsync();
+        NewDataViewModel.Navigation.InsertPageBefore(EP, NewDataViewModel.Navigation.NavigationStack[NewDataViewModel.Navigation.NavigationStack.Count - 1]);
         await Shell.Current.GoToAsync("..");
     }
 

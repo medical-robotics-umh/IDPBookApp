@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using IDPBookApp.DataBase;
 using IDPBookApp.Models;
 using IDPBookApp.Pages;
@@ -12,12 +13,12 @@ public partial class HistoViewModel : BaseViewModel
     public HistoViewModel(FirebaseConnecty firebaseConnecty)
     {
         this.firebaseConnecty = firebaseConnecty;
-        Prueba = firebaseConnecty.userInfo.IsEmailVerified;
+        vsblHis = firebaseConnecty.userInfo.IsEmailVerified;
         GetHisto();
     }
     public ObservableCollection<HistoriaModel> Historias { get; set; } = new();
     [ObservableProperty]
-    public bool prueba;
+    public bool vsblHis;
 
     async void GetHisto()
     {
@@ -30,5 +31,11 @@ public partial class HistoViewModel : BaseViewModel
                 Historias.Add(historia);
             }
         }
+    }
+
+    [RelayCommand]
+    async Task GoToNewHisto()
+    {
+        await Shell.Current.GoToAsync($"{nameof(NHistorial)}?Contador={Historias.Count}");
     }
 }

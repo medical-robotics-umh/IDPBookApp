@@ -64,9 +64,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Content Include="testdb-9da53.json">
+	  <GoogleServicesJson Include="testdb-9da53.json">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </Content>
+	  </GoogleServicesJson>
 	</ItemGroup>
 
 	<ItemGroup>
