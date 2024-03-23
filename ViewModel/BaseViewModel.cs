@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 
 namespace IDPBookApp.ViewModel;
 
+[QueryProperty(nameof(Contador), nameof(Contador))]
 public partial class BaseViewModel : ObservableObject
 {
     public BaseViewModel()

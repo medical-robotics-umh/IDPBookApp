@@ -7,7 +7,6 @@ using Plugin.CloudFirestore;
 
 namespace IDPBookApp.ViewModel;
 
-[QueryProperty(nameof(Contador), nameof(Contador))]
 public partial class NewHistoViewModel : BaseViewModel
 {
     readonly FirebaseConnecty firebaseConnecty;
@@ -15,7 +14,7 @@ public partial class NewHistoViewModel : BaseViewModel
     static INavigation Navigation => Shell.Current.Navigation;
     public NewHistoViewModel(FirebaseConnecty firebaseConnecty)
     {
-        this.firebaseConnecty = firebaseConnecty;        
+        this.firebaseConnecty = firebaseConnecty;
     }
     
     [ObservableProperty]

@@ -195,6 +195,29 @@ public class FirebaseConnecty
         }
     }
 
+    public static async Task<List<AnaliticaModel>> GetAnaliticsModel(string ruta)
+    {
+        try
+        {
+            var snapshot = await CrossCloudFirestore.Current.Instance
+                                                    .Collection("/IDPbookDB/" + ruta + "/analiticas")
+                                                    .GetAsync();
+
+            var docs = new List<AnaliticaModel>();
+            foreach (var doc in snapshot.Documents)
+            {
+                docs.Add(doc.ToObject<AnaliticaModel>());
+            }
+            return docs;
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex);
+            await Shell.Current.DisplayAlert("GetAnaliticsModel", $"No se pudo accerder: {ex.Message}", "Ok");
+            return null;
+        }
+    }
+
     public static async Task<List<Paciente>> GetPacientesModel(string idMed)
     {
         try

@@ -28,10 +28,8 @@ public static class MauiProgram
 		builder.Services.AddTransient<DetailPageViewModel>();
         builder.Services.AddTransient<LoginViewModel>();
         builder.Services.AddTransient<MainPage>();
-        builder.Services.AddTransient<DetailPage>();
 		builder.Services.AddSingleton<FirebaseConnecty>();
         builder.Services.AddSingleton<Estado>();
-        builder.Services.AddSingleton<TipoLista>();
         builder.Services.AddSingleton<LoginPage>();
         builder.Services.AddSingleton<CitasPage>();
         builder.Services.AddTransient<Registro>();
@@ -51,7 +49,12 @@ public static class MauiProgram
         builder.Services.AddTransient<NewHistoViewModel>();
         builder.Services.AddTransient<HistoDetailPage>();
         builder.Services.AddTransient<HistoDetailViewModel>();
-
+        builder.Services.AddTransient<PruebasLabPage>();
+        builder.Services.AddTransient<PrbsLabViewModel>();
+        builder.Services.AddTransient<NuevaAnalitica>();
+        builder.Services.AddTransient<NewAnltcViewModel>();
+        builder.Services.AddTransient<AnltcDetailPage>();
+        builder.Services.AddTransient<AnltcDetailViewModel>();
 #endif
         return builder.Build();
 	}

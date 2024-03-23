@@ -2,14 +2,13 @@ using IDPBookApp.ViewModel;
 
 namespace IDPBookApp.Pages;
 
-public partial class DetailPage : ContentPage
+public partial class AnltcDetailPage : ContentPage
 {
-	public DetailPage(DetailPageViewModel detailPageViewModel)
+	public AnltcDetailPage(AnltcDetailViewModel viewModel)
 	{
 		InitializeComponent();
-		BindingContext = detailPageViewModel;
+		BindingContext = viewModel;
 	}
-
     protected override void OnNavigatedTo(NavigatedToEventArgs args)
     {
         base.OnNavigatedTo(args);

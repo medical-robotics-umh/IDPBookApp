@@ -17,6 +17,7 @@ public partial class HistoViewModel : BaseViewModel
         GetHisto();
     }
     public ObservableCollection<HistoriaModel> Historias { get; set; } = new();
+
     [ObservableProperty]
     public bool vsblHis;
 

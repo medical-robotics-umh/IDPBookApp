@@ -9,7 +9,6 @@ public partial class AppShell : Shell
 		InitializeComponent();
 		Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
         Routing.RegisterRoute(nameof(CambiarPass), typeof(CambiarPass));
-        Routing.RegisterRoute(nameof(DetailPage), typeof(DetailPage));
         Routing.RegisterRoute(nameof(Estado), typeof(Estado));
         Routing.RegisterRoute(nameof(Registro), typeof(Registro));
         Routing.RegisterRoute(nameof(CitasPage), typeof(CitasPage));
@@ -21,6 +20,9 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(DatosPacPage), typeof(DatosPacPage));
         Routing.RegisterRoute(nameof(HistorialPage), typeof(HistorialPage));
         Routing.RegisterRoute(nameof(NHistorial), typeof(NHistorial));
-        Routing.RegisterRoute(nameof(HistoDetailPage), typeof(HistoDetailPage));        
+        Routing.RegisterRoute(nameof(HistoDetailPage), typeof(HistoDetailPage));
+        Routing.RegisterRoute(nameof(PruebasLabPage), typeof(PruebasLabPage));
+        Routing.RegisterRoute(nameof(NuevaAnalitica), typeof(NuevaAnalitica));
+        Routing.RegisterRoute(nameof(AnltcDetailPage), typeof(AnltcDetailPage));        
     }
 }

@@ -2,9 +2,9 @@ using IDPBookApp.ViewModel;
 
 namespace IDPBookApp.Pages;
 
-public partial class NuevaAnalitica : ContentPage
+public partial class PruebasLabPage : ContentPage
 {
-	public NuevaAnalitica(NewAnltcViewModel viewModel)
+	public PruebasLabPage(PrbsLabViewModel viewModel)
 	{
 		InitializeComponent();
 		BindingContext = viewModel;

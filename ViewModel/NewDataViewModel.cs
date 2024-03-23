@@ -7,7 +7,6 @@ using Plugin.CloudFirestore;
 
 namespace IDPBookApp.ViewModel;
 
-[QueryProperty(nameof(Contador), nameof(Contador))]
 public partial class NewDataViewModel : BaseViewModel
 {
     readonly FirebaseConnecty firebaseConnecty;
@@ -125,9 +124,8 @@ public partial class NewDataViewModel : BaseViewModel
         {
             BindingContext = new ListViewModel(firebaseConnecty)
         };
-        await NewDataViewModel.Navigation.PopAsync();
-        NewDataViewModel.Navigation.InsertPageBefore(EP, NewDataViewModel.Navigation.NavigationStack[NewDataViewModel.Navigation.NavigationStack.Count - 1]);
-        await Shell.Current.GoToAsync("..");
+        Navigation.InsertPageBefore(EP, Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
+        await Shell.Current.GoToAsync("../..");
     }
 
     [RelayCommand]
