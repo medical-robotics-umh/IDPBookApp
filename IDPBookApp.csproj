@@ -88,6 +88,9 @@
 	  <Compile Update="Pages\NEpisPage.xaml.cs">
 	    <DependentUpon>NEpisPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Pages\NewTratPage.xaml.cs">
+	    <DependentUpon>NewTratPage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -142,7 +145,10 @@
 	  <MauiXaml Update="Pages\Registro.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\Trat_Inmuno.xaml">
+	  <MauiXaml Update="Pages\TratPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\NewTratPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Trat_Inmuno_2.xaml">

@@ -13,7 +13,7 @@ public partial class HistoViewModel : BaseViewModel
     public HistoViewModel(FirebaseConnecty firebaseConnecty)
     {
         this.firebaseConnecty = firebaseConnecty;
-        vsblHis = firebaseConnecty.userInfo.IsEmailVerified;
+        VsblHis = firebaseConnecty.userInfo.IsEmailVerified;
         GetHisto();
     }
     public ObservableCollection<HistoriaModel> Historias { get; set; } = new();

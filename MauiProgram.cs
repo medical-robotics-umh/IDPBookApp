@@ -55,6 +55,9 @@ public static class MauiProgram
         builder.Services.AddTransient<NewAnltcViewModel>();
         builder.Services.AddTransient<AnltcDetailPage>();
         builder.Services.AddTransient<AnltcDetailViewModel>();
+        builder.Services.AddTransient<TratPage>();
+        builder.Services.AddTransient<TratViewModel>();
+        builder.Services.AddTransient<NewTratPage>();
 #endif
         return builder.Build();
 	}

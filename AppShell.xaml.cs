@@ -23,6 +23,8 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(HistoDetailPage), typeof(HistoDetailPage));
         Routing.RegisterRoute(nameof(PruebasLabPage), typeof(PruebasLabPage));
         Routing.RegisterRoute(nameof(NuevaAnalitica), typeof(NuevaAnalitica));
-        Routing.RegisterRoute(nameof(AnltcDetailPage), typeof(AnltcDetailPage));        
+        Routing.RegisterRoute(nameof(AnltcDetailPage), typeof(AnltcDetailPage));
+        Routing.RegisterRoute(nameof(TratPage), typeof(TratPage));
+        Routing.RegisterRoute(nameof(NewTratPage), typeof(NewTratPage));
     }
 }

@@ -264,4 +264,28 @@ public class FirebaseConnecty
             return null;
         }
     }
+
+    public static async Task<Tratamiento> GetTratInmunoModel(string idPac)
+    {
+        try
+        {
+            var datos = await CrossCloudFirestore.Current
+                                     .Instance
+                                     .Collection("/IDPbookDB")
+                                     .Document(idPac)
+                                     .Collection("tratamientos")
+                                     .Document("Inmuno")
+                                     .GetAsync();
+
+            var tratamiento = datos.ToObject<Tratamiento>();
+
+            return tratamiento;
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex);
+            await Shell.Current.DisplayAlert("GetPaciente", $"No se pudo obtener paciente: {ex.Message}", "Ok");
+            return null;
+        }
+    }
 }
