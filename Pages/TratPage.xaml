@@ -7,14 +7,14 @@
              x:DataType="viewmodel:TratViewModel"
              Title="TratPage">
     <ScrollView>
-        <VerticalStackLayout VerticalOptions="FillAndExpand" BackgroundColor="#e2f0d9">
+        <VerticalStackLayout VerticalOptions="FillAndExpand" BackgroundColor="#fbe5d6">
             <ImageButton Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}"/>
             <Label Text="TRATAMIENTO CON" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-38,0,0"/>
             <Label Text="INMUNOGLOBULINAS" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center"/>
 
             <Frame Margin="0,30,0,0" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125" x:Name="estado" HorizontalOptions="Center" IsVisible="{Binding VsblTrat}">
                 <VerticalStackLayout>
-                    <ImageButton Source="ic_logo_agregar.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+                    <ImageButton Source="ic_logo_agregar.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="NewTratPage"/>
                 </VerticalStackLayout>
             </Frame>
             <Label Text="Agregar tratamiento" HorizontalOptions="Center" FontAttributes="Bold" IsVisible="{Binding VsblTrat}"/>
@@ -23,49 +23,68 @@
                 <Label Text="Tratamiento actual" FontSize="Medium" FontAttributes="Bold"/>
             </HorizontalStackLayout>
 
-            <Frame HorizontalOptions="Center" WidthRequest="250" BackgroundColor="Transparent" Padding="0,10" Margin="0,10" HasShadow="True" IsVisible="{Binding VsblAct}">
-                <VerticalStackLayout Spacing="5">
+            <Frame HorizontalOptions="Center" WidthRequest="250" BackgroundColor="Transparent" Padding="0,10" Margin="0,10" HasShadow="True" IsVisible="{Binding VsblAct2}">
+                <CollectionView EmptyView="Aún no hay tratamiento" HorizontalOptions="Center" SelectionMode="Single"/>
+            </Frame>
 
-                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="100" Margin="0,0" Spacing="10">
-                        <Label VerticalOptions="Start" Text="Preparado:" FontAttributes="Bold" WidthRequest="83"/>
-                        <Frame HeightRequest="100" WidthRequest="220" CornerRadius="5" Padding="0">
-                            <Editor Placeholder="Descripción" WidthRequest="210" HorizontalTextAlignment="Start"/>
-                        </Frame>
-                    </HorizontalStackLayout>
+            <Frame BackgroundColor="Transparent" Padding="10,10" Margin="10,10" HasShadow="True" IsVisible="{Binding VsblAct}">
+                <Grid ColumnDefinitions="Auto,*" RowDefinitions="*,*,*,*,*,*,*,*,*" RowSpacing="5">
+                    <Label Text="T. de tratamiento: " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Frame CornerRadius="5" HasShadow="True" WidthRequest="50" HeightRequest="50" Grid.Column="1" HorizontalOptions="End">
+                        <Image Source="{Binding Imagen}" Aspect="Fill" WidthRequest="43" HeightRequest="43"/>
+                    </Frame>
+                    <Picker SelectedIndex="{Binding Tratamiento.TTipo}" Grid.Column="1" Title="N/A"  HeightRequest="35" IsEnabled="False" HorizontalOptions="Start" WidthRequest="90">
+                        <Picker.Items>
+                            <x:String>Intravenoso</x:String>
+                            <x:String>Subcutáneo</x:String>
+                        </Picker.Items>
+                    </Picker>
 
-                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="0,0" Spacing="10">
-                        <Label VerticalOptions="Center" Text="Dosis (gr):" FontAttributes="Bold" WidthRequest="83"/>
-                        <Frame HeightRequest="40" WidthRequest="220" CornerRadius="5" Padding="0">
-                            <Entry VerticalOptions="Center" Placeholder="Introduce dosis" WidthRequest="210" HorizontalTextAlignment="Start"/>
-                        </Frame>
-                    </HorizontalStackLayout>
+                    <Label Grid.Row="1" HorizontalOptions="Start" VerticalOptions="Center" Text="Fecha de inicio:" FontAttributes="Bold"/>
+                    <Entry Text="{Binding Tratamiento.TFecha}" Grid.Column="1" Grid.Row="1" VerticalOptions="Center" IsReadOnly="True"/>
 
-                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Spacing="10">
-                        <Label VerticalOptions="Center" Text="Cadencia:" FontAttributes="Bold" WidthRequest="83"/>
-                        <Picker Title="Seleccionar cadencia" WidthRequest="150">
-                            <Picker.Items>
-                                <x:String>Cada 2 semanas</x:String>
-                                <x:String>Cada 3 semanas</x:String>
-                                <x:String>Cada 4 semanas</x:String>
-                            </Picker.Items>
-                        </Picker>
-                    </HorizontalStackLayout>
+                    <Label Grid.Row="2" HorizontalOptions="Start" VerticalOptions="Start" Text="Preparado:" FontAttributes="Bold" IsVisible="{Binding Intvsbl}"/>
+                    <Editor Text="{Binding Tratamiento.TPrep}" Grid.Row="2" Grid.Column="1" Placeholder="N/A" HorizontalTextAlignment="Start" IsVisible="{Binding Intvsbl}" HorizontalOptions="Fill" IsReadOnly="True" HeightRequest="100"/>
 
-                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Spacing="10">
-                        <Label VerticalOptions="Center" Text="Efectos secundarios:" FontAttributes="Bold" WidthRequest="83"/>
-                        <Picker Title="Seleccionar efectos" WidthRequest="150">
-                            <Picker.Items>
-                                <x:String>Reacción cutánea</x:String>
-                                <x:String>Fiebre</x:String>
-                                <x:String>Dolor articular</x:String>
-                                <x:String>Cefalea</x:String>
-                                <x:String>Malestar general</x:String>
-                                <x:String>Tensión arterial baja</x:String>
-                                <x:String>Anafilaxia</x:String>
-                            </Picker.Items>
-                        </Picker>
-                    </HorizontalStackLayout>
-                </VerticalStackLayout>
+                    <Label Grid.Row="3" HorizontalOptions="Start" VerticalOptions="Center" Text="Dosis (gr):" FontAttributes="Bold" IsVisible="{Binding Intvsbl}"/>
+                    <Entry Text="{Binding Tratamiento.TDosis}" Grid.Row="3" Grid.Column="1" VerticalOptions="Center" Placeholder="N/A" IsVisible="{Binding Intvsbl}" HorizontalTextAlignment="Start" HorizontalOptions="Fill" IsReadOnly="True"/>
+
+                    <Label Grid.Row="4" HorizontalOptions="Start" VerticalOptions="Center" Text="Cadencia:" FontAttributes="Bold" IsVisible="{Binding Intvsbl}"/>
+                    <Picker SelectedIndex="{Binding Tratamiento.TCad}" Grid.Row="4" Grid.Column="1" Title="N/A" HorizontalOptions="Fill" IsEnabled="False" IsVisible="{Binding Intvsbl}">
+                        <Picker.Items>
+                            <x:String>Cada 2 semanas</x:String>
+                            <x:String>Cada 3 semanas</x:String>
+                            <x:String>Cada 4 semanas</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                    <Label Grid.Row="5" HorizontalOptions="Start" VerticalOptions="Center" Text="Hora de infusión:" FontAttributes="Bold" IsVisible="{Binding Subvsbl}"/>
+                    <Entry Text="{Binding Tratamiento.THora}" Grid.Row="5" Grid.Column="1" IsReadOnly="True" IsVisible="{Binding Subvsbl}"/>
+
+                    <Label Grid.Row="6" HorizontalOptions="Start" VerticalOptions="Center" Text="T. de infusión:" FontAttributes="Bold" IsVisible="{Binding Subvsbl}"/>
+                    <Entry Text="{Binding Tratamiento.TTimeInf}" Grid.Row="6" Grid.Column="1" VerticalOptions="Center" Placeholder="N/A" IsVisible="{Binding Subvsbl}" HorizontalTextAlignment="Start" HorizontalOptions="Fill" IsReadOnly="True"/>
+
+                    <Label Grid.Row="7" HorizontalOptions="Start" VerticalOptions="Center" Text="Vel. de infusión:" FontAttributes="Bold" IsVisible="{Binding Subvsbl}"/>
+                    <Entry Text="{Binding Tratamiento.TVelInf}" Grid.Row="7" Grid.Column="1" VerticalOptions="Center" Placeholder="N/A" IsVisible="{Binding Subvsbl}" HorizontalTextAlignment="Start" HorizontalOptions="Fill" IsReadOnly="True"/>
+
+                    <Label Grid.Row="8" HorizontalOptions="Start" VerticalOptions="Start" Text="Ef. secundarios:" FontAttributes="Bold" />
+                    <Grid ColumnDefinitions="28,*" RowDefinitions="25,25,25,25,25,25,25" Grid.Row="8" Grid.Column="1" Margin="0,0,0,5" HorizontalOptions="Fill">
+                        <CheckBox IsEnabled="False" IsChecked="{Binding Ef1}" Margin="0,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <Label Grid.Column="1" Text="Reacción cutánea." HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <CheckBox IsEnabled="False" Grid.Row="1" IsChecked="{Binding Ef2}" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <Label Grid.Row="1" Grid.Column="1" Text="Fiebre." HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <CheckBox IsEnabled="False" Grid.Row="2" IsChecked="{Binding Ef3}" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <Label Grid.Row="2" Grid.Column="1" Text="Dolor articular." HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <CheckBox IsEnabled="False" Grid.Row="3" IsChecked="{Binding Ef4}" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <Label Grid.Row="3" Grid.Column="1" Text="Cefalea." HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <CheckBox IsEnabled="False" Grid.Row="4" IsChecked="{Binding Ef5}" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <Label Grid.Row="4" Grid.Column="1" Text="Malestar general." HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <CheckBox IsEnabled="False" Grid.Row="5" IsChecked="{Binding Ef6}" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <Label Grid.Row="5" Grid.Column="1" Text="Tensión arterial baja." HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <CheckBox IsEnabled="False" Grid.Row="6" IsChecked="{Binding Ef7}" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <Label Grid.Row="6" Grid.Column="1" Text="Anafilaxia." HorizontalOptions="Start" VerticalOptions="Center"/>
+                    </Grid>                    
+                </Grid>
             </Frame>
         </VerticalStackLayout>
     </ScrollView>

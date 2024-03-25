@@ -274,7 +274,7 @@ public class FirebaseConnecty
                                      .Collection("/IDPbookDB")
                                      .Document(idPac)
                                      .Collection("tratamientos")
-                                     .Document("Inmuno")
+                                     .Document("InmunoActual")
                                      .GetAsync();
 
             var tratamiento = datos.ToObject<Tratamiento>();
