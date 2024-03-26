@@ -315,4 +315,27 @@ public class FirebaseConnecty
             return null;
         }
     }
+
+    public static async Task<List<Vacuna>> GetVacunasModel(string ruta)
+    {
+        try
+        {
+            var snapshot = await CrossCloudFirestore.Current.Instance
+                                                    .Collection("/IDPbookDB/"+ruta+"/vacunas")
+                                                    .GetAsync();
+
+            var docs = new List<Vacuna>();
+            foreach (var doc in snapshot.Documents)
+            {
+                docs.Add(doc.ToObject<Vacuna>());
+            }
+            return docs;
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex);
+            await Shell.Current.DisplayAlert("GetVacunasModel", $"No se pudo accerder: {ex.Message}", "Ok");
+            return null;
+        }
+    }
 }

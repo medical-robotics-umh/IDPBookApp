@@ -31,37 +31,44 @@ public partial class NewOTratViewModel : BaseViewModel
 
     [RelayCommand]
     async Task NewOtroTrat()
-    {        
-        try
+    {
+        if (OTNombre == string.Empty || OTNombre == null)
         {
-            var NuevoTrat = new OtroTrat
+            await App.Current.MainPage.DisplayAlert("Campo vacio.", "Ingresar nombre del tratamiento antes de guardarlo.", "Ok");
+        }
+        else
+        {
+            try
             {
-                OTFecha= DateTime.Today.ToShortDateString(),
-                OTNombre = OTNombre,
-                OTDosis = OTDosis,
-                OTCad = OTCad,
-                OTFini = OTFini.ToShortDateString(),
-                OTFfin = OTFfin.ToShortDateString()
-            };
-            await CrossCloudFirestore.Current
-                             .Instance
-                             .Collection("IDPbookDB")
-                             .Document(firebaseConnecty.pacInfo.Uid)
-                             .Collection("tratamientos")
-                             .Document("OTrat"+Contador.ToString())
-                             .SetAsync(NuevoTrat);
-            Contador++;
-        }
-        catch (Exception ex)
-        {
-            await App.Current.MainPage.DisplayAlert("Error NewOtroTratVM", ex.Message, "Ok");
-        }
+                var NuevoTrat = new OtroTrat
+                {
+                    OTFecha = DateTime.Today.ToShortDateString(),
+                    OTNombre = OTNombre,
+                    OTDosis = OTDosis,
+                    OTCad = OTCad,
+                    OTFini = OTFini.ToShortDateString(),
+                    OTFfin = OTFfin.ToShortDateString()
+                };
+                await CrossCloudFirestore.Current
+                                 .Instance
+                                 .Collection("IDPbookDB")
+                                 .Document(firebaseConnecty.pacInfo.Uid)
+                                 .Collection("tratamientos")
+                                 .Document("OTrat" + Contador.ToString())
+                                 .SetAsync(NuevoTrat);
+                Contador++;
+            }
+            catch (Exception ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Error NewOtroTratVM", ex.Message, "Ok");
+            }
 
-        var newPage = new OtroTratPage(viewModel)
-        {
-            BindingContext = new OtroTratViewModel(firebaseConnecty)
-        };
-        Navigation.InsertPageBefore(newPage, Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
-        await Shell.Current.GoToAsync("../..");
+            var newPage = new OtroTratPage(viewModel)
+            {
+                BindingContext = new OtroTratViewModel(firebaseConnecty)
+            };
+            Navigation.InsertPageBefore(newPage, Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
+            await Shell.Current.GoToAsync("../..");
+        }
     }
 }

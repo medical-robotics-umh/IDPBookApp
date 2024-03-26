@@ -1,4 +1,5 @@
 ﻿using IDPBookApp.Pages;
+using IDPBookApp.ViewModel;
 
 namespace IDPBookApp;
 
@@ -29,5 +30,8 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(OtroTratPage), typeof(OtroTratPage));
         Routing.RegisterRoute(nameof(NewOTratPage), typeof(NewOTratPage));
         Routing.RegisterRoute(nameof(OtroTratDetailPage), typeof(OtroTratDetailPage));
+        Routing.RegisterRoute(nameof(VacunasPage), typeof(VacunasPage));
+        Routing.RegisterRoute(nameof(Nueva_Vacuna), typeof(Nueva_Vacuna));
+        Routing.RegisterRoute(nameof(VacunaDetailPage), typeof(VacunaDetailPage));
     }
 }

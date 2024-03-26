@@ -2,9 +2,9 @@ using IDPBookApp.ViewModel;
 
 namespace IDPBookApp.Pages;
 
-public partial class Nueva_Vacuna : ContentPage
+public partial class VacunasPage : ContentPage
 {
-	public Nueva_Vacuna(NewVacunaViewModel viewModel)
+	public VacunasPage(VacunasViewModel viewModel)
 	{
 		InitializeComponent();
 		BindingContext = viewModel;
