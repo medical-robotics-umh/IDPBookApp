@@ -44,7 +44,7 @@
                 <VerticalStackLayout Grid.Row="1" Grid.Column="1">
                     <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout Spacing="5">
-                            <ImageButton Source="ic_logo_otros_tratamientos.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+                            <ImageButton Source="ic_logo_otros_tratamientos.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="OtroTratPage"/>
                         </VerticalStackLayout>
                     </Frame>
                     <Label Text="Otros tratamientos" HorizontalOptions="Center" FontAttributes="Bold"/>

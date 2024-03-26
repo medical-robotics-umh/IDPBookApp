@@ -1,9 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
 using IDPBookApp.DataBase;
 using IDPBookApp.Models;
-using IDPBookApp.Pages;
-using System.Collections.ObjectModel;
 
 namespace IDPBookApp.ViewModel;
 

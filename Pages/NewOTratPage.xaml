@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IDPBookApp.Pages.NewOTratPage"
+             xmlns:model="clr-namespace:IDPBookApp.Models"
+             xmlns:viewmodel="clr-namespace:IDPBookApp.ViewModel"
+             x:DataType="viewmodel:NewOTratViewModel"
+             Title="Otros_Trat">
+    <ScrollView>
+        <VerticalStackLayout BackgroundColor="#fffbef" Spacing="0">
+            <ImageButton Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}"/>
+            <Label Text="NUEVO TRATAMIENTO" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
+
+            <Frame HasShadow="True" Margin="10,10" BackgroundColor="Transparent" Padding="10,10">
+                <Grid ColumnDefinitions="Auto,*" RowDefinitions="*,*,*,*,*,80" RowSpacing="5">
+                    <Label VerticalOptions="Center" HorizontalOptions="Start" Text="Nombre:" FontAttributes="Bold"/>
+                    <Entry Text="{Binding OTNombre}" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Placeholder="Nombre del tratamiento" WidthRequest="210" HorizontalTextAlignment="Start" Keyboard="Text" ReturnType="Next" BackgroundColor="GhostWhite"/>
+
+                    <Label Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Start" Text="Dosis:" FontAttributes="Bold"/>
+                    <Entry Text="{Binding OTDosis}" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Placeholder="Introduce dosis" WidthRequest="210" HorizontalTextAlignment="Start" Keyboard="Text" ReturnType="Next" BackgroundColor="GhostWhite"/>
+
+                    <Label Grid.Row="2" VerticalOptions="Center" HorizontalOptions="Start" Text="Cadencia:" FontAttributes="Bold"/>
+                    <Entry Text="{Binding OTCad}" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Placeholder="Introduce cadencia" WidthRequest="210" HorizontalTextAlignment="Start" Keyboard="Text" ReturnType="Go" BackgroundColor="GhostWhite"/>
+
+                    <Label Grid.Row="3" VerticalOptions="Center" HorizontalOptions="Start" Text="Fecha inicio:  " FontAttributes="Bold"/>
+                    <DatePicker Date="{Binding OTFini}" Grid.Row="3" Grid.Column="1" VerticalOptions="Center" BackgroundColor="GhostWhite" HorizontalOptions="Start"/>
+
+                    <Label Grid.Row="4" VerticalOptions="Center" HorizontalOptions="Start" Text="Fecha fin:" FontAttributes="Bold"/>
+                    <DatePicker Date="{Binding OTFfin}" Grid.Row="4" Grid.Column="1" VerticalOptions="Center" BackgroundColor="GhostWhite" HorizontalOptions="Start"/>
+
+                    <Button Grid.Row="5" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="-100,0,0,0" Text="Agregar" BackgroundColor="Green" WidthRequest="90" HeightRequest="45" Command="{Binding NewOtroTratCommand}"/>
+                    <Button Grid.Row="5" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="100,0,0,0" Text="Salir" BackgroundColor="PaleVioletRed" WidthRequest="90" HeightRequest="45" Command="{Binding BackBtnCommand}"/>
+                </Grid>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

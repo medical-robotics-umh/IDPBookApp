@@ -91,6 +91,9 @@
 	  <Compile Update="Pages\NewTratPage.xaml.cs">
 	    <DependentUpon>NewTratPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Pages\NewOTratPage.xaml.cs">
+	    <DependentUpon>NewOTratPage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -136,7 +139,13 @@
 	  <MauiXaml Update="Pages\Nueva_Vacuna.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\Otros_Trat.xaml">
+	  <MauiXaml Update="Pages\NewOTratPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\OtroTratDetailPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\OtroTratPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\PruebasLabPage.xaml">

@@ -1,13 +1,9 @@
-﻿using CommunityToolkit.Maui.Core.Views;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using IDPBookApp.DataBase;
 using IDPBookApp.Models;
 using IDPBookApp.Pages;
-using Microsoft.Maui.Controls;
-using Microsoft.Maui;
 using Plugin.CloudFirestore;
-using System;
 
 namespace IDPBookApp.ViewModel;
 

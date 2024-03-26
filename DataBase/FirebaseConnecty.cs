@@ -284,6 +284,33 @@ public class FirebaseConnecty
         catch (Exception ex)
         {
             Debug.WriteLine(ex);
+            await Shell.Current.DisplayAlert("GetTratInmuno", $"No se pudo obtener documento: {ex.Message}", "Ok");
+            return null;
+        }
+    }
+
+    public static async Task<List<OtroTrat>> GetOtrosTratModel(string idPac)
+    {
+        try
+        {
+            var datos = await CrossCloudFirestore.Current
+                                     .Instance
+                                     .Collection("/IDPbookDB")
+                                     .Document(idPac)
+                                     .Collection("tratamientos")
+                                     .WhereEqualsTo("Id","OTrat")
+                                     .GetAsync();
+
+            var tratamientos = new List<OtroTrat>();
+            foreach (var otroTrat in datos.Documents)
+            {
+                tratamientos.Add(otroTrat.ToObject<OtroTrat>());
+            }
+            return tratamientos;
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex);
             await Shell.Current.DisplayAlert("GetPaciente", $"No se pudo obtener paciente: {ex.Message}", "Ok");
             return null;
         }

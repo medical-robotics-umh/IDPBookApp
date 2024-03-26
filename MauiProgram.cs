@@ -59,6 +59,12 @@ public static class MauiProgram
         builder.Services.AddTransient<TratViewModel>();
         builder.Services.AddTransient<NewTratPage>();
         builder.Services.AddTransient<NewTratViewModel>();
+        builder.Services.AddTransient<OtroTratPage>();
+        builder.Services.AddTransient<NewOTratPage>();
+        builder.Services.AddTransient<OtroTratDetailPage>();
+        builder.Services.AddTransient<OtroTratViewModel>();
+        builder.Services.AddTransient<NewOTratViewModel>();
+        builder.Services.AddTransient<OTratDetailViewModel>();
 #endif
         return builder.Build();
 	}
