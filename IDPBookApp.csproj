@@ -32,10 +32,11 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\logoidpbook.svg" ForegroundScale="0.5" />
+		
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\trilogo.svg" BaseSize="300,300" Color="#ffffff"/>
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -60,17 +61,17 @@
 	  <None Remove="Resources\Images\ic_logo_historial_medico.png" />
 	  <None Remove="Resources\Images\triangle.png" />
 	  <None Remove="Resources\Raw\google-services.json" />
+	  <None Remove="Resources\Splash\mainlogoidp.png" />
+	  <None Remove="Resources\Splash\splashlogo.svg" />
+	  <None Remove="Resources\Splash\trilogo.svg" />
 	  <None Remove="testdb-9da53.json" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <GoogleServicesJson Include="Resources\Raw\google-services.json" />
 	  <GoogleServicesJson Include="testdb-9da53.json">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </GoogleServicesJson>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <GoogleServicesJson Include="Resources\Raw\google-services.json" />
 	</ItemGroup>
 
 	<ItemGroup>

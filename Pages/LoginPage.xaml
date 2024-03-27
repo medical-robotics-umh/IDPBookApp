@@ -16,13 +16,11 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <StackLayout Grid.Row="0" HorizontalOptions="Center" Margin="20,20" MaximumHeightRequest="300" MaximumWidthRequest="500">
-                <Image
+            <Image
                     Aspect="AspectFill"
-                    Scale="0.6"
-                    Source="logo_idpbook.png"/>
-            </StackLayout>
-            <Frame
+                    Scale="0.7"
+                    Source="mainlogoidp.png" Margin="42,-30,0,-40"/>
+                <Frame
             Grid.Row="1"
             Margin="0,0,0,-20"
             CornerRadius="50"
@@ -101,7 +99,7 @@
                             <TapGestureRecognizer Command="{Binding ChangePassBtnCommand}"/>
                         </Label.GestureRecognizers>
                     </Label>
-                    <HorizontalStackLayout Grid.Row="7" Spacing="50" HorizontalOptions="Center" Margin="20">
+                    <HorizontalStackLayout Grid.Row="7" Spacing="50" HorizontalOptions="Center">
                         <Image
                         Aspect="AspectFit"
                         HeightRequest="100"

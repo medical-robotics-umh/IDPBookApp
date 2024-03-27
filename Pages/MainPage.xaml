@@ -14,8 +14,8 @@
                 <Label Grid.Column="1" Grid.Row="1" Text="Usuario:" VerticalOptions="Center" HorizontalOptions="Start" FontAttributes="Bold"/>
                 <Label Grid.Column="2" Grid.Row="1" Text="{Binding NPac}" VerticalOptions="Center" HorizontalOptions="Start" FontAttributes="Bold"/>
                 <ImageButton Grid.Column="3" Grid.RowSpan="2" Source="ic_close_sesion.png" Aspect="Fill" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="End" Command="{Binding LogOutBtnCommand}"/>                
-            </Grid>            
-            <Image Source="logo_idpbook.png" Scale="0.38" Aspect="Fill" Margin="0,-20,0,0"/>
+            </Grid>
+            <Image Source="mainlogoidp.png" Scale="0.58" Margin="30,-50,0,-50"/>
             <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*" VerticalOptions="Center" HorizontalOptions="Center" ColumnSpacing="40">
                 <VerticalStackLayout>
                     <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
@@ -73,7 +73,7 @@
                     <Label Text="Redes de pacientes" HorizontalOptions="Center" FontAttributes="Bold"/>
                 </VerticalStackLayout>
             </Grid>
-            <HorizontalStackLayout Spacing="20" HorizontalOptions="Center" Margin="40">
+            <HorizontalStackLayout Spacing="20" HorizontalOptions="Center" Margin="0,25,0,0">
                 <Image
                             Aspect="AspectFit"
                             HeightRequest="80"
