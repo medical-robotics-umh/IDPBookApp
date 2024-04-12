@@ -338,4 +338,26 @@ public class FirebaseConnecty
             return null;
         }
     }
+    public static async Task<List<Cuestionario>> GetCuestionariosModel(string ruta)
+    {
+        try
+        {
+            var snapshot = await CrossCloudFirestore.Current.Instance
+                                                    .Collection("/IDPbookDB/" + ruta + "/cuestionarios")
+                                                    .GetAsync();
+
+            var docs = new List<Cuestionario>();
+            foreach (var doc in snapshot.Documents)
+            {
+                docs.Add(doc.ToObject<Cuestionario>());
+            }
+            return docs;
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex);
+            await Shell.Current.DisplayAlert("GetCuestionariosModel", $"No se pudo accerder: {ex.Message}", "Ok");
+            return null;
+        }
+    }
 }

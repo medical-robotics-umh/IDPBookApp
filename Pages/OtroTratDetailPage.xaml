@@ -7,7 +7,7 @@
              x:DataType="viewmodel:OTratDetailViewModel"
              Title="OtroTratDetailPage">
     <ScrollView>
-        <VerticalStackLayout BackgroundColor="#fffbef" Spacing="0">
+        <VerticalStackLayout BackgroundColor="#fbe5d6" Spacing="0">
             <ImageButton Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}"/>
             <Label Text="{Binding Tratamiento.OTNombre}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 

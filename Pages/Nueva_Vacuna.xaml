@@ -7,7 +7,7 @@
              x:DataType="viewmodel:NewVacunaViewModel"
              Title="Nueva_Vacuna">
     <ScrollView>
-        <VerticalStackLayout VerticalOptions="FillAndExpand" BackgroundColor="#fffbef">
+        <VerticalStackLayout VerticalOptions="FillAndExpand" BackgroundColor="#BDD7EE">
             <ImageButton Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}"/>
             <Label Text="NUEVA VACUNA" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 

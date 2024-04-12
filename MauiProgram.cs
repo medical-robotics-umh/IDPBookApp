@@ -71,6 +71,12 @@ public static class MauiProgram
         builder.Services.AddTransient<VacunasViewModel>();
         builder.Services.AddTransient<NewVacunaViewModel>();
         builder.Services.AddTransient<VacunaDetailViewModel>();
+        builder.Services.AddTransient<EncuestasPage>();
+        builder.Services.AddTransient<EncuestaDetailPage>();
+        builder.Services.AddTransient<NuevaEncuestaPage>();
+        builder.Services.AddTransient<EncuestasViewModel>();
+        builder.Services.AddTransient<EncuestaDetailViewModel>();
+        builder.Services.AddTransient<NuevaEncuestaViewModel>();
 #endif
         return builder.Build();
 	}

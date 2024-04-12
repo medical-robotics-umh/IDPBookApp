@@ -62,10 +62,10 @@
                 <VerticalStackLayout Grid.Row="2" Grid.Column="1">
                     <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout Spacing="5">
-                            <ImageButton Source="ic_logo_calidad_vida.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+                            <ImageButton Source="ic_logo_calidad_vida.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="EncuestasPage"/>
                         </VerticalStackLayout>
                     </Frame>
-                    <Label Text="Encuesta calidad" HorizontalOptions="Center" FontAttributes="Bold"/>
+                    <Label Text="Cuestionario Calidad" HorizontalOptions="Center" FontAttributes="Bold"/>
                     <Label Text="de vida" HorizontalOptions="Center" FontAttributes="Bold"/>
                 </VerticalStackLayout>
             </Grid>

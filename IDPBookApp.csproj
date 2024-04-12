@@ -36,7 +36,7 @@
 		
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\trilogo.svg" BaseSize="300,300" Color="#ffffff"/>
+		<MauiSplashScreen Include="Resources\Splash\trilogo.svg" BaseSize="300,300" Color="#ffffff" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -59,6 +59,8 @@
 	  <None Remove="Resources\Images\ic_episode_list.png" />
 	  <None Remove="Resources\Images\ic_logo_agregar.png" />
 	  <None Remove="Resources\Images\ic_logo_historial_medico.png" />
+	  <None Remove="Resources\Images\regla.png" />
+	  <None Remove="Resources\Images\thumb.svg" />
 	  <None Remove="Resources\Images\triangle.png" />
 	  <None Remove="Resources\Raw\google-services.json" />
 	  <None Remove="Resources\Splash\mainlogoidp.png" />
@@ -107,6 +109,12 @@
 	  <MauiXaml Update="Pages\DatosPacPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\EncuestaDetailPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\EncuestasPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\EpisodioViewPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -135,6 +143,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\NuevaAnalitica.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\NuevaEncuestaPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Nueva_Vacuna.xaml">
