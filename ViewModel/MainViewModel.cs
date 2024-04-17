@@ -28,5 +28,24 @@ public partial class MainViewModel : BaseViewModel
             //await App.Current.MainPage.DisplayAlert("Aviso", "Sesión finalizada correctamente", "Ok");
             await Shell.Current.GoToAsync("///LoginPage");
         }
-    }    
+    }
+
+    [RelayCommand]
+    static async Task NavDrive()
+    {
+        await Launcher.Default.OpenAsync("https://drive.google.com/drive/folders/1VNLqw9L-HRp4MsbtxdyZEGqcCsuWG4Td?usp=sharing");
+    }
+
+    [RelayCommand]
+    async Task OpenCalendar()
+    {
+        try
+        {
+            await Launcher.OpenAsync("Calendario:");
+        }
+        catch (Exception ex)
+        {
+            await App.Current.MainPage.DisplayAlert("Error", $"Se produjo un error: {ex.Message}", "Aceptar");
+        }
+    }
 }

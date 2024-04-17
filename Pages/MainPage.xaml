@@ -40,7 +40,7 @@
                 <VerticalStackLayout Grid.Row="1" Grid.Column="0">
                     <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout>
-                            <ImageButton Source="calendario.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="CitasPage"/>
+                            <ImageButton Source="calendario.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding OpenCalendarCommand}"/>
                         </VerticalStackLayout>
                     </Frame>
                     <Label Text="Citas" HorizontalOptions="Center" FontAttributes="Bold"/>
@@ -49,7 +49,7 @@
                 <VerticalStackLayout Grid.Row="1" Grid.Column="1">
                     <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout>
-                            <ImageButton Source="bibliografia.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+                            <ImageButton Source="bibliografia.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavDriveCommand}"/>
                         </VerticalStackLayout>
                     </Frame>
                     <Label Text="Documentación" HorizontalOptions="Center" FontAttributes="Bold"/>
