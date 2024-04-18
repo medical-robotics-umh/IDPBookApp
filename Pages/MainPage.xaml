@@ -40,7 +40,7 @@
                 <VerticalStackLayout Grid.Row="1" Grid.Column="0">
                     <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout>
-                            <ImageButton Source="calendario.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding OpenCalendarCommand}"/>
+                            <ImageButton Source="calendario.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="CitasPage"/>
                         </VerticalStackLayout>
                     </Frame>
                     <Label Text="Citas" HorizontalOptions="Center" FontAttributes="Bold"/>
@@ -58,7 +58,7 @@
                 <VerticalStackLayout Grid.Row="2" Grid.Column="0">
                     <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout>
-                            <ImageButton Source="contacto.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+                            <ImageButton Source="contacto.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="ContactoPage"/>
                         </VerticalStackLayout>
                     </Frame>
                     <Label Text="Contacto sanitario" HorizontalOptions="Center" FontAttributes="Bold"/>
@@ -67,7 +67,7 @@
                 <VerticalStackLayout Grid.Row="2" Grid.Column="1">
                     <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout>
-                            <ImageButton Source="redes_pacientes.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+                            <ImageButton Source="redes_pacientes.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding OpenChatCommand}"/>
                         </VerticalStackLayout>
                     </Frame>
                     <Label Text="Redes de pacientes" HorizontalOptions="Center" FontAttributes="Bold"/>

@@ -16,52 +16,31 @@
         
             <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*" VerticalOptions="Center" HorizontalOptions="Center" ColumnSpacing="40" Margin="0,120,0,0">
             <VerticalStackLayout>
-                <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
-                    <!--<Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="Registro"/>
-                    </Frame.GestureRecognizers>-->
+                <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">                    
                     <VerticalStackLayout Spacing="5">
-                        <Image Source="ic_logo_citas_consultas_externas.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+                            <ImageButton Source="calendario.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding OpenCalendarCommand}"/>
                     </VerticalStackLayout>
                 </Frame>
-                <Label Text="Citas consulta externa" HorizontalOptions="Center" FontAttributes="Bold"/>
+                <Label Text="Calendario" HorizontalOptions="Center" FontAttributes="Bold"/>
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Column="1">
                 <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125" x:Name="estado">
-                    <!--<Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="Estado"/>
-                    </Frame.GestureRecognizers>-->
                     <VerticalStackLayout Spacing="5">
-                        <Image Source="ic_logo_citas_extracciones.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+                            <ImageButton Source="ic_logo_agregar.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding OpenAgendaCommand}"/>
                     </VerticalStackLayout>
                 </Frame>
-                <Label Text="Citas extracciones" HorizontalOptions="Center" FontAttributes="Bold"/>
+                <Label Text="Reservar en agenda" HorizontalOptions="Center" FontAttributes="Bold"/>
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Row="1" Grid.Column="0">
                 <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
-                    <!--<Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="Estado"/>
-                    </Frame.GestureRecognizers>-->
                     <VerticalStackLayout Spacing="5">
-                        <Image Source="ic_enfermera.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
+                            <ImageButton Source="ic_logo_agregar.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding OpenEventCalendarCommand}"/>
                     </VerticalStackLayout>
                 </Frame>
-                <Label Text="Citas enfermera" HorizontalOptions="Center" FontAttributes="Bold"/>
-            </VerticalStackLayout>
-
-            <VerticalStackLayout Grid.Row="1" Grid.Column="1">
-                <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
-                    <!--<Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavegarCommand}" CommandParameter="Estado"/>
-                    </Frame.GestureRecognizers>-->
-                    <VerticalStackLayout Spacing="5">
-                        <Image Source="ic_otros.png" Aspect="Fill" WidthRequest="100" HeightRequest="100"/>
-                    </VerticalStackLayout>
-                </Frame>
-                <Label Text="Otras citas" HorizontalOptions="Center" FontAttributes="Bold"/>
-            </VerticalStackLayout>
+                <Label Text="Crear evento" HorizontalOptions="Center" FontAttributes="Bold"/>
+            </VerticalStackLayout>            
         </Grid>
         <HorizontalStackLayout Spacing="20" HorizontalOptions="Center" VerticalOptions="End" Margin="0,120,0,0">
             <Image

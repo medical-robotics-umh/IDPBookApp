@@ -106,6 +106,9 @@
 	  <MauiXaml Update="Pages\CitasPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\ContactoPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\DatosPacPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IDPBookApp.Pages.ContactoPage"
+             xmlns:viewmodel="clr-namespace:IDPBookApp.ViewModel"
+             x:DataType="viewmodel:MainViewModel"
+             Title="ContactoPage">
+    <ScrollView>
+        <VerticalStackLayout BackgroundColor="#FBE5D6" VerticalOptions="FillAndExpand">
+            <Image Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackBtnCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Text="CONTACTO SANITARIO" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
+
+            <Grid ColumnDefinitions="*,*" RowDefinitions="*" VerticalOptions="Center" HorizontalOptions="Center" ColumnSpacing="20" Margin="0,120,0,0">
+                <VerticalStackLayout>
+                    <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="150" HeightRequest="150">
+                        <VerticalStackLayout Spacing="5" VerticalOptions="Center">
+                            <ImageButton Source="correo.png" Aspect="Fill" WidthRequest="130" HeightRequest="100" Command="{Binding OpenNewGmailEmailCommand}"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                    <Label Text="Correo enfermera" HorizontalOptions="Center" FontAttributes="Bold"/>
+                    <Label Text="gestora" HorizontalOptions="Center" FontAttributes="Bold"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Column="1">
+                    <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="150" HeightRequest="150">
+                        <VerticalStackLayout Spacing="5" VerticalOptions="Center">
+                            <ImageButton Source="enfermera.png" Aspect="Fill" WidthRequest="120" HeightRequest="130" Command="{Binding OpenPhoneDialerCommand}"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                    <Label Text="Llamadas enfermera" HorizontalOptions="Center" FontAttributes="Bold"/>
+                    <Label Text="gestora" HorizontalOptions="Center" FontAttributes="Bold"/>
+                </VerticalStackLayout>
+            </Grid>
+            <HorizontalStackLayout Spacing="20" HorizontalOptions="Center" VerticalOptions="End" Margin="0,230,0,0">
+                <Image
+                Aspect="AspectFit"
+                HeightRequest="80"
+                Source="ic_logo_lafe.png"
+                WidthRequest="60" />
+                <Image
+                VerticalOptions="Start"
+                Aspect="AspectFit"
+                HeightRequest="80"
+                Source="ic_logo_umh.png"
+                WidthRequest="60" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,8 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 using IDPBookApp.DataBase;
-using IDPBookApp.Models;
-using IDPBookApp.Pages;
 
 namespace IDPBookApp.ViewModel;
 
@@ -41,11 +38,78 @@ public partial class MainViewModel : BaseViewModel
     {
         try
         {
-            await Launcher.OpenAsync("Calendario:");
+            await Launcher.Default.OpenAsync("https://calendar.google.com/");
         }
         catch (Exception ex)
         {
             await App.Current.MainPage.DisplayAlert("Error", $"Se produjo un error: {ex.Message}", "Aceptar");
+        }
+    }
+
+    [RelayCommand]
+    async Task OpenEventCalendar()
+    {
+        try
+        {
+            //Abre un nuevo evento en Google calendar
+            await Launcher.Default.OpenAsync("https://calendar.google.com/calendar/event?action=TEMPLATE");
+        }
+        catch (Exception ex)
+        {
+            await App.Current.MainPage.DisplayAlert("Error", $"Se produjo un error: {ex.Message}", "Aceptar");
+        }
+    }
+
+    [RelayCommand]
+    async Task OpenAgenda()
+    {
+        try
+        {
+            await Launcher.Default.OpenAsync("https://calendar.app.google/sMucecsooVgmy1oa9");
+        }
+        catch (Exception ex)
+        {
+            await App.Current.MainPage.DisplayAlert("Error", $"Se produjo un error: {ex.Message}", "Aceptar");
+        }
+    }
+
+    [RelayCommand]
+    async Task OpenChat()
+    {
+        try
+        {
+            await Launcher.Default.OpenAsync("https://chat.google.com/room/AAAA9tiUBzs?cls=7");
+        }
+        catch (Exception ex)
+        {
+            await App.Current.MainPage.DisplayAlert("Error", $"Se produjo un error: {ex.Message}", "Aceptar");
+        }
+    }
+
+    [RelayCommand]
+    async Task OpenNewGmailEmailAsync()
+    {
+        try
+        {
+            await Launcher.TryOpenAsync("mailto:?to=idpbook1@gmail.com &subject=Asunto del correo &body=Cuerpo del correo");
+        }
+        catch (Exception ex)
+        {
+            // Manejo de errores, por ejemplo, mostrar un mensaje de error al usuario
+            Console.WriteLine($"No se pudo abrir Gmail para enviar el correo: {ex.Message}");
+        }
+    }
+
+    [RelayCommand]
+    async Task OpenPhoneDialer()
+    {
+        try
+        {
+            await Launcher.TryOpenAsync("tel:+123456789");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"No se pudo abrir la aplicación de teléfono: {ex.Message}");
         }
     }
 }
