@@ -65,7 +65,7 @@ public partial class MainViewModel : BaseViewModel
     {
         try
         {
-            await Launcher.Default.OpenAsync("https://calendar.app.google/sMucecsooVgmy1oa9");
+            await Launcher.Default.OpenAsync("https://calendar.app.google/V59SGBDpAcbBTr246");
         }
         catch (Exception ex)
         {

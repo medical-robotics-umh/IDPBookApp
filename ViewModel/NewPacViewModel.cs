@@ -20,10 +20,6 @@ public partial class NewPacViewModel : BaseViewModel
 
     [ObservableProperty]
     private bool diagncsVisbl;
-    [ObservableProperty]
-    private bool disable=true;
-    [ObservableProperty]
-    private bool medCheck;
 
     [ObservableProperty]
     string nombPac = string.Empty;
@@ -74,7 +70,8 @@ public partial class NewPacViewModel : BaseViewModel
                         TratAct = TratPac,
                         Diagnsc = DiagSelec,
                         OtroDiag = OtroDiag,
-                        FechDiag = FDiag.ToShortDateString()
+                        FechDiag = FDiag.ToShortDateString(),
+                        Pass = "12345678"
                     };
                     await CrossCloudFirestore.Current
                                     .Instance
@@ -111,6 +108,11 @@ public partial class NewPacViewModel : BaseViewModel
                 try
                 {
                     await firebaseConnecty.RegistMed(EmailPac, "0987654", NombPac);
+                    await CrossCloudFirestore.Current
+                                    .Instance
+                                    .Collection("IDPbookDB")
+                                    .Document(firebaseConnecty.userInfo.Uid)
+                                    .SetAsync("Correo",EmailPac);
                     await App.Current.MainPage.DisplayAlert("Correcto", "Se ha creado personal médico: " + NombPac + ". Se ha enviado correo de autenticación al correo del usuario.", "Ok");
                     NombPac = ApllPac = EmailPac = string.Empty;
                     MedCheck = false;

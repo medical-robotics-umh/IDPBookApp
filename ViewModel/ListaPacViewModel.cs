@@ -31,8 +31,8 @@ public partial class ListaPacViewModel:BaseViewModel
     [RelayCommand]
     private async Task GetIdPaciente(Paciente paciente)
     {
-        await firebaseConnecty.ChangePac(paciente.Correo,"12345678");
-        await Shell.Current.DisplayAlert("Aviso","Paciente "+paciente.Nombre+", se ha descargado exitosamente", "Ok");
+        await firebaseConnecty.ChangePac(paciente.Correo,paciente.Pass);
+        await Shell.Current.DisplayAlert("Descarga existosa.","Los datos del paciente:\n\n"+paciente.Nombre+" "+paciente.Apelld+"\n\nhan sido descargados exitosamente.", "Ok");
         await Shell.Current.GoToAsync(nameof(MainPage));
     }
 }

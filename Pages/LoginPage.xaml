@@ -60,7 +60,8 @@
                     HorizontalOptions="FillAndExpand"
                     Placeholder="Correo"
                     Text="{Binding UserName}"
-                    VerticalOptions="FillAndExpand"/>
+                    VerticalOptions="FillAndExpand"
+                        Keyboard="Email"/>
                     <Entry
                         x:Name="pas"
                     Grid.Row="3"
@@ -68,7 +69,7 @@
                     IsPassword="True"
                     Placeholder="Contraseña"
                     Text="{Binding UserPassword}"
-                    VerticalOptions="FillAndExpand" />
+                    VerticalOptions="FillAndExpand"/>
                     <Button
                     Grid.Row="4"
                     BackgroundColor="#1C375C"

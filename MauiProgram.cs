@@ -78,6 +78,8 @@ public static class MauiProgram
         builder.Services.AddTransient<EncuestasViewModel>();
         builder.Services.AddTransient<EncuestaDetailViewModel>();
         builder.Services.AddTransient<NuevaEncuestaViewModel>();
+        builder.Services.AddTransient<CambiarPass>();
+        builder.Services.AddTransient<CamPassViewModel>();
 #endif
         return builder.Build();
 	}

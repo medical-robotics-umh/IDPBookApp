@@ -49,7 +49,6 @@ public class FirebaseConnecty
             MedRepo.SaveUser(firebaseUserCredential.User);
             (userInfo, firebaseCredential) = MedRepo.ReadUser();
         }
-        
     }
 
     public async Task RegistPac(string username, string password, string name)
@@ -144,9 +143,42 @@ public class FirebaseConnecty
         //client.SignOut();
     }
 
-    public void ChangePassword(string password)
+    public async Task ChangePasswordAsync(string correo,string password)
     {
-        firebaseUserCredential.User.ChangePasswordAsync(password);
+        var query = await CrossCloudFirestore.Current
+                                     .Instance
+                                     .Collection("/IDPbookDB")
+                                     .WhereEqualsTo("Correo", correo)
+                                     .GetAsync();
+        var pacientes = new List<Paciente>();
+        foreach (var paciente in query.Documents)
+        {
+            pacientes.Add(paciente.ToObject<Paciente>());
+        }
+        firebaseUserCredential = await client.SignInWithEmailAndPasswordAsync(correo,pacientes[0].Pass);
+        await firebaseUserCredential.User.ChangePasswordAsync(password);
+        await CrossCloudFirestore.Current
+                      .Instance
+                      .Collection("IDPbookDB")
+                      .Document(firebaseUserCredential.User.Uid)
+                      .UpdateAsync("Pass", password);
+        //client.SignOut();
+    }
+
+    public async Task SendEmailAsync(string correo)
+    {
+        var apikey = config.ApiKey;
+        var requestUri = "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=" + apikey;
+        using (var cliente = new HttpClient())
+        {
+            cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var content = new StringContent("{\"email\":\"" + correo + "\",\"requestType\":\"PASSWORD_RESET\"}");
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            var response = await cliente.PostAsync(requestUri, content);
+            response.EnsureSuccessStatusCode();
+        }
     }
 
     public static async Task<List<EpisodioModel>> GetEpisodiosModel(string rutaEpis)

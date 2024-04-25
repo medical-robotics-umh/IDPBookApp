@@ -12,5 +12,6 @@
         public bool[] Diagnsc { get; set; }
         public string OtroDiag { get; set; }
         public string FechDiag { get; set; }
+        public string Pass { get; set; }
     }
 }

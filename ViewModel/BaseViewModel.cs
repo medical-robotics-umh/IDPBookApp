@@ -25,7 +25,12 @@ public partial class BaseViewModel : ObservableObject
     bool auth;
 
     [ObservableProperty]
-    Paciente paciente;        
+    Paciente paciente;
+
+    [ObservableProperty]
+    private bool disable = true;
+    [ObservableProperty]
+    private bool medCheck;
 
     [ObservableProperty]
     ObservableCollection<string> listaSinCat = new()
