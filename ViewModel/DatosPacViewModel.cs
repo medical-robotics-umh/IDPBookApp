@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using IDPBookApp.DataBase;
 using System.Collections.ObjectModel;
+using System.Globalization;
 
 namespace IDPBookApp.ViewModel;
 public partial class DatosPacViewModel : BaseViewModel
@@ -21,11 +22,11 @@ public partial class DatosPacViewModel : BaseViewModel
         Paciente = await FirebaseConnecty.GetPacienteModel(firebaseConnecty.pacInfo.Uid);
         if(Paciente != null)
         {
-            var nac = DateTime.Parse(Paciente.FechNac);
+            var nac = DateTime.ParseExact(Paciente.FechNac, "d/m/yyyy", CultureInfo.InvariantCulture);
             int añosTranscurridos = DateTime.Today.Year - nac.Year;
             if (DateTime.Today.Month < nac.Month || (DateTime.Today.Month == nac.Month && DateTime.Today.Day < nac.Day))
             {
-                añosTranscurridos--; // Resta un año si el cumpleaños aún no ha ocurrido este año
+                añosTranscurridos--; //Resta un año si el cumpleaños aún no ha ocurrido este año
             }
             Fecha = añosTranscurridos;
 
@@ -36,6 +37,11 @@ public partial class DatosPacViewModel : BaseViewModel
                 {
                     SelectDiag.Add(ListaDiagcs[index]);
                 }
+            }
+
+            if (DateTime.Today <= nac)
+            {
+                
             }
         }        
     }

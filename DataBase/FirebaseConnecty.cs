@@ -60,6 +60,11 @@ public class FirebaseConnecty
     public async Task RegistMed(string username, string password, string name)
     {
         firebaseUserCredential = await client.CreateUserWithEmailAndPasswordAsync(username, password, name);
+        await CrossCloudFirestore.Current
+                                    .Instance
+                                    .Collection("IDPbookDB")
+                                    .Document()
+                                    .SetAsync(new { Correo = username });
         var apikey = config.ApiKey;
         var requestUri = "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=" + apikey;
         var idtoken = client.User.GetIdTokenAsync().Result;
@@ -119,6 +124,7 @@ public class FirebaseConnecty
             (userInfo, firebaseCredential) = MedRepo.ReadUser();
             var name = userInfo.DisplayName;
             //Falta asignar "userCredential" a "client", porque el metodo de SignOut() no reconoce ningun objeto, es decir no se ha inicado sesión explicitamente, si no por el repositorio.
+
             await Shell.Current.GoToAsync(nameof(MainPage));
             await App.Current.MainPage.DisplayAlert("Bienvenid@", "Hola " + name + ", has iniciado sesión correctamente.", "Ok");
         }

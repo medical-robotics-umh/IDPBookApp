@@ -97,22 +97,18 @@ public partial class NewPacViewModel : BaseViewModel
                     {
                         await App.Current.MainPage.DisplayAlert("Aviso.", "Favor ingresa un correo para el usuario nuevo.", "Ok");
                     }
-                    else if (ex.Message.Contains("INVALID_EMAIL"))
+                    if (ex.Message.Contains("INVALID_EMAIL"))
                     {
                         await App.Current.MainPage.DisplayAlert("Aviso.", "El correo proporcionado no es valido", "Ok");
                     }
+                    await App.Current.MainPage.DisplayAlert("Aviso.", $"{ex.Message}", "Ok");
                 }                
             }
             else if (Disable == false)
             {
                 try
                 {
-                    await firebaseConnecty.RegistMed(EmailPac, "0987654", NombPac);
-                    await CrossCloudFirestore.Current
-                                    .Instance
-                                    .Collection("IDPbookDB")
-                                    .Document(firebaseConnecty.userInfo.Uid)
-                                    .SetAsync("Correo",EmailPac);
+                    await firebaseConnecty.RegistMed(EmailPac, "0987654", NombPac);                  
                     await App.Current.MainPage.DisplayAlert("Correcto", "Se ha creado personal médico: " + NombPac + ". Se ha enviado correo de autenticación al correo del usuario.", "Ok");
                     NombPac = ApllPac = EmailPac = string.Empty;
                     MedCheck = false;
@@ -123,10 +119,11 @@ public partial class NewPacViewModel : BaseViewModel
                     {
                         await App.Current.MainPage.DisplayAlert("Aviso.", "Favor ingresa un correo para el usuario nuevo.", "Ok");
                     }
-                    else if (ex.Message.Contains("INVALID_EMAIL"))
+                    if (ex.Message.Contains("INVALID_EMAIL"))
                     {
                         await App.Current.MainPage.DisplayAlert("Aviso.", "El correo proporcionado no es valido", "Ok");
                     }
+                    await App.Current.MainPage.DisplayAlert("Aviso.", $"{ex.Message}", "Ok");//EMAIL_EXISTS
                 }
             }
         }
