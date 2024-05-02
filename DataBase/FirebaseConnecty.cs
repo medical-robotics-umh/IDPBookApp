@@ -12,8 +12,8 @@ public class FirebaseConnecty
 {
     public static FirebaseAuthConfig config = new()
     {
-        ApiKey = "AIzaSyCrqRG1QeBhVY9hRATjaqRZ8Cw_fqEjBwo",
-        AuthDomain = "testdb-9da53.firebaseapp.com",
+        ApiKey = "AIzaSyCDhlYSIr_Ic07Ppa_xDYEOl3WiktvSEEs",
+        AuthDomain = "idpbook-lafe-umh.firebaseapp.com",
         Providers = new FirebaseAuthProvider[]
         {
             new GoogleProvider().AddScopes("email"),
@@ -50,7 +50,6 @@ public class FirebaseConnecty
             (userInfo, firebaseCredential) = MedRepo.ReadUser();
         }
     }
-
     public async Task RegistPac(string username, string password, string name)
     {
         firebaseUserCredential = await client.CreateUserWithEmailAndPasswordAsync(username, password, name);
@@ -79,43 +78,6 @@ public class FirebaseConnecty
             response.EnsureSuccessStatusCode();
         }
     }
-
-    //public async Task<UserCredential> LoginWithGoogle()
-    //{
-    //    var url = "";
-    //    var provider = new GoogleProvider();
-    //    try
-    //    {            
-    //        WebAuthenticatorResult result = await WebAuthenticator.Default.AuthenticateAsync(
-    //            new WebAuthenticatorOptions()
-    //            {
-    //                Url = new Uri(url),
-    //                CallbackUrl = new Uri("IDPBookApp://"),
-    //                PrefersEphemeralWebBrowserSession = true
-    //            });
-    //        string accessToken = result?.AccessToken;
-    //    }
-    //    catch(TaskCanceledException e)
-    //    {
-    //        await Shell.Current.DisplayAlert("Error", $"WebAuthenticator: {e.Message}", "Ok");
-    //    }
-    //    try
-    //    {
-    //        var userCredential = await client.SignInWithRedirectAsync(provider.ProviderType, async url =>
-    //        { 
-    //            Uri uri = new(url);
-    //            var response = await Browser.Default.OpenAsync(uri,BrowserLaunchMode.SystemPreferred);
-    //            return "";
-    //        });
-
-    //    }
-    //    catch (Exception ex) 
-    //    {
-    //        await Shell.Current.DisplayAlert("Error", $"No se pudo obtener la cuenta Google: {ex.Message}", "Ok");
-    //    }
-    //    return null;
-    //}
-
     public async void CheckUser()
     {
         if (MedRepo.UserExists() || PacRepo.UserExists())
@@ -133,7 +95,6 @@ public class FirebaseConnecty
             await App.Current.MainPage.DisplayAlert("Aviso", "Sesión caducada", "Ok");
         }
     }
-
     public async Task ChangePac(string username, string password)
     {
         PacRepo.DeleteUser();
@@ -141,14 +102,12 @@ public class FirebaseConnecty
         PacRepo.SaveUser(firebaseUserCredential.User);
         (pacInfo, firebaseCredential2) = PacRepo.ReadUser();
     }
-
     public void LogOut()
     {
         MedRepo.DeleteUser();
         PacRepo.DeleteUser();
         //client.SignOut();
     }
-
     public async Task ChangePasswordAsync(string correo,string password)
     {
         var query = await CrossCloudFirestore.Current
@@ -170,7 +129,6 @@ public class FirebaseConnecty
                       .UpdateAsync("Pass", password);
         //client.SignOut();
     }
-
     public async Task SendEmailAsync(string correo)
     {
         var apikey = config.ApiKey;
@@ -186,7 +144,6 @@ public class FirebaseConnecty
             response.EnsureSuccessStatusCode();
         }
     }
-
     public static async Task<List<EpisodioModel>> GetEpisodiosModel(string rutaEpis)
     {
         try
@@ -209,7 +166,6 @@ public class FirebaseConnecty
             return null;
         }
     }
-
     public static async Task<List<HistoriaModel>> GetHistoriasModel(string ruta)
     {
         try
@@ -232,7 +188,6 @@ public class FirebaseConnecty
             return null;
         }
     }
-
     public static async Task<List<AnaliticaModel>> GetAnaliticsModel(string ruta)
     {
         try
@@ -255,7 +210,6 @@ public class FirebaseConnecty
             return null;
         }
     }
-
     public static async Task<List<Paciente>> GetPacientesModel(string idMed)
     {
         try
@@ -280,7 +234,6 @@ public class FirebaseConnecty
             return null;
         }
     }
-
     public static async Task<Paciente> GetPacienteModel(string idPac)
     {
         try
@@ -302,7 +255,6 @@ public class FirebaseConnecty
             return null;
         }
     }
-
     public static async Task<Tratamiento> GetTratInmunoModel(string idPac)
     {
         try
@@ -326,7 +278,6 @@ public class FirebaseConnecty
             return null;
         }
     }
-
     public static async Task<List<OtroTrat>> GetOtrosTratModel(string idPac)
     {
         try
@@ -353,7 +304,6 @@ public class FirebaseConnecty
             return null;
         }
     }
-
     public static async Task<List<Vacuna>> GetVacunasModel(string ruta)
     {
         try
@@ -398,4 +348,39 @@ public class FirebaseConnecty
             return null;
         }
     }
+    //public async Task<UserCredential> LoginWithGoogle()
+    //{
+    //    var url = "";
+    //    var provider = new GoogleProvider();
+    //    try
+    //    {            
+    //        WebAuthenticatorResult result = await WebAuthenticator.Default.AuthenticateAsync(
+    //            new WebAuthenticatorOptions()
+    //            {
+    //                Url = new Uri(url),
+    //                CallbackUrl = new Uri("IDPBookApp://"),
+    //                PrefersEphemeralWebBrowserSession = true
+    //            });
+    //        string accessToken = result?.AccessToken;
+    //    }
+    //    catch(TaskCanceledException e)
+    //    {
+    //        await Shell.Current.DisplayAlert("Error", $"WebAuthenticator: {e.Message}", "Ok");
+    //    }
+    //    try
+    //    {
+    //        var userCredential = await client.SignInWithRedirectAsync(provider.ProviderType, async url =>
+    //        { 
+    //            Uri uri = new(url);
+    //            var response = await Browser.Default.OpenAsync(uri,BrowserLaunchMode.SystemPreferred);
+    //            return "";
+    //        });
+
+    //    }
+    //    catch (Exception ex) 
+    //    {
+    //        await Shell.Current.DisplayAlert("Error", $"No se pudo obtener la cuenta Google: {ex.Message}", "Ok");
+    //    }
+    //    return null;
+    //}
 }

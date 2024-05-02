@@ -38,12 +38,12 @@ public partial class CamPassViewModel : BaseViewModel
                  .GetAsync();
             if (query.Count == 0)
             {
-                await App.Current.MainPage.DisplayAlert("Usuario no encontrado.", $"No existe un usuario registrado con el correo:\n\n" + UserMail + "\n\nComprueba el correo o comunicate con el personal médico.", "Ok");
+                await App.Current.MainPage.DisplayAlert("Usuario no encontrado", $"No existe un usuario registrado con el correo:\n\n" + UserMail + "\n\nComprueba el correo o comunicate con el personal médico.", "Ok");
             }
             else
             {
                 await firebaseConnecty.SendEmailAsync(UserMail);
-                await App.Current.MainPage.DisplayAlert("Solicitud correcta.", "Se ha enviado un email con las instrucciones para restablecer tu contraseña, por favor revisa tu correo.", "Salir");
+                await App.Current.MainPage.DisplayAlert("Solicitud correcta", "Se ha enviado un email con las instrucciones para restablecer tu contraseña, por favor revisa tu correo.", "Salir");
                 UserMail = string.Empty;
             }
         }
@@ -58,7 +58,7 @@ public partial class CamPassViewModel : BaseViewModel
                         try
                         {
                             await firebaseConnecty.ChangePasswordAsync(UserMail, VerfPassword);
-                            var ban = await App.Current.MainPage.DisplayAlert("Solicitud correcta.", "Se ha actualizado la contraseña para el usuario:\n\n" + UserMail, "Iniciar sesión", "Salir");
+                            var ban = await App.Current.MainPage.DisplayAlert("Solicitud correcta", "Se ha actualizado la contraseña para el usuario:\n\n" + UserMail, "Iniciar sesión", "Salir");
                             if (ban == true)
                             {
                                 await Shell.Current.GoToAsync("..");
@@ -79,17 +79,17 @@ public partial class CamPassViewModel : BaseViewModel
                     }
                     else
                     {
-                        await Shell.Current.DisplayAlert("Verificar contraseña.", "Las contraseñas no coinciden", "Ok");
+                        await Shell.Current.DisplayAlert("Verificar contraseña", "Las contraseñas no coinciden.", "Ok");
                     }
                 }
                 else
                 {
-                    await Shell.Current.DisplayAlert("Contraseña no válida.", "Las contraseña debe contener al menos 6 caracteres", "Ok");
+                    await Shell.Current.DisplayAlert("Contraseña no válida", "Las contraseña debe contener al menos 6 caracteres.", "Ok");
                 }
             }
             else
             {
-                await Shell.Current.DisplayAlert("Campos vacios.", "Escribe la nueva contraseña en los dos campos dispponibles.", "Ok");
+                await Shell.Current.DisplayAlert("Campos vacios", "Escribe la nueva contraseña en los dos campos dispponibles.", "Ok");
             }
         }
     }

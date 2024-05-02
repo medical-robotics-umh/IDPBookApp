@@ -1,42 +1,34 @@
 {
   "project_info": {
-    "project_number": "803669460660",
-    "firebase_url": "https://testdb-9da53-default-rtdb.europe-west1.firebasedatabase.app",
-    "project_id": "testdb-9da53",
-    "storage_bucket": "testdb-9da53.appspot.com"
+    "project_number": "224494237322",
+    "project_id": "idpbook-lafe-umh",
+    "storage_bucket": "idpbook-lafe-umh.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:803669460660:android:f662c09ab72da7e7a1b9e1",
+        "mobilesdk_app_id": "1:224494237322:android:fb5c57aa8af9e985971f73",
         "android_client_info": {
           "package_name": "com.companyname.idpbookapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "803669460660-b0iki2crn5eklhgs0fs1blktaj7s07c0.apps.googleusercontent.com",
+          "client_id": "224494237322-lqb120mf5knmfe9t5umfeov7loebl3mu.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDL8fO569k5zaorSNXRRifTCWVa6Wm9qDU"
+          "current_key": "AIzaSyCDhlYSIr_Ic07Ppa_xDYEOl3WiktvSEEs"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "803669460660-b0iki2crn5eklhgs0fs1blktaj7s07c0.apps.googleusercontent.com",
+              "client_id": "224494237322-lqb120mf5knmfe9t5umfeov7loebl3mu.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "803669460660-trfcaqd0dqp6rnucccq0pkkjb4ui19tm.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.companyname.testdb"
-              }
             }
           ]
         }
@@ -44,35 +36,36 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:803669460660:android:9bc12607b11e2b21a1b9e1",
+        "mobilesdk_app_id": "1:224494237322:android:b80f57462e84e8ae971f73",
         "android_client_info": {
-          "package_name": "com.companyname.testdb"
+          "package_name": "com.mru.idpbook"
         }
       },
       "oauth_client": [
         {
-          "client_id": "803669460660-b0iki2crn5eklhgs0fs1blktaj7s07c0.apps.googleusercontent.com",
+          "client_id": "224494237322-0kgh3a9qj1je7dd30r5csotfspgfbuna.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mru.idpbook",
+            "certificate_hash": "1be2920a51f7b8eaa83889e611ae119cc5f94552"
+          }
+        },
+        {
+          "client_id": "224494237322-lqb120mf5knmfe9t5umfeov7loebl3mu.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDL8fO569k5zaorSNXRRifTCWVa6Wm9qDU"
+          "current_key": "AIzaSyCDhlYSIr_Ic07Ppa_xDYEOl3WiktvSEEs"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "803669460660-b0iki2crn5eklhgs0fs1blktaj7s07c0.apps.googleusercontent.com",
+              "client_id": "224494237322-lqb120mf5knmfe9t5umfeov7loebl3mu.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "803669460660-trfcaqd0dqp6rnucccq0pkkjb4ui19tm.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.companyname.testdb"
-              }
             }
           ]
         }

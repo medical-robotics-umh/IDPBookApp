@@ -59,12 +59,6 @@ public partial class Registro : ContentPage
                     vm.DiagSelec[index] = true;
                 }
             }
-                        
-            Console.WriteLine("Arreglo de estados de selección:");
-            foreach (var isSelected in vm.DiagSelec)
-            {
-                Console.WriteLine(isSelected);
-            }
         }
     }
 }

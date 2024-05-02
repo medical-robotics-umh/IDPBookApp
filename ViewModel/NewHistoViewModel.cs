@@ -99,9 +99,9 @@ public partial class NewHistoViewModel : BaseViewModel
                              .Document("Hstr"+Contador.ToString())
                              .SetAsync(NuevaHisto);            
         }
-        catch (Exception ex)
+        catch
         {
-            await App.Current.MainPage.DisplayAlert("Error NewHistoVM", ex.Message, "Ok");
+            await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n NewHistoViewModel", "Aceptar");
         }
 
         var newPage = new HistorialPage(histoViewModel)

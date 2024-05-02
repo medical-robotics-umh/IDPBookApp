@@ -114,9 +114,9 @@ public partial class NewDataViewModel : BaseViewModel
                              .Document("Ep"+Contador.ToString())
                              .SetAsync(NuevoEpisodio);
         }
-        catch (Exception ex)
+        catch
         {
-            await App.Current.MainPage.DisplayAlert("Error NewDataVM", ex.Message, "Ok");
+            await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n NewDataViewModel", "Aceptar");
         }
 
         //HACK Función para reemplazar el viewmodel y cargar automaticamente la lista de episodios.  

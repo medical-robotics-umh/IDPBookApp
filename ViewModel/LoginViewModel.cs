@@ -42,10 +42,11 @@ public partial class LoginViewModel : BaseViewModel
             {
                 await App.Current.MainPage.DisplayAlert("Aviso.", "Las credenciales propocionadas no coinciden con ningun usuario.", "Ok");
             }
-            else if (ex.Message.Contains("INVALID_EMAIL"))
+            if (ex.Message.Contains("INVALID_EMAIL"))
             {
                 await App.Current.MainPage.DisplayAlert("Aviso.", "Revisa que el correo no contenga espacios en blanco o cualquier caracter especial no permitido.", "Ok");
             }
+            await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n LoginViewModel", "Aceptar");
         }
     }
 

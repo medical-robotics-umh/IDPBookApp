@@ -38,11 +38,6 @@ public partial class DatosPacViewModel : BaseViewModel
                     SelectDiag.Add(ListaDiagcs[index]);
                 }
             }
-
-            if (DateTime.Today <= nac)
-            {
-                
-            }
         }        
     }
 }

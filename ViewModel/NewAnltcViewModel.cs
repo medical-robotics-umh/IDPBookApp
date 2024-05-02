@@ -79,9 +79,9 @@ public partial class NewAnltcViewModel : BaseViewModel
                              .Document("Anltc" + Contador.ToString())
                              .SetAsync(Nuevo);
         }
-        catch (Exception ex)
+        catch
         {
-            await App.Current.MainPage.DisplayAlert("Error NewAnltcVM", ex.Message, "Ok");
+            await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n NewAnltcViewModel", "Aceptar");
         }
 
         var newPage = new PruebasLabPage(prbsLabViewModel)

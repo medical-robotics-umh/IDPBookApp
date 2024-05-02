@@ -51,9 +51,9 @@ public partial class NewVacunaViewModel : BaseViewModel
                                  .SetAsync(NuevaVacuna);
                 Contador++;
             }
-            catch (Exception ex)
+            catch
             {
-                await App.Current.MainPage.DisplayAlert("Error NewVacunaVM", ex.Message, "Ok");
+                await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n NewVacunaViewModel", "Aceptar");
             }
 
             var newPage = new VacunasPage(viewModel)

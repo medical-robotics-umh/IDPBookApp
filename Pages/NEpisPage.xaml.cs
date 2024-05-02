@@ -35,7 +35,6 @@ public partial class NEpisPage : ContentPage
                     viewModel.SelectSinCat[index] = true;
                 }
             }
-
             // Mostrar en consola el arreglo de estados de selección
             //Console.WriteLine("Arreglo de estados de selección:");
             //foreach (var isSelected in viewModel.SelectSinCat)

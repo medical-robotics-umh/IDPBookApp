@@ -22,7 +22,6 @@ public partial class MainViewModel : BaseViewModel
         if (ans == true)
         {
             firebaseConnecty.LogOut();
-            //await App.Current.MainPage.DisplayAlert("Aviso", "Sesión finalizada correctamente", "Ok");
             await Shell.Current.GoToAsync("///LoginPage");
         }
     }
@@ -30,86 +29,91 @@ public partial class MainViewModel : BaseViewModel
     [RelayCommand]
     static async Task NavDrive()
     {
-        await Launcher.Default.OpenAsync("https://drive.google.com/drive/folders/1SDSi4fPLPCWrm4bAsB9wNj-Ne-V-e6z5?usp=sharing");
+        try
+        {
+            await Launcher.Default.OpenAsync("https://drive.google.com/drive/folders/1SDSi4fPLPCWrm4bAsB9wNj-Ne-V-e6z5?usp=sharing");
+        }
+        catch
+        {
+            await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n MainViewModel -> Task NavDrive", "Aceptar");
+        }
     }
 
     [RelayCommand]
-    async Task OpenCalendar()
+    static async Task OpenCalendar()
     {
         try
         {
             await Launcher.Default.OpenAsync("https://calendar.google.com/");
         }
-        catch (Exception ex)
+        catch
         {
-            await App.Current.MainPage.DisplayAlert("Error", $"Se produjo un error: {ex.Message}", "Aceptar");
+            await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n MainViewModel -> Task OpenCalendar", "Aceptar");
         }
     }
 
     [RelayCommand]
-    async Task OpenEventCalendar()
+    static async Task OpenEventCalendar()
     {
         try
         {
-            //Abre un nuevo evento en Google calendar
             await Launcher.Default.OpenAsync("https://calendar.google.com/calendar/event?action=TEMPLATE");
         }
-        catch (Exception ex)
+        catch
         {
-            await App.Current.MainPage.DisplayAlert("Error", $"Se produjo un error: {ex.Message}", "Aceptar");
+            await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n MainViewModel -> Task OpenEventCalendar", "Aceptar");
         }
     }
 
     [RelayCommand]
-    async Task OpenAgenda()
+    static async Task OpenAgenda()
     {
         try
         {
             await Launcher.Default.OpenAsync("https://calendar.app.google/V59SGBDpAcbBTr246");
         }
-        catch (Exception ex)
+        catch
         {
-            await App.Current.MainPage.DisplayAlert("Error", $"Se produjo un error: {ex.Message}", "Aceptar");
+            await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n MainViewModel -> Task OpenAgenda", "Aceptar");
         }
     }
 
     [RelayCommand]
-    async Task OpenChat()
+    static async Task OpenChat()
     {
         try
         {
             await Launcher.Default.OpenAsync("https://chat.google.com/room/AAAA9tiUBzs?cls=7");
         }
-        catch (Exception ex)
+        catch
         {
-            await App.Current.MainPage.DisplayAlert("Error", $"Se produjo un error: {ex.Message}", "Aceptar");
+            await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n MainViewModel -> Task OpenChat", "Aceptar");
         }
     }
 
     [RelayCommand]
-    async Task OpenNewGmailEmailAsync()
+    static async Task OpenNewGmailEmailAsync()
     {
         try
         {
-            await Launcher.TryOpenAsync("mailto:?to=idpbook1@gmail.com &subject=Asunto del correo &body=Cuerpo del correo");
+            await Launcher.TryOpenAsync("mailto:?to=idpbook1@gmail.com &subject=Contacto sanitario IDPBook App");
         }
-        catch (Exception ex)
+        catch
         {
-            // Manejo de errores, por ejemplo, mostrar un mensaje de error al usuario
-            Console.WriteLine($"No se pudo abrir Gmail para enviar el correo: {ex.Message}");
+            await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n MainViewModel -> Task OpenNewGmail", "Aceptar");
         }
     }
 
     [RelayCommand]
-    async Task OpenPhoneDialer()
+    static async Task OpenPhoneDialer()
     {
         try
         {
             await Launcher.TryOpenAsync("tel:+123456789");
         }
-        catch (Exception ex)
+        catch
         {
-            Console.WriteLine($"No se pudo abrir la aplicación de teléfono: {ex.Message}");
+            await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n MainViewModel -> Task OpenPhoneDialer", "Aceptar");
         }
     }
 }

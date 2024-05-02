@@ -58,9 +58,9 @@ public partial class NewOTratViewModel : BaseViewModel
                                  .SetAsync(NuevoTrat);
                 Contador++;
             }
-            catch (Exception ex)
+            catch
             {
-                await App.Current.MainPage.DisplayAlert("Error NewOtroTratVM", ex.Message, "Ok");
+                await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n NewOTratViewModel", "Aceptar");
             }
 
             var newPage = new OtroTratPage(viewModel)

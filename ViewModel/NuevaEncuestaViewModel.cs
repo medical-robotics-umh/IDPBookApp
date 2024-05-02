@@ -55,9 +55,9 @@ public partial class NuevaEncuestaViewModel : BaseViewModel
                              .Document("Cuest"+Contador.ToString())
                              .SetAsync(NuevoCuest);
         }
-        catch (Exception ex)
+        catch
         {
-            await App.Current.MainPage.DisplayAlert("Error NewCuestVM", ex.Message, "Ok");
+            await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n NuevaEncuestaViewModel", "Aceptar");
         }
 
         var newPage = new EncuestasPage(encuestasViewModel)

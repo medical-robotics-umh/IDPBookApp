@@ -95,13 +95,16 @@ public partial class NewPacViewModel : BaseViewModel
                 {
                     if (ex.Message.Contains("MISSING_EMAIL"))
                     {
-                        await App.Current.MainPage.DisplayAlert("Aviso.", "Favor ingresa un correo para el usuario nuevo.", "Ok");
+                        await App.Current.MainPage.DisplayAlert("Aviso", "Favor ingresa un correo para el usuario nuevo.", "Ok");
                     }
                     if (ex.Message.Contains("INVALID_EMAIL"))
                     {
-                        await App.Current.MainPage.DisplayAlert("Aviso.", "El correo proporcionado no es valido", "Ok");
+                        await App.Current.MainPage.DisplayAlert("Aviso", "El correo proporcionado no es valido", "Ok");
                     }
-                    await App.Current.MainPage.DisplayAlert("Aviso.", $"{ex.Message}", "Ok");
+                    if (ex.Message.Contains("EMAIL_EXISTS"))
+                    {
+                        await App.Current.MainPage.DisplayAlert("Aviso", "Ya existe un personal médico con el correo proporcionado, intenta de nuevo con un correo nuevo.", "Ok");
+                    }
                 }                
             }
             else if (Disable == false)
@@ -117,19 +120,22 @@ public partial class NewPacViewModel : BaseViewModel
                 {
                     if (ex.Message.Contains("MISSING_EMAIL"))
                     {
-                        await App.Current.MainPage.DisplayAlert("Aviso.", "Favor ingresa un correo para el usuario nuevo.", "Ok");
+                        await App.Current.MainPage.DisplayAlert("Aviso", "Favor ingresa un correo para el usuario nuevo.", "Ok");
                     }
                     if (ex.Message.Contains("INVALID_EMAIL"))
                     {
-                        await App.Current.MainPage.DisplayAlert("Aviso.", "El correo proporcionado no es valido", "Ok");
+                        await App.Current.MainPage.DisplayAlert("Aviso", "El correo proporcionado no es valido.", "Ok");
                     }
-                    await App.Current.MainPage.DisplayAlert("Aviso.", $"{ex.Message}", "Ok");//EMAIL_EXISTS
+                    if (ex.Message.Contains("EMAIL_EXISTS"))
+                    {
+                        await App.Current.MainPage.DisplayAlert("Aviso", "Ya existe un paciente con el correo proporcionado, intenta de nuevo con un correo nuevo.", "Ok");
+                    }
                 }
             }
         }
         else
         {
-            await App.Current.MainPage.DisplayAlert("Aviso.", "Favor ingresa el nombre del usuario nuevo.", "Ok");
+            await App.Current.MainPage.DisplayAlert("Importante", "Favor ingresa el nombre del usuario nuevo.", "Ok");
         }
     }
 }
