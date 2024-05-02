@@ -30,7 +30,7 @@ public partial class MainViewModel : BaseViewModel
     [RelayCommand]
     static async Task NavDrive()
     {
-        await Launcher.Default.OpenAsync("https://drive.google.com/drive/folders/1VNLqw9L-HRp4MsbtxdyZEGqcCsuWG4Td?usp=sharing");
+        await Launcher.Default.OpenAsync("https://drive.google.com/drive/folders/1SDSi4fPLPCWrm4bAsB9wNj-Ne-V-e6z5?usp=sharing");
     }
 
     [RelayCommand]
