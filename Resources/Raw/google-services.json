@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "224494237322-ejrri3e1o9ucojjivb7beaat04qnaov3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.companyname.idpbookapp",
+            "certificate_hash": "cbce14a664624124ac5b961356c20ee800adde01"
+          }
+        },
+        {
           "client_id": "224494237322-lqb120mf5knmfe9t5umfeov7loebl3mu.apps.googleusercontent.com",
           "client_type": 3
         }

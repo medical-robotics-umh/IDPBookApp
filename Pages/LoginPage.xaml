@@ -77,7 +77,7 @@
                         Pressed="Button_Pressed"
                     CornerRadius="20"
                     Text="Ingresar" />
-                    <StackLayout
+                    <!--<StackLayout
                     Grid.Row="5"
                     Orientation="Horizontal"
                     Spacing="10" HorizontalOptions="Center" Margin="0">
@@ -91,7 +91,7 @@
                         HeightRequest="30"
                         Source="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-icon-png-transparent-background-osteopathy-16.png"
                         WidthRequest="30"/>
-                    </StackLayout>
+                    </StackLayout>-->
                     <Label
                     Grid.Row="6"
                     FontAttributes="Bold"
