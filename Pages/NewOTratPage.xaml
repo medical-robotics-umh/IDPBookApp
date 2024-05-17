@@ -13,14 +13,15 @@
 
             <Frame HasShadow="True" Margin="10,10" BackgroundColor="Transparent" Padding="10,10">
                 <Grid ColumnDefinitions="Auto,*" RowDefinitions="*,*,*,*,*,80" RowSpacing="5">
+                    
                     <Label VerticalOptions="Center" HorizontalOptions="Start" Text="Nombre:" FontAttributes="Bold"/>
-                    <Entry Text="{Binding OTNombre}" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Placeholder="Nombre del tratamiento" WidthRequest="210" HorizontalTextAlignment="Start" Keyboard="Text" ReturnType="Next" BackgroundColor="GhostWhite"/>
+                    <Entry Text="{Binding OTNombre}" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Placeholder="Nombre del tratamiento" HorizontalTextAlignment="Start" Keyboard="Text" ReturnType="Next" BackgroundColor="GhostWhite"/>
 
                     <Label Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Start" Text="Dosis:" FontAttributes="Bold"/>
-                    <Entry Text="{Binding OTDosis}" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Placeholder="Introduce dosis" WidthRequest="210" HorizontalTextAlignment="Start" Keyboard="Text" ReturnType="Next" BackgroundColor="GhostWhite"/>
+                    <Entry Text="{Binding OTDosis}" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Placeholder="Introduce dosis"  HorizontalTextAlignment="Start" Keyboard="Text" ReturnType="Next" BackgroundColor="GhostWhite"/>
 
                     <Label Grid.Row="2" VerticalOptions="Center" HorizontalOptions="Start" Text="Cadencia:" FontAttributes="Bold"/>
-                    <Entry Text="{Binding OTCad}" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Placeholder="Introduce cadencia" WidthRequest="210" HorizontalTextAlignment="Start" Keyboard="Text" ReturnType="Go" BackgroundColor="GhostWhite"/>
+                    <Entry Text="{Binding OTCad}" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Placeholder="Introduce cadencia"  HorizontalTextAlignment="Start" Keyboard="Text" ReturnType="Go" BackgroundColor="GhostWhite"/>
 
                     <Label Grid.Row="3" VerticalOptions="Center" HorizontalOptions="Start" Text="Fecha inicio:  " FontAttributes="Bold"/>
                     <DatePicker Date="{Binding OTFini}" Grid.Row="3" Grid.Column="1" VerticalOptions="Center" BackgroundColor="GhostWhite" HorizontalOptions="Start"/>

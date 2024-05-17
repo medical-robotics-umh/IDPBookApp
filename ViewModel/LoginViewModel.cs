@@ -40,13 +40,20 @@ public partial class LoginViewModel : BaseViewModel
         {
             if (ex.Message.Contains("INVALID_LOGIN_CREDENTIALS"))
             {
-                await App.Current.MainPage.DisplayAlert("Aviso.", "Las credenciales propocionadas no coinciden con ningun usuario.", "Ok");
+                await App.Current.MainPage.DisplayAlert("Credenciales invalidas", "Posibles causas:\n\n► La contraseña es incorrecta.\n► El correo no esta registrado en IDPBook.", "Ok");
             }
             if (ex.Message.Contains("INVALID_EMAIL"))
             {
-                await App.Current.MainPage.DisplayAlert("Aviso.", "Revisa que el correo no contenga espacios en blanco o cualquier caracter especial no permitido.", "Ok");
+                await App.Current.MainPage.DisplayAlert("Correo invalido", "Revisa que el correo no contenga espacios en blanco o cualquier caracter especial no permitido.", "Ok");
             }
-            await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n LoginViewModel", "Aceptar");
+            if (ex.Message.Contains("MISSING_EMAIL"))
+            {
+                await App.Current.MainPage.DisplayAlert("No hay correo", "Escribe un correo registrado en IDPBook.", "Ok");
+            }
+            if (ex.Message.Contains("MISSING_PASSWORD"))
+            {
+                await App.Current.MainPage.DisplayAlert("No hay contraseña", $"Escribe la contraseña asignada al correo:\n\n"+UserName, "Ok");
+            }
         }
     }
 
