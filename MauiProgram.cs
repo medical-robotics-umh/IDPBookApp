@@ -20,15 +20,12 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
-#if DEBUG
-		builder.Logging.AddDebug();
-
-		builder.Services.AddSingleton<BaseViewModel>();
-		builder.Services.AddTransient<MainViewModel>();
-		builder.Services.AddTransient<DetailPageViewModel>();
+        builder.Services.AddSingleton<BaseViewModel>();
+        builder.Services.AddTransient<MainViewModel>();
+        builder.Services.AddTransient<DetailPageViewModel>();
         builder.Services.AddTransient<LoginViewModel>();
         builder.Services.AddTransient<MainPage>();
-		builder.Services.AddSingleton<FirebaseConnecty>();
+        builder.Services.AddSingleton<FirebaseConnecty>();
         builder.Services.AddSingleton<Estado>();
         builder.Services.AddSingleton<LoginPage>();
         builder.Services.AddSingleton<CitasPage>();
@@ -80,6 +77,8 @@ public static class MauiProgram
         builder.Services.AddTransient<NuevaEncuestaViewModel>();
         builder.Services.AddTransient<CambiarPass>();
         builder.Services.AddTransient<CamPassViewModel>();
+#if DEBUG
+        builder.Logging.AddDebug();		
 #endif
         return builder.Build();
 	}
