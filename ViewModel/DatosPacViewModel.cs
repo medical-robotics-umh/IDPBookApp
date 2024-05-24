@@ -1,6 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using IDPBookApp.DataBase;
-using System.Collections.ObjectModel;
 using System.Globalization;
 
 namespace IDPBookApp.ViewModel;
@@ -15,8 +14,34 @@ public partial class DatosPacViewModel : BaseViewModel
 
     [ObservableProperty]
     int fecha;
+
     [ObservableProperty]
-    ObservableCollection<object> selectDiag = new();
+    public bool dICV;
+    [ObservableProperty]
+    public bool dAgam;
+    [ObservableProperty]
+    public bool dDIgA;
+    [ObservableProperty]
+    public bool dDSI;
+    [ObservableProperty]
+    public bool dDRAE;
+    [ObservableProperty]
+    public bool dIComb;
+    [ObservableProperty]
+    public bool dEGC;
+    [ObservableProperty]
+    public bool dM22q;
+    [ObservableProperty]
+    public bool dSWA;
+    [ObservableProperty]
+    public bool dSHIgE;
+    [ObservableProperty]
+    public bool dSHIgM;
+    [ObservableProperty]
+    public bool dALPS;
+    [ObservableProperty]
+    public bool dCMC;
+
     async void GetPac()
     {
         Paciente = await FirebaseConnecty.GetPacienteModel(firebaseConnecty.pacInfo.Uid);
@@ -30,14 +55,19 @@ public partial class DatosPacViewModel : BaseViewModel
             }
             Fecha = añosTranscurridos;
 
-            foreach (var item in ListaDiagcs)
-            {
-                var index = ListaDiagcs.IndexOf(item.ToString());
-                if (Paciente.Diagnsc[index] == true)
-                {
-                    SelectDiag.Add(ListaDiagcs[index]);
-                }
-            }
+            DICV = Paciente.Diagnsc[0];
+            DAgam = Paciente.Diagnsc[1];
+            DDIgA = Paciente.Diagnsc[2];
+            DDSI = Paciente.Diagnsc[3];
+            DDRAE = Paciente.Diagnsc[4];
+            DIComb = Paciente.Diagnsc[5];
+            DEGC = Paciente.Diagnsc[6];
+            DM22q = Paciente.Diagnsc[7];
+            DSWA = Paciente.Diagnsc[8];
+            DSHIgE = Paciente.Diagnsc[9];
+            DSHIgM = Paciente.Diagnsc[10];
+            DALPS = Paciente.Diagnsc[11];
+            DCMC = Paciente.Diagnsc[12];
         }        
     }
 }

@@ -37,19 +37,11 @@ public partial class NewDataViewModel : BaseViewModel
     [ObservableProperty]
     private bool fiebre_bool;
     [ObservableProperty]
-    private bool[] selectSinCat;
-    [ObservableProperty]
     private string otroSinCat;
-    [ObservableProperty]
-    private bool[] selectSinDigest;
     [ObservableProperty]
     private string otroSinDigest;
     [ObservableProperty]
-    private bool[] selectSinUri;
-    [ObservableProperty]
     private string otroSinUri;
-    [ObservableProperty]
-    private bool[] selectSinCut;
     [ObservableProperty]
     private string otroSinCut;
     [ObservableProperty]
@@ -63,15 +55,11 @@ public partial class NewDataViewModel : BaseViewModel
     [ObservableProperty]
     private string antibioDias;
     [ObservableProperty]
-    private string otroTrat;     
-
+    private string otroTrat;
+    
     public NewDataViewModel(FirebaseConnecty firebaseConnecty)
     {
         this.firebaseConnecty = firebaseConnecty;
-        SelectSinCat = new bool[ListaSinCat.Count];
-        SelectSinDigest = new bool[ListaSinDigest.Count];
-        SelectSinUri = new bool[ListaSinUri.Count];
-        SelectSinCut = new bool[ListaSinCut.Count];
         Fecha_Epis = DateTime.Today;
     }
 
@@ -91,13 +79,13 @@ public partial class NewDataViewModel : BaseViewModel
                 EDurac = Durac_entry,
                 EIngreso =  Ingreso_bool,
                 EFiebre = Fiebre_bool,
-                ESinCata = SelectSinCat,
+                ESinCata = new bool[] {STos,SMoco,SDGarg,SDTorax,SSAh},
                 ESinCataChar = OtroSinCat,
-                ESinDigest = SelectSinDigest,
+                ESinDigest = new bool[] { SDiar, SNaVo, SEstr, SDAbd},
                 ESinDigestChar = OtroSinDigest,
-                ESinUri = SelectSinUri,
+                ESinUri = new bool[] { SEscz, SOOsc, SOMal},
                 ESinUriChar = OtroSinUri,
-                ESinCut = SelectSinCut,
+                ESinCut = new bool[] { SPicor, SDolor, SColR},
                 ESinCutChar = OtroSinCut,
                 EOtroSin = OtroSin,
                 ETrat = Trat_bool,

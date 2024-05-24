@@ -33,57 +33,35 @@ public partial class BaseViewModel : ObservableObject
     private bool medCheck;
 
     [ObservableProperty]
-    ObservableCollection<string> listaSinCat = new()
-    {
-        "Tos",
-        "Moco",
-        "Dolor de garganta",
-        "Dolor torácico",
-        "Sensación de ahogo"
-    };
-
+    bool sTos;
     [ObservableProperty]
-    ObservableCollection<string> listaSinDigest = new()
-    {
-        "Diarrea",
-        "Nauseas o vómitos",
-        "Estreñimiento",
-        "Dolor abdominal"
-    };
-
+    bool sMoco;
     [ObservableProperty]
-    ObservableCollection<string> listaSinUri = new()
-    {
-        "Escozor al orinar",
-        "Orina oscura",
-        "Orina maloliente"
-    };
-
+    bool sDGarg;
     [ObservableProperty]
-    ObservableCollection<string> listaSinCut = new()
-    {
-        "Picor",
-        "Dolor",
-        "Coloración rojiza"
-    };
+    bool sDTorax;
     [ObservableProperty]
-
-    ObservableCollection<string> listaDiagcs = new()
-    {
-        "Inmunodeficiencia Común Variable",
-        "Agammaglobulinemia",
-        "Déficit de IgA",
-        "Déficit de Subclases de Inmunoglobulinas",
-        "Déficit de respuesta a antígenos específicos",
-        "Inmunodeficiencia Combinada",
-        "Enfermedad Granulomatosa Crónica",
-        "Microdelección 22q",
-        "Síndrome de Wiscott-Aldrich",
-        "Síndrome de Hiper-IgE",
-        "Síndrome de Hiper-IgM",
-        "ALPS",
-        "Candidiasis Mucocutanea Crónica"
-    };
+    bool sSAh;
+    [ObservableProperty]
+    bool sDiar;
+    [ObservableProperty]
+    bool sNaVo;
+    [ObservableProperty]
+    bool sEstr;
+    [ObservableProperty]
+    bool sDAbd;
+    [ObservableProperty]
+    bool sEscz;
+    [ObservableProperty]
+    bool sOOsc;
+    [ObservableProperty]
+    bool sOMal;
+    [ObservableProperty]
+    bool sPicor;
+    [ObservableProperty]
+    bool sDolor;
+    [ObservableProperty]
+    bool sColR;
 
     [RelayCommand]
     async static Task Navegar(string ruta)

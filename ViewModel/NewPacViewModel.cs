@@ -15,11 +15,7 @@ public partial class NewPacViewModel : BaseViewModel
     public NewPacViewModel(FirebaseConnecty firebaseConnecty)
     {
         this.firebaseConnecty = firebaseConnecty;
-        DiagSelec = new bool[ListaDiagcs.Count];
     }
-
-    [ObservableProperty]
-    private bool diagncsVisbl;
 
     [ObservableProperty]
     string nombPac = string.Empty;
@@ -36,12 +32,39 @@ public partial class NewPacViewModel : BaseViewModel
     [ObservableProperty]
     int tratPac = -1;
     [ObservableProperty]
-    bool[] diagSelec;
-    [ObservableProperty]
     string otroDiag;
     [ObservableProperty]
     DateTime fDiag = DateTime.Today;
 
+    [ObservableProperty]
+    public bool dICV;
+    [ObservableProperty]
+    public bool dAgam;
+    [ObservableProperty]
+    public bool dDIgA;
+    [ObservableProperty]
+    public bool dDSI;
+    [ObservableProperty]
+    public bool dDRAE;
+    [ObservableProperty]
+    public bool dIComb;
+    [ObservableProperty]
+    public bool dEGC;
+    [ObservableProperty]
+    public bool dM22q;
+    [ObservableProperty]
+    public bool dSWA;
+    [ObservableProperty]
+    public bool dSHIgE;
+    [ObservableProperty]
+    public bool dSHIgM;
+    [ObservableProperty]
+    public bool dALPS;
+    [ObservableProperty]
+    public bool dCMC;
+
+    [ObservableProperty]
+    private bool diagncsVisbl;
     [RelayCommand]
     private void VisibleDiag()
     {
@@ -68,7 +91,7 @@ public partial class NewPacViewModel : BaseViewModel
                         Sexo = SexPac,
                         FechNac = FNac.ToShortDateString(),
                         TratAct = TratPac,
-                        Diagnsc = DiagSelec,
+                        Diagnsc = new bool[] {DICV,DAgam,DDIgA,DDSI,DDRAE,DIComb,DEGC,DM22q,DSWA,DSHIgE,DSHIgM,DALPS,DCMC},
                         OtroDiag = OtroDiag,
                         FechDiag = FDiag.ToShortDateString(),
                         Pass = "12345678"

@@ -30,34 +30,11 @@ public partial class Registro : ContentPage
             if(e.Value==true) 
             { 
                 vm.Disable = false;
+                vm.DiagncsVisbl = false;
             }
             else
             {
                 vm.Disable = true;
-            }
-        }
-    }
-
-    private void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        if (BindingContext is NewPacViewModel vm)
-        {
-            foreach (var selectedItem in e.PreviousSelection)
-            {
-                var index = vm.ListaDiagcs.IndexOf(selectedItem.ToString());
-                if (index >= 0 && index < vm.DiagSelec.Length)
-                {
-                    vm.DiagSelec[index] = false;
-                }
-            }
-
-            foreach (var selectedItem in e.CurrentSelection)
-            {
-                var index = vm.ListaDiagcs.IndexOf(selectedItem.ToString());
-                if (index >= 0 && index < vm.DiagSelec.Length)
-                {
-                    vm.DiagSelec[index] = true;
-                }
             }
         }
     }

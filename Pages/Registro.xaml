@@ -49,16 +49,35 @@
 
                     <Label Grid.Row="8" Text="Diagnóstico:" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start" Margin="0,10,0,0"/>
                     <Button IsEnabled="{Binding Disable}" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Text="▼ Seleccionar" Command="{Binding VisibleDiagCommand}" BackgroundColor="LightGray" TextColor="Black" HeightRequest="38"/>
-                    <CollectionView SelectionChanged="CollectionView_SelectionChanged"  IsVisible="{Binding DiagncsVisbl}" ItemsSource="{Binding ListaDiagcs}" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" SelectionMode="Multiple" Margin="0,42,0,0">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid Margin="0,2" Style="{DynamicResource SelectedGridStyle}">
-                                    <Label Grid.Column="1" Text="{Binding .}"/>
-                                </Grid>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                    
+                    <Grid IsVisible="{Binding DiagncsVisbl}" ColumnDefinitions="28,*" RowDefinitions="25,25,25,45,45,25,25,25,25,25,25,25,25" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,42,0,8" RowSpacing="1">
+                        <CheckBox IsChecked="{Binding DICV}" Margin="0,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <Label Grid.Column="1" Text="Inmunodeficiencia Común Variable" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <CheckBox Grid.Row="1" IsChecked="{Binding DAgam}" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <Label Grid.Row="1" Grid.Column="1" Text="Agammaglobulinemia"  HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <CheckBox Grid.Row="2" IsChecked="{Binding DDIgA}" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <Label Grid.Row="2" Grid.Column="1" Text="Déficit de IgA" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <CheckBox Grid.Row="3" IsChecked="{Binding DDSI}" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <Label Grid.Row="3" Grid.Column="1" Text="Déficit de Subclases de Inmunoglobulinas" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <CheckBox Grid.Row="4" IsChecked="{Binding DDRAE}" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <Label Grid.Row="4" Grid.Column="1" Text="Déficit de respuesta a antígenos específicos" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <CheckBox Grid.Row="5" IsChecked="{Binding DIComb}" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <Label Grid.Row="5" Grid.Column="1" Text="Inmunodeficiencia Combinada" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <CheckBox Grid.Row="6" IsChecked="{Binding DEGC}" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <Label Grid.Row="6" Grid.Column="1" Text="Enfermedad Granulomatosa Crónica" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <CheckBox Grid.Row="7" IsChecked="{Binding DM22q}" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <Label Grid.Row="7" Grid.Column="1" Text="Microdelección 22q" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <CheckBox Grid.Row="8" IsChecked="{Binding DSWA}" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <Label Grid.Row="8" Grid.Column="1" Text="Síndrome de Wiscott-Aldrich" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <CheckBox Grid.Row="9" IsChecked="{Binding DSHIgE}" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <Label Grid.Row="9" Grid.Column="1" Text="Síndrome de Hiper-IgE" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <CheckBox Grid.Row="10" IsChecked="{Binding DSHIgM}" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <Label Grid.Row="10" Grid.Column="1" Text="Síndrome de Hiper-IgM" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <CheckBox Grid.Row="11" IsChecked="{Binding DALPS}" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <Label Grid.Row="11" Grid.Column="1" Text="ALPS" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <CheckBox Grid.Row="12" IsChecked="{Binding DCMC}" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <Label Grid.Row="12" Grid.Column="1" Text="Candidiasis Mucocutanea Crónica" HorizontalOptions="Start" VerticalOptions="Center"/>
+                    </Grid>
+
                     <Label Grid.Row="9" Text="Otro Diag:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
                     <Entry Text="{Binding OtroDiag}" IsEnabled="{Binding Disable}" Grid.Row="9" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="N/A" HorizontalTextAlignment="Start" BackgroundColor="White" HeightRequest="35" ReturnType="Next"/>
 
