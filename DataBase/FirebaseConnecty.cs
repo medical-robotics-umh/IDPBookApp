@@ -21,7 +21,7 @@ public class FirebaseConnecty
         },
     };
 
-    private readonly FileUserRepository MedRepo = new("MedUsers");
+    public readonly FileUserRepository MedRepo = new("MedUsers");
     public readonly FileUserRepository PacRepo = new("ListPac");
     public UserInfo userInfo;
     public UserInfo pacInfo;
@@ -48,6 +48,7 @@ public class FirebaseConnecty
             (pacInfo, firebaseCredential2) = PacRepo.ReadUser();
             MedRepo.SaveUser(firebaseUserCredential.User);
             (userInfo, firebaseCredential) = MedRepo.ReadUser();
+
         }
     }
     public async Task RegistPac(string username, string password, string name)
@@ -78,7 +79,7 @@ public class FirebaseConnecty
             response.EnsureSuccessStatusCode();
         }
     }
-    public async void CheckUser()
+    public async Task<bool> CheckUser()
     {
         if (MedRepo.UserExists() || PacRepo.UserExists())
         {
@@ -86,13 +87,14 @@ public class FirebaseConnecty
             (userInfo, firebaseCredential) = MedRepo.ReadUser();
             var name = userInfo.DisplayName;
             //Falta asignar "userCredential" a "client", porque el metodo de SignOut() no reconoce ningun objeto, es decir no se ha inicado sesión explicitamente, si no por el repositorio.
-
             await Shell.Current.GoToAsync(nameof(MainPage));
-            await App.Current.MainPage.DisplayAlert("Bienvenid@", "Hola " + name + ", has iniciado sesión correctamente.", "Ok");
+            await App.Current.MainPage.DisplayAlert("Bienvenido(a)", "Hola " + name + ", has iniciado sesión correctamente.", "Ok");
+            return true;
         }
         else
         {
             await App.Current.MainPage.DisplayAlert("Aviso", "Sesión caducada", "Ok");
+            return false;
         }
     }
     public async Task ChangePac(string username, string password)
@@ -348,6 +350,7 @@ public class FirebaseConnecty
             return null;
         }
     }
+
     //public async Task<UserCredential> LoginWithGoogle()
     //{
     //    var url = "";

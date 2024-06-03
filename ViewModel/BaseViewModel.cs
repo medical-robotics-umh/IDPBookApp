@@ -22,6 +22,9 @@ public partial class BaseViewModel : ObservableObject
     int contador;
 
     [ObservableProperty]
+    bool validCuest;
+
+    [ObservableProperty]
     bool auth;
 
     [ObservableProperty]

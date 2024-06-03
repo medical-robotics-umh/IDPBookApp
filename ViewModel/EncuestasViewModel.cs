@@ -33,7 +33,13 @@ public partial class EncuestasViewModel : BaseViewModel
     [RelayCommand]
     async Task GoToNewCuest()
     {
-        await Shell.Current.GoToAsync($"{nameof(NuevaEncuestaPage)}?Contador={Cuestionarios.Count}");
+        //await Shell.Current.GoToAsync($"{nameof(NuevaEncuestaPage)}?Contador={Cuestionarios.Count}");
+        await Shell.Current.GoToAsync($"{nameof(NuevaEncuestaPage)}", true,
+            new Dictionary<string, object>
+            {
+                {"Contador",Cuestionarios.Count},
+                {"ValidCuest",true}
+            });
     }
 
     [RelayCommand]

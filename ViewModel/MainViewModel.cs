@@ -18,7 +18,7 @@ public partial class MainViewModel : BaseViewModel
     [RelayCommand]
     async Task LogOutBtn()
     {
-        bool ans = await App.Current.MainPage.DisplayAlert("Aviso.", "¿Desea cerrar sesión?", "Aceptar", "Cancelar");
+        bool ans = await App.Current.MainPage.DisplayAlert("Saliendo de la aplicación", "¿Desea cerrar sesión?", "Aceptar", "Cancelar");
         if (ans == true)
         {
             firebaseConnecty.LogOut();

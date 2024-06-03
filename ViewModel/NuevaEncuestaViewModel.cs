@@ -7,6 +7,7 @@ using Plugin.CloudFirestore;
 
 namespace IDPBookApp.ViewModel;
 
+[QueryProperty(nameof(ValidCuest), nameof(ValidCuest))]
 public partial class NuevaEncuestaViewModel : BaseViewModel
 {
     readonly FirebaseConnecty firebaseConnecty;
@@ -15,6 +16,7 @@ public partial class NuevaEncuestaViewModel : BaseViewModel
     public NuevaEncuestaViewModel(FirebaseConnecty firebaseConnecty)
     {
         this.firebaseConnecty = firebaseConnecty;
+        DisBack = ValidCuest;
     }
 
     [ObservableProperty]
@@ -29,6 +31,8 @@ public partial class NuevaEncuestaViewModel : BaseViewModel
     public int qAnsd = -1;
     [ObservableProperty]
     public double qEscala = 0;
+    [ObservableProperty]
+    public bool disBack;
 
     [RelayCommand]
     async Task NewHisto()
@@ -40,6 +44,7 @@ public partial class NuevaEncuestaViewModel : BaseViewModel
             {
                 QId = "Cuestionario "+Contador.ToString(),
                 QFecha = DateTime.Today.ToShortDateString(),
+                //QFecha = "1/9/2023",
                 QMovil = QMovil,
                 QCuid = QCuid,
                 QActDia = QActDia,
@@ -60,11 +65,19 @@ public partial class NuevaEncuestaViewModel : BaseViewModel
             await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n NuevaEncuestaViewModel", "Aceptar");
         }
 
-        var newPage = new EncuestasPage(encuestasViewModel)
+        if (ValidCuest==true)
         {
-            BindingContext = new EncuestasViewModel(firebaseConnecty)
-        };
-        Navigation.InsertPageBefore(newPage, Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
-        await Shell.Current.GoToAsync("../..");
+            var newPage = new EncuestasPage(encuestasViewModel)
+            {
+                BindingContext = new EncuestasViewModel(firebaseConnecty)
+            };
+            Navigation.InsertPageBefore(newPage, Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
+            await Shell.Current.GoToAsync("../..");
+        }
+        else
+        {
+            await Shell.Current.GoToAsync("..");
+        }
     }
+
 }
