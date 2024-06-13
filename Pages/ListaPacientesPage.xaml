@@ -41,6 +41,8 @@
                 </CollectionView>
             </Frame>
 
+            <ActivityIndicator IsRunning="{Binding Run}" Margin="10" HorizontalOptions="Center"/>
+
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

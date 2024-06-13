@@ -97,12 +97,37 @@ public class FirebaseConnecty
             return false;
         }
     }
-    public async Task ChangePac(string username, string password)
+    public async Task ChangePac(string username, string password, bool ban)
     {
-        PacRepo.DeleteUser();
-        firebaseUserCredential = await client.SignInWithEmailAndPasswordAsync(username, password);
-        PacRepo.SaveUser(firebaseUserCredential.User);
-        (pacInfo, firebaseCredential2) = PacRepo.ReadUser();
+        if (ban == true)
+        {
+            PacRepo.DeleteUser();
+            firebaseUserCredential = await client.SignInWithEmailAndPasswordAsync(username, password);
+            PacRepo.SaveUser(firebaseUserCredential.User);
+            (pacInfo, firebaseCredential2) = PacRepo.ReadUser();
+        }
+        else
+        {
+            try
+            {
+                PacRepo.DeleteUser();
+                firebaseUserCredential = await client.SignInWithEmailAndPasswordAsync(username, password);
+                await CrossCloudFirestore.Current
+                         .Instance
+                         .Collection("/IDPbookDB")
+                         .Document(firebaseUserCredential.User.Info.Uid)
+                         .DeleteAsync();
+                await firebaseUserCredential.User.DeleteAsync();
+                var anonimo = await client.SignInAnonymouslyAsync();
+                PacRepo.SaveUser(anonimo.User);
+                (pacInfo, firebaseCredential2) = PacRepo.ReadUser();
+                await anonimo.User.DeleteAsync();
+            }
+            catch (Exception ex)
+            {
+                await Shell.Current.DisplayAlert("ChangePac", $"No se pudo eliminar: {ex.Message}", "Ok");
+            }            
+        }
     }
     public void LogOut()
     {
@@ -289,7 +314,7 @@ public class FirebaseConnecty
                                      .Collection("/IDPbookDB")
                                      .Document(idPac)
                                      .Collection("tratamientos")
-                                     .WhereEqualsTo("Id","OTrat")
+                                     .WhereGreaterThanOrEqualsTo("Id","OTrat")
                                      .GetAsync();
 
             var tratamientos = new List<OtroTrat>();

@@ -45,7 +45,8 @@ public partial class OtroTratViewModel: BaseViewModel
         await Shell.Current.GoToAsync($"{nameof(OtroTratDetailPage)}", true,
             new Dictionary<string, object>
             {
-                {"Tratamiento",tratamiento}
+                {"Tratamiento",tratamiento},
+                {"Contador",OtrosTratmnts.Count}
             });
     }
 }

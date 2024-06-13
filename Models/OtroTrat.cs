@@ -2,7 +2,7 @@
 
 public class OtroTrat
 {
-    public string Id { get; set; } = "OTrat";
+    public string Id { get; set; }
     public string OTFecha { get; set; }
     public string OTNombre { get; set; }
     public string OTDosis { get; set; }

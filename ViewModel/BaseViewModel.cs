@@ -66,6 +66,9 @@ public partial class BaseViewModel : ObservableObject
     [ObservableProperty]
     bool sColR;
 
+    [ObservableProperty]
+    public bool run = false;
+
     [RelayCommand]
     async static Task Navegar(string ruta)
     {

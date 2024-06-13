@@ -12,23 +12,29 @@
             <Label Text="{Binding Tratamiento.OTNombre}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
             <Frame HasShadow="True" Margin="10,10" BackgroundColor="Transparent" Padding="10,10">
-                <Grid ColumnDefinitions="Auto,*" RowDefinitions="*,*,*,*,*" RowSpacing="5">
+                <Grid ColumnDefinitions="Auto,*" RowDefinitions="*,*,*,*,*,80" RowSpacing="5">
                     <Label VerticalOptions="Center" HorizontalOptions="Start" Text="Nombre:" FontAttributes="Bold"/>
-                    <Entry Text="{Binding Tratamiento.OTNombre}" IsReadOnly="True" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Placeholder="Nombre del tratamiento" WidthRequest="210" HorizontalTextAlignment="Start" Keyboard="Text" ReturnType="Next" />
+                    <Entry Text="{Binding Tratamiento.OTNombre}" IsEnabled="{Binding Edit}" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Placeholder="Nombre del tratamiento" WidthRequest="210" HorizontalTextAlignment="Start" Keyboard="Text" ReturnType="Next" />
 
                     <Label Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Start" Text="Dosis:" FontAttributes="Bold"/>
-                    <Entry Text="{Binding Tratamiento.OTDosis}" IsReadOnly="True" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Placeholder="Introduce dosis" WidthRequest="210" HorizontalTextAlignment="Start" Keyboard="Text" ReturnType="Next"/>
+                    <Entry Text="{Binding Tratamiento.OTDosis}" IsEnabled="{Binding Edit}" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Placeholder="Introduce dosis" WidthRequest="210" HorizontalTextAlignment="Start" Keyboard="Text" ReturnType="Next"/>
 
                     <Label Grid.Row="2" VerticalOptions="Center" HorizontalOptions="Start" Text="Cadencia:" FontAttributes="Bold"/>
-                    <Entry Text="{Binding Tratamiento.OTCad}" IsReadOnly="True" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Placeholder="Introduce cadencia" WidthRequest="210" HorizontalTextAlignment="Start" Keyboard="Text" ReturnType="Go"/>
+                    <Entry Text="{Binding Tratamiento.OTCad}" IsEnabled="{Binding Edit}" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Placeholder="Introduce cadencia" WidthRequest="210" HorizontalTextAlignment="Start" Keyboard="Text" ReturnType="Go"/>
 
                     <Label Grid.Row="3" VerticalOptions="Center" HorizontalOptions="Start" Text="Fecha inicio:  " FontAttributes="Bold"/>
-                    <DatePicker Date="{Binding Tratamiento.OTFini}" Grid.Row="3" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" IsEnabled="False"/>
+                    <DatePicker Date="{Binding Tratamiento.OTFini}" Grid.Row="3" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" IsEnabled="{Binding Edit}"/>
 
                     <Label Grid.Row="4" VerticalOptions="Center" HorizontalOptions="Start" Text="Fecha fin:" FontAttributes="Bold"/>
-                    <DatePicker Date="{Binding Tratamiento.OTFfin}" Grid.Row="4" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" IsEnabled="False"/>
+                    <DatePicker Date="{Binding Tratamiento.OTFfin}" Grid.Row="4" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" IsEnabled="{Binding Edit}"/>
+
+                    <Button Grid.Row="5" Grid.ColumnSpan="2" HorizontalOptions="Start" Text="Editar" BackgroundColor="Green" WidthRequest="90" HeightRequest="45" Command="{Binding EditarCommand}"/>
+                    <Button Grid.Row="5" Grid.ColumnSpan="2" HorizontalOptions="Start" Margin="100,0,0,0" Text="Actualizar" BackgroundColor="CornflowerBlue" WidthRequest="90" HeightRequest="45" Command="{Binding ActualizarTratCommand}"/>
+                    <Button Grid.Row="5" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="100,0,0,0" Text="Cancelar" BackgroundColor="PaleVioletRed" WidthRequest="90" HeightRequest="45" Command="{Binding BackBtnCommand}"/>
+                    <Button Grid.Row="5" Grid.ColumnSpan="2" HorizontalOptions="End" Margin="0" Text="Eliminar" BackgroundColor="OrangeRed" WidthRequest="90" HeightRequest="45" Command="{Binding EliminarTratCommand}"/>
                 </Grid>
             </Frame>
+            <ActivityIndicator IsRunning="{Binding Run}" Margin="10" HorizontalOptions="Center"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

@@ -42,6 +42,7 @@ public partial class NewOTratViewModel : BaseViewModel
             {
                 var NuevoTrat = new OtroTrat
                 {
+                    Id = "OTrat" + Contador.ToString(),
                     OTFecha = DateTime.Today.ToShortDateString(),
                     OTNombre = OTNombre,
                     OTDosis = OTDosis,

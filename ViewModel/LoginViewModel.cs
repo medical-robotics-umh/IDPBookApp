@@ -38,16 +38,16 @@ public partial class LoginViewModel : BaseViewModel
             Auth = firebaseConnecty.firebaseUserCredential.User.Info.IsEmailVerified;
             UserName = string.Empty; UserPassword = string.Empty;
             if (Auth == false)
-            {                
-                var cuestInfo = await FirebaseConnecty.GetCuestionariosModel(firebaseConnecty.pacInfo.Uid);                
-                var lastCuest = cuestInfo.Last();
-                var fechaUltimoCuestionario = DateTime.Parse(lastCuest.QFecha);
-                var dif = DateTime.Today.Subtract(fechaUltimoCuestionario);
+            {
+                var cuestInfo = await FirebaseConnecty.GetCuestionariosModel(firebaseConnecty.userInfo.Uid);
+                await Shell.Current.GoToAsync($"{nameof(MainPage)}?Auth={Auth}");
                 if (cuestInfo.Any())
                 {
+                    var lastCuest = cuestInfo.Last();
+                    var fechaUltimoCuestionario = DateTime.Parse(lastCuest.QFecha);
+                    var dif = DateTime.Today.Subtract(fechaUltimoCuestionario);
                     if (dif.Days > 183)
-                    {
-                        await Shell.Current.GoToAsync($"{nameof(MainPage)}?Auth={Auth}");
+                    {                        
                         await App.Current.MainPage.DisplayAlert("Cuestinonario calidad de vida", "► Han pasado 6 meses desde la última vez que has realizado el cuestionario.\n► Antes de utilizar IDPBook, debes realizar uno nuevo.", "Ok");
                         await Shell.Current.GoToAsync($"{nameof(NuevaEncuestaPage)}", true,
                             new Dictionary<string, object>
@@ -56,16 +56,10 @@ public partial class LoginViewModel : BaseViewModel
                                 {"ValidCuest",false}
                             });
                     }
-                    else
-                    {
-                        await Shell.Current.GoToAsync($"{nameof(MainPage)}?Auth={Auth}");
-                    }
-
                 }
                 else
                 {
-                    await Shell.Current.GoToAsync($"{nameof(MainPage)}?Auth={Auth}");
-                    await App.Current.MainPage.DisplayAlert("Cuestinonario calidad de vida", "Antes de empezar a utilizar IDPBook App, debes realizar el cuestionario de calidad de vida.", "Ok");
+                    await App.Current.MainPage.DisplayAlert("Cuestinonario calidad de vida", "► Antes de empezar a utilizar IDPBook App, debes realizar el cuestionario de calidad de vida.", "Ok");
                     await Shell.Current.GoToAsync($"{nameof(NuevaEncuestaPage)}", true,
                         new Dictionary<string, object>
                         {
@@ -109,12 +103,12 @@ public partial class LoginViewModel : BaseViewModel
             Auth = firebaseConnecty.userInfo.IsEmailVerified;
             if (Auth == false)
             {
-                var cuestInfo = await FirebaseConnecty.GetCuestionariosModel(firebaseConnecty.pacInfo.Uid);
-                var lastCuest = cuestInfo.Last();
-                var fechaUltimoCuestionario = DateTime.Parse(lastCuest.QFecha);
-                var dif = DateTime.Today.Subtract(fechaUltimoCuestionario);
+                var cuestInfo = await FirebaseConnecty.GetCuestionariosModel(firebaseConnecty.userInfo.Uid);                
                 if (cuestInfo.Any())
                 {
+                    var lastCuest = cuestInfo.Last();
+                    var fechaUltimoCuestionario = DateTime.Parse(lastCuest.QFecha);
+                    var dif = DateTime.Today.Subtract(fechaUltimoCuestionario);
                     if (dif.Days > 183)
                     {
                         await App.Current.MainPage.DisplayAlert("Cuestinonario calidad de vida", "► Han pasado 6 meses desde la última vez que has realizado el cuestionario.\n► Antes de utilizar IDPBook, debes realizar uno nuevo.", "Ok");
