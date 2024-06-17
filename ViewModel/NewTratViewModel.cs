@@ -64,6 +64,7 @@ public partial class NewTratViewModel : BaseViewModel
         }
         else
         {
+            Run = true;
             var NuevoTrat = new Tratamiento
             {
                 TFecha = TFecha.ToShortDateString(),
@@ -94,7 +95,7 @@ public partial class NewTratViewModel : BaseViewModel
                 .Set(uno,NuevoTrat)
                 .Update(dos, "TratAct", TTipo)
                 .CommitAsync();
-
+            Run = false;
             var newPage = new TratPage(tratView)
             {
                 BindingContext = new TratViewModel(firebaseConnecty)

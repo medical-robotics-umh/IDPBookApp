@@ -67,6 +67,7 @@ public partial class NewDataViewModel : BaseViewModel
     [RelayCommand]
     async Task Cargar()
     {
+        Run = true;
         Contador++;
         try
         {
@@ -106,7 +107,7 @@ public partial class NewDataViewModel : BaseViewModel
         {
             await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n NewDataViewModel", "Aceptar");
         }
-
+        Run = false;
         //HACK Función para reemplazar el viewmodel y cargar automaticamente la lista de episodios.  
         var EP = new EpisodiosPage(listViewModel)
         {

@@ -76,10 +76,11 @@ public partial class NewPacViewModel : BaseViewModel
     {
         if (NombPac != string.Empty)
         {
+            Run = true;
             if (Disable == true)
             {
                 try
-                {
+                {                    
                     await firebaseConnecty.RegistPac(EmailPac, "12345678", NombPac);
                     //TimeSpan Date = DateTimeOffset.Now.ToUnixTimeSeconds().ToString()
                     var NuevoPaciente = new Paciente
@@ -105,7 +106,6 @@ public partial class NewPacViewModel : BaseViewModel
                     NombPac = ApllPac = EmailPac = OtroDiag = string.Empty;
                     FNac = FDiag = DateTime.Today;
                     SexPac = -1;
-
                     var Pac = new ListaPacientesPage(listaPacViewModel)
                     {
                         BindingContext = new ListaPacViewModel(firebaseConnecty)
@@ -155,6 +155,7 @@ public partial class NewPacViewModel : BaseViewModel
                     }
                 }
             }
+            Run = false;
         }
         else
         {

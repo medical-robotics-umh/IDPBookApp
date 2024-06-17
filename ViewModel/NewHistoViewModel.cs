@@ -76,6 +76,7 @@ public partial class NewHistoViewModel : BaseViewModel
     [RelayCommand]
     async Task NewHisto()
     {
+        Run = true;
         Contador++;
         try
         {
@@ -103,7 +104,7 @@ public partial class NewHistoViewModel : BaseViewModel
         {
             await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n NewHistoViewModel", "Aceptar");
         }
-
+        Run = false;
         var newPage = new HistorialPage(histoViewModel)
         {
             BindingContext = new HistoViewModel(firebaseConnecty)

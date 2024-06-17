@@ -17,6 +17,7 @@ public partial class ListViewModel : BaseViewModel
     }
     async void GetEpisodios()
     {
+        Run = true;
         var episodios = await FirebaseConnecty.GetEpisodiosModel(firebaseConnecty.pacInfo.Uid);
         if (episodios != null && episodios.Count > 0)
         {
@@ -26,11 +27,13 @@ public partial class ListViewModel : BaseViewModel
                 Episodios.Add(episodio);
             }
         }
+        Run = false;
     }
 
     [RelayCommand]
     async Task Navegar_EpisodioAsync(EpisodioModel episodio)
     {
+        Run = true;
         if (episodio is null)
             return;
 
@@ -39,6 +42,7 @@ public partial class ListViewModel : BaseViewModel
             {
                 {"Episodio",episodio}
             });
+        Run = false;
     }
 
     [RelayCommand]

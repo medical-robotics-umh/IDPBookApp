@@ -29,6 +29,7 @@ public partial class CamPassViewModel : BaseViewModel
     [RelayCommand]
     public async Task SendNewPass()
     {
+        Run = true;
         if (MedCheck == true)
         {
             var query = await CrossCloudFirestore.Current
@@ -92,5 +93,6 @@ public partial class CamPassViewModel : BaseViewModel
                 await Shell.Current.DisplayAlert("Campos vacios", "Escribe la nueva contraseña en los dos campos dispponibles.", "Ok");
             }
         }
+        Run = false;
     }
 }

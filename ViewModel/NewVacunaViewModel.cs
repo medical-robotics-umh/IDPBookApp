@@ -33,6 +33,7 @@ public partial class NewVacunaViewModel : BaseViewModel
         }
         else
         {
+            Run = true;
             try
             {
                 var NuevaVacuna = new Vacuna
@@ -55,7 +56,7 @@ public partial class NewVacunaViewModel : BaseViewModel
             {
                 await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n NewVacunaViewModel", "Aceptar");
             }
-
+            Run = false;
             var newPage = new VacunasPage(viewModel)
             {
                 BindingContext = new VacunasViewModel(firebaseConnecty)

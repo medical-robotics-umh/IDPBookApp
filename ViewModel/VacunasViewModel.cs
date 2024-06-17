@@ -19,6 +19,7 @@ public partial class VacunasViewModel : BaseViewModel
 
     async void GetVacunas()
     {
+        Run = true;
         var vacunas = await FirebaseConnecty.GetVacunasModel(firebaseConnecty.pacInfo.Uid);
         if (vacunas != null && vacunas.Count > 0)
         {
@@ -28,6 +29,7 @@ public partial class VacunasViewModel : BaseViewModel
                 Vacunas.Add(item);
             }
         }
+        Run = false;
     }
 
     [RelayCommand]
@@ -39,6 +41,7 @@ public partial class VacunasViewModel : BaseViewModel
     [RelayCommand]
     async Task NavVacunDtailAsync(Vacuna vacuna)
     {
+        Run= true;
         if (vacuna is null)
             return;
 
@@ -47,5 +50,6 @@ public partial class VacunasViewModel : BaseViewModel
             {
                 {"Vacuna",vacuna}
             });
+        Run= false;
     }
 }

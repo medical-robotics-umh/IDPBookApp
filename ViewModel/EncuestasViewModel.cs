@@ -19,6 +19,7 @@ public partial class EncuestasViewModel : BaseViewModel
 
     async void GetCuest()
     {
+        Run = true;
         var cuestionarios = await FirebaseConnecty.GetCuestionariosModel(firebaseConnecty.pacInfo.Uid);
         if (cuestionarios != null && cuestionarios.Count > 0)
         {
@@ -28,12 +29,12 @@ public partial class EncuestasViewModel : BaseViewModel
                 Cuestionarios.Add(cuest);
             }
         }
+        Run = false;
     }
 
     [RelayCommand]
     async Task GoToNewCuest()
     {
-        //await Shell.Current.GoToAsync($"{nameof(NuevaEncuestaPage)}?Contador={Cuestionarios.Count}");
         await Shell.Current.GoToAsync($"{nameof(NuevaEncuestaPage)}", true,
             new Dictionary<string, object>
             {
@@ -45,6 +46,7 @@ public partial class EncuestasViewModel : BaseViewModel
     [RelayCommand]
     async Task NavCuestDtailAsync(Cuestionario cuestionario)
     {
+        Run = true;
         if (cuestionario is null)
             return;
 
@@ -53,5 +55,6 @@ public partial class EncuestasViewModel : BaseViewModel
             {
                 {"Cuestionario",cuestionario}
             });
+        Run = false;
     }
 }

@@ -1,5 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 using IDPBookApp.DataBase;
 using IDPBookApp.Models;
 using IDPBookApp.Pages;
@@ -19,6 +18,7 @@ public partial class PrbsLabViewModel : BaseViewModel
 
     async void GetAnltcs()
     {
+        Run = true;
         var historias = await FirebaseConnecty.GetAnaliticsModel(firebaseConnecty.pacInfo.Uid);
         if (historias != null && historias.Count > 0)
         {
@@ -28,6 +28,7 @@ public partial class PrbsLabViewModel : BaseViewModel
                 Analiticas.Add(historia);
             }
         }
+        Run = false;
     }
 
     [RelayCommand]
@@ -39,6 +40,7 @@ public partial class PrbsLabViewModel : BaseViewModel
     [RelayCommand]
     async Task NavAnltcDtailAsync(AnaliticaModel analitica)
     {
+        Run = true;
         if (analitica is null)
             return;
 
@@ -47,5 +49,6 @@ public partial class PrbsLabViewModel : BaseViewModel
             {
                 {"Analitica",analitica}
             });
+        Run = false;
     }
 }

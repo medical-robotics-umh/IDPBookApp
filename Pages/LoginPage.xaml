@@ -20,7 +20,7 @@
                     Aspect="AspectFill"
                     Scale="0.7"
                     Source="mainlogoidp.png" Margin="42,-30,0,-40"/>
-                <Frame
+            <Frame
             Grid.Row="1"
             Margin="0,0,0,-20"
             CornerRadius="50"
@@ -31,6 +31,7 @@
                     RowSpacing="30"
                     VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -66,40 +67,39 @@
                         x:Name="pas"
                     Grid.Row="3"
                     HorizontalOptions="FillAndExpand"
-                    IsPassword="True"
+                    IsPassword="{Binding VisPass}"
                     Placeholder="Contraseña"
                     Text="{Binding UserPassword}"
                     VerticalOptions="FillAndExpand"/>
+                    <CheckBox 
+                        Grid.Row="4"
+                        IsChecked="{Binding VisPass}"
+                        Margin="0" 
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center"                       
+                        IsVisible="{Binding Disable}"/>
+                    <Label 
+                        Grid.Row="4" 
+                        Text="Ocultar contraseña"
+                        Margin="40,0,0,0" 
+                        VerticalOptions="Center" 
+                        IsVisible="{Binding Disable}"/>
                     <Button
-                    Grid.Row="4"
-                    BackgroundColor="#1C375C"
-                    Command="{Binding LoginBtnCommand}"
+                        Grid.Row="5"
+                        BackgroundColor="#1C375C"
+                        Command="{Binding LoginBtnCommand}"
                         Pressed="Button_Pressed"
-                    CornerRadius="20"
-                    Text="Ingresar" />
-                    <!--<StackLayout
-                    Grid.Row="5"
-                    Orientation="Horizontal"
-                    Spacing="10" HorizontalOptions="Center" Margin="0">
-                        <Label
-                        VerticalOptions="Center"
-                        HorizontalOptions="CenterAndExpand"
-                        Text="Ingresa con tu cuenta de Google."
-                        TextColor="#1C375C" />
-                        <ImageButton
-                        Aspect="AspectFit"
-                        HeightRequest="30"
-                        Source="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-icon-png-transparent-background-osteopathy-16.png"
-                        WidthRequest="30"/>
-                    </StackLayout>-->
+                        CornerRadius="20"
+                        Text="Ingresar" />
                     <Label
-                    Grid.Row="6"
-                    FontAttributes="Bold"
-                    Text="¿Olvidaste tu contraseña?" HorizontalOptions="Center" Margin="0">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ChangePassBtnCommand}"/>
-                        </Label.GestureRecognizers>
-                    </Label>
+                        Grid.Row="6"
+                        FontAttributes="Bold"
+                        FontSize="Medium"
+                        Text="¿Olvidaste tu contraseña?" HorizontalOptions="Center" Margin="0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ChangePassBtnCommand}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
                     <HorizontalStackLayout Grid.Row="7" Spacing="50" HorizontalOptions="Center">
                         <Image
                         Aspect="AspectFit"
@@ -113,6 +113,7 @@
                         Source="ic_logo_umh.png"
                         WidthRequest="80" />
                     </HorizontalStackLayout>
+                    <ActivityIndicator IsRunning = "{Binding Run}" Margin = "20" Grid.Row="8" HorizontalOptions = "Center" />
                 </Grid>
             </Frame>
         </Grid>

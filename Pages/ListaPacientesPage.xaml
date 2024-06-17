@@ -26,16 +26,25 @@
                 <CollectionView ItemsSource="{Binding Pacientes}" EmptyView="Aún no hay pacientes" SelectionMode="Single" HorizontalScrollBarVisibility="Always" HorizontalOptions="Center">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:Paciente">
-                            <HorizontalStackLayout Spacing="2" Margin="0,2" HorizontalOptions="StartAndExpand">
-                                <HorizontalStackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ListaPacViewModel}}, Path=GetIdPacienteCommand}"
+                            <SwipeView>
+                                <SwipeView.LeftItems>
+                                    <SwipeItems SwipeBehaviorOnInvoked="Auto">
+                                        <SwipeItem Text="Editar"
+                                                   BackgroundColor="LightSeaGreen"
+                                                   IconImageSource="ic_edit.png"/>
+                                    </SwipeItems>
+                                </SwipeView.LeftItems>
+                                <HorizontalStackLayout Spacing="2" Margin="0,2" HorizontalOptions="StartAndExpand">
+                                    <HorizontalStackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ListaPacViewModel}}, Path=GetIdPacienteCommand}"
                                               CommandParameter="{Binding .}"/>
-                                </HorizontalStackLayout.GestureRecognizers>
-                                <ImageButton Source="ic_close_user.png" Aspect="Fill" WidthRequest="48" HeightRequest="48" Margin="8,0"/>
-                                <Label Text="{Binding Apelld}" FontAttributes="Bold" VerticalOptions="Center"/>
-                                <Label Text="," FontAttributes="Bold" VerticalOptions="Center"/>
-                                <Label Text="{Binding Nombre}" FontAttributes="Bold" VerticalOptions="Center"/>
-                            </HorizontalStackLayout>
+                                    </HorizontalStackLayout.GestureRecognizers>
+                                    <ImageButton Source="ic_close_user.png" Aspect="Fill" WidthRequest="48" HeightRequest="48" Margin="8,0"/>
+                                    <Label Text="{Binding Apelld}" FontAttributes="Bold" VerticalOptions="Center"/>
+                                    <Label Text="," FontAttributes="Bold" VerticalOptions="Center"/>
+                                    <Label Text="{Binding Nombre}" FontAttributes="Bold" VerticalOptions="Center"/>
+                                </HorizontalStackLayout>
+                            </SwipeView>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>

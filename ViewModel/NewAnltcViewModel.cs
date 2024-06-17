@@ -49,6 +49,7 @@ public partial class NewAnltcViewModel : BaseViewModel
     [RelayCommand]
     async Task NewAnltc()
     {
+        Run = true;
         Contador++;
         try
         {
@@ -83,7 +84,7 @@ public partial class NewAnltcViewModel : BaseViewModel
         {
             await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n NewAnltcViewModel", "Aceptar");
         }
-
+        Run = false;
         var newPage = new PruebasLabPage(prbsLabViewModel)
         {
             BindingContext = new PrbsLabViewModel(firebaseConnecty)

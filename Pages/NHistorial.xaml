@@ -10,7 +10,7 @@
         <VerticalStackLayout BackgroundColor="#e2f0d9" Spacing="0">
             <ImageButton Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}"/>
             <Label Text="NUEVA HISTORIA" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
-            
+
             <Frame HasShadow="True" Margin="10,10" BackgroundColor="Transparent" Padding="10,10">
                 <Grid ColumnDefinitions="auto,*" RowDefinitions="45,45,*,*,*,*,*,*,*,*,*,*,*,*,45,45,45,80" RowSpacing="5">
                     <Label Text="Año diangostico:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
@@ -194,6 +194,9 @@
                     <Button Grid.Row="17" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="100,0,0,0" Text="Salir" BackgroundColor="PaleVioletRed" WidthRequest="90" HeightRequest="45" Command="{Binding BackBtnCommand}"/>
                 </Grid>
             </Frame>
+            
+            <ActivityIndicator IsRunning = "{Binding Run}" Margin = "10" HorizontalOptions = "Center" />
+            
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

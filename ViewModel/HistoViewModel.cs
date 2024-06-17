@@ -23,6 +23,7 @@ public partial class HistoViewModel : BaseViewModel
 
     async void GetHisto()
     {
+        Run = true;
         var historias = await FirebaseConnecty.GetHistoriasModel(firebaseConnecty.pacInfo.Uid);
         if (historias != null && historias.Count > 0)
         {
@@ -32,6 +33,7 @@ public partial class HistoViewModel : BaseViewModel
                 Historias.Add(historia);
             }
         }
+        Run = false;
     }
 
     [RelayCommand]
@@ -43,6 +45,7 @@ public partial class HistoViewModel : BaseViewModel
     [RelayCommand]
     async Task NavHistoDtailAsync(HistoriaModel historia)
     {
+        Run = true;
         if (historia is null)
             return;
 
@@ -51,5 +54,6 @@ public partial class HistoViewModel : BaseViewModel
             {
                 {"Historia",historia}
             });
+        Run = false;
     }
 }

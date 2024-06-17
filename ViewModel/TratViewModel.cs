@@ -49,6 +49,7 @@ public partial class TratViewModel : BaseViewModel
 
     async void GetTrat()
     {
+        Run = true;
         Tratamiento = await FirebaseConnecty.GetTratInmunoModel(firebaseConnecty.pacInfo.Uid);
         if (Tratamiento != null)
         {
@@ -78,6 +79,7 @@ public partial class TratViewModel : BaseViewModel
         {
             VsblAct = false;
             VsblAct2 = true;
-        }        
+        }
+        Run = false;
     }
 }

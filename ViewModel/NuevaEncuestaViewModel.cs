@@ -37,6 +37,7 @@ public partial class NuevaEncuestaViewModel : BaseViewModel
     [RelayCommand]
     async Task NewHisto()
     {
+        Run = true;
         Contador++;
         try
         {
@@ -44,7 +45,6 @@ public partial class NuevaEncuestaViewModel : BaseViewModel
             {
                 QId = "Cuestionario "+Contador.ToString(),
                 QFecha = DateTime.Today.ToShortDateString(),
-                //QFecha = "1/9/2023",
                 QMovil = QMovil,
                 QCuid = QCuid,
                 QActDia = QActDia,
@@ -64,7 +64,7 @@ public partial class NuevaEncuestaViewModel : BaseViewModel
         {
             await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n NuevaEncuestaViewModel", "Aceptar");
         }
-
+        Run = false;
         if (ValidCuest==true)
         {
             var newPage = new EncuestasPage(encuestasViewModel)

@@ -12,6 +12,7 @@ public partial class LoginViewModel : BaseViewModel
     {
         this.firebaseConnecty = firebaseConnecty;
         Chequear();
+        VisPass = true;
     }
 
     [ObservableProperty]
@@ -24,13 +25,14 @@ public partial class LoginViewModel : BaseViewModel
     string newPassword;
 
     [ObservableProperty]
-    string verfPassword;
+    bool visPass;
 
     public Cuestionario CuestInfo { get; set; } = new();
 
     [RelayCommand]
     async Task LoginBtn()
     {
+        Run = true;
         try
         {
             await firebaseConnecty.Login(UserName, UserPassword);
@@ -93,10 +95,12 @@ public partial class LoginViewModel : BaseViewModel
                 await App.Current.MainPage.DisplayAlert("No hay contraseña", $"Escribe la contraseña asignada al correo:\n\n" + UserName, "Ok");
             }
         }
+        Run = false;
     }
 
     private async void Chequear()
     {
+        Run = true;
         var cond = await firebaseConnecty.CheckUser();
         if(cond == true)
         {
@@ -132,6 +136,7 @@ public partial class LoginViewModel : BaseViewModel
                 }
             }
         }
+        Run = false;
     }
 
     [RelayCommand]

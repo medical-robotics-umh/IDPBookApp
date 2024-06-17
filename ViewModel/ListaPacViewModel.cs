@@ -21,6 +21,7 @@ public partial class ListaPacViewModel:BaseViewModel
     
     async void GetPacientes()
     {
+        Run = true;
         var pacientes = await FirebaseConnecty.GetPacientesModel(firebaseConnecty.userInfo.Uid);
         if (pacientes != null && pacientes.Count > 0) 
         { 
@@ -30,6 +31,7 @@ public partial class ListaPacViewModel:BaseViewModel
                 Pacientes.Add(paciente);
             }
         }
+        Run = false;
     }
 
     [RelayCommand]
