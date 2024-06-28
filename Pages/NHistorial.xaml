@@ -48,7 +48,7 @@
                     </Grid>
 
                     <Label IsVisible="{Binding EInf}" Grid.Row="3" HorizontalOptions="Start" VerticalOptions="Center" Text="E. Infecciosa:" FontAttributes="Bold"/>
-                    <Picker IsVisible="{Binding EInf}" SelectedIndex="{Binding SInf}" Grid.Column="1" Grid.Row="3" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Picker IsVisible="{Binding EInf}" SelectedIndex="{Binding SInf}" SelectedItem="{Binding Prueba}" Grid.Column="1" Grid.Row="3" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
                         <Picker.Items>
                             <x:String>Neumonía</x:String>
                             <x:String>Meningitis</x:String>
@@ -62,7 +62,7 @@
                     </Picker>
 
                     <Label IsVisible="{Binding EHema}" Grid.Row="4" HorizontalOptions="Start" VerticalOptions="Center" Text="E. Hematológica:" FontAttributes="Bold"/>
-                    <Picker IsVisible="{Binding EHema}" SelectedIndex="{Binding SHema}" Grid.Column="1" Grid.Row="4" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Picker IsVisible="{Binding EHema}" SelectedIndex="{Binding SHema}" SelectedItem="{Binding Prueba}" Grid.Column="1" Grid.Row="4" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
                         <Picker.Items>
                             <x:String>Anemia Inmunohemolítica</x:String>
                             <x:String>PTI</x:String>
@@ -76,7 +76,7 @@
                     </Picker>
 
                     <Label IsVisible="{Binding EADig}" Grid.Row="5" HorizontalOptions="Start" VerticalOptions="Center" Text="E. Ap. Digestivo:" FontAttributes="Bold"/>
-                    <Picker IsVisible="{Binding EADig}" SelectedIndex="{Binding SADig}" Grid.Column="1" Grid.Row="5" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Picker IsVisible="{Binding EADig}" SelectedIndex="{Binding SADig}" SelectedItem="{Binding Prueba}" Grid.Column="1" Grid.Row="5" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
                         <Picker.Items>
                             <x:String>Enfermedad Inflamatoria intestinal</x:String>
                             <x:String>Celiaquía</x:String>
@@ -88,7 +88,7 @@
                     </Picker>
 
                     <Label IsVisible="{Binding EPulm}" Grid.Row="6" Text="E. Pulmonar:" HorizontalOptions="Start" VerticalOptions="Center" FontAttributes="Bold"/>
-                    <Picker IsVisible="{Binding EPulm}" SelectedIndex="{Binding SPulm}" Grid.Column="1" Grid.Row="6" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Picker IsVisible="{Binding EPulm}" SelectedIndex="{Binding SPulm}" SelectedItem="{Binding Prueba}" Grid.Column="1" Grid.Row="6" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
                         <Picker.Items>
                             <x:String>Bronquiectasias</x:String>
                             <x:String>Neumopatía intersticial</x:String>
@@ -99,7 +99,7 @@
                     </Picker>
 
                     <Label IsVisible="{Binding EHepa}" Grid.Row="7" Text="E. Hepática:" HorizontalOptions="Start" VerticalOptions="Center" FontAttributes="Bold"/>
-                    <Picker IsVisible="{Binding EHepa}" SelectedIndex="{Binding SHepa}" Grid.Column="1" Grid.Row="7" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Picker IsVisible="{Binding EHepa}" SelectedIndex="{Binding SHepa}" SelectedItem="{Binding Prueba}" Grid.Column="1" Grid.Row="7" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
                         <Picker.Items>
                             <x:String>Hiperplasia nodular regenerativa</x:String>
                             <x:String>Hipertensión Portal</x:String>
@@ -109,7 +109,7 @@
                     </Picker>
 
                     <Label IsVisible="{Binding EOnco}" Grid.Row="8" Text="E. Oncológica:" HorizontalOptions="Start" VerticalOptions="Center" FontAttributes="Bold"/>
-                    <Picker IsVisible="{Binding EOnco}" SelectedIndex="{Binding SOnco}" Grid.Column="1" Grid.Row="8" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Picker IsVisible="{Binding EOnco}" SelectedIndex="{Binding SOnco}" SelectedItem="{Binding Prueba}" Grid.Column="1" Grid.Row="8" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
                         <Picker.Items>
                             <x:String>Linfoma</x:String>
                             <x:String>Leucemia</x:String>
@@ -119,7 +119,7 @@
                     </Picker>
 
                     <Label IsVisible="{Binding EEndo}" Grid.Row="9" Text="E. Endocrinológica:" HorizontalOptions="Start" VerticalOptions="Center" FontAttributes="Bold"/>
-                    <Picker IsVisible="{Binding EEndo}" SelectedIndex="{Binding SEndo}" Grid.Column="1" Grid.Row="9" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Picker IsVisible="{Binding EEndo}" SelectedIndex="{Binding SEndo}" SelectedItem="{Binding Prueba}" Grid.Column="1" Grid.Row="9" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
                         <Picker.Items>
                             <x:String>DM tipo 1</x:String>
                             <x:String>Hipotiroidismo autoinmune</x:String>
@@ -128,7 +128,7 @@
                     </Picker>
 
                     <Label IsVisible="{Binding ECardio}" Grid.Row="10" Text="E. Cardiovascular:" HorizontalOptions="Start" VerticalOptions="Center" FontAttributes="Bold"/>
-                    <Picker IsVisible="{Binding ECardio}" SelectedIndex="{Binding SCardio}" Grid.Column="1" Grid.Row="10" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Picker IsVisible="{Binding ECardio}" SelectedIndex="{Binding SCardio}" SelectedItem="{Binding Prueba}" Grid.Column="1" Grid.Row="10" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
                         <Picker.Items>
                             <x:String>HTA</x:String>
                             <x:String>Dislipemia</x:String>
@@ -143,7 +143,7 @@
                     </Picker>
 
                     <Label IsVisible="{Binding EAuto}" Grid.Row="11" Text="E. Autoinm/inflm:" HorizontalOptions="Start" VerticalOptions="Center" FontAttributes="Bold"/>
-                    <Picker IsVisible="{Binding EAuto}" SelectedIndex="{Binding SAuto}" Grid.Column="1" Grid.Row="11" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Picker IsVisible="{Binding EAuto}" SelectedIndex="{Binding SAuto}" SelectedItem="{Binding Prueba}" Grid.Column="1" Grid.Row="11" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
                         <Picker.Items>
                             <x:String>Lupus</x:String>
                             <x:String>Artritis reumatoide</x:String>
@@ -157,7 +157,7 @@
                     </Picker>
 
                     <Label IsVisible="{Binding ENeuro}" Grid.Row="12" Text="E. Neurológica:" HorizontalOptions="Start" VerticalOptions="Center" FontAttributes="Bold"/>
-                    <Picker IsVisible="{Binding ENeuro}" SelectedIndex="{Binding SNeuro}" Grid.Column="1" Grid.Row="12" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Picker IsVisible="{Binding ENeuro}" SelectedIndex="{Binding SNeuro}" SelectedItem="{Binding Prueba}" Grid.Column="1" Grid.Row="12" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
                         <Picker.Items>
                             <x:String>Lesiones desmielinizantes-like SNC</x:String>
                             <x:String>Meningitis linfocitaria</x:String>
@@ -170,7 +170,7 @@
                     </Picker>
 
                     <Label IsVisible="{Binding ECut}" Grid.Row="13" Text="E. Cutánea:" HorizontalOptions="Start" VerticalOptions="Center" FontAttributes="Bold"/>
-                    <Picker IsVisible="{Binding ECut}" SelectedIndex="{Binding SCut}" Grid.Column="1" Grid.Row="13" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Picker IsVisible="{Binding ECut}" SelectedIndex="{Binding SCut}" SelectedItem="{Binding Prueba}" Grid.Column="1" Grid.Row="13" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
                         <Picker.Items>
                             <x:String>Vitíligo</x:String>
                             <x:String>Psoriasis</x:String>

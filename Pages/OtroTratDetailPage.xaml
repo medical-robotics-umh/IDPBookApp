@@ -28,10 +28,10 @@
                     <Label Grid.Row="4" VerticalOptions="Center" HorizontalOptions="Start" Text="Fecha fin:" FontAttributes="Bold"/>
                     <DatePicker Date="{Binding Tratamiento.OTFfin}" Grid.Row="4" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" IsEnabled="{Binding Edit}"/>
 
-                    <Button Grid.Row="5" Grid.ColumnSpan="2" HorizontalOptions="Start" Text="Editar" BackgroundColor="Green" WidthRequest="90" HeightRequest="45" Command="{Binding EditarCommand}"/>
-                    <Button Grid.Row="5" Grid.ColumnSpan="2" HorizontalOptions="Start" Margin="100,0,0,0" Text="Actualizar" BackgroundColor="CornflowerBlue" WidthRequest="90" HeightRequest="45" Command="{Binding ActualizarTratCommand}"/>
-                    <Button Grid.Row="5" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="100,0,0,0" Text="Cancelar" BackgroundColor="PaleVioletRed" WidthRequest="90" HeightRequest="45" Command="{Binding BackBtnCommand}"/>
-                    <Button Grid.Row="5" Grid.ColumnSpan="2" HorizontalOptions="End" Margin="0" Text="Eliminar" BackgroundColor="OrangeRed" WidthRequest="90" HeightRequest="45" Command="{Binding EliminarTratCommand}"/>
+                    <Button Grid.Row="5" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="-305,0,0,0" Text="Editar" BackgroundColor="Green" WidthRequest="90" HeightRequest="45" Command="{Binding EditarCommand}"/>
+                    <Button Grid.Row="5" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="-105,0,0,0" Text="Actualizar" BackgroundColor="CornflowerBlue" WidthRequest="100" HeightRequest="45" Command="{Binding ActualizarTratCommand}"/>
+                    <Button Grid.Row="5" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="105,0,0,0" Text="Cancelar" BackgroundColor="PaleVioletRed" WidthRequest="100" HeightRequest="45" Command="{Binding BackBtnCommand}"/>
+                    <Button Grid.Row="5" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="305,0,0,0" Text="Eliminar" BackgroundColor="OrangeRed" WidthRequest="90" HeightRequest="45" Command="{Binding EliminarTratCommand}"/>
                 </Grid>
             </Frame>
             <ActivityIndicator IsRunning="{Binding Run}" Margin="10" HorizontalOptions="Center"/>

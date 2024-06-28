@@ -72,6 +72,8 @@ public partial class NewHistoViewModel : BaseViewModel
     public string comment;
     [ObservableProperty]
     public string aler;
+    [ObservableProperty]
+    public string prueba;
 
     [RelayCommand]
     async Task NewHisto()
@@ -82,7 +84,7 @@ public partial class NewHistoViewModel : BaseViewModel
         {
             var NuevaHisto = new HistoriaModel
             {
-                HId = "Historia "+Contador.ToString(),
+                HId = Prueba,
                 Hfecha = DateTime.Today.ToShortDateString(),
                 HfDiag = FDiag,
                 HActivo = Activ,
