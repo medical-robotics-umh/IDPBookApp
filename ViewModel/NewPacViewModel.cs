@@ -30,59 +30,50 @@ public partial class NewPacViewModel : BaseViewModel
     [ObservableProperty]
     int edadPac;
     [ObservableProperty]
-    int tratPac = -1;
+    string otroDiag1;
     [ObservableProperty]
-    string otroDiag;
+    string otroDiag2;
     [ObservableProperty]
     DateTime fDiag = DateTime.Today;
-
     [ObservableProperty]
-    public bool dICV;
+    DateTime fDiag1 = DateTime.Today;
     [ObservableProperty]
-    public bool dAgam;
+    DateTime fDiag2 = DateTime.Today;
     [ObservableProperty]
-    public bool dDIgA;
-    [ObservableProperty]
-    public bool dDSI;
-    [ObservableProperty]
-    public bool dDRAE;
-    [ObservableProperty]
-    public bool dIComb;
-    [ObservableProperty]
-    public bool dEGC;
-    [ObservableProperty]
-    public bool dM22q;
-    [ObservableProperty]
-    public bool dSWA;
-    [ObservableProperty]
-    public bool dSHIgE;
-    [ObservableProperty]
-    public bool dSHIgM;
-    [ObservableProperty]
-    public bool dALPS;
-    [ObservableProperty]
-    public bool dCMC;
-
+    public int diagPpal = -1;
     [ObservableProperty]
     private bool diagncsVisbl;
-    [RelayCommand]
-    private void VisibleDiag()
-    {
-        DiagncsVisbl = !DiagncsVisbl;
-    }
+    [ObservableProperty]
+    public bool pacVsbl = true;
+    [ObservableProperty]
+    public bool pacVsbl1 = true;
 
     [RelayCommand]
     async Task NewUser()
-    {
+    {        
         if (NombPac != string.Empty)
         {
             Run = true;
-            if (Disable == true)
-            {
+            if (PacVsbl == true)
+            {            
                 try
                 {                    
                     await firebaseConnecty.RegistPac(EmailPac, "12345678", NombPac);
-                    //TimeSpan Date = DateTimeOffset.Now.ToUnixTimeSeconds().ToString()
+                    var fecha = FDiag.ToShortDateString();
+                    var fecha1 = FDiag1.ToShortDateString();
+                    var fecha2 = FDiag2.ToShortDateString();
+                    if (DiagPpal == 13)
+                    {
+                        fecha = null;                        
+                    }
+                    if (OtroDiag1 == string.Empty | OtroDiag1 == null)
+                    {
+                        fecha1 = null;
+                    }
+                    if (OtroDiag2 == string.Empty | OtroDiag2 == null)
+                    {
+                        fecha2 = null;
+                    }
                     var NuevoPaciente = new Paciente
                     {
                         IdMed = firebaseConnecty.userInfo.Uid,
@@ -91,20 +82,22 @@ public partial class NewPacViewModel : BaseViewModel
                         Correo = EmailPac,
                         Sexo = SexPac,
                         FechNac = FNac.ToShortDateString(),
-                        TratAct = TratPac,
-                        Diagnsc = new bool[] {DICV,DAgam,DDIgA,DDSI,DDRAE,DIComb,DEGC,DM22q,DSWA,DSHIgE,DSHIgM,DALPS,DCMC},
-                        OtroDiag = OtroDiag,
-                        FechDiag = FDiag.ToShortDateString(),
+                        Diagnsc = DiagPpal,                        
+                        FechDiag = fecha,
+                        OtroDiag1 = OtroDiag1,
+                        FechDiag1 = fecha1,
+                        OtroDiag2 = OtroDiag2,
+                        FechDiag2 = fecha2,
                         Pass = "12345678"
-                    };
+                    };                    
                     await CrossCloudFirestore.Current
                                     .Instance
                                     .Collection("IDPbookDB")
                                     .Document(firebaseConnecty.pacInfo.Uid)
                                     .SetAsync(NuevoPaciente);
                     await App.Current.MainPage.DisplayAlert("Correcto", "Se ha creado paciente: " + NombPac, "Ok");
-                    NombPac = ApllPac = EmailPac = OtroDiag = string.Empty;
-                    FNac = FDiag = DateTime.Today;
+                    NombPac = ApllPac = EmailPac = OtroDiag1 = OtroDiag2 = string.Empty;
+                    FNac = FDiag = FDiag1 = FDiag2 = DateTime.Today;
                     SexPac = -1;
                     var Pac = new ListaPacientesPage(listaPacViewModel)
                     {
@@ -126,18 +119,17 @@ public partial class NewPacViewModel : BaseViewModel
                     }
                     if (ex.Message.Contains("EMAIL_EXISTS"))
                     {
-                        await App.Current.MainPage.DisplayAlert("Aviso", "Ya existe un personal médico con el correo proporcionado, intenta de nuevo con un correo nuevo.", "Ok");
+                        await App.Current.MainPage.DisplayAlert("Aviso", "Ya existe un paciente con el correo proporcionado, intenta de nuevo con un correo nuevo.", "Ok");
                     }
                 }                
             }
-            else if (Disable == false)
+            else if (PacVsbl == false)
             {
                 try
                 {
                     await firebaseConnecty.RegistMed(EmailPac, "0987654", NombPac);                  
                     await App.Current.MainPage.DisplayAlert("Correcto", "Se ha creado personal médico: " + NombPac + ". Se ha enviado correo de autenticación al correo del usuario.", "Ok");
                     NombPac = ApllPac = EmailPac = string.Empty;
-                    MedCheck = false;
                 }
                 catch (Exception ex)
                 {
@@ -151,7 +143,7 @@ public partial class NewPacViewModel : BaseViewModel
                     }
                     if (ex.Message.Contains("EMAIL_EXISTS"))
                     {
-                        await App.Current.MainPage.DisplayAlert("Aviso", "Ya existe un paciente con el correo proporcionado, intenta de nuevo con un correo nuevo.", "Ok");
+                        await App.Current.MainPage.DisplayAlert("Aviso", "Ya existe un personal médico con el correo proporcionado, intenta de nuevo con un correo nuevo.", "Ok");
                     }
                 }
             }

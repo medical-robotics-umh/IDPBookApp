@@ -9,10 +9,19 @@
     <ScrollView>
         <VerticalStackLayout BackgroundColor="#e2f0d9" Spacing="0">
             <ImageButton Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}"/>
-            <Label Text="{Binding Analitica.AId}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-28,0,0"/>
+            <Label Text="{Binding Analitica.AName}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-28,0,0"/>
 
             <Frame HasShadow="True" Margin="10,10" BackgroundColor="Transparent" Padding="10,10">
                 <VerticalStackLayout Spacing="5">
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="15,0" Spacing="30">
+                        <Label VerticalOptions="Center" Text="Fecha de analítica" FontAttributes="Bold" WidthRequest="80"/>
+                        <Entry Text="{Binding Analitica.AFecha}" VerticalOptions="Center" WidthRequest="140" IsReadOnly="True"/>
+                    </HorizontalStackLayout>
+
+                    <BoxView Color="Gray"
+                             HeightRequest="2"
+                             HorizontalOptions="Fill" />
 
                     <Label VerticalOptions="Center" Text="Gammaglobulinas valle (mg/L)" FontAttributes="Bold" Margin="0,0,0,5"/>
 
@@ -97,6 +106,8 @@
                         <Label VerticalOptions="Center" Text="Plaquetas (células/uL)" FontAttributes="Bold" WidthRequest="100"/>
                         <Entry Text="{Binding Analitica.APlaque}" IsReadOnly="True" VerticalOptions="Center" Placeholder="N/A" WidthRequest="140" HorizontalTextAlignment="Start"/>
                     </HorizontalStackLayout>
+
+                    <Button HorizontalOptions="Center" Text="Eliminar" Margin="0,20,0,0" BackgroundColor="Red" WidthRequest="90" HeightRequest="45" Command="{Binding ElimHistoCommand}"/>
                 </VerticalStackLayout>
             </Frame>
         </VerticalStackLayout>

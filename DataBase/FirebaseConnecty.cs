@@ -62,7 +62,7 @@ public class FirebaseConnecty
         firebaseUserCredential = await client.CreateUserWithEmailAndPasswordAsync(username, password, name);
         await CrossCloudFirestore.Current
                                     .Instance
-                                    .Collection("IDPbookDB")
+                                    .Collection("MedUsers")
                                     .Document()
                                     .SetAsync(new { Correo = username });
         var apikey = config.ApiKey;
@@ -112,11 +112,31 @@ public class FirebaseConnecty
             {
                 PacRepo.DeleteUser();
                 firebaseUserCredential = await client.SignInWithEmailAndPasswordAsync(username, password);
+                
+                var lista = new List<string>
+                {
+                    "analiticas",
+                    "episodios",
+                    "historial",
+                    "tratamientos",
+                    "vacunas"
+                };
+                foreach (var item in lista)
+                {
+                    var snapshot = await CrossCloudFirestore.Current.Instance
+                                                    .Collection("/IDPbookDB/" + firebaseUserCredential.User.Info.Uid + "/"+item)
+                                                    .GetAsync();
+                    foreach (var document in snapshot.Documents)
+                    {
+                        await document.Reference.DeleteAsync();
+                    }
+                }                
                 await CrossCloudFirestore.Current
                          .Instance
                          .Collection("/IDPbookDB")
                          .Document(firebaseUserCredential.User.Info.Uid)
                          .DeleteAsync();
+
                 await firebaseUserCredential.User.DeleteAsync();
                 var anonimo = await client.SignInAnonymouslyAsync();
                 PacRepo.SaveUser(anonimo.User);
@@ -177,12 +197,11 @@ public class FirebaseConnecty
         {
             var snapshot = await CrossCloudFirestore.Current.Instance
                                                     .Collection("/IDPbookDB/"+rutaEpis+"/episodios")
-                                                    .GetAsync();
-
+                                                    .GetAsync();            
             var episodios = new List<EpisodioModel>();
             foreach (var episodio in snapshot.Documents)
             {
-                episodios.Add(episodio.ToObject<EpisodioModel>());
+                episodios.Add(episodio.ToObject<EpisodioModel>());              
             }
             return episodios;
         }
@@ -237,14 +256,13 @@ public class FirebaseConnecty
             return null;
         }
     }
-    public static async Task<List<Paciente>> GetPacientesModel(string idMed)
+    public static async Task<List<Paciente>> GetPacientesModel()
     {
         try
         {
             var query = await CrossCloudFirestore.Current
                                      .Instance
                                      .Collection("/IDPbookDB")
-                                     .WhereEqualsTo("IdMed", idMed)
                                      .GetAsync();
 
             var pacientes = new List<Paciente>();
@@ -373,6 +391,23 @@ public class FirebaseConnecty
             Debug.WriteLine(ex);
             await Shell.Current.DisplayAlert("GetCuestionariosModel", $"No se pudo accerder: {ex.Message}", "Ok");
             return null;
+        }
+    }
+    public static async Task ElimData(string uid,string tipo, string ruta)
+    {
+        try
+        {
+            await CrossCloudFirestore.Current
+                         .Instance
+                         .Collection("/IDPbookDB")
+                         .Document(uid)
+                         .Collection(tipo)
+                         .Document(ruta)
+                         .DeleteAsync();
+        }
+        catch (Exception ex)
+        {
+            await Shell.Current.DisplayAlert("Eliminar Docs", $"No se pudo eliminar:\n\n {ex.Message}", "Ok");
         }
     }
 

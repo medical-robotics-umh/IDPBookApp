@@ -29,13 +29,13 @@ public partial class NewDataViewModel : BaseViewModel
     [ObservableProperty]
     private string durac_entry;
     [ObservableProperty]
-    private bool aten_bool;
+    private int aten = -1;
     [ObservableProperty]
-    private bool urg_bool;
+    private int urg = -1;
     [ObservableProperty]
-    private bool ingreso_bool;
+    private int ingreso = -1;
     [ObservableProperty]
-    private bool fiebre_bool;
+    private int fiebre = -1;
     [ObservableProperty]
     private string otroSinCat;
     [ObservableProperty]
@@ -47,9 +47,9 @@ public partial class NewDataViewModel : BaseViewModel
     [ObservableProperty]
     private string otroSin;
     [ObservableProperty]
-    private bool trat_bool;
+    private int trat = -1;
     [ObservableProperty]
-    private bool tratAnti_bool;
+    private int tratAnti = -1;
     [ObservableProperty]
     private string antibio;
     [ObservableProperty]
@@ -71,15 +71,17 @@ public partial class NewDataViewModel : BaseViewModel
         Contador++;
         try
         {
+            var id = "Ep" + DateTimeOffset.Now.ToUnixTimeSeconds().ToString();
             var NuevoEpisodio = new EpisodioModel
             {
-                EId = "Episodio "+Contador.ToString(),
+                EId = id,
+                EName = "Episodio " + Contador.ToString(),
                 EFecha = Fecha_Epis.ToShortDateString(),
-                EAtenPrim = Aten_bool,
-                EUrgHosp = Urg_bool,
+                EAtenPrim = Aten,
+                EUrgHosp = Urg,
                 EDurac = Durac_entry,
-                EIngreso =  Ingreso_bool,
-                EFiebre = Fiebre_bool,
+                EIngreso =  Ingreso,
+                EFiebre = Fiebre,
                 ESinCata = new bool[] {STos,SMoco,SDGarg,SDTorax,SSAh},
                 ESinCataChar = OtroSinCat,
                 ESinDigest = new bool[] { SDiar, SNaVo, SEstr, SDAbd},
@@ -89,8 +91,8 @@ public partial class NewDataViewModel : BaseViewModel
                 ESinCut = new bool[] { SPicor, SDolor, SColR},
                 ESinCutChar = OtroSinCut,
                 EOtroSin = OtroSin,
-                ETrat = Trat_bool,
-                ETratAnt = TratAnti_bool,
+                ETrat = Trat,
+                ETratAnt = TratAnti,
                 ETratAntibio = Antibio,
                 ETratDias = AntibioDias,
                 ETratOtros = OtroTrat,
@@ -100,7 +102,7 @@ public partial class NewDataViewModel : BaseViewModel
                              .Collection("IDPbookDB")
                              .Document(firebaseConnecty.pacInfo.Uid)
                              .Collection("episodios")
-                             .Document("Ep"+Contador.ToString())
+                             .Document(id)
                              .SetAsync(NuevoEpisodio);
         }
         catch

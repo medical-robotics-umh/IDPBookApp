@@ -3,6 +3,7 @@
 public class AnaliticaModel
 {    
     public string AId { get; set; }
+    public string AName { get; set; }
     public string AFecha { get; set; }
     public string AIgG { get; set; }
     public string AIgG1 { get; set; }

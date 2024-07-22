@@ -45,6 +45,8 @@ public partial class NewAnltcViewModel : BaseViewModel
     public string aNeuro;
     [ObservableProperty]
     public string aPlaque;
+    [ObservableProperty]
+    public DateTime date = DateTime.Today;
 
     [RelayCommand]
     async Task NewAnltc()
@@ -53,10 +55,14 @@ public partial class NewAnltcViewModel : BaseViewModel
         Contador++;
         try
         {
+            var id = "Anltc" + DateTimeOffset.Now.ToUnixTimeSeconds().ToString();
+            //DateTimeOffset dateTimeOffset = Date;
+            //var id2 = "Anltc" + dateTimeOffset.ToUnixTimeSeconds().ToString();
             var Nuevo = new AnaliticaModel
             {
-                AId="Analitica "+Contador.ToString(),
-                AFecha=DateTime.Today.ToShortDateString(),
+                AId = id,
+                AName="Analítica "+Contador.ToString(),
+                AFecha=Date.ToShortDateString(),
                 AIgG=AIgG,
                 AIgG1=AIgG1,
                 AIgG2=AIgG2,
@@ -77,7 +83,7 @@ public partial class NewAnltcViewModel : BaseViewModel
                              .Collection("IDPbookDB")
                              .Document(firebaseConnecty.pacInfo.Uid)
                              .Collection("analiticas")
-                             .Document("Anltc" + Contador.ToString())
+                             .Document(id)
                              .SetAsync(Nuevo);
         }
         catch

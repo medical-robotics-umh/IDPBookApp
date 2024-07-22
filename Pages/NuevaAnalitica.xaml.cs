@@ -10,14 +10,14 @@ public partial class NuevaAnalitica : ContentPage
 		BindingContext = viewModel;
 	}
 
-    private void Rango10k(object sender, TextChangedEventArgs e)
+    private void Rango5k(object sender, TextChangedEventArgs e)
     {
 		try
 		{
 			var value = Convert.ToInt64(e.NewTextValue);
-			if (value >= 10000)
+			if (value >= 5000)
 			{
-				((Entry)sender).Text = "10000";
+				((Entry)sender).Text = "5000";
 			}
 		}
 		catch

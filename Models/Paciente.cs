@@ -8,10 +8,12 @@
         public string Correo { get; set; }
         public int Sexo { get; set; }
         public string FechNac {  get; set; }
-        public int TratAct { get; set; }
-        public bool[] Diagnsc { get; set; }
-        public string OtroDiag { get; set; }
+        public int Diagnsc { get; set; }
         public string FechDiag { get; set; }
+        public string OtroDiag1 { get; set; }
+        public string FechDiag1 { get; set; }
+        public string OtroDiag2 { get; set; }
+        public string FechDiag2 { get; set; }
         public string Pass { get; set; }
     }
 }

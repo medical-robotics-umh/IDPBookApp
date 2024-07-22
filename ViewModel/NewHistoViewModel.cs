@@ -15,8 +15,17 @@ public partial class NewHistoViewModel : BaseViewModel
     public NewHistoViewModel(FirebaseConnecty firebaseConnecty)
     {
         this.firebaseConnecty = firebaseConnecty;
+        var years = new List<int>();
+        int currentYear = DateTime.Now.Year;
+        for (int year = currentYear; year >= 1920; year--)
+        {
+            years.Add(year);
+        }
+        Years = years.ToArray();
     }
-    
+
+    [ObservableProperty]
+    public int[] years;
     [ObservableProperty]
     public bool eInf;
     [ObservableProperty]
@@ -39,33 +48,15 @@ public partial class NewHistoViewModel : BaseViewModel
     public bool eNeuro;
     [ObservableProperty]
     public bool eCut;
+    [ObservableProperty]
+    public bool eOtro;
 
     [ObservableProperty]
-    string fDiag;
+    public object fDiag;
     [ObservableProperty]
-    public bool activ;
+    public int fDiagIndx = -1;
     [ObservableProperty]
-    public int sInf = -1;
-    [ObservableProperty]
-    public int sHema = -1;
-    [ObservableProperty]
-    public int sADig = -1;
-    [ObservableProperty]
-    public int sPulm = -1;
-    [ObservableProperty]
-    public int sHepa = -1;
-    [ObservableProperty]
-    public int sOnco = -1;
-    [ObservableProperty]
-    public int sEndo = -1;
-    [ObservableProperty]
-    public int sCardio = -1;
-    [ObservableProperty]
-    public int sAuto = -1;
-    [ObservableProperty]
-    public int sNeuro = -1;
-    [ObservableProperty]
-    public int sCut = -1;
+    public int activ = -1;
     [ObservableProperty]
     public string otroDiag;
     [ObservableProperty]
@@ -73,45 +64,62 @@ public partial class NewHistoViewModel : BaseViewModel
     [ObservableProperty]
     public string aler;
     [ObservableProperty]
-    public string prueba;
+    public string hTitl;
+    [ObservableProperty]
+    public int hTDiag = -1;
+    [ObservableProperty]
+    public int hTDiagSub = -1;
 
     [RelayCommand]
     async Task NewHisto()
     {
-        Run = true;
-        Contador++;
-        try
+        if (FDiagIndx != -1 & HTDiag != -1)
         {
-            var NuevaHisto = new HistoriaModel
+            Run = true;
+            var id = "Hstr" + DateTimeOffset.Now.ToUnixTimeSeconds().ToString();
+            try
             {
-                HId = Prueba,
-                Hfecha = DateTime.Today.ToShortDateString(),
-                HfDiag = FDiag,
-                HActivo = Activ,
-                HTDiag = new bool[] {EInf,EHema,EADig,EPulm,EHepa,EOnco,EEndo,ECardio,EAuto,ENeuro,ECut},
-                HTDiagSub = new int[] {SInf,SHema,SADig,SPulm,SHepa,SOnco,SEndo,SCardio,SAuto,SNeuro,SCut},
-                HTDiagChar = OtroDiag,
-                HTDiagSubChar = Comment,
-                HAlerg = Aler
+                if (HTDiag == 11 | HTitl == "Otro")
+                {
+                    HTitl = OtroDiag;
+                }
+                var NuevaHisto = new HistoriaModel
+                {
+                    HId = id,
+                    HTitl = HTitl,
+                    Hfecha = DateTime.Today.ToShortDateString(),
+                    HfDiag = FDiag.ToString(),
+                    HActivo = Activ,
+                    HTDiag = HTDiag,
+                    HTDiagSub = HTDiagSub,
+                    HTDiagChar = OtroDiag,
+                    HTDiagSubChar = Comment,
+                    HAlerg = Aler
+                };
+                await CrossCloudFirestore.Current
+                                 .Instance
+                                 .Collection("IDPbookDB")
+                                 .Document(firebaseConnecty.pacInfo.Uid)
+                                 .Collection("historial")
+                                 .Document(id)
+                                 .SetAsync(NuevaHisto);
+            }
+            catch (Exception ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Algo salio mal", ex.Message, "Aceptar");
+            }
+            await Shell.Current.DisplayAlert("Nueva historia creada", "Los datos se han guardado exitosamente.", "Ok");
+            Run = false;            
+            var newPage = new HistorialPage(histoViewModel)
+            {
+                BindingContext = new HistoViewModel(firebaseConnecty)
             };
-            await CrossCloudFirestore.Current
-                             .Instance
-                             .Collection("IDPbookDB")
-                             .Document(firebaseConnecty.pacInfo.Uid)
-                             .Collection("historial")
-                             .Document("Hstr"+Contador.ToString())
-                             .SetAsync(NuevaHisto);            
+            Navigation.InsertPageBefore(newPage, Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
+            await Shell.Current.GoToAsync("../..");
         }
-        catch
+        else
         {
-            await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n NewHistoViewModel", "Aceptar");
+            await Shell.Current.DisplayAlert("Campos incompletos", "El año y el tipo de diagnostico son campos obligatorios, revisa que se hayan seleccionado correctamente", "Ok");
         }
-        Run = false;
-        var newPage = new HistorialPage(histoViewModel)
-        {
-            BindingContext = new HistoViewModel(firebaseConnecty)
-        };
-        Navigation.InsertPageBefore(newPage, Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
-        await Shell.Current.GoToAsync("../..");
     }
 }

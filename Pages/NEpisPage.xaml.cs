@@ -14,11 +14,17 @@ public partial class NEpisPage : ContentPage
         base.OnNavigatedTo(args);
     }
 
-    private void Switch_Toggled(object sender, ToggledEventArgs e)
+    private void Picker_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (BindingContext is NewDataViewModel viewModel)
+        var picker = (Picker)sender;
+        int select = picker.SelectedIndex;
+        if (BindingContext is NewDataViewModel vm)
         {
-            viewModel.Trat_visbl = !viewModel.Trat_visbl;
+            vm.Trat_visbl = false;
+            if (select == 0)
+            {
+                vm.Trat_visbl = true;
+            }            
         }
     }
 }

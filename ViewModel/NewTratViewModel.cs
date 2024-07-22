@@ -77,24 +77,13 @@ public partial class NewTratViewModel : BaseViewModel
                 TTimeInf = Convert.ToInt32(TTimeInf),
                 TVelInf = Convert.ToInt32(TVelInf)
             };
-            var uno = CrossCloudFirestore.Current
+            await CrossCloudFirestore.Current
                              .Instance
                              .Collection("IDPbookDB")
                              .Document(firebaseConnecty.pacInfo.Uid)
                              .Collection("tratamientos")
-                             .Document("InmunoActual");
-
-            var dos = CrossCloudFirestore.Current
-                      .Instance
-                      .Collection("IDPbookDB")
-                      .Document(firebaseConnecty.pacInfo.Uid);
-
-            await CrossCloudFirestore.Current
-                .Instance
-                .Batch()
-                .Set(uno,NuevoTrat)
-                .Update(dos, "TratAct", TTipo)
-                .CommitAsync();
+                             .Document("InmunoActual")
+                             .SetAsync(NuevoTrat);
             Run = false;
             var newPage = new TratPage(tratView)
             {

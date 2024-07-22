@@ -23,18 +23,36 @@ public partial class Registro : ContentPage
         }
     }
 
-    private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+    private void CheckBox_CheckedChanged0(object sender, CheckedChangedEventArgs e)
     {
         if (BindingContext is NewPacViewModel vm)
         {
-            if(e.Value==true) 
-            { 
-                vm.Disable = false;
-                vm.DiagncsVisbl = false;
-            }
-            else
+            vm.DiagPpal = -1;
+            vm.SexPac = -1;
+            vm.PacVsbl = e.Value;
+            check1.IsChecked = !e.Value;
+        }
+    }
+    private void CheckBox_CheckedChanged1(object sender, CheckedChangedEventArgs e)
+    {
+        if (BindingContext is NewPacViewModel vm)
+        {
+            vm.DiagPpal = -1;
+            vm.SexPac = -1;
+            vm.PacVsbl = !e.Value;
+        }
+    }
+
+    private void Picker_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        var picker = (Picker)sender;
+        int select = picker.SelectedIndex;
+        if (BindingContext is NewPacViewModel vm)
+        {
+            vm.PacVsbl1 = true;
+            if (select == 13)
             {
-                vm.Disable = true;
+                vm.PacVsbl1 = false;
             }
         }
     }

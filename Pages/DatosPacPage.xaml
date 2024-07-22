@@ -11,15 +11,15 @@
             <Label Text="DATOS PACIENTE" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
             <Frame HasShadow="True" Margin="10,20" BackgroundColor="Transparent" Padding="10,1,10,10" VerticalOptions="CenterAndExpand">
-                <Grid ColumnDefinitions="Auto,*" RowDefinitions="45,45,45,45,45,45,45,Auto,45,45">
+                <Grid ColumnDefinitions="Auto,*" RowDefinitions="45,45,45,45,45,45,45,Auto,45,45,45,45">
                     <Label Text="Nombre:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry Text="{Binding Paciente.Nombre}" IsEnabled="False" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa nombre" HorizontalTextAlignment="Start" HeightRequest="35" Keyboard="Text"/>
+                    <Entry Text="{Binding Paciente.Nombre}" IsReadOnly="True" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa nombre" HorizontalTextAlignment="Start" HeightRequest="35" Keyboard="Text"/>
 
                     <Label Grid.Row="1" Text="Apellidos:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry Text="{Binding Paciente.Apelld}" IsEnabled="False" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa apellidos" HorizontalTextAlignment="Start" HeightRequest="35" Keyboard="Text"/>
+                    <Entry Text="{Binding Paciente.Apelld}" IsReadOnly="True" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa apellidos" HorizontalTextAlignment="Start" HeightRequest="35" Keyboard="Text"/>
 
                     <Label Grid.Row="2" Text="Correo:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry Text="{Binding Paciente.Correo}"  IsEnabled="False" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa correo" HorizontalTextAlignment="Start" HeightRequest="35" Keyboard="Email"/>
+                    <Entry Text="{Binding Paciente.Correo}"  IsReadOnly="True" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa correo" HorizontalTextAlignment="Start" HeightRequest="35" Keyboard="Email"/>
 
                     <Label Grid.Row="3" Text="Sexo:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
                     <Picker SelectedIndex="{Binding Paciente.Sexo}" Grid.Row="3" Grid.Column="1" Title="▼ Seleccionar sexo"  HeightRequest="35"  IsEnabled="False">
@@ -30,55 +30,46 @@
                         </Picker.Items>
                     </Picker>
 
-                    <Label Grid.Row="4" Text="F. nacimiento:   " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry Text="{Binding Paciente.FechNac}"  CharacterSpacing="2" Grid.Row="4" Grid.Column="1" HorizontalOptions="Start" IsEnabled="False"/>
+                    <Label Grid.Row="4" Text="Fecha Nac. " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Entry Text="{Binding Paciente.FechNac}"  CharacterSpacing="2" Grid.Row="4" Grid.Column="1" HorizontalOptions="Start" IsReadOnly="True"/>
 
                     <Label Grid.Row="5" Text="Edad:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry Text="{Binding Fecha}" Grid.Row="5" Grid.Column="1" HorizontalTextAlignment="Start" VerticalOptions="Center" HorizontalOptions="Fill"  HeightRequest="35" IsEnabled="False"/>
+                    <Entry Text="{Binding Fecha}" Grid.Row="5" Grid.Column="1" HorizontalTextAlignment="Start" VerticalOptions="Center" HorizontalOptions="Fill"  HeightRequest="35" IsReadOnly="True"/>
 
-                    <Label Grid.Row="6" Text="Trat. Actual:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Picker SelectedIndex="{Binding Paciente.TratAct}" IsEnabled="False" Grid.Row="6" Grid.Column="1" Title="▼ Seleccionar tratamiento"  HeightRequest="35">
+                    <Label Grid.Row="6" Text="Diagnóstico:  " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Picker IsEnabled="False" SelectedIndex="{Binding Paciente.Diagnsc}" Grid.Row="6" Grid.Column="1" Title="Seleccionar diagnostico" HorizontalOptions="Fill" VerticalOptions="Center">
                         <Picker.Items>
-                            <x:String>Intravenoso</x:String>
-                            <x:String>Subcutáneo</x:String>
+                            <x:String>Inmunodeficiencia Común Variable</x:String>
+                            <x:String>Agammaglobulinemia ligada al X</x:String>
+                            <x:String>Déficit de IgA</x:String>
+                            <x:String>Déficit de subclases IgG</x:String>
+                            <x:String>Déficit de respuesta a antígenos específicos</x:String>
+                            <x:String>Inmunodeficiencia combinada</x:String>
+                            <x:String>Enfermedad Granulomatosa Crónica</x:String>
+                            <x:String>Microdelección 22q</x:String>
+                            <x:String>Síndrome de Wiscott-Aldrich</x:String>
+                            <x:String>Síndrome de Hiper-IgE</x:String>
+                            <x:String>Síndrome de Hiper-IgM</x:String>
+                            <x:String>ALPS</x:String>
+                            <x:String>Candidiasis Mucocutanea Crónica</x:String>
+                            <x:String>Otro</x:String>
                         </Picker.Items>
-                    </Picker>
+                    </Picker>                    
 
-                    <Label Grid.Row="7" Text="Diagnóstico:" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start"/>
-                    <Grid ColumnDefinitions="28,*" RowDefinitions="25,25,25,45,45,25,25,25,25,25,25,25,25" Grid.Row="7" Grid.Column="1" Margin="0,0,0,8" RowSpacing="1">
-                        <CheckBox IsEnabled="False" IsChecked="{Binding DICV}" Margin="0,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"/>
-                        <Label Grid.Column="1" Text="Inmunodeficiencia Común Variable" HorizontalOptions="Start" VerticalOptions="Center"/>
-                        <CheckBox IsEnabled="False" Grid.Row="1" IsChecked="{Binding DAgam}" HorizontalOptions="Start" VerticalOptions="Center"/>
-                        <Label Grid.Row="1" Grid.Column="1" Text="Agammaglobulinemia"  HorizontalOptions="Start" VerticalOptions="Center"/>
-                        <CheckBox IsEnabled="False" Grid.Row="2" IsChecked="{Binding DDIgA}" HorizontalOptions="Start" VerticalOptions="Center"/>
-                        <Label Grid.Row="2" Grid.Column="1" Text="Déficit de IgA" HorizontalOptions="Start" VerticalOptions="Center"/>
-                        <CheckBox IsEnabled="False" Grid.Row="3" IsChecked="{Binding DDSI}" HorizontalOptions="Start" VerticalOptions="Center"/>
-                        <Label Grid.Row="3" Grid.Column="1" Text="Déficit de Subclases de Inmunoglobulinas" HorizontalOptions="Start" VerticalOptions="Center"/>
-                        <CheckBox IsEnabled="False" Grid.Row="4" IsChecked="{Binding DDRAE}" HorizontalOptions="Start" VerticalOptions="Center"/>
-                        <Label Grid.Row="4" Grid.Column="1" Text="Déficit de respuesta a antígenos específicos" HorizontalOptions="Start" VerticalOptions="Center"/>
-                        <CheckBox IsEnabled="False" Grid.Row="5" IsChecked="{Binding DIComb}" HorizontalOptions="Start" VerticalOptions="Center"/>
-                        <Label Grid.Row="5" Grid.Column="1" Text="Inmunodeficiencia Combinada" HorizontalOptions="Start" VerticalOptions="Center"/>
-                        <CheckBox IsEnabled="False" Grid.Row="6" IsChecked="{Binding DEGC}" HorizontalOptions="Start" VerticalOptions="Center"/>
-                        <Label Grid.Row="6" Grid.Column="1" Text="Enfermedad Granulomatosa Crónica" HorizontalOptions="Start" VerticalOptions="Center"/>
-                        <CheckBox IsEnabled="False" Grid.Row="7" IsChecked="{Binding DM22q}" HorizontalOptions="Start" VerticalOptions="Center"/>
-                        <Label Grid.Row="7" Grid.Column="1" Text="Microdelección 22q" HorizontalOptions="Start" VerticalOptions="Center"/>
-                        <CheckBox IsEnabled="False" Grid.Row="8" IsChecked="{Binding DSWA}" HorizontalOptions="Start" VerticalOptions="Center"/>
-                        <Label Grid.Row="8" Grid.Column="1" Text="Síndrome de Wiscott-Aldrich" HorizontalOptions="Start" VerticalOptions="Center"/>
-                        <CheckBox IsEnabled="False" Grid.Row="9" IsChecked="{Binding DSHIgE}" HorizontalOptions="Start" VerticalOptions="Center"/>
-                        <Label Grid.Row="9" Grid.Column="1" Text="Síndrome de Hiper-IgE" HorizontalOptions="Start" VerticalOptions="Center"/>
-                        <CheckBox IsEnabled="False" Grid.Row="10" IsChecked="{Binding DSHIgM}" HorizontalOptions="Start" VerticalOptions="Center"/>
-                        <Label Grid.Row="10" Grid.Column="1" Text="Síndrome de Hiper-IgM" HorizontalOptions="Start" VerticalOptions="Center"/>
-                        <CheckBox IsEnabled="False" Grid.Row="11" IsChecked="{Binding DALPS}" HorizontalOptions="Start" VerticalOptions="Center"/>
-                        <Label Grid.Row="11" Grid.Column="1" Text="ALPS" HorizontalOptions="Start" VerticalOptions="Center"/>
-                        <CheckBox IsEnabled="False" Grid.Row="12" IsChecked="{Binding DCMC}" HorizontalOptions="Start" VerticalOptions="Center"/>
-                        <Label Grid.Row="12" Grid.Column="1" Text="Candidiasis Mucocutanea Crónica" HorizontalOptions="Start" VerticalOptions="Center"/>
-                    </Grid>
+                    <Label IsVisible="{Binding Vsbl}" Grid.Row="7" Text="Fecha Diag." FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Entry IsVisible="{Binding Vsbl}" Text="{Binding Paciente.FechDiag}"  IsReadOnly="True" CharacterSpacing="2" Grid.Row="7" Grid.Column="1" HorizontalOptions="Start" Placeholder="N/A"/>
 
                     <Label Grid.Row="8" Text="Otro Diag:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry Text="{Binding Paciente.OtroDiag}" IsEnabled="False" Grid.Row="8" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="N/A" HorizontalTextAlignment="Start"  HeightRequest="35"/>
+                    <Entry Text="{Binding Paciente.OtroDiag1}" IsReadOnly="True" Grid.Row="8" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="N/A" HorizontalTextAlignment="Start"  HeightRequest="35"/>
 
-                    <Label Grid.Row="9" Text="F. diagnóstico:   " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry Text="{Binding Paciente.FechDiag}"  IsEnabled="False" CharacterSpacing="2" Grid.Row="9" Grid.Column="1" HorizontalOptions="Start"/>
+                    <Label Grid.Row="9" Text="Fecha Diag." FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Entry Text="{Binding Paciente.FechDiag1}"  IsReadOnly="True" CharacterSpacing="2" Grid.Row="9" Grid.Column="1" HorizontalOptions="Start" Placeholder="N/A"/>
+
+                    <Label Grid.Row="10" Text="Otro Diag:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Entry Text="{Binding Paciente.OtroDiag2}" IsReadOnly="True" Grid.Row="10" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="N/A" HorizontalTextAlignment="Start"  HeightRequest="35"/>
+
+                    <Label Grid.Row="11" Text="Fecha Diag." FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Entry Text="{Binding Paciente.FechDiag2}" IsReadOnly="True" CharacterSpacing="2" Grid.Row="11" Grid.Column="1" HorizontalOptions="Start" Placeholder="N/A"/>
                 </Grid>
             </Frame>
         </VerticalStackLayout>

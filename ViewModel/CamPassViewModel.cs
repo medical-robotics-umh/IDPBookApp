@@ -26,6 +26,9 @@ public partial class CamPassViewModel : BaseViewModel
     [ObservableProperty]
     public bool vPass;
 
+    [ObservableProperty]
+    private bool medCheck;
+
     [RelayCommand]
     public async Task SendNewPass()
     {
@@ -34,7 +37,7 @@ public partial class CamPassViewModel : BaseViewModel
         {
             var query = await CrossCloudFirestore.Current
                  .Instance
-                 .Collection("/IDPbookDB")
+                 .Collection("/MedUsers")
                  .WhereEqualsTo("Correo", UserMail)
                  .GetAsync();
             if (query.Count == 0)

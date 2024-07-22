@@ -1,18 +1,29 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using IDPBookApp.DataBase;
 using IDPBookApp.Models;
+using IDPBookApp.Pages;
 
 namespace IDPBookApp.ViewModel;
 
-[QueryProperty("Historia","Historia")]
+[QueryProperty("Historia", "Historia")]
 public partial class HistoDetailViewModel : BaseViewModel
 {
-    public HistoDetailViewModel()
+    readonly FirebaseConnecty firebaseConnecty;
+    private readonly HistoViewModel histoViewModel;
+    static INavigation Navigation => Shell.Current.Navigation;
+    public HistoDetailViewModel(FirebaseConnecty firebaseConnecty)
     {
-       _ = Selec();
+        this.firebaseConnecty = firebaseConnecty;
+        VsblBtn = firebaseConnecty.userInfo.IsEmailVerified;
+        _ = Selec();
     }
 
     [ObservableProperty]
     HistoriaModel historia;
+
+    [ObservableProperty]
+    public bool vsblBtn;
 
     [ObservableProperty]
     public bool eInf;
@@ -37,54 +48,76 @@ public partial class HistoDetailViewModel : BaseViewModel
     [ObservableProperty]
     public bool eCut;
 
-    [ObservableProperty]
-    public int sInf;
-    [ObservableProperty]
-    public int sHema;
-    [ObservableProperty]
-    public int sADig;
-    [ObservableProperty]
-    public int sPulm;
-    [ObservableProperty]
-    public int sHepa;
-    [ObservableProperty]
-    public int sOnco;
-    [ObservableProperty]
-    public int sEndo;
-    [ObservableProperty]
-    public int sCardio;
-    [ObservableProperty]
-    public int sAuto;
-    [ObservableProperty]
-    public int sNeuro;
-    [ObservableProperty]
-    public int sCut;
-
     private async Task Selec()
     {
         await Task.Delay(50);
-        EInf = Historia.HTDiag[0];
-        EHema = Historia.HTDiag[1];
-        EADig = Historia.HTDiag[2];
-        EPulm = Historia.HTDiag[3];
-        EHepa = Historia.HTDiag[4];
-        EOnco = Historia.HTDiag[5];
-        EEndo = Historia.HTDiag[6];
-        ECardio = Historia.HTDiag[7];
-        EAuto = Historia.HTDiag[8];
-        ENeuro = Historia.HTDiag[9];
-        ECut = Historia.HTDiag[10];
 
-        SInf = Historia.HTDiagSub[0];
-        SHema = Historia.HTDiagSub[1];
-        SADig = Historia.HTDiagSub[2];
-        SPulm = Historia.HTDiagSub[3];
-        SHepa = Historia.HTDiagSub[4];
-        SOnco = Historia.HTDiagSub[5];
-        SEndo = Historia.HTDiagSub[6];
-        SCardio = Historia.HTDiagSub[7];
-        SAuto = Historia.HTDiagSub[8];
-        SNeuro = Historia.HTDiagSub[9];
-        SCut = Historia.HTDiagSub[10];
+        EInf = false;
+        EHema = false;
+        EADig = false;
+        EPulm = false;
+        EHepa = false;
+        EOnco = false;
+        EEndo = false;
+        ECardio = false;
+        EAuto = false;
+        ENeuro = false;
+        ECut = false;
+
+        switch (Historia.HTDiag)
+        {
+            case 0:
+                EInf = true;
+                break;
+            case 1:
+                EHema = true;
+                break;
+            case 2:
+                EADig = true;
+                break;
+            case 3:
+                EPulm = true;
+                break;
+            case 4:
+                EHepa = true;
+                break;
+            case 5:
+                EOnco = true;
+                break;
+            case 6:
+                EEndo = true;
+                break;
+            case 7:
+                ECardio = true;
+                break;
+            case 8:
+                EAuto = true;
+                break;
+            case 9:
+                ENeuro = true;
+                break;
+            case 10:
+                ECut = true;
+                break;
+        }
+    }
+
+    [RelayCommand]
+    async Task ElimHisto()
+    {
+        bool ans = await Shell.Current.DisplayAlert("¡Aviso!", "Los datos no se podrán recuperar.\n\n¿Confirmas la eliminación del documento?", "Si", "No");
+        if (ans==true)
+        {
+            Run = true;
+            await FirebaseConnecty.ElimData(firebaseConnecty.pacInfo.Uid, "historial", Historia.HId);
+            await Shell.Current.DisplayAlert("Historia eliminada", "Los datos se han eliminado exitosamente.", "Ok");
+            Run = false;
+            var newPage = new HistorialPage(histoViewModel)
+            {
+                BindingContext = new HistoViewModel(firebaseConnecty)
+            };            
+            Navigation.InsertPageBefore(newPage, Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
+            await Shell.Current.GoToAsync("../..");
+        }
     }
 }

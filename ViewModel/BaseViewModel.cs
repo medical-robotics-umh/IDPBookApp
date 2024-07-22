@@ -31,8 +31,7 @@ public partial class BaseViewModel : ObservableObject
 
     [ObservableProperty]
     private bool disable = true;
-    [ObservableProperty]
-    private bool medCheck;
+    
 
     [ObservableProperty]
     bool sTos;

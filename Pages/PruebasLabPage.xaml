@@ -33,7 +33,7 @@
                                 <Frame CornerRadius="5" HasShadow="True" WidthRequest="50" HeightRequest="50">
                                     <Image Source="ic_logo_laboratorio.png" Aspect="Fill" WidthRequest="43" HeightRequest="43"/>
                                 </Frame>
-                                <Label Text="{Binding AId}" FontAttributes="Bold" VerticalOptions="Center"/>
+                                <Label Text="{Binding AName}" FontAttributes="Bold" VerticalOptions="Center"/>
                                 <Label Text="-" FontAttributes="Bold" VerticalOptions="Center"/>
                                 <Label Text="{Binding AFecha}" FontAttributes="Bold" VerticalOptions="Center"/>
                             </HorizontalStackLayout>
