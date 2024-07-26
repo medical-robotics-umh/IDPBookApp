@@ -28,6 +28,10 @@ public partial class NewOTratViewModel : BaseViewModel
     public DateTime oTFini;
     [ObservableProperty]
     public DateTime oTFfin;
+    [ObservableProperty]
+    public int tCronc = -1;
+    [ObservableProperty]
+    public bool vsbl;
 
     [RelayCommand]
     async Task NewOtroTrat()
@@ -40,24 +44,30 @@ public partial class NewOTratViewModel : BaseViewModel
         {
             try
             {
+                var fecha = OTFfin.ToShortDateString();
+                var id = "OTrat" + DateTimeOffset.Now.ToUnixTimeSeconds().ToString();
+                if (TCronc == 0 | TCronc == -1)
+                {
+                    fecha = null;
+                }
                 var NuevoTrat = new OtroTrat
                 {
-                    Id = "OTrat" + Contador.ToString(),
+                    Id = id,
                     OTFecha = DateTime.Today.ToShortDateString(),
                     OTNombre = OTNombre,
                     OTDosis = OTDosis,
                     OTCad = OTCad,
                     OTFini = OTFini.ToShortDateString(),
-                    OTFfin = OTFfin.ToShortDateString()
+                    OTFfin = fecha,
+                    OTCronc = TCronc
                 };
                 await CrossCloudFirestore.Current
                                  .Instance
                                  .Collection("IDPbookDB")
                                  .Document(firebaseConnecty.pacInfo.Uid)
                                  .Collection("tratamientos")
-                                 .Document("OTrat" + Contador.ToString())
+                                 .Document(id)
                                  .SetAsync(NuevoTrat);
-                Contador++;
             }
             catch
             {

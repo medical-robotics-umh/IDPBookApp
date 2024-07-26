@@ -21,18 +21,20 @@
                             <ImageButton Source="correo.png" Aspect="Fill" WidthRequest="130" HeightRequest="100" Command="{Binding OpenNewGmailEmailCommand}"/>
                         </VerticalStackLayout>
                     </Frame>
-                    <Label Text="Correo enfermera" HorizontalOptions="Center" FontAttributes="Bold"/>
-                    <Label Text="gestora" HorizontalOptions="Center" FontAttributes="Bold"/>
+                    <Label Text="E-mail Unidad de" HorizontalOptions="Center" FontAttributes="Bold"/>
+                    <Label Text="Inmunodeficiencias" HorizontalOptions="Center" FontAttributes="Bold"/>
+                    <Label Text="Primarias" HorizontalOptions="Center" FontAttributes="Bold"/>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Grid.Column="1">
                     <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="150" HeightRequest="150">
                         <VerticalStackLayout Spacing="5" VerticalOptions="Center">
-                            <ImageButton Source="enfermera.png" Aspect="Fill" WidthRequest="120" HeightRequest="130" Command="{Binding OpenPhoneDialerCommand}"/>
+                            <ImageButton Source="enfermera.png" Aspect="Fill" WidthRequest="120" HeightRequest="130" Command="{Binding OpenMeetCommand}"/>
                         </VerticalStackLayout>
                     </Frame>
-                    <Label Text="Llamadas enfermera" HorizontalOptions="Center" FontAttributes="Bold"/>
-                    <Label Text="gestora" HorizontalOptions="Center" FontAttributes="Bold"/>
+                    <Label Text="Llamada Unidad de" HorizontalOptions="Center" FontAttributes="Bold"/>
+                    <Label Text="Inmunodeficiencias" HorizontalOptions="Center" FontAttributes="Bold"/>
+                    <Label Text="Primarias" HorizontalOptions="Center" FontAttributes="Bold"/>
                 </VerticalStackLayout>
             </Grid>
             <HorizontalStackLayout Spacing="20" HorizontalOptions="Center" VerticalOptions="End" Margin="0,230,0,0">

@@ -18,6 +18,9 @@ public partial class BaseViewModel : ObservableObject
     string nMed;
 
     [ObservableProperty]
+    string fontColor = "#5D6D7E";
+
+    [ObservableProperty]
     int contador;
 
     [ObservableProperty]

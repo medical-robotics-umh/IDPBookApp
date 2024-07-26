@@ -9,4 +9,5 @@ public class OtroTrat
     public string OTCad { get; set; }    
     public string OTFini { get; set; }
     public string OTFfin { get; set; }
+    public int OTCronc { get; set; }
 }

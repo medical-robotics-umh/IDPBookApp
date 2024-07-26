@@ -40,6 +40,19 @@ public partial class MainViewModel : BaseViewModel
     }
 
     [RelayCommand]
+    static async Task NavYoutube()
+    {
+        try
+        {
+            await Launcher.Default.OpenAsync("https://www.youtube.com/user/nuevohospitallafe1");
+        }
+        catch
+        {
+            await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n MainViewModel -> Task NavYoutube", "Aceptar");
+        }
+    }
+
+    [RelayCommand]
     static async Task OpenCalendar()
     {
         try
@@ -105,11 +118,11 @@ public partial class MainViewModel : BaseViewModel
     }
 
     [RelayCommand]
-    static async Task OpenPhoneDialer()
+    static async Task OpenMeet()
     {
         try
         {
-            await Launcher.TryOpenAsync("tel:+123456789");
+            await Launcher.TryOpenAsync("https://meet.google.com/landing");
         }
         catch
         {

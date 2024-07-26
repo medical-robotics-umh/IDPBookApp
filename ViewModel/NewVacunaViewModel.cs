@@ -22,7 +22,7 @@ public partial class NewVacunaViewModel : BaseViewModel
     [ObservableProperty]
     public string vDosis;
     [ObservableProperty]
-    public string vAnoUD;
+    DateTime vAnoUD = DateTime.Today;
 
     [RelayCommand]
     async Task NewVacuna()
@@ -36,19 +36,21 @@ public partial class NewVacunaViewModel : BaseViewModel
             Run = true;
             try
             {
+                var id = "Vcn" + DateTimeOffset.Now.ToUnixTimeSeconds().ToString();
                 var NuevaVacuna = new Vacuna
                 {
+                    VId = id,
                     VFecha = DateTime.Today.ToShortDateString(),
                     VNmbre = VNmbre,
                     VDosis = VDosis,
-                    VAnoUD = VAnoUD
+                    VAnoUD = VAnoUD.ToShortDateString()
                 };
                 await CrossCloudFirestore.Current
                                  .Instance
                                  .Collection("IDPbookDB")
                                  .Document(firebaseConnecty.pacInfo.Uid)
                                  .Collection("vacunas")
-                                 .Document("Vcn" + Contador.ToString())
+                                 .Document(id)
                                  .SetAsync(NuevaVacuna);
                 Contador++;
             }

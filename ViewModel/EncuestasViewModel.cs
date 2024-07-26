@@ -53,6 +53,7 @@ public partial class EncuestasViewModel : BaseViewModel
         await Shell.Current.GoToAsync($"{nameof(EncuestaDetailPage)}", true,
             new Dictionary<string, object>
             {
+                {"Contador",Cuestionarios.Count},
                 {"Cuestionario",cuestionario}
             });
         Run = false;

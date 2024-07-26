@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IDPBookApp.Pages.DocsPage"
+             xmlns:viewmodel="clr-namespace:IDPBookApp.ViewModel"
+             x:DataType="viewmodel:MainViewModel"
+             Title="DocsPage">
+    <ScrollView>
+        <VerticalStackLayout BackgroundColor="#F2F4F4" VerticalOptions="FillAndExpand">
+            <Image Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackBtnCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Text="DOCUMENTACIÓN" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0" TextColor="#5D6D7E"/>
+
+            <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*" VerticalOptions="Center" HorizontalOptions="Center" ColumnSpacing="40" Margin="0,120,0,0">
+                <VerticalStackLayout>
+                    <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                        <VerticalStackLayout Spacing="5">
+                            <ImageButton Source="bibliografia.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavDriveCommand}"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                    <Label Text="Drive" HorizontalOptions="Center" FontAttributes="Bold" TextColor="#5D6D7E"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Column="1">
+                    <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125" x:Name="estado">
+                        <VerticalStackLayout Spacing="5">
+                            <ImageButton Source="youtube.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavYoutubeCommand}"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                    <Label Text="Canal de Youtube" HorizontalOptions="Center" FontAttributes="Bold"/>
+                </VerticalStackLayout>
+            </Grid>
+            <HorizontalStackLayout Spacing="20" HorizontalOptions="Center" VerticalOptions="End" Margin="0,120,0,0">
+                <Image
+                Aspect="AspectFit"
+                HeightRequest="80"
+                Source="ic_logo_lafe.png"
+                WidthRequest="60" />
+                <Image
+                VerticalOptions="Start"
+                Aspect="AspectFit"
+                HeightRequest="80"
+                Source="ic_logo_umh.png"
+                WidthRequest="60" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

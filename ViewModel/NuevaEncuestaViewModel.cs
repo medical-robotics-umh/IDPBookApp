@@ -16,7 +16,6 @@ public partial class NuevaEncuestaViewModel : BaseViewModel
     public NuevaEncuestaViewModel(FirebaseConnecty firebaseConnecty)
     {
         this.firebaseConnecty = firebaseConnecty;
-        DisBack = ValidCuest;
     }
 
     [ObservableProperty]
@@ -32,7 +31,7 @@ public partial class NuevaEncuestaViewModel : BaseViewModel
     [ObservableProperty]
     public double qEscala = 0;
     [ObservableProperty]
-    public bool disBack;
+    public string qDesc;
 
     [RelayCommand]
     async Task NewHisto()
@@ -41,23 +40,26 @@ public partial class NuevaEncuestaViewModel : BaseViewModel
         Contador++;
         try
         {
+            var id = "Cuest" + DateTimeOffset.Now.ToUnixTimeSeconds().ToString();
             var NuevoCuest = new Cuestionario
             {
-                QId = "Cuestionario "+Contador.ToString(),
+                QId = id,
+                QName = "Cuestionario " + Contador.ToString(),
                 QFecha = DateTime.Today.ToShortDateString(),
                 QMovil = QMovil,
                 QCuid = QCuid,
                 QActDia = QActDia,
                 QDolor = QDolor,
                 QAnsd = QAnsd,
-                QEscala = QEscala
+                QEscala = Math.Round(QEscala,0),
+                QDesc = QDesc
             };
             await CrossCloudFirestore.Current
                              .Instance
                              .Collection("IDPbookDB")
                              .Document(firebaseConnecty.pacInfo.Uid)
                              .Collection("cuestionarios")
-                             .Document("Cuest"+Contador.ToString())
+                             .Document(id)
                              .SetAsync(NuevoCuest);
         }
         catch
@@ -79,5 +81,4 @@ public partial class NuevaEncuestaViewModel : BaseViewModel
             await Shell.Current.GoToAsync("..");
         }
     }
-
 }

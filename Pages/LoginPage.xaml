@@ -17,9 +17,8 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Image
-                    Aspect="AspectFill"
-                    Scale="0.7"
-                    Source="mainlogoidp.png" Margin="42,-30,0,-40"/>
+                    Aspect="Fill"
+                    Source="mainidplogo.png" Margin="50,50,0,50"/>
             <Frame
             Grid.Row="1"
             Margin="0,0,0,-20"

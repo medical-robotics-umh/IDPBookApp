@@ -6,28 +6,26 @@
              x:DataType="viewmodel:MainViewModel"
              x:Class="IDPBookApp.Pages.MainPage">
     <ScrollView>
-        <VerticalStackLayout BackgroundColor="#dae3f3" Spacing="0">
-            <Grid ColumnDefinitions="Auto,Auto,*,*" RowDefinitions="*,*" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Margin="10,10,10,0" ColumnSpacing="5" RowSpacing="0">
+        <VerticalStackLayout BackgroundColor="#FFFFFF" Spacing="0">
+            <Grid ColumnDefinitions="Auto,Auto,*,*" RowDefinitions="Auto,*" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Margin="10,10,10,0" ColumnSpacing="5" RowSpacing="0">
                 <ImageButton Grid.RowSpan="2" Source="registro.png" Aspect="Fill" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="End" Command="{Binding NavegarCommand}" CommandParameter="ListaPacientesPage" IsVisible="{Binding Auth}"/>
                 <Label Grid.Column="1" Text="Modo Administrador " Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Start" FontAttributes="Italic" IsVisible="{Binding Auth}"/>
-                <Label Grid.Column="1" Grid.Row="1" Text="Paciente:" VerticalOptions="Center" HorizontalOptions="Start" FontAttributes="Bold"/>
-                <Label Grid.Column="2" Grid.Row="1" Text="{Binding NPac}" VerticalOptions="Center" HorizontalOptions="Start" FontAttributes="Bold"/>
+                <Label Grid.Column="1" Grid.Row="1" Text="Paciente:" VerticalOptions="Center" HorizontalOptions="Start" FontAttributes="Bold" TextColor="{Binding FontColor}"/>
+                <Label Grid.Column="2" Grid.Row="1" Text="{Binding NPac}" VerticalOptions="Center" HorizontalOptions="Start" FontAttributes="Bold" TextColor="{Binding FontColor}"/>
                 <ImageButton Grid.Column="3" Grid.RowSpan="2" Source="ic_close_sesion.png" Aspect="Fill" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="End" Command="{Binding LogOutBtnCommand}"/>                
             </Grid>
-            <Image Source="mainlogoidp.png" Scale="0.58" Margin="30,-50,0,-50"/>
+            <Image Source="mainidplogo.png" Margin="50,15,0,10" Aspect="Fill"/>
             <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*" VerticalOptions="Center" HorizontalOptions="Center" ColumnSpacing="40">
                 <VerticalStackLayout>
-                    <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
-                        <VerticalStackLayout>
+                    
                             <ImageButton Source="ic_logo_registro_nuevo.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="DatosPacPage"/>                         
-                        </VerticalStackLayout>
-                    </Frame>
+                        
                     <Label Text="Información" HorizontalOptions="Center" FontAttributes="Bold"/>
                     <Label Text="personal" HorizontalOptions="Center" FontAttributes="Bold"/>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Grid.Column="1">
-                    <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125" BackgroundColor="#F2F4F4">
                         <VerticalStackLayout>
                             <ImageButton Source="estado.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="Estado"/>
                         </VerticalStackLayout>
@@ -37,7 +35,7 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Grid.Row="1" Grid.Column="0">
-                    <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout>
                             <ImageButton Source="calendario.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="CitasPage"/>
                         </VerticalStackLayout>
@@ -46,16 +44,16 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Grid.Row="1" Grid.Column="1">
-                    <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout>
-                            <ImageButton Source="bibliografia.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavDriveCommand}"/>
+                            <ImageButton Source="bibliografia.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="DocsPage"/>
                         </VerticalStackLayout>
                     </Frame>
                     <Label Text="Documentación" HorizontalOptions="Center" FontAttributes="Bold"/>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Grid.Row="2" Grid.Column="0">
-                    <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout>
                             <ImageButton Source="contacto.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="ContactoPage"/>
                         </VerticalStackLayout>
@@ -64,7 +62,7 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Grid.Row="2" Grid.Column="1">
-                    <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout>
                             <ImageButton Source="redes_pacientes.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding OpenChatCommand}"/>
                         </VerticalStackLayout>
