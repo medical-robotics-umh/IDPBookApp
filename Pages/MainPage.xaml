@@ -2,32 +2,51 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:model="clr-namespace:IDPBookApp.Models"
+              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:viewmodel="clr-namespace:IDPBookApp.ViewModel"
              x:DataType="viewmodel:MainViewModel"
              x:Class="IDPBookApp.Pages.MainPage">
     <ScrollView>
-        <VerticalStackLayout BackgroundColor="#FFFFFF" Spacing="0">
+        <VerticalStackLayout Spacing="0">
             <Grid ColumnDefinitions="Auto,Auto,*,*" RowDefinitions="Auto,*" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Margin="10,10,10,0" ColumnSpacing="5" RowSpacing="0">
-                <ImageButton Grid.RowSpan="2" Source="registro.png" Aspect="Fill" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="End" Command="{Binding NavegarCommand}" CommandParameter="ListaPacientesPage" IsVisible="{Binding Auth}"/>
+                <ImageButton Grid.RowSpan="2" Source="users_medical" Aspect="Fill" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="End" Command="{Binding NavegarCommand}" CommandParameter="ListaPacientesPage" IsVisible="{Binding Auth}">
+                    <ImageButton.Behaviors>
+                        <toolkit:IconTintColorBehavior TintColor="#28B463" />
+                    </ImageButton.Behaviors>
+                </ImageButton>
                 <Label Grid.Column="1" Text="Modo Administrador " Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Start" FontAttributes="Italic" IsVisible="{Binding Auth}"/>
-                <Label Grid.Column="1" Grid.Row="1" Text="Paciente:" VerticalOptions="Center" HorizontalOptions="Start" FontAttributes="Bold" TextColor="{Binding FontColor}"/>
-                <Label Grid.Column="2" Grid.Row="1" Text="{Binding NPac}" VerticalOptions="Center" HorizontalOptions="Start" FontAttributes="Bold" TextColor="{Binding FontColor}"/>
-                <ImageButton Grid.Column="3" Grid.RowSpan="2" Source="ic_close_sesion.png" Aspect="Fill" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="End" Command="{Binding LogOutBtnCommand}"/>                
+                <Label Grid.Column="1" Grid.Row="1" Text="Paciente:" VerticalOptions="Center" HorizontalOptions="Start" FontAttributes="Bold" />
+                <Label Grid.Column="2" Grid.Row="1" Text="{Binding NPac}" VerticalOptions="Center" HorizontalOptions="Start" FontAttributes="Bold"/>
+                <ImageButton Grid.Column="3" Grid.RowSpan="2" Source="power" Aspect="Fill" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="End" Command="{Binding LogOutBtnCommand}">
+                    <ImageButton.Behaviors>
+                        <toolkit:IconTintColorBehavior TintColor="Red" />
+                    </ImageButton.Behaviors>
+                </ImageButton>
             </Grid>
-            <Image Source="mainidplogo.png" Margin="50,15,0,10" Aspect="Fill"/>
+            <Image Source="mainidplogo.png" Margin="70,25,25,10" Aspect="AspectFit"/>
             <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*" VerticalOptions="Center" HorizontalOptions="Center" ColumnSpacing="40">
                 <VerticalStackLayout>
-                    
-                            <ImageButton Source="ic_logo_registro_nuevo.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="DatosPacPage"/>                         
-                        
+                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                        <VerticalStackLayout>
+                            <ImageButton Source="clipboard_user" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding GoToNavCommand}" CommandParameter="DatosPacPage">
+                                <ImageButton.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
+                                </ImageButton.Behaviors>
+                            </ImageButton>
+                        </VerticalStackLayout>
+                    </Frame>
                     <Label Text="Información" HorizontalOptions="Center" FontAttributes="Bold"/>
                     <Label Text="personal" HorizontalOptions="Center" FontAttributes="Bold"/>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Grid.Column="1">
-                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125" BackgroundColor="#F2F4F4">
+                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout>
-                            <ImageButton Source="estado.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="Estado"/>
+                            <ImageButton Source="file_medical" Aspect="AspectFit" WidthRequest="100" HeightRequest="100" Command="{Binding GoToNavCommand}" CommandParameter="Estado">
+                            <ImageButton.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
+                            </ImageButton.Behaviors>
+                            </ImageButton>
                         </VerticalStackLayout>
                     </Frame>
                     <Label Text="Estado de la" HorizontalOptions="Center" FontAttributes="Bold"/>
@@ -37,7 +56,11 @@
                 <VerticalStackLayout Grid.Row="1" Grid.Column="0">
                     <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout>
-                            <ImageButton Source="calendario.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="CitasPage"/>
+                            <ImageButton Source="calendar_plus" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding GoToNavCommand}" CommandParameter="CitasPage">
+                                <ImageButton.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
+                                </ImageButton.Behaviors>
+                            </ImageButton>
                         </VerticalStackLayout>
                     </Frame>
                     <Label Text="Citas" HorizontalOptions="Center" FontAttributes="Bold"/>
@@ -46,7 +69,11 @@
                 <VerticalStackLayout Grid.Row="1" Grid.Column="1">
                     <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout>
-                            <ImageButton Source="bibliografia.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="DocsPage"/>
+                            <ImageButton Source="file_video" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding GoToNavCommand}" CommandParameter="DocsPage">
+                                <ImageButton.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
+                                </ImageButton.Behaviors>
+                            </ImageButton>
                         </VerticalStackLayout>
                     </Frame>
                     <Label Text="Documentación" HorizontalOptions="Center" FontAttributes="Bold"/>
@@ -55,7 +82,11 @@
                 <VerticalStackLayout Grid.Row="2" Grid.Column="0">
                     <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout>
-                            <ImageButton Source="contacto.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="ContactoPage"/>
+                            <ImageButton Source="user_md_chat" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding GoToNavCommand}" CommandParameter="ContactoPage">
+                                <ImageButton.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
+                                </ImageButton.Behaviors>
+                            </ImageButton>
                         </VerticalStackLayout>
                     </Frame>
                     <Label Text="Contacto sanitario" HorizontalOptions="Center" FontAttributes="Bold"/>
@@ -64,13 +95,17 @@
                 <VerticalStackLayout Grid.Row="2" Grid.Column="1">
                     <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout>
-                            <ImageButton Source="redes_pacientes.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding OpenChatCommand}"/>
+                            <ImageButton Source="earth_europa" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding OpenChatCommand}">
+                                <ImageButton.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
+                                </ImageButton.Behaviors>
+                            </ImageButton>
                         </VerticalStackLayout>
                     </Frame>
                     <Label Text="Redes de pacientes" HorizontalOptions="Center" FontAttributes="Bold"/>
                 </VerticalStackLayout>
             </Grid>
-            <HorizontalStackLayout Spacing="20" HorizontalOptions="Center" Margin="0,25,0,0">
+            <HorizontalStackLayout Spacing="20" HorizontalOptions="Center" Margin="0,55,0,0">
                 <Image
                             Aspect="AspectFit"
                             HeightRequest="80"

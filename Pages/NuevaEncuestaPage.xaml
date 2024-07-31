@@ -7,15 +7,15 @@
              x:DataType="viewmodel:NuevaEncuestaViewModel"
              Title="NuevaEncuestaPage">
     <ScrollView>
-        <VerticalStackLayout VerticalOptions="FillAndExpand" BackgroundColor="#BDD7EE">
+        <VerticalStackLayout VerticalOptions="FillAndExpand">
             <Label Text="NUEVO CUESTIONARIO" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,20,0,0"/>
             <ImageButton Source="ic_back_button.png" IsVisible="{Binding ValidCuest}" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,-30,0,0" Command="{Binding BackBtnCommand}"/>
 
-            <Frame HasShadow="True" Margin="10,10" BackgroundColor="Transparent" Padding="10,10">
+            <Frame HasShadow="True" Margin="10,10" Padding="10,10">
                 <Grid ColumnDefinitions="*" RowDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,80" RowSpacing="5">
 
                     <Label VerticalOptions="Center" Text="Movilidad:" HorizontalOptions="Start" FontAttributes="Bold"/>
-                    <Picker SelectedIndex="{Binding QMovil}" Grid.Row="1" Title="▼ Selecciona una opción" HeightRequest="35"  HorizontalOptions="Fill" BackgroundColor="White">
+                    <Picker SelectedIndex="{Binding QMovil}" Grid.Row="1" Title="▼ Selecciona una opción" HeightRequest="35"  HorizontalOptions="Fill" >
                         <Picker.Items>
                             <x:String>No tengo problemas para caminar.</x:String>
                             <x:String>Tengo algunos problemas para caminar.</x:String>
@@ -24,7 +24,7 @@
                     </Picker>
 
                     <Label Grid.Row="3" VerticalOptions="Center" Text="Cuidado personal:" HorizontalOptions="Start" FontAttributes="Bold" />
-                    <Picker SelectedIndex="{Binding QCuid}" Grid.Row="4" Title="▼ Selecciona una opción" HeightRequest="35"  HorizontalOptions="Fill" BackgroundColor="White">
+                    <Picker SelectedIndex="{Binding QCuid}" Grid.Row="4" Title="▼ Selecciona una opción" HeightRequest="35"  HorizontalOptions="Fill" >
                         <Picker.Items>
                             <x:String>No tengo problemas con el cuidado personal.</x:String>
                             <x:String>Tengo algunos problemas para levantarme o vestirme solo/a.</x:String>
@@ -33,7 +33,7 @@
                     </Picker>
 
                     <Label Grid.Row="6" VerticalOptions="Center" Text="Actividades diarias:" FontAttributes="Bold" HorizontalOptions="Start" />
-                    <Picker SelectedIndex="{Binding QActDia}" Grid.Row="7" Title="▼ Selecciona una opción" HeightRequest="35"  HorizontalOptions="Fill" BackgroundColor="White" FontAutoScalingEnabled="True">
+                    <Picker SelectedIndex="{Binding QActDia}" Grid.Row="7" Title="▼ Selecciona una opción" HeightRequest="35"  HorizontalOptions="Fill"  FontAutoScalingEnabled="True">
                         <Picker.Items>
                             <x:String>No tengo problemas para realizar mis actividades diarias.</x:String>
                             <x:String>Tengo algunos problemas para realizar mis actividades diarias.</x:String>
@@ -42,7 +42,7 @@
                     </Picker>
 
                     <Label Grid.Row="9" VerticalOptions="Center" Text="Dolor/Malestar:" FontAttributes="Bold" HorizontalOptions="Start" />
-                    <Picker SelectedIndex="{Binding QDolor}" Grid.Row="10" Title="▼ Selecciona una opción"  HeightRequest="35"  HorizontalOptions="Fill" BackgroundColor="White">
+                    <Picker SelectedIndex="{Binding QDolor}" Grid.Row="10" Title="▼ Selecciona una opción"  HeightRequest="35"  HorizontalOptions="Fill" >
                         <Picker.Items>
                             <x:String>No tengo dolor ni malestar.</x:String>
                             <x:String>Tengo moderado dolor o malestar.</x:String>
@@ -51,7 +51,7 @@
                     </Picker>
 
                     <Label Grid.Row="12" VerticalOptions="Center" Text="Ansiedad/Depresión:" FontAttributes="Bold" HorizontalOptions="Start" />
-                    <Picker SelectedIndex="{Binding QAnsd}" Grid.Row="13" Title="▼ Selecciona una opción" HeightRequest="35"  HorizontalOptions="Fill" BackgroundColor="White">
+                    <Picker SelectedIndex="{Binding QAnsd}" Grid.Row="13" Title="▼ Selecciona una opción" HeightRequest="35"  HorizontalOptions="Fill" >
                         <Picker.Items>
                             <x:String>No estoy ansioso/a ni deprimido/a.</x:String>
                             <x:String>Estoy moderadamente ansioso/a o deprimido/a.</x:String>
@@ -66,10 +66,10 @@
                     <Label Grid.Row="18" VerticalOptions="Center" Text="{Binding Source={x:Reference slider},Path=Value,StringFormat='Valor: {0:F0}'}"  HorizontalOptions="Center" Margin="0,60,0,0"/>
 
                     <Label Grid.Row="20" VerticalOptions="Center" Text="Describe brevemente el porque de tu puntuación:" FontAttributes="Bold" HorizontalOptions="Start" />
-                    <Editor Text="{Binding QDesc}" Grid.Row="21" Placeholder="Descripción" HorizontalTextAlignment="Start" HorizontalOptions="Fill" HeightRequest="100" BackgroundColor="White"/>
+                    <Editor Text="{Binding QDesc}" Grid.Row="21" Placeholder="Descripción" HorizontalTextAlignment="Start" HorizontalOptions="Fill" HeightRequest="100" />
 
-                    <Button Grid.Row="23"  HorizontalOptions="Center" Margin="-100,0,0,0" Text="Agregar" BackgroundColor="Green" WidthRequest="90" HeightRequest="45" Command="{Binding NewHistoCommand}"/>
-                    <Button Grid.Row="23"  HorizontalOptions="Center" Margin="100,0,0,0" Text="Salir" BackgroundColor="PaleVioletRed" WidthRequest="90" HeightRequest="45" Command="{Binding BackBtnCommand}" IsEnabled="{Binding ValidCuest}"/>
+                    <Button Grid.Row="23"  HorizontalOptions="Center" Margin="-100,0,0,0" Text="Agregar" WidthRequest="90" HeightRequest="45" Command="{Binding NewHistoCommand}"/>
+                    <Button Grid.Row="23"  HorizontalOptions="Center" Margin="100,0,0,0" Text="Salir" BackgroundColor="#E67E22" WidthRequest="90" HeightRequest="45" Command="{Binding BackBtnCommand}" IsEnabled="{Binding ValidCuest}"/>
                 </Grid>
             </Frame>
             

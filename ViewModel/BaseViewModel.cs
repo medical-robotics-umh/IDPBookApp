@@ -5,6 +5,7 @@ using IDPBookApp.Models;
 namespace IDPBookApp.ViewModel;
 
 [QueryProperty(nameof(Contador), nameof(Contador))]
+
 public partial class BaseViewModel : ObservableObject
 {
     public BaseViewModel()
@@ -12,13 +13,25 @@ public partial class BaseViewModel : ObservableObject
 
     }
     [ObservableProperty]
-    string nPac;
+    public string nPac;
 
     [ObservableProperty]
     string nMed;
 
     [ObservableProperty]
-    string fontColor = "#5D6D7E";
+    string blanco = "#FFFFFF";
+    [ObservableProperty]
+    string grisC = "#F2F4F4";
+    [ObservableProperty]
+    string azul = "#2E86C1";
+    [ObservableProperty]
+    string verde = "#28B463";
+    [ObservableProperty]
+    string nar = "#E67E22";
+    [ObservableProperty]
+    string amar = "#F4D03F";
+    [ObservableProperty]
+    string grisO = "#5D6D7E";
 
     [ObservableProperty]
     int contador;
@@ -71,7 +84,7 @@ public partial class BaseViewModel : ObservableObject
     public bool run = false;
 
     [RelayCommand]
-    async static Task Navegar(string ruta)
+    static async Task Navegar(string ruta)
     {
         await Shell.Current.GoToAsync(ruta);
     }

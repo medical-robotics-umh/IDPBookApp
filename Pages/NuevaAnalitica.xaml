@@ -7,16 +7,16 @@
              x:DataType="viewmodel:NewAnltcViewModel"
              Title="NuevaAnalitica">
     <ScrollView>
-        <VerticalStackLayout BackgroundColor="#e2f0d9" Spacing="0">
+        <VerticalStackLayout Spacing="0">
             <ImageButton Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}"/>
             <Label Text="NUEVA PRUEBA" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-28,0,0"/>
 
-            <Frame HasShadow="True" Margin="10,10" BackgroundColor="Transparent" Padding="10,10">
+            <Frame HasShadow="True" Margin="10,10" Padding="10,10">
                 <VerticalStackLayout Spacing="5">
 
                     <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="15,0" Spacing="30">
                         <Label VerticalOptions="Center" Text="Fecha de analítica:" FontAttributes="Bold" WidthRequest="80"/>
-                        <DatePicker Date="{Binding Date}" VerticalOptions="Center" WidthRequest="140" BackgroundColor="GhostWhite"/>
+                        <DatePicker Date="{Binding Date}" VerticalOptions="Center" WidthRequest="140" />
                     </HorizontalStackLayout>
 
                     <BoxView Color="Gray"
@@ -27,27 +27,27 @@
 
                     <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="15,0" Spacing="30">
                         <Label VerticalOptions="Center" Text="IgG" FontAttributes="Bold" WidthRequest="80"/>
-                        <Entry Text="{Binding AIgG}" MaxLength="5" TextChanged="Rango5k" VerticalOptions="Center" Placeholder="Rango [0-5000]" WidthRequest="140" HorizontalTextAlignment="Start" BackgroundColor="GhostWhite" Keyboard="Numeric" ReturnType="Next"/>
+                        <Entry Text="{Binding AIgG}" MaxLength="5" TextChanged="Rango5k" VerticalOptions="Center" Placeholder="Rango [0-5000]" WidthRequest="140" HorizontalTextAlignment="Start"  Keyboard="Numeric" ReturnType="Next"/>
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="45,0" Spacing="0">
                         <Label VerticalOptions="Center" Text="IgG1" FontAttributes="Bold" WidthRequest="80"/>
-                        <Entry Text="{Binding AIgG1}" MaxLength="5" TextChanged="Rango5k" VerticalOptions="Center" Placeholder="Rango [0-5000]" WidthRequest="140" HorizontalTextAlignment="Start" BackgroundColor="GhostWhite" Keyboard="Numeric" ReturnType="Next"/>
+                        <Entry Text="{Binding AIgG1}" MaxLength="5" TextChanged="Rango5k" VerticalOptions="Center" Placeholder="Rango [0-5000]" WidthRequest="140" HorizontalTextAlignment="Start"  Keyboard="Numeric" ReturnType="Next"/>
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="45,0" Spacing="0">
                         <Label VerticalOptions="Center" Text="IgG2" FontAttributes="Bold" WidthRequest="80"/>
-                        <Entry Text="{Binding AIgG2}" MaxLength="5" TextChanged="Rango5k" VerticalOptions="Center" Placeholder="Rango [0-5000]" WidthRequest="140" HorizontalTextAlignment="Start" BackgroundColor="GhostWhite" Keyboard="Numeric" ReturnType="Next"/>
+                        <Entry Text="{Binding AIgG2}" MaxLength="5" TextChanged="Rango5k" VerticalOptions="Center" Placeholder="Rango [0-5000]" WidthRequest="140" HorizontalTextAlignment="Start"  Keyboard="Numeric" ReturnType="Next"/>
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="45,0" Spacing="0">
                         <Label VerticalOptions="Center" Text="IgG3" FontAttributes="Bold" WidthRequest="80"/>
-                        <Entry Text="{Binding AIgG3}" MaxLength="5" TextChanged="Rango5k" VerticalOptions="Center" Placeholder="Rango [0-5000]" WidthRequest="140" HorizontalTextAlignment="Start" BackgroundColor="GhostWhite" Keyboard="Numeric" ReturnType="Next"/>
+                        <Entry Text="{Binding AIgG3}" MaxLength="5" TextChanged="Rango5k" VerticalOptions="Center" Placeholder="Rango [0-5000]" WidthRequest="140" HorizontalTextAlignment="Start"  Keyboard="Numeric" ReturnType="Next"/>
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="45,0,0,10" Spacing="0">
                         <Label VerticalOptions="Center" Text="IgG4" FontAttributes="Bold" WidthRequest="80"/>
-                        <Entry Text="{Binding AIgG4}" MaxLength="5" TextChanged="Rango5k" VerticalOptions="Center" Placeholder="Rango [0-5000]" WidthRequest="140" HorizontalTextAlignment="Start" BackgroundColor="GhostWhite" Keyboard="Numeric" ReturnType="Next"/>
+                        <Entry Text="{Binding AIgG4}" MaxLength="5" TextChanged="Rango5k" VerticalOptions="Center" Placeholder="Rango [0-5000]" WidthRequest="140" HorizontalTextAlignment="Start"  Keyboard="Numeric" ReturnType="Next"/>
                     </HorizontalStackLayout>
 
                     <BoxView Color="Gray"
@@ -58,27 +58,27 @@
 
                     <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="15,0" Spacing="30">
                         <Label VerticalOptions="Center" Text="HbA1c (%)" FontAttributes="Bold" WidthRequest="100"/>
-                        <Entry Text="{Binding AHbA1c}" MaxLength="2" TextChanged="Rango20" VerticalOptions="Center" Placeholder="Rango [1-20]" WidthRequest="140" HorizontalTextAlignment="Start" BackgroundColor="GhostWhite" Keyboard="Numeric" ReturnType="Next"/>
+                        <Entry Text="{Binding AHbA1c}" MaxLength="2" TextChanged="Rango20" VerticalOptions="Center" Placeholder="Rango [1-20]" WidthRequest="140" HorizontalTextAlignment="Start"  Keyboard="Numeric" ReturnType="Next"/>
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="15,0" Spacing="30">
                         <Label VerticalOptions="Center" Text="HDL (mg/L)" FontAttributes="Bold" WidthRequest="100"/>
-                        <Entry Text="{Binding AHDL}" MaxLength="3" TextChanged="Rango200" VerticalOptions="Center" Placeholder="Rango [0-200]" WidthRequest="140" HorizontalTextAlignment="Start" BackgroundColor="GhostWhite" Keyboard="Numeric" ReturnType="Next"/>
+                        <Entry Text="{Binding AHDL}" MaxLength="3" TextChanged="Rango200" VerticalOptions="Center" Placeholder="Rango [0-200]" WidthRequest="140" HorizontalTextAlignment="Start"  Keyboard="Numeric" ReturnType="Next"/>
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="15,0" Spacing="30">
                         <Label VerticalOptions="Center" Text="LDL (mg/L)" FontAttributes="Bold" WidthRequest="100"/>
-                        <Entry Text="{Binding ALDL}" MaxLength="3" TextChanged="Rango500" VerticalOptions="Center" Placeholder="Rango [0-500]" WidthRequest="140" HorizontalTextAlignment="Start" BackgroundColor="GhostWhite" Keyboard="Numeric" ReturnType="Next"/>
+                        <Entry Text="{Binding ALDL}" MaxLength="3" TextChanged="Rango500" VerticalOptions="Center" Placeholder="Rango [0-500]" WidthRequest="140" HorizontalTextAlignment="Start"  Keyboard="Numeric" ReturnType="Next"/>
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="15,0" Spacing="30">
                         <Label VerticalOptions="Center" Text="TG (mg/L)" FontAttributes="Bold" WidthRequest="100"/>
-                        <Entry Text="{Binding ATG}" MaxLength="4" TextChanged="Rango1k" VerticalOptions="Center" Placeholder="Rango [0-1000]" WidthRequest="140" HorizontalTextAlignment="Start" BackgroundColor="GhostWhite" Keyboard="Numeric" ReturnType="Next"/>
+                        <Entry Text="{Binding ATG}" MaxLength="4" TextChanged="Rango1k" VerticalOptions="Center" Placeholder="Rango [0-1000]" WidthRequest="140" HorizontalTextAlignment="Start"  Keyboard="Numeric" ReturnType="Next"/>
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="15,0,0,10" Spacing="30">
                         <Label VerticalOptions="Center" Text="Colesterol total (mg/L)" FontAttributes="Bold" WidthRequest="100"/>
-                        <Entry Text="{Binding AColesT}" MaxLength="3" TextChanged="Rango500" VerticalOptions="Center" Placeholder="Rango [0-500]" WidthRequest="140" HorizontalTextAlignment="Start" BackgroundColor="GhostWhite" Keyboard="Numeric" ReturnType="Next"/>
+                        <Entry Text="{Binding AColesT}" MaxLength="3" TextChanged="Rango500" VerticalOptions="Center" Placeholder="Rango [0-500]" WidthRequest="140" HorizontalTextAlignment="Start"  Keyboard="Numeric" ReturnType="Next"/>
                     </HorizontalStackLayout>
 
                     <BoxView Color="Gray"
@@ -89,27 +89,27 @@
 
                     <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="15,0" Spacing="30">
                         <Label VerticalOptions="Center" Text="Hemoglobina (g/dL)" FontAttributes="Bold" WidthRequest="100"/>
-                        <Entry Text="{Binding AHemo}" MaxLength="2" TextChanged="Rango30" VerticalOptions="Center" Placeholder="Rango [2-30]" WidthRequest="140" HorizontalTextAlignment="Start" BackgroundColor="GhostWhite" Keyboard="Numeric" ReturnType="Next"/>
+                        <Entry Text="{Binding AHemo}" MaxLength="2" TextChanged="Rango30" VerticalOptions="Center" Placeholder="Rango [2-30]" WidthRequest="140" HorizontalTextAlignment="Start"  Keyboard="Numeric" ReturnType="Next"/>
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="15,0" Spacing="30">
                         <Label VerticalOptions="Center" Text="Linfocitos (células/uL)" FontAttributes="Bold" WidthRequest="100"/>
-                        <Entry Text="{Binding ALinfo}" MaxLength="6" TextChanged="Rango100K" VerticalOptions="Center" Placeholder="Rango [0-100000]" WidthRequest="140" HorizontalTextAlignment="Start" BackgroundColor="GhostWhite" Keyboard="Numeric" ReturnType="Next"/>
+                        <Entry Text="{Binding ALinfo}" MaxLength="6" TextChanged="Rango100K" VerticalOptions="Center" Placeholder="Rango [0-100000]" WidthRequest="140" HorizontalTextAlignment="Start"  Keyboard="Numeric" ReturnType="Next"/>
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="15,0" Spacing="30">
                         <Label VerticalOptions="Center" Text="Neurotrófilos (células/uL)" FontAttributes="Bold" WidthRequest="100"/>
-                        <Entry Text="{Binding ANeuro}" MaxLength="6" TextChanged="Rango100K" VerticalOptions="Center" Placeholder="Rango [0-100000]" WidthRequest="140" HorizontalTextAlignment="Start" BackgroundColor="GhostWhite" Keyboard="Numeric" ReturnType="Next"/>
+                        <Entry Text="{Binding ANeuro}" MaxLength="6" TextChanged="Rango100K" VerticalOptions="Center" Placeholder="Rango [0-100000]" WidthRequest="140" HorizontalTextAlignment="Start"  Keyboard="Numeric" ReturnType="Next"/>
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="15,0" Spacing="30">
                         <Label VerticalOptions="Center" Text="Plaquetas (células/uL)" FontAttributes="Bold" WidthRequest="100"/>
-                        <Entry Text="{Binding APlaque}" MaxLength="7" TextChanged="Rango2M" VerticalOptions="Center" Placeholder="Rango [0-2000000]" WidthRequest="140" HorizontalTextAlignment="Start" BackgroundColor="GhostWhite" Keyboard="Numeric"/>
+                        <Entry Text="{Binding APlaque}" MaxLength="7" TextChanged="Rango2M" VerticalOptions="Center" Placeholder="Rango [0-2000000]" WidthRequest="140" HorizontalTextAlignment="Start"  Keyboard="Numeric"/>
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout HorizontalOptions="Center" HeightRequest="40" Spacing="20" Margin="0,20,0,0">
-                        <Button Text="Registrar" BackgroundColor="Green" WidthRequest="90" BorderColor="Black" Command="{Binding NewAnltcCommand}"/>
-                        <Button Text="Cancelar" BackgroundColor="PaleVioletRed" WidthRequest="90" Command="{Binding BackBtnCommand}"/>
+                        <Button Text="Registrar" WidthRequest="90" BorderColor="Black" Command="{Binding NewAnltcCommand}"/>
+                        <Button Text="Cancelar" BackgroundColor="#E67E22" WidthRequest="90" Command="{Binding BackBtnCommand}"/>
                     </HorizontalStackLayout>
                 </VerticalStackLayout>
             </Frame>

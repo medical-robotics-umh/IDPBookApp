@@ -19,20 +19,27 @@ public partial class DatosPacViewModel : BaseViewModel
 
     async void GetPac()
     {
-        Paciente = await FirebaseConnecty.GetPacienteModel(firebaseConnecty.pacInfo.Uid);
-        if(Paciente != null)
+        try
         {
-            var nac = DateTime.ParseExact(Paciente.FechNac, "d/m/yyyy", CultureInfo.InvariantCulture);
-            int añosTranscurridos = DateTime.Today.Year - nac.Year;
-            if (DateTime.Today.Month < nac.Month || (DateTime.Today.Month == nac.Month && DateTime.Today.Day < nac.Day))
+            Paciente = await FirebaseConnecty.GetPacienteModel(firebaseConnecty.pacInfo.Uid);
+            if (Paciente != null)
             {
-                añosTranscurridos--; //Resta un año si el cumpleaños aún no ha ocurrido este año
+                var nac = DateTime.ParseExact(Paciente.FechNac, "d/m/yyyy", CultureInfo.InvariantCulture);
+                int añosTranscurridos = DateTime.Today.Year - nac.Year;
+                if (DateTime.Today.Month < nac.Month || (DateTime.Today.Month == nac.Month && DateTime.Today.Day < nac.Day))
+                {
+                    añosTranscurridos--; //Resta un año si el cumpleaños aún no ha ocurrido este año
+                }
+                Fecha = añosTranscurridos;
             }
-            Fecha = añosTranscurridos;
+            if (Paciente.Diagnsc == 13)
+            {
+                Vsbl = false;
+            }
         }
-        if (Paciente.Diagnsc == 13)
+        catch (Exception ex)
         {
-            Vsbl = false;
+            await Shell.Current.DisplayAlert("AVISO!!!", $"No se pudo obtener paciente: {ex.Message}", "Ok");
         }
     }
 }

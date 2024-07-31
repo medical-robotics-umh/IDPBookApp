@@ -6,12 +6,12 @@
              x:DataType="viewmodel:DetailPageViewModel"
              Title="EpisodioViewPage">
     <ScrollView>
-        <StackLayout BackgroundColor="#e2f0d9" Spacing="0">
+        <StackLayout Spacing="0">
             <ImageButton Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}"/>
 
             <Label Text="{Binding Episodio.EName}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
-            <Frame HasShadow="True" Margin="10,20" BackgroundColor="Transparent" Padding="10,1,10,10" VerticalOptions="CenterAndExpand">
+            <Frame HasShadow="True" Margin="10,20" Padding="10,1,10,10" VerticalOptions="CenterAndExpand">
                 <Grid ColumnDefinitions="Auto,*,*" RowDefinitions="40,40,40,40,40,40,Auto,Auto,Auto,Auto,40,40,40,40,40,40,80" RowSpacing="10">
                     <Label Text="Fecha de episodio:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
                     <Label Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="{Binding Episodio.EFecha}"/>
@@ -133,7 +133,7 @@
                     <Label Grid.Row="15" VerticalOptions="Center" Text="Otros" FontAttributes="Bold"/>
                     <Entry Grid.Row="15" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Episodio.ETratOtros}" IsReadOnly="True" VerticalOptions="Center" Placeholder="N/A" HorizontalTextAlignment="Start" Keyboard="Numeric" HorizontalOptions="FillAndExpand"  HeightRequest="35"/>
 
-                    <Button Grid.Row="16" Grid.ColumnSpan="3" HorizontalOptions="Center" Text="Eliminar" BackgroundColor="Red" WidthRequest="90" HeightRequest="45" Command="{Binding ElimHistoCommand}"/>
+                    <Button Grid.Row="16" Grid.ColumnSpan="3" HorizontalOptions="Center" Text="Eliminar" BackgroundColor="#28B463" WidthRequest="90" HeightRequest="45" Command="{Binding ElimHistoCommand}"/>
                 </Grid>
             </Frame>
         </StackLayout>

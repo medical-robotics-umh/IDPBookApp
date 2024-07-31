@@ -7,11 +7,11 @@
              x:DataType="viewmodel:HistoViewModel"
              Title="HistorialPage">
     <ScrollView>
-        <VerticalStackLayout VerticalOptions="FillAndExpand" BackgroundColor="#e2f0d9">
+        <VerticalStackLayout VerticalOptions="FillAndExpand">
             <ImageButton Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}"/>
             <Label Text="HISTORIAL" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
-            <Frame Margin="0,30,0,0" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125" x:Name="estado" HorizontalOptions="Center" IsVisible="{Binding VsblHis}">
+            <Frame Margin="0,30,0,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125" x:Name="estado" HorizontalOptions="Center" IsVisible="{Binding VsblHis}">
                 <VerticalStackLayout>
                     <ImageButton Source="ic_logo_agregar.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding GoToNewHistoCommand}"/>
                 </VerticalStackLayout>
@@ -22,7 +22,7 @@
                 <Label Text="Historial médico" FontSize="Medium" FontAttributes="Bold"/>
             </HorizontalStackLayout>
 
-            <Frame HorizontalOptions="CenterAndExpand" BackgroundColor="Transparent" Padding="10,10" Margin="10,10" HasShadow="True">
+            <Frame HorizontalOptions="CenterAndExpand" Padding="10,10" Margin="10,10" HasShadow="True">
                 <CollectionView ItemsSource="{Binding Historias}" EmptyView="Aún no hay historias" HorizontalOptions="CenterAndExpand" SelectionMode="Single">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:HistoriaModel">

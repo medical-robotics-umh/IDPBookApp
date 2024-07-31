@@ -7,17 +7,17 @@
              x:DataType="viewmodel:NewHistoViewModel"
              Title="Historial">
     <ScrollView>
-        <VerticalStackLayout BackgroundColor="#e2f0d9" Spacing="0">
+        <VerticalStackLayout Spacing="0">
             <ImageButton Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}"/>
             <Label Text="NUEVA HISTORIA" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
-            <Frame HasShadow="True" Margin="10,10" BackgroundColor="Transparent" Padding="10,10">
+            <Frame HasShadow="True" Margin="10,10" Padding="10,10">
                 <Grid ColumnDefinitions="auto,*" RowDefinitions="45,45,*,*,*,*,*,80" RowSpacing="5">
                     <Label Text="Año diagnostico:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>                    
-                    <Picker ItemsSource="{Binding Years}" SelectedItem="{Binding FDiag}" SelectedIndex="{Binding FDiagIndx}" Grid.Column="1" Title="Seleccionar año" BackgroundColor="White" HorizontalOptions="Start" VerticalOptions="Center"/>
+                    <Picker ItemsSource="{Binding Years}" SelectedItem="{Binding FDiag}" SelectedIndex="{Binding FDiagIndx}" Grid.Column="1" Title="Seleccionar año"  HorizontalOptions="Start" VerticalOptions="Center"/>
 
                     <Label Grid.Row="1" Text="¿Historial activo?:   " FontAttributes="Bold" VerticalOptions="Center"/>
-                    <Picker SelectedIndex="{Binding Activ}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Title="▼ Seleccionar Sí/No" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Picker SelectedIndex="{Binding Activ}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Title="▼ Seleccionar Sí/No"  HorizontalOptions="Fill" VerticalOptions="Center">
                         <Picker.Items>
                             <x:String>Si</x:String>
                             <x:String>No</x:String>
@@ -25,7 +25,7 @@
                     </Picker>
 
                     <Label Grid.Row="2" VerticalOptions="Center" Text="Tipo Diagnostico:" FontAttributes="Bold" HorizontalOptions="Start"/>
-                    <Picker SelectedIndex="{Binding HTDiag}" SelectedIndexChanged="Picker_SelectedIndexChanged" Grid.Row="2" Grid.Column="1" Title="▼ Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Picker SelectedIndex="{Binding HTDiag}" SelectedIndexChanged="Picker_SelectedIndexChanged" Grid.Row="2" Grid.Column="1" Title="▼ Seleccionar diagnostico"  HorizontalOptions="Fill" VerticalOptions="Center">
                         <Picker.Items>
                             <x:String>E. Infecciosa</x:String>
                             <x:String>E. Hematológica</x:String>
@@ -43,7 +43,7 @@
                     </Picker>
 
                     <Label IsVisible="{Binding EInf}" Grid.Row="3" HorizontalOptions="Start" VerticalOptions="Center" Text="E. Infecciosa:" FontAttributes="Bold"/>
-                    <Picker x:Name="EInf" IsVisible="{Binding EInf}" SelectedIndexChanged="Picker_SelectedIndexChanged_1" Grid.Column="1" Grid.Row="3" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Picker x:Name="EInf" IsVisible="{Binding EInf}" SelectedIndexChanged="Picker_SelectedIndexChanged_1" Grid.Column="1" Grid.Row="3" Title="Seleccionar diagnostico"  HorizontalOptions="Fill" VerticalOptions="Center">
                         <Picker.Items>
                             <x:String>Neumonía</x:String>
                             <x:String>Meningitis</x:String>
@@ -57,7 +57,7 @@
                     </Picker>
 
                     <Label IsVisible="{Binding EHema}" Grid.Row="3" HorizontalOptions="Start" VerticalOptions="Center" Text="E. Hematológica:" FontAttributes="Bold"/>
-                    <Picker x:Name="EHema" IsVisible="{Binding EHema}" SelectedIndexChanged="Picker_SelectedIndexChanged_1" Grid.Column="1" Grid.Row="3" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Picker x:Name="EHema" IsVisible="{Binding EHema}" SelectedIndexChanged="Picker_SelectedIndexChanged_1" Grid.Column="1" Grid.Row="3" Title="Seleccionar diagnostico"  HorizontalOptions="Fill" VerticalOptions="Center">
                         <Picker.Items>
                             <x:String>Anemia Inmunohemolítica</x:String>
                             <x:String>PTI</x:String>
@@ -71,7 +71,7 @@
                     </Picker>
 
                     <Label IsVisible="{Binding EADig}" Grid.Row="3" HorizontalOptions="Start" VerticalOptions="Center" Text="E. Ap. Digestivo:" FontAttributes="Bold"/>
-                    <Picker x:Name="EADig" IsVisible="{Binding EADig}" SelectedIndexChanged="Picker_SelectedIndexChanged_1" Grid.Column="1" Grid.Row="3" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Picker x:Name="EADig" IsVisible="{Binding EADig}" SelectedIndexChanged="Picker_SelectedIndexChanged_1" Grid.Column="1" Grid.Row="3" Title="Seleccionar diagnostico"  HorizontalOptions="Fill" VerticalOptions="Center">
                         <Picker.Items>
                             <x:String>Enfermedad Inflamatoria intestinal</x:String>
                             <x:String>Celiaquía</x:String>
@@ -83,7 +83,7 @@
                     </Picker>
 
                     <Label IsVisible="{Binding EPulm}" Grid.Row="3" Text="E. Pulmonar:" HorizontalOptions="Start" VerticalOptions="Center" FontAttributes="Bold"/>
-                    <Picker x:Name="EPulm" IsVisible="{Binding EPulm}" SelectedIndexChanged="Picker_SelectedIndexChanged_1" Grid.Column="1" Grid.Row="3" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Picker x:Name="EPulm" IsVisible="{Binding EPulm}" SelectedIndexChanged="Picker_SelectedIndexChanged_1" Grid.Column="1" Grid.Row="3" Title="Seleccionar diagnostico"  HorizontalOptions="Fill" VerticalOptions="Center">
                         <Picker.Items>
                             <x:String>Bronquiectasias</x:String>
                             <x:String>Neumopatía intersticial</x:String>
@@ -94,7 +94,7 @@
                     </Picker>
 
                     <Label IsVisible="{Binding EHepa}" Grid.Row="3" Text="E. Hepática:" HorizontalOptions="Start" VerticalOptions="Center" FontAttributes="Bold"/>
-                    <Picker x:Name="EHepa" IsVisible="{Binding EHepa}" SelectedIndexChanged="Picker_SelectedIndexChanged_1" Grid.Column="1" Grid.Row="3" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Picker x:Name="EHepa" IsVisible="{Binding EHepa}" SelectedIndexChanged="Picker_SelectedIndexChanged_1" Grid.Column="1" Grid.Row="3" Title="Seleccionar diagnostico"  HorizontalOptions="Fill" VerticalOptions="Center">
                         <Picker.Items>
                             <x:String>Hiperplasia nodular regenerativa</x:String>
                             <x:String>Hipertensión Portal</x:String>
@@ -104,7 +104,7 @@
                     </Picker>
 
                     <Label IsVisible="{Binding EOnco}" Grid.Row="3" Text="E. Oncológica:" HorizontalOptions="Start" VerticalOptions="Center" FontAttributes="Bold"/>
-                    <Picker x:Name="EOnco" IsVisible="{Binding EOnco}" SelectedIndexChanged="Picker_SelectedIndexChanged_1" Grid.Column="1" Grid.Row="3" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Picker x:Name="EOnco" IsVisible="{Binding EOnco}" SelectedIndexChanged="Picker_SelectedIndexChanged_1" Grid.Column="1" Grid.Row="3" Title="Seleccionar diagnostico"  HorizontalOptions="Fill" VerticalOptions="Center">
                         <Picker.Items>
                             <x:String>Linfoma</x:String>
                             <x:String>Leucemia</x:String>
@@ -114,7 +114,7 @@
                     </Picker>
 
                     <Label IsVisible="{Binding EEndo}" Grid.Row="3" Text="E. Endocrinológica:" HorizontalOptions="Start" VerticalOptions="Center" FontAttributes="Bold"/>
-                    <Picker x:Name="EEndo" IsVisible="{Binding EEndo}" SelectedIndexChanged="Picker_SelectedIndexChanged_1" Grid.Column="1" Grid.Row="3" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Picker x:Name="EEndo" IsVisible="{Binding EEndo}" SelectedIndexChanged="Picker_SelectedIndexChanged_1" Grid.Column="1" Grid.Row="3" Title="Seleccionar diagnostico"  HorizontalOptions="Fill" VerticalOptions="Center">
                         <Picker.Items>
                             <x:String>DM tipo 1</x:String>
                             <x:String>Hipotiroidismo autoinmune</x:String>
@@ -123,7 +123,7 @@
                     </Picker>
 
                     <Label IsVisible="{Binding ECardio}" Grid.Row="3" Text="E. Cardiovascular:" HorizontalOptions="Start" VerticalOptions="Center" FontAttributes="Bold"/>
-                    <Picker x:Name="ECardio" IsVisible="{Binding ECardio}" SelectedIndexChanged="Picker_SelectedIndexChanged_1" Grid.Column="1" Grid.Row="3" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Picker x:Name="ECardio" IsVisible="{Binding ECardio}" SelectedIndexChanged="Picker_SelectedIndexChanged_1" Grid.Column="1" Grid.Row="3" Title="Seleccionar diagnostico"  HorizontalOptions="Fill" VerticalOptions="Center">
                         <Picker.Items>
                             <x:String>HTA</x:String>
                             <x:String>Dislipemia</x:String>
@@ -138,7 +138,7 @@
                     </Picker>
 
                     <Label IsVisible="{Binding EAuto}" Grid.Row="3" Text="E. Autoinm/inflm:" HorizontalOptions="Start" VerticalOptions="Center" FontAttributes="Bold"/>
-                    <Picker x:Name="EAuto" IsVisible="{Binding EAuto}" SelectedIndexChanged="Picker_SelectedIndexChanged_1" Grid.Column="1" Grid.Row="3" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Picker x:Name="EAuto" IsVisible="{Binding EAuto}" SelectedIndexChanged="Picker_SelectedIndexChanged_1" Grid.Column="1" Grid.Row="3" Title="Seleccionar diagnostico"  HorizontalOptions="Fill" VerticalOptions="Center">
                         <Picker.Items>
                             <x:String>Lupus</x:String>
                             <x:String>Artritis reumatoide</x:String>
@@ -152,7 +152,7 @@
                     </Picker>
 
                     <Label IsVisible="{Binding ENeuro}" Grid.Row="3" Text="E. Neurológica:" HorizontalOptions="Start" VerticalOptions="Center" FontAttributes="Bold"/>
-                    <Picker x:Name="ENeuro" IsVisible="{Binding ENeuro}" SelectedIndexChanged="Picker_SelectedIndexChanged_1" Grid.Column="1" Grid.Row="3" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Picker x:Name="ENeuro" IsVisible="{Binding ENeuro}" SelectedIndexChanged="Picker_SelectedIndexChanged_1" Grid.Column="1" Grid.Row="3" Title="Seleccionar diagnostico"  HorizontalOptions="Fill" VerticalOptions="Center">
                         <Picker.Items>
                             <x:String>Lesiones desmielinizantes-like SNC</x:String>
                             <x:String>Meningitis linfocitaria</x:String>
@@ -165,7 +165,7 @@
                     </Picker>
 
                     <Label IsVisible="{Binding ECut}" Grid.Row="3" Text="E. Cutánea:" HorizontalOptions="Start" VerticalOptions="Center" FontAttributes="Bold"/>
-                    <Picker x:Name="ECut" IsVisible="{Binding ECut}" SelectedIndexChanged="Picker_SelectedIndexChanged_1" Grid.Column="1" Grid.Row="3" Title="Seleccionar diagnostico" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Picker x:Name="ECut" IsVisible="{Binding ECut}" SelectedIndexChanged="Picker_SelectedIndexChanged_1" Grid.Column="1" Grid.Row="3" Title="Seleccionar diagnostico"  HorizontalOptions="Fill" VerticalOptions="Center">
                         <Picker.Items>
                             <x:String>Vitíligo</x:String>
                             <x:String>Psoriasis</x:String>
@@ -177,16 +177,16 @@
                     </Picker>
 
                     <Label IsVisible="{Binding EOtro}" Grid.Row="4" VerticalOptions="Center" HorizontalOptions="Start" Text="Otro tipo:" FontAttributes="Bold"/>
-                    <Entry IsVisible="{Binding EOtro}" Text="{Binding OtroDiag}" Grid.Column="1" Grid.Row="4" VerticalOptions="Center" HorizontalOptions="Fill" BackgroundColor="White" Placeholder="Otro diagnostico" HorizontalTextAlignment="Start" Keyboard="Text"/>
+                    <Entry IsVisible="{Binding EOtro}" Text="{Binding OtroDiag}" Grid.Column="1" Grid.Row="4" VerticalOptions="Center" HorizontalOptions="Fill"  Placeholder="Otro diagnostico" HorizontalTextAlignment="Start" Keyboard="Text"/>
 
                     <Label Grid.Row="5" VerticalOptions="Center" HorizontalOptions="Start" Text="Comentarios:" FontAttributes="Bold"/>
-                    <Entry Text="{Binding Comment}" Grid.Column="1" Grid.Row="5" VerticalOptions="Center" HorizontalOptions="Fill" BackgroundColor="White" Placeholder="Descripción diagnosticos" HorizontalTextAlignment="Start" Keyboard="Text"/>
+                    <Entry Text="{Binding Comment}" Grid.Column="1" Grid.Row="5" VerticalOptions="Center" HorizontalOptions="Fill"  Placeholder="Descripción diagnosticos" HorizontalTextAlignment="Start" Keyboard="Text"/>
 
                     <Label Grid.Row="6" VerticalOptions="Center" HorizontalOptions="Start" Text="Alergias:" FontAttributes="Bold"/>
-                    <Entry Text="{Binding Aler}" Grid.Column="1" Grid.Row="6" VerticalOptions="Center" HorizontalOptions="Fill" BackgroundColor="White" Placeholder="Escribe alergias" HorizontalTextAlignment="Start" Keyboard="Text"/>
+                    <Entry Text="{Binding Aler}" Grid.Column="1" Grid.Row="6" VerticalOptions="Center" HorizontalOptions="Fill"  Placeholder="Escribe alergias" HorizontalTextAlignment="Start" Keyboard="Text"/>
 
-                    <Button Grid.Row="7" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="-100,0,0,0" Text="Agregar" BackgroundColor="Green" WidthRequest="90" HeightRequest="45" Command="{Binding NewHistoCommand}"/>
-                    <Button Grid.Row="7" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="100,0,0,0" Text="Salir" BackgroundColor="PaleVioletRed" WidthRequest="90" HeightRequest="45" Command="{Binding BackBtnCommand}"/>
+                    <Button Grid.Row="7" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="-100,0,0,0" Text="Agregar" WidthRequest="90" HeightRequest="45" Command="{Binding NewHistoCommand}"/>
+                    <Button Grid.Row="7" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="100,0,0,0" Text="Salir" BackgroundColor="#E67E22" WidthRequest="90" HeightRequest="45" Command="{Binding BackBtnCommand}"/>
                 </Grid>
             </Frame>
             

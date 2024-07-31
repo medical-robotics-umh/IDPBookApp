@@ -7,11 +7,11 @@
              x:DataType="viewmodel:OTratDetailViewModel"
              Title="OtroTratDetailPage">
     <ScrollView>
-        <VerticalStackLayout BackgroundColor="#fbe5d6" Spacing="0">
+        <VerticalStackLayout Spacing="0">
             <ImageButton Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}"/>
             <Label Text="{Binding Tratamiento.OTNombre}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
-            <Frame HasShadow="True" Margin="10,10" BackgroundColor="Transparent" Padding="10,10">
+            <Frame HasShadow="True" Margin="10,10" Padding="10,10">
                 <Grid ColumnDefinitions="Auto,*" RowDefinitions="*,*,*,*,*,*,80" RowSpacing="5">
                     <Label VerticalOptions="Center" HorizontalOptions="Start" Text="Nombre:" FontAttributes="Bold"/>
                     <Entry Text="{Binding Tratamiento.OTNombre}"  Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Placeholder="N/A" IsReadOnly="True"/>
@@ -36,7 +36,7 @@
                     <Label Grid.Row="5" VerticalOptions="Center" HorizontalOptions="Start" Text="Fecha de fin:" FontAttributes="Bold"/>
                     <Entry Text="{Binding Tratamiento.OTFfin}" Grid.ColumnSpan="2" Grid.Row="5" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" IsReadOnly="True" Placeholder="N/A"/>
 
-                    <Button Grid.Row="6" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" Text="Eliminar" BackgroundColor="OrangeRed" WidthRequest="90" HeightRequest="45" Command="{Binding EliminarTratCommand}"/>
+                    <Button Grid.Row="6" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" Text="Eliminar" BackgroundColor="#28B463" WidthRequest="90" HeightRequest="45" Command="{Binding EliminarTratCommand}"/>
                 </Grid>
             </Frame>
             <ActivityIndicator IsRunning="{Binding Run}" Margin="10" HorizontalOptions="Center"/>

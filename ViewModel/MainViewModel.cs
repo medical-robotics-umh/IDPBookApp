@@ -16,6 +16,19 @@ public partial class MainViewModel : BaseViewModel
     }
 
     [RelayCommand]
+    async Task GoToNav(string ruta)
+    {
+        if (NPac != null)
+        {
+            await Shell.Current.GoToAsync(ruta);
+        }
+        else
+        {
+            await Shell.Current.DisplayAlert("¡Aviso!", "Elije o crea un paciente para acceder a estos apartados.", "Ok");
+        }
+    }
+
+    [RelayCommand]
     async Task LogOutBtn()
     {
         bool ans = await App.Current.MainPage.DisplayAlert("Saliendo de la aplicación", "¿Desea cerrar sesión?", "Aceptar", "Cancelar");

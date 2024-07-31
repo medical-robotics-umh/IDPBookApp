@@ -7,17 +7,17 @@
              x:DataType="viewmodel:NewDataViewModel"
              Title="DatosPage">
     <ScrollView>
-        <StackLayout BackgroundColor="#e2f0d9" Spacing="0">
+        <StackLayout Spacing="0">
             <ImageButton Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}"/>
             <Label Text="NUEVO EPISODIO" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
-            <Frame HasShadow="True" Margin="10,20" BackgroundColor="Transparent" Padding="10,1,10,10" VerticalOptions="StartAndExpand">
+            <Frame HasShadow="True" Margin="10,20" Padding="10,1,10,10" VerticalOptions="StartAndExpand">
                 <Grid ColumnDefinitions="Auto,*,*" RowDefinitions="40,40,40,40,40,40,Auto,Auto,Auto,Auto,40,40,Auto,Auto,Auto,Auto,80" RowSpacing="3">
                     <Label Text="Fecha de episodio:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
                     <DatePicker Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="StartAndExpand" CharacterSpacing="2" Format="d" Date="{Binding Fecha_Epis}"/>
 
                     <Label Grid.Row="1" Text="¿Visita a atención&#10;primaria?" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Picker SelectedIndex="{Binding Aten}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Title="▼ Seleccionar Sí/No" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Picker SelectedIndex="{Binding Aten}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Title="▼ Seleccionar Sí/No"  HorizontalOptions="Fill" VerticalOptions="Center">
                         <Picker.Items>
                             <x:String>Si</x:String>
                             <x:String>No</x:String>
@@ -25,7 +25,7 @@
                     </Picker>
 
                     <Label Grid.Row="2" Text="¿Visita a urgencias&#10;hospitalarias?" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Picker SelectedIndex="{Binding Urg}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Title="▼ Seleccionar Sí/No" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Picker SelectedIndex="{Binding Urg}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Title="▼ Seleccionar Sí/No"  HorizontalOptions="Fill" VerticalOptions="Center">
                         <Picker.Items>
                             <x:String>Si</x:String>
                             <x:String>No</x:String>
@@ -33,10 +33,10 @@
                     </Picker>
 
                     <Label Grid.Row="3" VerticalOptions="Center" Text="Dias de duración:" FontAttributes="Bold"/>
-                    <Entry Text="{Binding Durac_entry}" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"  VerticalOptions="Center" Placeholder="N/A" HorizontalTextAlignment="Start" Keyboard="Numeric" HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="35"/>
+                    <Entry Text="{Binding Durac_entry}" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"  VerticalOptions="Center" Placeholder="N/A" HorizontalTextAlignment="Start" Keyboard="Numeric" HorizontalOptions="FillAndExpand"  HeightRequest="35"/>
 
                     <Label Grid.Row="4" Text="¿Ingreso?" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Picker SelectedIndex="{Binding Ingreso}" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Title="▼ Seleccionar Sí/No" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Picker SelectedIndex="{Binding Ingreso}" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Title="▼ Seleccionar Sí/No"  HorizontalOptions="Fill" VerticalOptions="Center">
                         <Picker.Items>
                             <x:String>Si</x:String>
                             <x:String>No</x:String>
@@ -44,7 +44,7 @@
                     </Picker>
 
                     <Label Grid.Row="5" Text="¿Fiebre?" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Picker SelectedIndex="{Binding Fiebre}" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Title="▼ Seleccionar Sí/No" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Picker SelectedIndex="{Binding Fiebre}" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Title="▼ Seleccionar Sí/No"  HorizontalOptions="Fill" VerticalOptions="Center">
                         <Picker.Items>
                             <x:String>Si</x:String>
                             <x:String>No</x:String>
@@ -52,7 +52,7 @@
                     </Picker>
 
                     <Label Grid.Row="6" Text="Sintomas catarrales: " FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start" Margin="0,10,0,0"/>
-                    <Button Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Text="▼ Seleccionar" Command="{Binding VisibleCatCommand}" BackgroundColor="LightGray" TextColor="Black" HeightRequest="38"/>
+                    <Button Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Text="▼ Seleccionar" Command="{Binding VisibleCatCommand}" HeightRequest="38"/>
                     <Grid IsVisible="{Binding Cata_visbl}" ColumnDefinitions="28,*" RowDefinitions="25,25,25,25,25" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,42,0,0" RowSpacing="1">
                         <CheckBox IsChecked="{Binding STos}" Margin="0,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"/>
                         <Label Grid.Column="1" Text="Tos" HorizontalOptions="Start" VerticalOptions="Center"/>
@@ -66,10 +66,10 @@
                         <Label Grid.Row="4" Grid.Column="1" Text="Sensación de ahogo" HorizontalOptions="Start" VerticalOptions="Center"/>
                     </Grid>
                     <Label Grid.Row="6" Text="Otro sintoma: " IsVisible="{Binding Cata_visbl}" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="End" Margin="0,180,0,0"/>
-                    <Entry IsVisible="{Binding Cata_visbl}" Text="{Binding OtroSinCat}" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,175,0,0" VerticalOptions="Start" Placeholder="N/A" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="35" Keyboard="Text"/>
+                    <Entry IsVisible="{Binding Cata_visbl}" Text="{Binding OtroSinCat}" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,175,0,0" VerticalOptions="Start" Placeholder="N/A" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand"  HeightRequest="35" Keyboard="Text"/>
 
                     <Label Grid.Row="7" Text="Sintomas digestivos:" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start" Margin="0,10,0,0"/>
-                    <Button Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Text="▼ Seleccionar" Command="{Binding VisibleDigestCommand}" BackgroundColor="LightGray" TextColor="Black" HeightRequest="38"/>
+                    <Button Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Text="▼ Seleccionar" Command="{Binding VisibleDigestCommand}" HeightRequest="38"/>
                     <Grid IsVisible="{Binding Digest_visbl}" ColumnDefinitions="28,*" RowDefinitions="25,25,25,25" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,42,0,0" RowSpacing="1">
                         <CheckBox IsChecked="{Binding SDiar}" Margin="0,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"/>
                         <Label Grid.Column="1" Text="Diarrea" HorizontalOptions="Start" VerticalOptions="Center"/>
@@ -81,10 +81,10 @@
                         <Label Grid.Row="3" Grid.Column="1" Text="Dolor abdominal" HorizontalOptions="Start" VerticalOptions="Center"/>
                     </Grid>
                     <Label Grid.Row="7" Text="Otro sintoma: " IsVisible="{Binding Digest_visbl}" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="End" Margin="0,155,0,0"/>
-                    <Entry IsVisible="{Binding Digest_visbl}" Text="{Binding OtroSinDigest}" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,150,0,0" VerticalOptions="Start" Placeholder="N/A" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="35" Keyboard="Text"/>
+                    <Entry IsVisible="{Binding Digest_visbl}" Text="{Binding OtroSinDigest}" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,150,0,0" VerticalOptions="Start" Placeholder="N/A" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand"  HeightRequest="35" Keyboard="Text"/>
 
                     <Label Grid.Row="8" Text="Sintomas urinarios:" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start" Margin="0,10,0,0"/>
-                    <Button Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Text="▼ Seleccionar" Command="{Binding VisibleUriCommand}" BackgroundColor="LightGray" TextColor="Black" HeightRequest="38"/>
+                    <Button Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Text="▼ Seleccionar" Command="{Binding VisibleUriCommand}" HeightRequest="38"/>
                     <Grid IsVisible="{Binding Uri_visbl}" ColumnDefinitions="28,*" RowDefinitions="25,25,25" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,42,0,0" RowSpacing="1">
                         <CheckBox IsChecked="{Binding SEscz}" Margin="0,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"/>
                         <Label Grid.Column="1" Text="Escozor al orinar" HorizontalOptions="Start" VerticalOptions="Center"/>
@@ -94,10 +94,10 @@
                         <Label Grid.Row="2" Grid.Column="1" Text="Orina maloliente" HorizontalOptions="Start" VerticalOptions="Center"/>
                     </Grid>
                     <Label Grid.Row="8" Text="Otro sintoma: " IsVisible="{Binding Uri_visbl}" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="End" Margin="0,130,0,0"/>
-                    <Entry IsVisible="{Binding Uri_visbl}" Text="{Binding OtroSinUri}" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,125,0,0" VerticalOptions="Start" Placeholder="N/A" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="35" Keyboard="Text"/>
+                    <Entry IsVisible="{Binding Uri_visbl}" Text="{Binding OtroSinUri}" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,125,0,0" VerticalOptions="Start" Placeholder="N/A" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand"  HeightRequest="35" Keyboard="Text"/>
 
                     <Label Grid.Row="9" Text="Sintomas cutaneos:" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start" Margin="0,10,0,0"/>
-                    <Button Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Text="▼ Seleccionar" Command="{Binding VisibleCutanCommand}" BackgroundColor="LightGray" TextColor="Black" HeightRequest="38"/>
+                    <Button Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Text="▼ Seleccionar" Command="{Binding VisibleCutanCommand}" HeightRequest="38"/>
                     <Grid IsVisible="{Binding Cut_visbl}" ColumnDefinitions="28,*" RowDefinitions="25,25,25" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,42,0,0" RowSpacing="1">
                         <CheckBox IsChecked="{Binding SPicor}" Margin="0,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"/>
                         <Label Grid.Column="1" Text="Picor" HorizontalOptions="Start" VerticalOptions="Center"/>
@@ -107,13 +107,13 @@
                         <Label Grid.Row="2" Grid.Column="1" Text="Coloración rojiza" HorizontalOptions="Start" VerticalOptions="Center"/>
                     </Grid>
                     <Label Grid.Row="9" Text="Otro sintoma: " IsVisible="{Binding Cut_visbl}" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="End" Margin="0,130,0,0"/>
-                    <Entry IsVisible="{Binding Cut_visbl}" Text="{Binding OtroSinCut}" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,125,0,0" VerticalOptions="Start" Placeholder="Otro sintoma" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="35" Keyboard="Text"/>
+                    <Entry IsVisible="{Binding Cut_visbl}" Text="{Binding OtroSinCut}" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,125,0,0" VerticalOptions="Start" Placeholder="Otro sintoma" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand"  HeightRequest="35" Keyboard="Text"/>
 
                     <Label Grid.Row="10" VerticalOptions="Center" Text="Otros sintomas:" FontAttributes="Bold"/>
-                    <Entry Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding OtroSin}" VerticalOptions="Center" Placeholder="N/A" HorizontalTextAlignment="Start" Keyboard="Text" HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="35"/>
+                    <Entry Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding OtroSin}" VerticalOptions="Center" Placeholder="N/A" HorizontalTextAlignment="Start" Keyboard="Text" HorizontalOptions="FillAndExpand"  HeightRequest="35"/>
 
                     <Label Grid.Row="11" Text="¿Tratamiento&#10;durante episodio?" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Picker SelectedIndex="{Binding Trat}" SelectedIndexChanged="Picker_SelectedIndexChanged" Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="2" Title="▼ Seleccionar Sí/No" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Picker SelectedIndex="{Binding Trat}" SelectedIndexChanged="Picker_SelectedIndexChanged" Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="2" Title="▼ Seleccionar Sí/No"  HorizontalOptions="Fill" VerticalOptions="Center">
                         <Picker.Items>
                             <x:String>Si</x:String>
                             <x:String>No</x:String>
@@ -121,7 +121,7 @@
                     </Picker>
 
                     <Label Grid.Row="12" Text="¿Tratamiento con &#10;antibiótico?" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" IsVisible="{Binding Trat_visbl}"/>
-                    <Picker SelectedIndex="{Binding TratAnti}" Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="2" Title="▼ Seleccionar Sí/No" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Center" IsVisible="{Binding Trat_visbl}">
+                    <Picker SelectedIndex="{Binding TratAnti}" Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="2" Title="▼ Seleccionar Sí/No"  HorizontalOptions="Fill" VerticalOptions="Center" IsVisible="{Binding Trat_visbl}">
                         <Picker.Items>
                             <x:String>Si</x:String>
                             <x:String>No</x:String>
@@ -129,16 +129,16 @@
                     </Picker>
 
                     <Label Grid.Row="13" VerticalOptions="Center" Text="Antibiótico:" FontAttributes="Bold" IsVisible="{Binding Trat_visbl}"/>
-                    <Entry Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Antibio}" IsVisible="{Binding Trat_visbl}" VerticalOptions="Center" Placeholder="N/A" HorizontalTextAlignment="Start" Keyboard="Text" HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="35"/>
+                    <Entry Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Antibio}" IsVisible="{Binding Trat_visbl}" VerticalOptions="Center" Placeholder="N/A" HorizontalTextAlignment="Start" Keyboard="Text" HorizontalOptions="FillAndExpand"  HeightRequest="35"/>
 
                     <Label Grid.Row="14" VerticalOptions="Center" Text="Días con antibiótico:" FontAttributes="Bold" IsVisible="{Binding Trat_visbl}"/>
-                    <Entry Grid.Row="14" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding AntibioDias}" VerticalOptions="Center" IsVisible="{Binding Trat_visbl}" Placeholder="N/A" HorizontalTextAlignment="Start" Keyboard="Numeric" HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="35"/>
+                    <Entry Grid.Row="14" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding AntibioDias}" VerticalOptions="Center" IsVisible="{Binding Trat_visbl}" Placeholder="N/A" HorizontalTextAlignment="Start" Keyboard="Numeric" HorizontalOptions="FillAndExpand"  HeightRequest="35"/>
 
                     <Label Grid.Row="15" VerticalOptions="Center" Text="Otros:" FontAttributes="Bold" IsVisible="{Binding Trat_visbl}"/>
-                    <Entry Grid.Row="15" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding OtroTrat}" VerticalOptions="Center" IsVisible="{Binding Trat_visbl}" Placeholder="N/A" HorizontalTextAlignment="Start" Keyboard="Text" HorizontalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="35"/>
+                    <Entry Grid.Row="15" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding OtroTrat}" VerticalOptions="Center" IsVisible="{Binding Trat_visbl}" Placeholder="N/A" HorizontalTextAlignment="Start" Keyboard="Text" HorizontalOptions="FillAndExpand"  HeightRequest="35"/>
 
-                    <Button Grid.Row="16" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Center" Margin="-100,0,0,0" Text="Agregar" BackgroundColor="Green" WidthRequest="90" HeightRequest="45" Command="{Binding CargarCommand}"/>
-                    <Button Grid.Row="16" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Center" Margin="100,0,0,0" Text="Salir" BackgroundColor="PaleVioletRed" WidthRequest="90" HeightRequest="45" Command="{Binding BackBtnCommand}"/>
+                    <Button Grid.Row="16" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Center" Margin="-100,0,0,0" Text="Agregar" WidthRequest="90" HeightRequest="45" Command="{Binding CargarCommand}"/>
+                    <Button Grid.Row="16" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Center" Margin="100,0,0,0" Text="Salir" BackgroundColor="#E67E22" WidthRequest="90" HeightRequest="45" Command="{Binding BackBtnCommand}"/>
                 </Grid>
             </Frame>
 

@@ -7,11 +7,11 @@
              x:DataType="viewmodel:EncuestaDetailViewModel"
              Title="EncuestaDetailPage">
     <ScrollView>
-        <VerticalStackLayout VerticalOptions="FillAndExpand" BackgroundColor="#BDD7EE">
+        <VerticalStackLayout VerticalOptions="FillAndExpand">
             <ImageButton Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}"/>
             <Label Text="{Binding Cuestionario.QName}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
-            <Frame HasShadow="True" Margin="10,10" BackgroundColor="Transparent" Padding="10,10">
+            <Frame HasShadow="True" Margin="10,10" Padding="10,10">
                 <Grid ColumnDefinitions="*" RowDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*" RowSpacing="5">
 
                     <Label VerticalOptions="Center" Text="Movilidad:" HorizontalOptions="Start" FontAttributes="Bold"/>
@@ -68,7 +68,7 @@
                     <Label Grid.Row="20" VerticalOptions="Center" Text="Describe brevemente el porque de tu puntuación:" FontAttributes="Bold" HorizontalOptions="Start" />
                     <Editor Text="{Binding Cuestionario.QDesc}" Grid.Row="21" Placeholder="N/A" HorizontalTextAlignment="Start" HorizontalOptions="Fill" HeightRequest="100" IsReadOnly="True"/>
 
-                    <Button Grid.Row="23" HorizontalOptions="Center" Text="Eliminar" BackgroundColor="Red" WidthRequest="90" HeightRequest="45" Command="{Binding ElimCuestCommand}"/>
+                    <Button Grid.Row="23" HorizontalOptions="Center" Text="Eliminar" BackgroundColor="#28B463" WidthRequest="90" HeightRequest="45" Command="{Binding ElimCuestCommand}"/>
                 </Grid>
             </Frame>
         </VerticalStackLayout>

@@ -104,14 +104,25 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\background.png" />
+	  <None Remove="Resources\Images\book_plus.svg" />
+	  <None Remove="Resources\Images\book_user.svg" />
+	  <None Remove="Resources\Images\calendar_plus.svg" />
+	  <None Remove="Resources\Images\career_growth.svg" />
+	  <None Remove="Resources\Images\clipboard_user.svg" />
+	  <None Remove="Resources\Images\file_medical.svg" />
+	  <None Remove="Resources\Images\file_video.svg" />
+	  <None Remove="Resources\Images\globe.svg" />
 	  <None Remove="Resources\Images\ic_back_button.png" />
 	  <None Remove="Resources\Images\ic_episode_list.png" />
 	  <None Remove="Resources\Images\ic_logo_agregar.png" />
 	  <None Remove="Resources\Images\ic_logo_historial_medico.png" />
 	  <None Remove="Resources\Images\mainIDPlogo.png" />
+	  <None Remove="Resources\Images\power.svg" />
 	  <None Remove="Resources\Images\regla.png" />
 	  <None Remove="Resources\Images\thumb.svg" />
 	  <None Remove="Resources\Images\triangle.png" />
+	  <None Remove="Resources\Images\users_medical.svg" />
+	  <None Remove="Resources\Images\user_md_chat.svg" />
 	  <None Remove="Resources\Images\youtube.png" />
 	  <None Remove="Resources\Raw\google-services.json" />
 	  <None Remove="Resources\Splash\mainlogoidp.png" />

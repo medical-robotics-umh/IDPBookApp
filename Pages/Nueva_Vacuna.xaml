@@ -7,24 +7,24 @@
              x:DataType="viewmodel:NewVacunaViewModel"
              Title="Nueva_Vacuna">
     <ScrollView>
-        <VerticalStackLayout VerticalOptions="FillAndExpand" BackgroundColor="#BDD7EE">
+        <VerticalStackLayout VerticalOptions="FillAndExpand">
             <ImageButton Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}"/>
             <Label Text="NUEVA VACUNA" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
-            <Frame HasShadow="True" Margin="10,10" BackgroundColor="Transparent" Padding="10,10">
+            <Frame HasShadow="True" Margin="10,10"  Padding="10,10">
                 <Grid ColumnDefinitions="Auto,*" RowDefinitions="*,*,*,80" RowSpacing="5">
                     
                     <Label VerticalOptions="Center" Text="Nombre:" HorizontalOptions="Start" FontAttributes="Bold" />
-                    <Entry Grid.Column="1" Text="{Binding VNmbre}" VerticalOptions="Center" Placeholder="Nombre de la vacuna" HorizontalTextAlignment="Start" ReturnType="Next" Keyboard="Text" BackgroundColor="GhostWhite" HorizontalOptions="FillAndExpand"/>
+                    <Entry Grid.Column="1" Text="{Binding VNmbre}" VerticalOptions="Center" Placeholder="Nombre de la vacuna" HorizontalTextAlignment="Start" ReturnType="Next" Keyboard="Text"  HorizontalOptions="FillAndExpand"/>
 
                     <Label Grid.Row="1" VerticalOptions="Center" Text="Número de&#10;dosis:" HorizontalOptions="Start" FontAttributes="Bold" />
-                    <Entry Grid.Row="1" Grid.Column="1" Text="{Binding VDosis}" VerticalOptions="Center" Placeholder="Introduce dosis" HorizontalTextAlignment="Start" ReturnType="Next" Keyboard="Text" BackgroundColor="GhostWhite" HorizontalOptions="FillAndExpand"/>
+                    <Entry Grid.Row="1" Grid.Column="1" Text="{Binding VDosis}" VerticalOptions="Center" Placeholder="Introduce dosis" HorizontalTextAlignment="Start" ReturnType="Next" Keyboard="Text"  HorizontalOptions="FillAndExpand"/>
 
                     <Label Grid.Row="2" VerticalOptions="Center" Text="Fecha de&#10;vacunación:   " FontAttributes="Bold" HorizontalOptions="Start" />
-                    <DatePicker Grid.Row="2" Grid.Column="1" Date="{Binding VAnoUD}" VerticalOptions="Center" BackgroundColor="GhostWhite" HorizontalOptions="StartAndExpand"/>
+                    <DatePicker Grid.Row="2" Grid.Column="1" Date="{Binding VAnoUD}" VerticalOptions="Center"  HorizontalOptions="StartAndExpand"/>
 
-                    <Button Grid.Row="3" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="-100,0,0,0" Text="Agregar" BackgroundColor="Green" WidthRequest="90" HeightRequest="45" Command="{Binding NewVacunaCommand}"/>
-                    <Button Grid.Row="3" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="100,0,0,0" Text="Salir" BackgroundColor="PaleVioletRed" WidthRequest="90" HeightRequest="45" Command="{Binding BackBtnCommand}"/>
+                    <Button Grid.Row="3" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="-100,0,0,0" Text="Agregar" WidthRequest="90" HeightRequest="45" Command="{Binding NewVacunaCommand}"/>
+                    <Button Grid.Row="3" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="100,0,0,0" Text="Salir" BackgroundColor="#E67E22" WidthRequest="90" HeightRequest="45" Command="{Binding BackBtnCommand}"/>
                 </Grid>
             </Frame>
             

@@ -7,12 +7,12 @@
              x:DataType="viewmodel:TratViewModel"
              Title="TratPage">
     <ScrollView>
-        <VerticalStackLayout VerticalOptions="FillAndExpand" BackgroundColor="#fbe5d6">
+        <VerticalStackLayout VerticalOptions="FillAndExpand">
             <ImageButton Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}"/>
             <Label Text="TRATAMIENTO CON" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-38,0,0"/>
             <Label Text="INMUNOGLOBULINAS" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center"/>
 
-            <Frame Margin="0,30,0,0" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125" x:Name="estado" HorizontalOptions="Center" IsVisible="{Binding VsblTrat}">
+            <Frame Margin="0,30,0,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125" x:Name="estado" HorizontalOptions="Center" IsVisible="{Binding VsblTrat}">
                 <VerticalStackLayout>
                     <ImageButton Source="ic_logo_agregar.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="NewTratPage"/>
                 </VerticalStackLayout>
@@ -23,11 +23,11 @@
                 <Label Text="Tratamiento actual" FontSize="Medium" FontAttributes="Bold"/>
             </HorizontalStackLayout>
 
-            <Frame HorizontalOptions="Center" WidthRequest="250" BackgroundColor="Transparent" Padding="0,10" Margin="0,10" HasShadow="True" IsVisible="{Binding VsblAct2}">
+            <Frame HorizontalOptions="Center" WidthRequest="250" Padding="0,10" Margin="0,10" HasShadow="True" IsVisible="{Binding VsblAct2}">
                 <CollectionView EmptyView="Aún no hay tratamiento" HorizontalOptions="Center" SelectionMode="Single"/>
             </Frame>
 
-            <Frame BackgroundColor="Transparent" Padding="10,10" Margin="10,10" HasShadow="True" IsVisible="{Binding VsblAct}">
+            <Frame Padding="10,10" Margin="10,10" HasShadow="True" IsVisible="{Binding VsblAct}">
                 <Grid ColumnDefinitions="Auto,*" RowDefinitions="*,*,*,*,*,*,*,*,*" RowSpacing="5">
                     <Label Text="T. de tratamiento: " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
                     <Frame CornerRadius="5" HasShadow="True" WidthRequest="50" HeightRequest="50" Grid.Column="1" HorizontalOptions="End">

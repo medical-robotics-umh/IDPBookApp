@@ -7,11 +7,11 @@
              x:DataType="viewmodel:VacunaDetailViewModel"
              Title="VacunaDetailPage">
     <ScrollView>
-        <VerticalStackLayout VerticalOptions="FillAndExpand" BackgroundColor="#BDD7EE">
+        <VerticalStackLayout VerticalOptions="FillAndExpand">
             <ImageButton Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}"/>
             <Label Text="{Binding Vacuna.VNmbre}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
-            <Frame HasShadow="True" Margin="10,10" BackgroundColor="Transparent" Padding="10,10">
+            <Frame HasShadow="True" Margin="10,10" Padding="10,10">
                 <Grid ColumnDefinitions="Auto,*" RowDefinitions="*,*,*,80" RowSpacing="5">
 
                     <Label VerticalOptions="Center" Text="Nombre:" HorizontalOptions="Start" FontAttributes="Bold" />
@@ -23,7 +23,7 @@
                     <Label Grid.Row="2" VerticalOptions="Center" Text="Fecha de&#10;vacunación:   " FontAttributes="Bold" HorizontalOptions="Start" />
                     <Entry Grid.Row="2" Grid.Column="1" Text="{Binding Vacuna.VAnoUD}" IsReadOnly="True" VerticalOptions="Center" Placeholder="Introduce año" HorizontalTextAlignment="Start" HorizontalOptions="Fill"/>
 
-                    <Button Grid.Row="3" Grid.ColumnSpan="2" HorizontalOptions="Center" Text="Eliminar" Margin="0,20,0,0" BackgroundColor="Red" WidthRequest="90" HeightRequest="45" Command="{Binding ElimVcnCommand}"/>
+                    <Button Grid.Row="3" Grid.ColumnSpan="2" HorizontalOptions="Center" Text="Eliminar" Margin="0,20,0,0" BackgroundColor="#28B463" WidthRequest="90" HeightRequest="45" Command="{Binding ElimVcnCommand}"/>
                 </Grid>
             </Frame>
         </VerticalStackLayout>

@@ -9,7 +9,6 @@
              Title="LoginPage">
     <ContentPage.Content>
         <Grid
-        BackgroundColor="#dae3f3"
         HorizontalOptions="FillAndExpand"
         VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
@@ -38,21 +37,18 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Label
                     Grid.Row="0"
                     FontAttributes="Bold"
                     FontSize="24"
                     HorizontalOptions="CenterAndExpand"
-                    Text="Bienvenido"
-                    TextColor="#1C375C" />
+                    Text="Bienvenido"/>
                     <Label
                     Grid.Row="1"
                     Margin="0,-20,0,0"
                     HorizontalOptions="CenterAndExpand"
-                    Text="Ingresa con tu cuenta habitual."
-                    TextColor="#1C375C" />
+                    Text="Ingresa con tu cuenta habitual."/>
                     <Entry
                         x:Name="nom"
                     Grid.Row="2"
@@ -85,20 +81,19 @@
                         IsVisible="{Binding Disable}"/>
                     <Button
                         Grid.Row="5"
-                        BackgroundColor="#1C375C"
                         Command="{Binding LoginBtnCommand}"
                         Pressed="Button_Pressed"
                         CornerRadius="20"
-                        Text="Ingresar" />
-                    <Label
-                        Grid.Row="6"
                         FontAttributes="Bold"
-                        FontSize="Medium"
-                        Text="¿Olvidaste tu contraseña?" HorizontalOptions="Center" Margin="0">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding ChangePassBtnCommand}"/>
-                            </Label.GestureRecognizers>
-                        </Label>
+                        Text="Ingresar" />
+                    <Button
+                        Grid.Row="6"
+                        Pressed="Button_Pressed"
+                        FontAttributes="Bold"
+                        CornerRadius="20"
+                        Text="¿Olvidaste tu contraseña?" HorizontalOptions="Center"
+                        Command="{Binding ChangePassBtnCommand}"
+                    />
                     <HorizontalStackLayout Grid.Row="7" Spacing="50" HorizontalOptions="Center">
                         <Image
                         Aspect="AspectFit"
@@ -112,7 +107,7 @@
                         Source="ic_logo_umh.png"
                         WidthRequest="80" />
                     </HorizontalStackLayout>
-                    <ActivityIndicator IsRunning = "{Binding Run}" Margin = "20" Grid.Row="8" HorizontalOptions = "Center" />
+                    <ActivityIndicator IsRunning = "{Binding Run}" Margin = "20" Grid.Row="7" HorizontalOptions = "Center" />
                 </Grid>
             </Frame>
         </Grid>

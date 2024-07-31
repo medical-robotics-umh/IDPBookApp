@@ -7,12 +7,12 @@
              x:DataType="viewmodel:EncuestasViewModel"
              Title="EncuestasPage">
     <ScrollView>
-        <VerticalStackLayout VerticalOptions="FillAndExpand" BackgroundColor="#BDD7EE">
+        <VerticalStackLayout VerticalOptions="FillAndExpand" >
             <ImageButton Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}"/>
             <Label Text="CUESTIONARIO CALIDAD" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-38,0,0"/>
             <Label Text="DE VIDA" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center"/>
 
-            <Frame Margin="0,30,0,0" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125" x:Name="estado" HorizontalOptions="Center">
+            <Frame Margin="0,30,0,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125" x:Name="estado" HorizontalOptions="Center">
                 <VerticalStackLayout>
                     <ImageButton Source="ic_logo_agregar.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding GoToNewCuestCommand}"/>
                 </VerticalStackLayout>
@@ -23,7 +23,7 @@
                 <Label Text="Listado de cuestionarios" FontSize="Medium" FontAttributes="Bold"/>
             </HorizontalStackLayout>
 
-            <Frame HorizontalOptions="CenterAndExpand" WidthRequest="300" BackgroundColor="Transparent" Padding="10,10" Margin="10,10" HasShadow="True">
+            <Frame HorizontalOptions="CenterAndExpand" WidthRequest="300" Padding="10,10" Margin="10,10" HasShadow="True">
                 <CollectionView ItemsSource="{Binding Cuestionarios}" EmptyView="Aún no hay cuestionarios" HorizontalOptions="CenterAndExpand" SelectionMode="Single">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:Cuestionario">

@@ -19,7 +19,7 @@ public partial class ListaPacViewModel:BaseViewModel
         this.firebaseConnecty = firebaseConnecty;
         GetPacientes();
     }
-    
+
     async void GetPacientes()
     {
         Run = true;
