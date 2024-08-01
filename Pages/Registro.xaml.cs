@@ -28,7 +28,7 @@ public partial class Registro : ContentPage
         if (BindingContext is NewPacViewModel vm)
         {
             vm.DiagPpal = -1;
-            vm.SexPac = -1;
+            vm.SexG = null;
             vm.PacVsbl = e.Value;
             check1.IsChecked = !e.Value;
         }
@@ -38,7 +38,7 @@ public partial class Registro : ContentPage
         if (BindingContext is NewPacViewModel vm)
         {
             vm.DiagPpal = -1;
-            vm.SexPac = -1;
+            vm.SexG = null;
             vm.PacVsbl = !e.Value;
         }
     }

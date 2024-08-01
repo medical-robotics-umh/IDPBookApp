@@ -3,19 +3,28 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IDPBookApp.Pages.EpisodiosPage"
              xmlns:viewmodel="clr-namespace:IDPBookApp.ViewModel"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:model="clr-namespace:IDPBookApp.Models"
              x:DataType="viewmodel:ListViewModel"
              Title="EpisodiosPage">
     <ScrollView>
         <VerticalStackLayout VerticalOptions="FillAndExpand">
-            <ImageButton Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}"/>
+            <ImageButton Source="back2" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}">
+                <ImageButton.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="#28B463" />
+                </ImageButton.Behaviors>
+            </ImageButton>
             <Label Text="EPISODIOS" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
             <Grid ColumnDefinitions="*,*" RowDefinitions="*" VerticalOptions="Center" HorizontalOptions="Center" ColumnSpacing="40" Margin="0,30,0,0">
                 <VerticalStackLayout>
                     <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout>
-                            <ImageButton Source="ic_logo_historial_medico.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="HistorialPage"/>
+                            <ImageButton Source="hospital_user" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="HistorialPage">
+                                <ImageButton.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
+                                </ImageButton.Behaviors>
+                            </ImageButton>
                         </VerticalStackLayout>
                     </Frame>
                     <Label Text="Historial" HorizontalOptions="Center" FontAttributes="Bold"/>
@@ -24,7 +33,11 @@
                 <VerticalStackLayout Grid.Column="1">
                     <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125" x:Name="estado">
                         <VerticalStackLayout>
-                            <ImageButton Source="ic_logo_agregar.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarNEpiCommand}"/>
+                            <ImageButton Source="files_medical" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarNEpiCommand}">
+                                <ImageButton.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
+                                </ImageButton.Behaviors>
+                            </ImageButton>
                         </VerticalStackLayout>
                     </Frame>
                     <Label Text="Agregar episodio" HorizontalOptions="Center" FontAttributes="Bold"/>
@@ -44,10 +57,12 @@
                                     <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ListViewModel}}, Path=Navegar_EpisodioCommand}"
                                                           CommandParameter="{Binding .}"/>
                                 </HorizontalStackLayout.GestureRecognizers>
-                                <Frame CornerRadius="10" HasShadow="True" WidthRequest="50" HeightRequest="50">
-                                    <Image Source="ic_episode_list.png" Aspect="Fill" WidthRequest="48" HeightRequest="48"/>
-                                </Frame>
-                                <Label Text="{Binding EName}" FontAttributes="Bold" VerticalOptions="Center"/>
+                                <Image Source="procedures" Aspect="Fill" WidthRequest="43" HeightRequest="43">
+                                        <Image.Behaviors>
+                                            <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
+                                        </Image.Behaviors>
+                                    </Image>
+                                    <Label Text="{Binding EName}" FontAttributes="Bold" VerticalOptions="Center"/>
                                 <Label Text="-" FontAttributes="Bold" VerticalOptions="Center"/>
                                 <Label Text="{Binding EFecha}" FontAttributes="Bold" VerticalOptions="Center"/>
                             </HorizontalStackLayout>

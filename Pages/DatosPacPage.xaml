@@ -3,11 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IDPBookApp.Pages.DatosPacPage"
              xmlns:viewmodel="clr-namespace:IDPBookApp.ViewModel"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:DataType="viewmodel:DatosPacViewModel"
              Title="DatosPacPage">
     <ScrollView>
         <VerticalStackLayout Spacing="0">
-            <ImageButton Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}"/>
+            <ImageButton Source="back2" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}">
+                <ImageButton.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="#28B463" />
+                </ImageButton.Behaviors>
+            </ImageButton>
             <Label Text="DATOS PACIENTE" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
             <Frame HasShadow="True" Margin="10,20" Padding="10,1,10,10" VerticalOptions="CenterAndExpand">
@@ -22,11 +27,11 @@
                     <Entry Text="{Binding Paciente.Correo}"  IsReadOnly="True" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa correo" HorizontalTextAlignment="Start" HeightRequest="35" Keyboard="Email"/>
 
                     <Label Grid.Row="3" Text="Sexo:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Picker SelectedIndex="{Binding Paciente.Sexo}" Grid.Row="3" Grid.Column="1" Title="▼ Seleccionar sexo"  HeightRequest="35"  IsEnabled="False">
+                    <Picker SelectedItem="{Binding Paciente.Gener}" Grid.Row="3" Grid.Column="1" Title="▼ Seleccionar sexo"  HeightRequest="35"  IsEnabled="False">
                         <Picker.Items>
                             <x:String>Femenino</x:String>
                             <x:String>Masculino</x:String>
-                            <x:String>No interesa</x:String>
+                            <x:String>Indiferente</x:String>
                         </Picker.Items>
                     </Picker>
 

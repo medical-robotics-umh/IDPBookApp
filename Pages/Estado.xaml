@@ -3,19 +3,28 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IDPBookApp.Pages.Estado"
              xmlns:model="clr-namespace:IDPBookApp.Models"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:viewmodel="clr-namespace:IDPBookApp.ViewModel"
              x:DataType="viewmodel:MainViewModel"
              Title="Estado">
     <ScrollView>
         <VerticalStackLayout>
-            <ImageButton Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}"/>
+            <ImageButton Source="back2" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}">
+                <ImageButton.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="#28B463" />
+                </ImageButton.Behaviors>
+            </ImageButton>
             <Label Text="ESTADO DE LA ENFERMEDAD" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-28,0,0"/>
             
             <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*" VerticalOptions="Center" HorizontalOptions="Center" ColumnSpacing="40" Margin="0,40,0,0">
                 <VerticalStackLayout>
                     <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout Spacing="5">
-                            <ImageButton Source="ic_logo_episodios.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="EpisodiosPage"/>
+                            <ImageButton Source="procedures" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="EpisodiosPage">
+                                <ImageButton.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
+                                </ImageButton.Behaviors>
+                            </ImageButton>
                         </VerticalStackLayout>
                     </Frame>
                     <Label Text="Episodios" HorizontalOptions="Center" FontAttributes="Bold"/>
@@ -24,7 +33,11 @@
                 <VerticalStackLayout Grid.Column="1">
                     <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout Spacing="5">
-                            <ImageButton Source="ic_logo_laboratorio.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="PruebasLabPage"/>
+                            <ImageButton Source="microscope" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="PruebasLabPage">
+                                <ImageButton.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
+                                </ImageButton.Behaviors>
+                            </ImageButton>
                         </VerticalStackLayout>
                     </Frame>
                     <Label Text="Pruebas de" HorizontalOptions="Center" FontAttributes="Bold"/>
@@ -34,7 +47,11 @@
                 <VerticalStackLayout Grid.Row="1" Grid.Column="0">
                     <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout Spacing="5">
-                            <ImageButton Source="ic_logo_tratamiento_inmunoglobulinas.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="TratPage"/>
+                            <ImageButton Source="prescription_bottle" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="TratPage">
+                                <ImageButton.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
+                                </ImageButton.Behaviors>
+                            </ImageButton>
                         </VerticalStackLayout>
                     </Frame>
                     <Label Text="Tratamiento con" HorizontalOptions="Center" FontAttributes="Bold"/>
@@ -44,7 +61,11 @@
                 <VerticalStackLayout Grid.Row="1" Grid.Column="1">
                     <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout Spacing="5">
-                            <ImageButton Source="ic_logo_otros_tratamientos.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="OtroTratPage"/>
+                            <ImageButton Source="capsules" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="OtroTratPage">
+                                <ImageButton.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
+                                </ImageButton.Behaviors>
+                            </ImageButton>
                         </VerticalStackLayout>
                     </Frame>
                     <Label Text="Otros tratamientos" HorizontalOptions="Center" FontAttributes="Bold"/>
@@ -53,7 +74,11 @@
                 <VerticalStackLayout Grid.Row="2" Grid.Column="0">
                     <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout Spacing="5">
-                            <ImageButton Source="ic_logo_vacunacion.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="VacunasPage"/>
+                            <ImageButton Source="vaccine" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="VacunasPage">
+                                <ImageButton.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
+                                </ImageButton.Behaviors>
+                            </ImageButton>
                         </VerticalStackLayout>
                     </Frame>
                     <Label Text="Vacunación" HorizontalOptions="Center" FontAttributes="Bold"/>
@@ -62,7 +87,11 @@
                 <VerticalStackLayout Grid.Row="2" Grid.Column="1">
                     <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout Spacing="5">
-                            <ImageButton Source="ic_logo_calidad_vida.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="EncuestasPage"/>
+                            <ImageButton Source="evaluation" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="EncuestasPage">
+                                <ImageButton.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
+                                </ImageButton.Behaviors>
+                            </ImageButton>
                         </VerticalStackLayout>
                     </Frame>
                     <Label Text="Cuestionario Calidad" HorizontalOptions="Center" FontAttributes="Bold"/>

@@ -4,15 +4,20 @@
              x:Class="IDPBookApp.Pages.NewTratPage"             
              xmlns:model="clr-namespace:IDPBookApp.Models"
              xmlns:viewmodel="clr-namespace:IDPBookApp.ViewModel"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:DataType="viewmodel:NewTratViewModel"
              Title="Trat_Inmuno">
     <ScrollView>
         <VerticalStackLayout VerticalOptions="FillAndExpand">
-            <ImageButton Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}"/>
+            <ImageButton Source="back2" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}">
+                <ImageButton.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="#28B463" />
+                </ImageButton.Behaviors>
+            </ImageButton>
             <Label Text="NUEVO TRATAMIENTO" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
-            <Frame Padding="10,10" Margin="10,20" HasShadow="True">
-                <Grid ColumnDefinitions="Auto,*" RowDefinitions="*,*,Auto,Auto,Auto,Auto,Auto,Auto,*,80" RowSpacing="10">
+            <Frame Padding="10,10" Margin="15,20" HasShadow="True">
+                <Grid ColumnDefinitions="Auto,*" RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,80" RowSpacing="5">
                     <Label Text="T. de tratamiento: " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
                     <Picker SelectedIndex="{Binding TTipo}" Grid.Column="1" Title="▼ Seleccionar tratamiento" SelectedIndexChanged="Picker_SelectedIndexChanged" HeightRequest="35"  HorizontalOptions="Fill" >
                         <Picker.Items>
@@ -31,7 +36,7 @@
                     <Entry Text="{Binding TDosis}" Grid.Row="3" Grid.Column="1" VerticalOptions="Center" Placeholder="Introduce dosis" HorizontalTextAlignment="Start" HorizontalOptions="Fill" IsVisible="{Binding Intvsbl}" Keyboard="Numeric" ReturnType="Next" />
 
                     <Label Grid.Row="4" HorizontalOptions="Start" VerticalOptions="Center" Text="Cadencia:" FontAttributes="Bold" IsVisible="{Binding Intvsbl}"/>
-                    <Picker SelectedIndex="{Binding TCad}" Grid.Row="4" Grid.Column="1" Title="▼ Seleccionar cadencia" HorizontalOptions="Fill" IsVisible="{Binding Intvsbl}" >
+                    <Picker SelectedIndex="{Binding TCad}" Grid.Row="4" Grid.Column="1" Title="▼ Seleccionar cadencia" HorizontalOptions="Fill" IsVisible="{Binding Intvsbl}">
                         <Picker.Items>
                             <x:String>Cada 2 semanas</x:String>
                             <x:String>Cada 3 semanas</x:String>

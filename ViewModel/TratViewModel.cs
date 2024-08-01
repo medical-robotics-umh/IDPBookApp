@@ -59,13 +59,13 @@ public partial class TratViewModel : BaseViewModel
             {
                 Subvsbl = false;
                 Intvsbl = true;
-                Imagen = "ic_logo_inmunoglobulinas_intravenosas.png";
+                Imagen = "intravenous";
             }
             if (Tratamiento.TTipo == 1)
             {
                 Intvsbl = false;                
                 Subvsbl = true;
-                Imagen = "ic_logo_inmunoglobulinas_subcutaneas.png";
+                Imagen = "subcutaneous";
             }
             Ef1 = Tratamiento.TEfSec[0];
             Ef2 = Tratamiento.TEfSec[1];

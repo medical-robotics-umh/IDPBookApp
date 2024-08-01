@@ -3,18 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IDPBookApp.Pages.TratPage"
              xmlns:viewmodel="clr-namespace:IDPBookApp.ViewModel"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:model="clr-namespace:IDPBookApp.Models"
              x:DataType="viewmodel:TratViewModel"
              Title="TratPage">
     <ScrollView>
         <VerticalStackLayout VerticalOptions="FillAndExpand">
-            <ImageButton Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}"/>
+            <ImageButton Source="back2" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}">
+                <ImageButton.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="#28B463" />
+                </ImageButton.Behaviors>
+            </ImageButton>
             <Label Text="TRATAMIENTO CON" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-38,0,0"/>
             <Label Text="INMUNOGLOBULINAS" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center"/>
 
             <Frame Margin="0,30,0,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125" x:Name="estado" HorizontalOptions="Center" IsVisible="{Binding VsblTrat}">
                 <VerticalStackLayout>
-                    <ImageButton Source="ic_logo_agregar.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="NewTratPage"/>
+                    <ImageButton Source="files_medical" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="NewTratPage">
+                        <ImageButton.Behaviors>
+                            <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
+                        </ImageButton.Behaviors>
+                    </ImageButton>
                 </VerticalStackLayout>
             </Frame>
             <Label Text="Agregar tratamiento" HorizontalOptions="Center" FontAttributes="Bold" IsVisible="{Binding VsblTrat}"/>
@@ -31,7 +40,11 @@
                 <Grid ColumnDefinitions="Auto,*" RowDefinitions="*,*,*,*,*,*,*,*,*" RowSpacing="5">
                     <Label Text="T. de tratamiento: " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
                     <Frame CornerRadius="5" HasShadow="True" WidthRequest="50" HeightRequest="50" Grid.Column="1" HorizontalOptions="End">
-                        <Image Source="{Binding Imagen}" Aspect="Fill" WidthRequest="43" HeightRequest="43"/>
+                        <Image Source="{Binding Imagen}" Aspect="Fill" WidthRequest="43" HeightRequest="43">
+                            <Image.Behaviors>
+                                <toolkit:IconTintColorBehavior TintColor="#E67E22"/>
+                            </Image.Behaviors>
+                        </Image>
                     </Frame>
                     <Picker SelectedIndex="{Binding Tratamiento.TTipo}" Grid.Column="1" Title="N/A"  HeightRequest="35" IsEnabled="False" HorizontalOptions="Start" WidthRequest="90">
                         <Picker.Items>
@@ -83,7 +96,7 @@
                         <Label Grid.Row="5" Grid.Column="1" Text="Tensión arterial baja." HorizontalOptions="Start" VerticalOptions="Center"/>
                         <CheckBox IsEnabled="False" Grid.Row="6" IsChecked="{Binding Ef7}" HorizontalOptions="Start" VerticalOptions="Center"/>
                         <Label Grid.Row="6" Grid.Column="1" Text="Anafilaxia." HorizontalOptions="Start" VerticalOptions="Center"/>
-                    </Grid>                    
+                    </Grid>
                 </Grid>
             </Frame>
             

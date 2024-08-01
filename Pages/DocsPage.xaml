@@ -3,31 +3,40 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IDPBookApp.Pages.DocsPage"
              xmlns:viewmodel="clr-namespace:IDPBookApp.ViewModel"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:DataType="viewmodel:MainViewModel"
              Title="DocsPage">
     <ScrollView>
         <VerticalStackLayout VerticalOptions="FillAndExpand">
-            <Image Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding BackBtnCommand}"/>
-                </Image.GestureRecognizers>
-            </Image>
+            <ImageButton Source="back2" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}">
+                <ImageButton.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="#28B463" />
+                </ImageButton.Behaviors>
+            </ImageButton>
             <Label Text="DOCUMENTACIÓN" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
             <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*" VerticalOptions="Center" HorizontalOptions="Center" ColumnSpacing="40" Margin="0,120,0,0">
                 <VerticalStackLayout>
-                    <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout Spacing="5">
-                            <ImageButton Source="bibliografia.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavDriveCommand}"/>
+                            <ImageButton Source="bookmark" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavDriveCommand}">
+                                <ImageButton.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
+                                </ImageButton.Behaviors>
+                            </ImageButton>
                         </VerticalStackLayout>
                     </Frame>
-                    <Label Text="Drive" HorizontalOptions="Center" FontAttributes="Bold"/>
+                    <Label Text="Documentos" HorizontalOptions="Center" FontAttributes="Bold"/>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Grid.Column="1">
-                    <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125" x:Name="estado">
+                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125" x:Name="estado">
                         <VerticalStackLayout Spacing="5">
-                            <ImageButton Source="youtube.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavYoutubeCommand}"/>
+                            <ImageButton Source="film" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavYoutubeCommand}">
+                                <ImageButton.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
+                                </ImageButton.Behaviors>
+                            </ImageButton>
                         </VerticalStackLayout>
                     </Frame>
                     <Label Text="Canal de Youtube" HorizontalOptions="Center" FontAttributes="Bold"/>

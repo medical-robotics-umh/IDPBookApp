@@ -6,7 +6,7 @@
         public string Nombre { get; set; }
         public string Apelld { get; set; }
         public string Correo { get; set; }
-        public int Sexo { get; set; }
+        public string Gener { get; set; }
         public string FechNac {  get; set; }
         public int Diagnsc { get; set; }
         public string FechDiag { get; set; }

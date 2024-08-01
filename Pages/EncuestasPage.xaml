@@ -4,17 +4,26 @@
              x:Class="IDPBookApp.Pages.EncuestasPage"
              xmlns:viewmodel="clr-namespace:IDPBookApp.ViewModel"
              xmlns:model="clr-namespace:IDPBookApp.Models"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:DataType="viewmodel:EncuestasViewModel"
              Title="EncuestasPage">
     <ScrollView>
         <VerticalStackLayout VerticalOptions="FillAndExpand" >
-            <ImageButton Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}"/>
+            <ImageButton Source="back2" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}">
+                <ImageButton.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="#28B463" />
+                </ImageButton.Behaviors>
+            </ImageButton>
             <Label Text="CUESTIONARIO CALIDAD" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-38,0,0"/>
             <Label Text="DE VIDA" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center"/>
 
             <Frame Margin="0,30,0,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125" x:Name="estado" HorizontalOptions="Center">
                 <VerticalStackLayout>
-                    <ImageButton Source="ic_logo_agregar.png" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding GoToNewCuestCommand}"/>
+                    <ImageButton Source="files_medical" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding GoToNewCuestCommand}">
+                        <ImageButton.Behaviors>
+                            <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
+                        </ImageButton.Behaviors>
+                    </ImageButton>
                 </VerticalStackLayout>
             </Frame>
             <Label Text="Agregar nuevo cuestionario" HorizontalOptions="Center" FontAttributes="Bold"/>
@@ -31,9 +40,11 @@
                                 <HorizontalStackLayout.GestureRecognizers>
                                     <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:EncuestasViewModel}}, Path=NavCuestDtailCommand}"/>
                                 </HorizontalStackLayout.GestureRecognizers>
-                                <Frame CornerRadius="5" HasShadow="True" WidthRequest="50" HeightRequest="50">
-                                    <Image Source="ic_logo_calidad_vida.png" Aspect="Fill" WidthRequest="43" HeightRequest="43"/>
-                                </Frame>
+                                <Image Source="evaluation" Aspect="Fill" WidthRequest="43" HeightRequest="43" Margin="0,3,0,3">
+                                    <Image.Behaviors>
+                                        <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
+                                    </Image.Behaviors>
+                                </Image>
                                 <Label Text="Puntuación:" FontAttributes="Bold" VerticalOptions="Center"/>
                                 <Label Text="{Binding QEscala}" FontAttributes="Bold" VerticalOptions="Center"/>
                                 <Label Text="-" FontAttributes="Bold" VerticalOptions="Center"/>

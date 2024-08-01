@@ -24,8 +24,6 @@ public partial class NewPacViewModel : BaseViewModel
     [ObservableProperty]
     string emailPac;
     [ObservableProperty]
-    int sexPac = -1;
-    [ObservableProperty]
     DateTime fNac = DateTime.Today;
     [ObservableProperty]
     int edadPac;
@@ -47,6 +45,8 @@ public partial class NewPacViewModel : BaseViewModel
     public bool pacVsbl = true;
     [ObservableProperty]
     public bool pacVsbl1 = true;
+    [ObservableProperty]
+    public string sexG;
 
     [RelayCommand]
     async Task NewUser()
@@ -80,7 +80,7 @@ public partial class NewPacViewModel : BaseViewModel
                         Nombre = NombPac,
                         Apelld = ApllPac,
                         Correo = EmailPac,
-                        Sexo = SexPac,
+                        Gener = SexG,
                         FechNac = FNac.ToShortDateString(),
                         Diagnsc = DiagPpal,                        
                         FechDiag = fecha,
@@ -98,7 +98,6 @@ public partial class NewPacViewModel : BaseViewModel
                     await App.Current.MainPage.DisplayAlert("Correcto", "Se ha creado paciente: " + NombPac, "Ok");
                     NombPac = ApllPac = EmailPac = OtroDiag1 = OtroDiag2 = string.Empty;
                     FNac = FDiag = FDiag1 = FDiag2 = DateTime.Today;
-                    SexPac = -1;
                     var Pac = new ListaPacientesPage(listaPacViewModel)
                     {
                         BindingContext = new ListaPacViewModel(firebaseConnecty)

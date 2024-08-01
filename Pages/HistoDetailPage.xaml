@@ -3,15 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IDPBookApp.Pages.HistoDetailPage"
              xmlns:model="clr-namespace:IDPBookApp.Models"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:viewmodel="clr-namespace:IDPBookApp.ViewModel"
              x:DataType="viewmodel:HistoDetailViewModel"
              Title="HistoDetailPage">
     <ScrollView>
         <VerticalStackLayout  Spacing="0">
-            <ImageButton Source="ic_back_button.png" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}"/>
+            <ImageButton Source="back2" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}">
+                <ImageButton.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="#28B463"/>
+                </ImageButton.Behaviors>
+            </ImageButton>
             <Label Text="{Binding Historia.HTitl}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
-            <Frame HasShadow="True" Margin="10,10"  Padding="10,10">
+            <Frame HasShadow="True" Margin="15,20"  Padding="10,10">
                 <Grid ColumnDefinitions="auto,*" RowDefinitions="45,45,*,*,*,*,*,*" RowSpacing="5">
                     <Label Text="Año diagnostico:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
                     <Entry Text="{Binding Historia.HfDiag}" IsReadOnly="True" Grid.Column="1" VerticalOptions="Center" WidthRequest="60" HorizontalOptions="Start" Placeholder="N/A"/>
