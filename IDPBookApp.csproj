@@ -12,7 +12,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
-		<ApplicationTitle>IDPBookApp</ApplicationTitle>
+		<ApplicationTitle>IDPBook</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.idpbookapp</ApplicationId>
@@ -85,7 +85,7 @@
 		
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\trilogo.svg" BaseSize="300,300" Color="#ffffff" />
+		<MauiSplashScreen Include="Resources\Splash\trilogo.svg" BaseSize="350,231" Color="#ffffff" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -230,6 +230,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\PruebasLabPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\RedPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Registro.xaml">

@@ -105,11 +105,11 @@ public partial class MainViewModel : BaseViewModel
     }
 
     [RelayCommand]
-    static async Task OpenChat()
+    static async Task NavWeb(string url)
     {
         try
         {
-            await Launcher.Default.OpenAsync("https://chat.google.com/room/AAAA9tiUBzs?cls=7");
+            await Launcher.Default.OpenAsync(url);
         }
         catch
         {
