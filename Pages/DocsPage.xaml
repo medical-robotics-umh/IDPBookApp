@@ -30,7 +30,7 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Grid.Column="1">
-                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125" x:Name="estado">
+                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout Spacing="5">
                             <ImageButton Source="film" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavYoutubeCommand}">
                                 <ImageButton.Behaviors>

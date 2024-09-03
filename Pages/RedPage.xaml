@@ -6,10 +6,78 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:DataType="viewmodel:MainViewModel"
              Title="RedPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout VerticalOptions="FillAndExpand">
+            <ImageButton Source="back2" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}">
+                <ImageButton.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="#28B463" />
+                </ImageButton.Behaviors>
+            </ImageButton>
+            <Label Text="REDES DE PACIENTES" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
+
+            <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*" VerticalOptions="Center" HorizontalOptions="Center" ColumnSpacing="40" Margin="0,120,0,0">
+                <VerticalStackLayout>
+                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                        <VerticalStackLayout Spacing="5">
+                            <ImageButton Source="telegram" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavWebCommand}" CommandParameter="https://chat.google.com/room/AAAA9tiUBzs?cls=7">
+                                <ImageButton.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
+                                </ImageButton.Behaviors>
+                            </ImageButton>
+                        </VerticalStackLayout>
+                    </Frame>
+                    <Label Text="Telegram" HorizontalOptions="Center" FontAttributes="Bold"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Column="1">
+                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                        <VerticalStackLayout Spacing="5">
+                            <ImageButton Source="aedip" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavWebCommand}" CommandParameter="https://aedip.com/"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                    <Label Text="AEDIP" HorizontalOptions="Center" FontAttributes="Bold"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Column="0" Grid.Row="1">
+                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                        <VerticalStackLayout Spacing="5">
+                            <ImageButton Source="josep" Aspect="AspectFit" WidthRequest="100" HeightRequest="100" Command="{Binding NavWebCommand}" CommandParameter="https://fcarreras.org/pacientes/enfermedades-hematologicas-ninos/inmunodeficiencias-primarias/"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                    <Label Text="Fund. Josep Carreras" HorizontalOptions="Center" FontAttributes="Bold"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Column="1" Grid.Row="1">
+                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                        <VerticalStackLayout Spacing="5">
+                            <ImageButton Source="acadip" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavWebCommand}" CommandParameter="https://acadip.org/es/quienes-somos/"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                    <Label Text="ACADIP" HorizontalOptions="Center" FontAttributes="Bold"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Column="0" Grid.Row="2">
+                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                        <VerticalStackLayout Spacing="5">
+                            <ImageButton Source="ipopi" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavWebCommand}" CommandParameter="https://ipopi.org/"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                    <Label Text="IPOPI" HorizontalOptions="Center" FontAttributes="Bold"/>
+                </VerticalStackLayout>
+            </Grid>
+            <HorizontalStackLayout Spacing="20" HorizontalOptions="Center" VerticalOptions="End" Margin="0,120,0,0">
+                <Image
+                    Aspect="AspectFit"
+                    HeightRequest="80"
+                    Source="ic_logo_lafe.png"
+                    WidthRequest="60" />
+                <Image
+                    VerticalOptions="Start"
+                    Aspect="AspectFit"
+                    HeightRequest="80"
+                    Source="ic_logo_umh.png"
+                    WidthRequest="60" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
