@@ -145,7 +145,7 @@
 		<PackageReference Include="FirebaseAuthentication.net" Version="4.1.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 		<PackageReference Include="Plugin.CloudFirestore" Version="4.1.0" />
-		<PackageReference Include="Syncfusion.Maui.Charts" Version="26.2.5" />
+		<PackageReference Include="Syncfusion.Maui.Charts" Version="26.2.14" />
 	</ItemGroup>
 
 	<ItemGroup>

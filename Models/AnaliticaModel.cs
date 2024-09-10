@@ -5,11 +5,11 @@ public class AnaliticaModel
     public string AId { get; set; }
     public string AName { get; set; }
     public string AFecha { get; set; }
-    public string AIgG { get; set; }
-    public string AIgG1 { get; set; }
-    public string AIgG2 { get; set; }
-    public string AIgG3 { get; set; }
-    public string AIgG4 { get; set; }
+    public int AIgG { get; set; }
+    public int AIgG1 { get; set; }
+    public int AIgG2 { get; set; }
+    public int AIgG3 { get; set; }
+    public int AIgG4 { get; set; }
     public string AHbA1c { get; set; }
     public string AHDL { get; set; }
     public string ALDL { get; set; }

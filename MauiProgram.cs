@@ -3,6 +3,7 @@ using IDPBookApp.Pages;
 using IDPBookApp.ViewModel;
 using Microsoft.Extensions.Logging;
 using CommunityToolkit.Maui;
+using Syncfusion.Maui.Core.Hosting;
 
 namespace IDPBookApp;
 
@@ -14,7 +15,8 @@ public static class MauiProgram
 		builder
 			.UseMauiApp<App>()
             .UseMauiCommunityToolkit()
-			.ConfigureFonts(fonts =>
+            .ConfigureSyncfusionCore()
+            .ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");

@@ -5,6 +5,7 @@
              xmlns:viewmodel="clr-namespace:IDPBookApp.ViewModel"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:model="clr-namespace:IDPBookApp.Models"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
              x:DataType="viewmodel:PrbsLabViewModel"
              Title="PruebasLabPage">
     <ScrollView>
@@ -52,6 +53,68 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </Frame>
+
+            <Button WidthRequest="250" Text="Mostrar gráficas evolutivas" FontAttributes="Bold" FontSize="Body" Command="{Binding VisibleGrafCommand}" IsVisible="{Binding Btn_visbl}"/>
+
+            <Grid Margin="10,20,20,0" IsVisible="{Binding Graf_visbl}">
+                <chart:SfCartesianChart Title="Gammaglobulinas valle">
+                    <chart:SfCartesianChart.XAxes>
+                        <chart:CategoryAxis>
+                            <chart:CategoryAxis.Title>
+                                <chart:ChartAxisTitle Text="Fecha"/>
+                            </chart:CategoryAxis.Title>
+                        </chart:CategoryAxis>
+                    </chart:SfCartesianChart.XAxes>
+
+                    <chart:SfCartesianChart.YAxes>
+                        <chart:NumericalAxis>
+                            <chart:NumericalAxis.Title>
+                                <chart:ChartAxisTitle Text="(mg/L)"/>
+                            </chart:NumericalAxis.Title>
+                        </chart:NumericalAxis>
+                    </chart:SfCartesianChart.YAxes>
+
+                    <chart:SfCartesianChart.Legend>
+                        <chart:ChartLegend/>
+                    </chart:SfCartesianChart.Legend>
+
+                    <chart:SplineSeries XBindingPath="AFecha"
+                                        ItemsSource="{Binding Analiticas}"
+                                        YBindingPath="AIgG"
+                                        Type="Cardinal"
+                                        Label="AIgG"
+                                        ShowMarkers="True"
+                                        EnableTooltip="True"/>
+                    <chart:SplineSeries XBindingPath="AFecha"
+                                        ItemsSource="{Binding Analiticas}"
+                                        YBindingPath="AIgG1"
+                                        Type="Cardinal"
+                                        Label="AIgG1"
+                                        ShowMarkers="True"
+                                        EnableTooltip="True"/>
+                    <chart:SplineSeries XBindingPath="AFecha"
+                                        ItemsSource="{Binding Analiticas}"
+                                        YBindingPath="AIgG2"
+                                        Type="Cardinal"
+                                        Label="AIgG2"
+                                        ShowMarkers="True"
+                                        EnableTooltip="True"/>
+                    <!--<chart:SplineSeries XBindingPath="AFecha"
+                                        ItemsSource="{Binding Analiticas}"
+                                        YBindingPath="AIgG3"
+                                        Type="Cardinal"
+                                        Label="AIgG3"
+                                        ShowMarkers="True"
+                                        EnableTooltip="True"/>
+                    <chart:SplineSeries XBindingPath="AFecha"
+                                        ItemsSource="{Binding Analiticas}"
+                                        YBindingPath="AIgG4"
+                                        Type="Cardinal"
+                                        Label="AIgG4"
+                                        ShowMarkers="True"
+                                        EnableTooltip="True"/>-->
+                </chart:SfCartesianChart>
+            </Grid>
             
             <ActivityIndicator IsRunning = "{Binding Run}" Margin = "10" HorizontalOptions = "Center" />
             

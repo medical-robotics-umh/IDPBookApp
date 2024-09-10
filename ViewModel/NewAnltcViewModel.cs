@@ -20,13 +20,13 @@ public partial class NewAnltcViewModel : BaseViewModel
     [ObservableProperty]
     public string aIgG;
     [ObservableProperty]
-    public string aIgG1;
+    public int aIgG1;
     [ObservableProperty]
-    public string aIgG2;
+    public int aIgG2;
     [ObservableProperty]
-    public string aIgG3;
+    public int aIgG3;
     [ObservableProperty]
-    public string aIgG4;
+    public int aIgG4;
     [ObservableProperty]
     public string aHbA1c;
     [ObservableProperty]
@@ -63,7 +63,7 @@ public partial class NewAnltcViewModel : BaseViewModel
                 AId = id,
                 AName="Analítica "+Contador.ToString(),
                 AFecha=Date.ToShortDateString(),
-                AIgG=AIgG,
+                AIgG=Convert.ToInt32(AIgG),
                 AIgG1=AIgG1,
                 AIgG2=AIgG2,
                 AIgG3=AIgG3,
