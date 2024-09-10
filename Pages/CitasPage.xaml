@@ -19,7 +19,7 @@
             <VerticalStackLayout>
                 <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">                    
                     <VerticalStackLayout Spacing="5">
-                            <ImageButton Source="calendar_days" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding OpenCalendarCommand}">
+                            <ImageButton Source="calendar_days" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavWebCommand}" CommandParameter="https://calendar.google.com/">
                                 <ImageButton.Behaviors>
                                     <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
                                 </ImageButton.Behaviors>
@@ -29,19 +29,19 @@
                 <Label Text="Calendario" HorizontalOptions="Center" FontAttributes="Bold"/>
             </VerticalStackLayout>
 
-            <VerticalStackLayout Grid.Column="1">
-                <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125" x:Name="estado">
-                    <VerticalStackLayout Spacing="5">
-                            <ImageButton Source="calendar_plus" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding OpenAgendaCommand}">
+                <VerticalStackLayout Grid.Column="1">
+                    <Frame Margin="1,10,1,1" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                        <VerticalStackLayout Spacing="5">
+                            <ImageButton Source="calendar_plus" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavWebCommand}" CommandParameter="https://calendar.app.google/V59SGBDpAcbBTr246">
                                 <ImageButton.Behaviors>
                                     <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
                                 </ImageButton.Behaviors>
                             </ImageButton>
                         </VerticalStackLayout>
-                </Frame>
-                <Label Text="Reservar en agenda" HorizontalOptions="Center" FontAttributes="Bold"/>
-            </VerticalStackLayout>           
-        </Grid>
+                    </Frame>
+                    <Label Text="Reservar en agenda" HorizontalOptions="Center" FontAttributes="Bold"/>
+                </VerticalStackLayout>
+            </Grid>
         <HorizontalStackLayout Spacing="20" HorizontalOptions="Center" VerticalOptions="End" Margin="0,120,0,0">
             <Image
                     Aspect="AspectFit"

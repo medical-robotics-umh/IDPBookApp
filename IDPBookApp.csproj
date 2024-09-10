@@ -112,6 +112,7 @@
 	  <None Remove="Resources\Images\file_medical.svg" />
 	  <None Remove="Resources\Images\file_video.svg" />
 	  <None Remove="Resources\Images\globe.svg" />
+	  <None Remove="Resources\Images\group_call.svg" />
 	  <None Remove="Resources\Images\ic_back_button.png" />
 	  <None Remove="Resources\Images\ic_episode_list.png" />
 	  <None Remove="Resources\Images\ic_logo_agregar.png" />

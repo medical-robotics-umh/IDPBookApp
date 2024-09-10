@@ -40,71 +40,6 @@ public partial class MainViewModel : BaseViewModel
     }
 
     [RelayCommand]
-    static async Task NavDrive()
-    {
-        try
-        {
-            await Launcher.Default.OpenAsync("https://drive.google.com/drive/folders/1SDSi4fPLPCWrm4bAsB9wNj-Ne-V-e6z5?usp=sharing");
-        }
-        catch
-        {
-            await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n MainViewModel -> Task NavDrive", "Aceptar");
-        }
-    }
-
-    [RelayCommand]
-    static async Task NavYoutube()
-    {
-        try
-        {
-            await Launcher.Default.OpenAsync("https://www.youtube.com/user/nuevohospitallafe1");
-        }
-        catch
-        {
-            await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n MainViewModel -> Task NavYoutube", "Aceptar");
-        }
-    }
-
-    [RelayCommand]
-    static async Task OpenCalendar()
-    {
-        try
-        {
-            await Launcher.Default.OpenAsync("https://calendar.google.com/");
-        }
-        catch
-        {
-            await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n MainViewModel -> Task OpenCalendar", "Aceptar");
-        }
-    }
-
-    [RelayCommand]
-    static async Task OpenEventCalendar()
-    {
-        try
-        {
-            await Launcher.Default.OpenAsync("https://calendar.google.com/calendar/event?action=TEMPLATE");
-        }
-        catch
-        {
-            await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n MainViewModel -> Task OpenEventCalendar", "Aceptar");
-        }
-    }
-
-    [RelayCommand]
-    static async Task OpenAgenda()
-    {
-        try
-        {
-            await Launcher.Default.OpenAsync("https://calendar.app.google/V59SGBDpAcbBTr246");
-        }
-        catch
-        {
-            await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n MainViewModel -> Task OpenAgenda", "Aceptar");
-        }
-    }
-
-    [RelayCommand]
     static async Task NavWeb(string url)
     {
         try
@@ -127,19 +62,6 @@ public partial class MainViewModel : BaseViewModel
         catch
         {
             await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n MainViewModel -> Task OpenNewGmail", "Aceptar");
-        }
-    }
-
-    [RelayCommand]
-    static async Task OpenMeet()
-    {
-        try
-        {
-            await Launcher.TryOpenAsync("https://meet.google.com/landing");
-        }
-        catch
-        {
-            await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n MainViewModel -> Task OpenPhoneDialer", "Aceptar");
         }
     }
 }

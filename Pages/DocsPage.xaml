@@ -19,7 +19,7 @@
                 <VerticalStackLayout>
                     <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout Spacing="5">
-                            <ImageButton Source="bookmark" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavDriveCommand}">
+                            <ImageButton Source="bookmark" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavWebCommand}" CommandParameter="https://drive.google.com/drive/folders/1SDSi4fPLPCWrm4bAsB9wNj-Ne-V-e6z5?usp=sharing">
                                 <ImageButton.Behaviors>
                                     <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
                                 </ImageButton.Behaviors>
@@ -32,7 +32,7 @@
                 <VerticalStackLayout Grid.Column="1">
                     <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout Spacing="5">
-                            <ImageButton Source="film" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavYoutubeCommand}">
+                            <ImageButton Source="film" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavWebCommand}" CommandParameter="https://www.youtube.com/user/nuevohospitallafe1">
                                 <ImageButton.Behaviors>
                                     <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
                                 </ImageButton.Behaviors>

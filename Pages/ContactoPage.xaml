@@ -15,7 +15,7 @@
             </ImageButton>
             <Label Text="CONTACTO SANITARIO" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
-            <Grid ColumnDefinitions="*,*" RowDefinitions="*" VerticalOptions="Center" HorizontalOptions="Center" ColumnSpacing="20" Margin="0,120,0,0">
+            <Grid ColumnDefinitions="*,*" RowDefinitions="*,*" VerticalOptions="Center" HorizontalOptions="Center" ColumnSpacing="20" Margin="0,120,0,0">
                 <VerticalStackLayout>
                     <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="150" HeightRequest="150">
                         <VerticalStackLayout Spacing="5" VerticalOptions="Center">
@@ -34,7 +34,7 @@
                 <VerticalStackLayout Grid.Column="1">
                     <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="150" HeightRequest="150">
                         <VerticalStackLayout Spacing="5" VerticalOptions="Center">
-                            <ImageButton Source="costumer" Aspect="Fill" WidthRequest="130" HeightRequest="130" Command="{Binding OpenMeetCommand}">
+                            <ImageButton Source="costumer" Aspect="Fill" WidthRequest="130" HeightRequest="130" Command="{Binding NavWebCommand}" CommandParameter="https://duo.app.goo.gl/0rzYklevOW6hZDfvW2cqS8">
                                 <ImageButton.Behaviors>
                                     <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
                                 </ImageButton.Behaviors>
@@ -45,8 +45,21 @@
                     <Label Text="Inmunodeficiencias" HorizontalOptions="Center" FontAttributes="Bold"/>
                     <Label Text="Primarias" HorizontalOptions="Center" FontAttributes="Bold"/>
                 </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Row="1">
+                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="150" HeightRequest="150">
+                        <VerticalStackLayout Spacing="5" VerticalOptions="Center">
+                            <ImageButton Source="users_medical" Aspect="Fill" WidthRequest="130" HeightRequest="130" Command="{Binding NavWebCommand}" CommandParameter="https://duo.app.goo.gl/4KpNg6aEWQVpcEUQj1QaO8">
+                                <ImageButton.Behaviors>
+                                    <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
+                                </ImageButton.Behaviors>
+                            </ImageButton>
+                        </VerticalStackLayout>
+                    </Frame>
+                    <Label Text="Llamada Grupal" HorizontalOptions="Center" FontAttributes="Bold"/>
+                </VerticalStackLayout>
             </Grid>
-            <HorizontalStackLayout Spacing="20" HorizontalOptions="Center" VerticalOptions="End" Margin="0,230,0,0">
+            <HorizontalStackLayout Spacing="20" HorizontalOptions="Center" VerticalOptions="End" Margin="0,100,0,0">
                 <Image
                 Aspect="AspectFit"
                 HeightRequest="80"
