@@ -20,13 +20,13 @@ public partial class NewAnltcViewModel : BaseViewModel
     [ObservableProperty]
     public string aIgG;
     [ObservableProperty]
-    public int aIgG1;
+    public string aIgG1;
     [ObservableProperty]
-    public int aIgG2;
+    public string aIgG2;
     [ObservableProperty]
-    public int aIgG3;
+    public string aIgG3;
     [ObservableProperty]
-    public int aIgG4;
+    public string aIgG4;
     [ObservableProperty]
     public string aHbA1c;
     [ObservableProperty]
@@ -64,19 +64,19 @@ public partial class NewAnltcViewModel : BaseViewModel
                 AName="Analítica "+Contador.ToString(),
                 AFecha=Date.ToShortDateString(),
                 AIgG=Convert.ToInt32(AIgG),
-                AIgG1=AIgG1,
-                AIgG2=AIgG2,
-                AIgG3=AIgG3,
-                AIgG4=AIgG4,
-                AHbA1c=AHbA1c,
-                AHDL=AHDL,
-                ALDL=ALDL,
-                ATG=ATG,
-                AColesT=AColesT,
-                AHemo=AHemo,
-                ALinfo=ALinfo,
-                ANeuro=ANeuro,
-                APlaque=APlaque,
+                AIgG1= Convert.ToInt32(AIgG1),
+                AIgG2= Convert.ToInt32(AIgG2),
+                AIgG3= Convert.ToInt32(AIgG3),
+                AIgG4= Convert.ToInt32(AIgG4),
+                AHbA1c= Convert.ToInt32(AHbA1c),
+                AHDL= Convert.ToInt32(AHDL),
+                ALDL= Convert.ToInt32(ALDL),
+                ATG= Convert.ToInt32(ATG),
+                AColesT= Convert.ToInt32(AColesT),
+                AHemo= Convert.ToInt32(AHemo),
+                ALinfo= Convert.ToInt32(ALinfo),
+                ANeuro= Convert.ToInt32(ANeuro),
+                APlaque= Convert.ToInt32(APlaque),
             };
             await CrossCloudFirestore.Current
                              .Instance

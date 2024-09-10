@@ -99,7 +99,7 @@
                                         Label="AIgG2"
                                         ShowMarkers="True"
                                         EnableTooltip="True"/>
-                    <!--<chart:SplineSeries XBindingPath="AFecha"
+                    <chart:SplineSeries XBindingPath="AFecha"
                                         ItemsSource="{Binding Analiticas}"
                                         YBindingPath="AIgG3"
                                         Type="Cardinal"
@@ -112,10 +112,173 @@
                                         Type="Cardinal"
                                         Label="AIgG4"
                                         ShowMarkers="True"
-                                        EnableTooltip="True"/>-->
+                                        EnableTooltip="True"/>
                 </chart:SfCartesianChart>
             </Grid>
-            
+
+            <Grid Margin="10,20,20,0" IsVisible="{Binding Graf_visbl}">
+                <chart:SfCartesianChart Title="Perfil metabólico">
+                    <chart:SfCartesianChart.XAxes>
+                        <chart:CategoryAxis>
+                            <chart:CategoryAxis.Title>
+                                <chart:ChartAxisTitle Text="Fecha"/>
+                            </chart:CategoryAxis.Title>
+                        </chart:CategoryAxis>
+                    </chart:SfCartesianChart.XAxes>
+
+                    <chart:SfCartesianChart.YAxes>
+                        <chart:NumericalAxis>
+                            <chart:NumericalAxis.Title>
+                                <chart:ChartAxisTitle Text="(%)"/>
+                            </chart:NumericalAxis.Title>
+                        </chart:NumericalAxis>
+                    </chart:SfCartesianChart.YAxes>
+
+                    <chart:SfCartesianChart.Legend>
+                        <chart:ChartLegend/>
+                    </chart:SfCartesianChart.Legend>
+
+                    <chart:SplineSeries XBindingPath="AFecha"
+                                        ItemsSource="{Binding Analiticas}"
+                                        YBindingPath="AHbA1c"
+                                        Type="Cardinal"
+                                        Label="HbA1c"
+                                        ShowMarkers="True"
+                                        EnableTooltip="True"/>
+                </chart:SfCartesianChart>
+            </Grid>
+
+            <Grid Margin="10,20,20,0" IsVisible="{Binding Graf_visbl}">
+                <chart:SfCartesianChart Title="Perfil metabólico">
+                    <chart:SfCartesianChart.XAxes>
+                        <chart:CategoryAxis>
+                            <chart:CategoryAxis.Title>
+                                <chart:ChartAxisTitle Text="Fecha"/>
+                            </chart:CategoryAxis.Title>
+                        </chart:CategoryAxis>
+                    </chart:SfCartesianChart.XAxes>
+
+                    <chart:SfCartesianChart.YAxes>
+                        <chart:NumericalAxis>
+                            <chart:NumericalAxis.Title>
+                                <chart:ChartAxisTitle Text="(mg/L)"/>
+                            </chart:NumericalAxis.Title>
+                        </chart:NumericalAxis>
+                    </chart:SfCartesianChart.YAxes>
+
+                    <chart:SfCartesianChart.Legend>
+                        <chart:ChartLegend/>
+                    </chart:SfCartesianChart.Legend>
+
+                    <chart:SplineSeries XBindingPath="AFecha"
+                                        ItemsSource="{Binding Analiticas}"
+                                        YBindingPath="AHDL"
+                                        Type="Cardinal"
+                                        Label="HDL"
+                                        ShowMarkers="True"
+                                        EnableTooltip="True"/>
+                    <chart:SplineSeries XBindingPath="AFecha"
+                                        ItemsSource="{Binding Analiticas}"
+                                        YBindingPath="ALDL"
+                                        Type="Cardinal"
+                                        Label="LDL"
+                                        ShowMarkers="True"
+                                        EnableTooltip="True"/>
+                    <chart:SplineSeries XBindingPath="AFecha"
+                                        ItemsSource="{Binding Analiticas}"
+                                        YBindingPath="ATG"
+                                        Type="Cardinal"
+                                        Label="TG"
+                                        ShowMarkers="True"
+                                        EnableTooltip="True"/>
+                    <chart:SplineSeries XBindingPath="AFecha"
+                                        ItemsSource="{Binding Analiticas}"
+                                        YBindingPath="AColesT"
+                                        Type="Cardinal"
+                                        Label="Colesterol total"
+                                        ShowMarkers="True"
+                                        EnableTooltip="True"/>
+                </chart:SfCartesianChart>
+            </Grid>
+
+            <Grid Margin="10,20,20,0" IsVisible="{Binding Graf_visbl}">
+                <chart:SfCartesianChart Title="Hemograma">
+                    <chart:SfCartesianChart.XAxes>
+                        <chart:CategoryAxis>
+                            <chart:CategoryAxis.Title>
+                                <chart:ChartAxisTitle Text="Fecha"/>
+                            </chart:CategoryAxis.Title>
+                        </chart:CategoryAxis>
+                    </chart:SfCartesianChart.XAxes>
+
+                    <chart:SfCartesianChart.YAxes>
+                        <chart:NumericalAxis>
+                            <chart:NumericalAxis.Title>
+                                <chart:ChartAxisTitle Text="(g/dL)"/>
+                            </chart:NumericalAxis.Title>
+                        </chart:NumericalAxis>
+                    </chart:SfCartesianChart.YAxes>
+
+                    <chart:SfCartesianChart.Legend>
+                        <chart:ChartLegend/>
+                    </chart:SfCartesianChart.Legend>
+
+                    <chart:SplineSeries XBindingPath="AFecha"
+                                        ItemsSource="{Binding Analiticas}"
+                                        YBindingPath="AHemo"
+                                        Type="Cardinal"
+                                        Label="Hemoglobina"
+                                        ShowMarkers="True"
+                                        EnableTooltip="True"/>
+                </chart:SfCartesianChart>
+            </Grid>
+
+            <Grid Margin="10,20,20,0" IsVisible="{Binding Graf_visbl}">
+                <chart:SfCartesianChart Title="Hemograma">
+                    <chart:SfCartesianChart.XAxes>
+                        <chart:CategoryAxis>
+                            <chart:CategoryAxis.Title>
+                                <chart:ChartAxisTitle Text="Fecha"/>
+                            </chart:CategoryAxis.Title>
+                        </chart:CategoryAxis>
+                    </chart:SfCartesianChart.XAxes>
+
+                    <chart:SfCartesianChart.YAxes>
+                        <chart:NumericalAxis>
+                            <chart:NumericalAxis.Title>
+                                <chart:ChartAxisTitle Text="(células/uL)"/>
+                            </chart:NumericalAxis.Title>
+                        </chart:NumericalAxis>
+                    </chart:SfCartesianChart.YAxes>
+
+                    <chart:SfCartesianChart.Legend>
+                        <chart:ChartLegend/>
+                    </chart:SfCartesianChart.Legend>
+
+                    <chart:SplineSeries XBindingPath="AFecha"
+                                        ItemsSource="{Binding Analiticas}"
+                                        YBindingPath="ALinfo"
+                                        Type="Cardinal"
+                                        Label="Linfocitos"
+                                        ShowMarkers="True"
+                                        EnableTooltip="True"/>
+                    <chart:SplineSeries XBindingPath="AFecha"
+                                        ItemsSource="{Binding Analiticas}"
+                                        YBindingPath="ANeuro"
+                                        Type="Cardinal"
+                                        Label="Neurotrófilos"
+                                        ShowMarkers="True"
+                                        EnableTooltip="True"/>
+                    <chart:SplineSeries XBindingPath="AFecha"
+                                        ItemsSource="{Binding Analiticas}"
+                                        YBindingPath="APlaque"
+                                        Type="Cardinal"
+                                        Label="Plaquetas"
+                                        ShowMarkers="True"
+                                        EnableTooltip="True"/>
+                </chart:SfCartesianChart>
+            </Grid>
+
             <ActivityIndicator IsRunning = "{Binding Run}" Margin = "10" HorizontalOptions = "Center" />
             
         </VerticalStackLayout>
