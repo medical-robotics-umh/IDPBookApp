@@ -23,7 +23,7 @@ public partial class NewTratViewModel : BaseViewModel
     [ObservableProperty]
     public int tTipo = -1;
     [ObservableProperty]
-    public string tPrep;
+    public int tPrep;
     [ObservableProperty]
     public string tDosis;
     [ObservableProperty]

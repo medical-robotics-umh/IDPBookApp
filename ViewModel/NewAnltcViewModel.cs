@@ -28,6 +28,10 @@ public partial class NewAnltcViewModel : BaseViewModel
     [ObservableProperty]
     public string aIgG4;
     [ObservableProperty]
+    public string aIgA;
+    [ObservableProperty]
+    public string aIgM;
+    [ObservableProperty]
     public string aHbA1c;
     [ObservableProperty]
     public string aHDL;
@@ -68,7 +72,9 @@ public partial class NewAnltcViewModel : BaseViewModel
                 AIgG2= Convert.ToInt32(AIgG2),
                 AIgG3= Convert.ToInt32(AIgG3),
                 AIgG4= Convert.ToInt32(AIgG4),
-                AHbA1c= Convert.ToInt32(AHbA1c),
+                AIgA= Convert.ToInt32(AIgA),
+                AIgM = Convert.ToInt32(AIgM),
+                AHbA1c = Convert.ToInt32(AHbA1c),
                 AHDL= Convert.ToInt32(AHDL),
                 ALDL= Convert.ToInt32(ALDL),
                 ATG= Convert.ToInt32(ATG),

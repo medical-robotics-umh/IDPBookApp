@@ -48,7 +48,6 @@ public partial class BaseViewModel : ObservableObject
     [ObservableProperty]
     private bool disable = true;
     
-
     [ObservableProperty]
     bool sTos;
     [ObservableProperty]
@@ -82,6 +81,17 @@ public partial class BaseViewModel : ObservableObject
 
     [ObservableProperty]
     public bool run = false;
+
+    [ObservableProperty]
+    private bool graf_visbl;
+    [ObservableProperty]
+    private bool btn_visbl = false;
+
+    [RelayCommand]
+    private void VisibleGraf()
+    {
+        Graf_visbl = !Graf_visbl;
+    }
 
     [RelayCommand]
     static async Task Navegar(string ruta)

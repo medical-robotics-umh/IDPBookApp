@@ -56,6 +56,66 @@
 
             <Button WidthRequest="250" Text="Mostrar gráficas evolutivas" FontAttributes="Bold" FontSize="Body" Command="{Binding VisibleGrafCommand}" IsVisible="{Binding Btn_visbl}"/>
 
+            <!--<Grid Margin="10,20,20,0" IsVisible="{Binding Graf_visbl}">
+                <chart:SfCartesianChart Title="Gammaglobulinas valle">
+                    <chart:SfCartesianChart.XAxes>
+                        <chart:CategoryAxis>
+                            <chart:CategoryAxis.Title>
+                                <chart:ChartAxisTitle Text="Fecha"/>
+                            </chart:CategoryAxis.Title>
+                        </chart:CategoryAxis>
+                    </chart:SfCartesianChart.XAxes>
+
+                    <chart:SfCartesianChart.YAxes>
+                        <chart:NumericalAxis>
+                            <chart:NumericalAxis.Title>
+                                <chart:ChartAxisTitle Text="(mg/dL)"/>
+                            </chart:NumericalAxis.Title>
+                        </chart:NumericalAxis>
+                    </chart:SfCartesianChart.YAxes>
+
+                    <chart:SfCartesianChart.Legend>
+                        <chart:ChartLegend/>
+                    </chart:SfCartesianChart.Legend>
+
+                    <chart:SplineSeries XBindingPath="AFecha"
+                                        ItemsSource="{Binding Analiticas}"
+                                        YBindingPath="AIgG"
+                                        Type="Natural"
+                                        Label="AIgG"
+                                        ShowMarkers="True"
+                                        EnableTooltip="True"/>
+                    <chart:SplineSeries XBindingPath="AFecha"
+                                        ItemsSource="{Binding Analiticas}"
+                                        YBindingPath="AIgG1"
+                                        Type="Natural"
+                                        Label="AIgG1"
+                                        ShowMarkers="True"
+                                        EnableTooltip="True"/>
+                    <chart:SplineSeries XBindingPath="AFecha"
+                                        ItemsSource="{Binding Analiticas}"
+                                        YBindingPath="AIgG2"
+                                        Type="Natural"
+                                        Label="AIgG2"
+                                        ShowMarkers="True"
+                                        EnableTooltip="True"/>
+                    <chart:SplineSeries XBindingPath="AFecha"
+                                        ItemsSource="{Binding Analiticas}"
+                                        YBindingPath="AIgG3"
+                                        Type="Natural"
+                                        Label="AIgG3"
+                                        ShowMarkers="True"
+                                        EnableTooltip="True"/>
+                    <chart:SplineSeries XBindingPath="AFecha"
+                                        ItemsSource="{Binding Analiticas}"
+                                        YBindingPath="AIgG4"
+                                        Type="Natural"
+                                        Label="AIgG4"
+                                        ShowMarkers="True"
+                                        EnableTooltip="True"/>
+                </chart:SfCartesianChart>
+            </Grid>
+
             <Grid Margin="10,20,20,0" IsVisible="{Binding Graf_visbl}">
                 <chart:SfCartesianChart Title="Gammaglobulinas valle">
                     <chart:SfCartesianChart.XAxes>
@@ -69,7 +129,7 @@
                     <chart:SfCartesianChart.YAxes>
                         <chart:NumericalAxis>
                             <chart:NumericalAxis.Title>
-                                <chart:ChartAxisTitle Text="(mg/L)"/>
+                                <chart:ChartAxisTitle Text="(mg/dL)"/>
                             </chart:NumericalAxis.Title>
                         </chart:NumericalAxis>
                     </chart:SfCartesianChart.YAxes>
@@ -79,42 +139,21 @@
                     </chart:SfCartesianChart.Legend>
 
                     <chart:SplineSeries XBindingPath="AFecha"
-                                        ItemsSource="{Binding Analiticas}"
-                                        YBindingPath="AIgG"
-                                        Type="Cardinal"
-                                        Label="AIgG"
-                                        ShowMarkers="True"
-                                        EnableTooltip="True"/>
+                            ItemsSource="{Binding Analiticas}"
+                            YBindingPath="AIgA"
+                            Type="Natural"
+                            Label="AIgA"
+                            ShowMarkers="True"
+                            EnableTooltip="True"/>
                     <chart:SplineSeries XBindingPath="AFecha"
-                                        ItemsSource="{Binding Analiticas}"
-                                        YBindingPath="AIgG1"
-                                        Type="Cardinal"
-                                        Label="AIgG1"
-                                        ShowMarkers="True"
-                                        EnableTooltip="True"/>
-                    <chart:SplineSeries XBindingPath="AFecha"
-                                        ItemsSource="{Binding Analiticas}"
-                                        YBindingPath="AIgG2"
-                                        Type="Cardinal"
-                                        Label="AIgG2"
-                                        ShowMarkers="True"
-                                        EnableTooltip="True"/>
-                    <chart:SplineSeries XBindingPath="AFecha"
-                                        ItemsSource="{Binding Analiticas}"
-                                        YBindingPath="AIgG3"
-                                        Type="Cardinal"
-                                        Label="AIgG3"
-                                        ShowMarkers="True"
-                                        EnableTooltip="True"/>
-                    <chart:SplineSeries XBindingPath="AFecha"
-                                        ItemsSource="{Binding Analiticas}"
-                                        YBindingPath="AIgG4"
-                                        Type="Cardinal"
-                                        Label="AIgG4"
-                                        ShowMarkers="True"
-                                        EnableTooltip="True"/>
+                            ItemsSource="{Binding Analiticas}"
+                            YBindingPath="AIgM"
+                            Type="Natural"
+                            Label="AIgM"
+                            ShowMarkers="True"
+                            EnableTooltip="True"/>
                 </chart:SfCartesianChart>
-            </Grid>
+            </Grid>-->
 
             <Grid Margin="10,20,20,0" IsVisible="{Binding Graf_visbl}">
                 <chart:SfCartesianChart Title="Perfil metabólico">
@@ -141,7 +180,7 @@
                     <chart:SplineSeries XBindingPath="AFecha"
                                         ItemsSource="{Binding Analiticas}"
                                         YBindingPath="AHbA1c"
-                                        Type="Cardinal"
+                                        Type="Natural"
                                         Label="HbA1c"
                                         ShowMarkers="True"
                                         EnableTooltip="True"/>
@@ -161,7 +200,7 @@
                     <chart:SfCartesianChart.YAxes>
                         <chart:NumericalAxis>
                             <chart:NumericalAxis.Title>
-                                <chart:ChartAxisTitle Text="(mg/L)"/>
+                                <chart:ChartAxisTitle Text="(mg/dL)"/>
                             </chart:NumericalAxis.Title>
                         </chart:NumericalAxis>
                     </chart:SfCartesianChart.YAxes>
@@ -173,28 +212,28 @@
                     <chart:SplineSeries XBindingPath="AFecha"
                                         ItemsSource="{Binding Analiticas}"
                                         YBindingPath="AHDL"
-                                        Type="Cardinal"
+                                        Type="Natural"
                                         Label="HDL"
                                         ShowMarkers="True"
                                         EnableTooltip="True"/>
                     <chart:SplineSeries XBindingPath="AFecha"
                                         ItemsSource="{Binding Analiticas}"
                                         YBindingPath="ALDL"
-                                        Type="Cardinal"
+                                        Type="Natural"
                                         Label="LDL"
                                         ShowMarkers="True"
                                         EnableTooltip="True"/>
                     <chart:SplineSeries XBindingPath="AFecha"
                                         ItemsSource="{Binding Analiticas}"
                                         YBindingPath="ATG"
-                                        Type="Cardinal"
+                                        Type="Natural"
                                         Label="TG"
                                         ShowMarkers="True"
                                         EnableTooltip="True"/>
                     <chart:SplineSeries XBindingPath="AFecha"
                                         ItemsSource="{Binding Analiticas}"
                                         YBindingPath="AColesT"
-                                        Type="Cardinal"
+                                        Type="Natural"
                                         Label="Colesterol total"
                                         ShowMarkers="True"
                                         EnableTooltip="True"/>
@@ -226,7 +265,7 @@
                     <chart:SplineSeries XBindingPath="AFecha"
                                         ItemsSource="{Binding Analiticas}"
                                         YBindingPath="AHemo"
-                                        Type="Cardinal"
+                                        Type="Natural"
                                         Label="Hemoglobina"
                                         ShowMarkers="True"
                                         EnableTooltip="True"/>
@@ -258,24 +297,49 @@
                     <chart:SplineSeries XBindingPath="AFecha"
                                         ItemsSource="{Binding Analiticas}"
                                         YBindingPath="ALinfo"
-                                        Type="Cardinal"
+                                        Type="Natural"
                                         Label="Linfocitos"
                                         ShowMarkers="True"
                                         EnableTooltip="True"/>
                     <chart:SplineSeries XBindingPath="AFecha"
                                         ItemsSource="{Binding Analiticas}"
                                         YBindingPath="ANeuro"
-                                        Type="Cardinal"
+                                        Type="Natural"
                                         Label="Neurotrófilos"
                                         ShowMarkers="True"
                                         EnableTooltip="True"/>
+                </chart:SfCartesianChart>
+            </Grid>
+
+            <Grid Margin="10,20,20,0" IsVisible="{Binding Graf_visbl}">
+                <chart:SfCartesianChart Title="Hemograma">
+                    <chart:SfCartesianChart.XAxes>
+                        <chart:CategoryAxis>
+                            <chart:CategoryAxis.Title>
+                                <chart:ChartAxisTitle Text="Fecha"/>
+                            </chart:CategoryAxis.Title>
+                        </chart:CategoryAxis>
+                    </chart:SfCartesianChart.XAxes>
+
+                    <chart:SfCartesianChart.YAxes>
+                        <chart:NumericalAxis>
+                            <chart:NumericalAxis.Title>
+                                <chart:ChartAxisTitle Text="(células/uL)"/>
+                            </chart:NumericalAxis.Title>
+                        </chart:NumericalAxis>
+                    </chart:SfCartesianChart.YAxes>
+
+                    <chart:SfCartesianChart.Legend>
+                        <chart:ChartLegend/>
+                    </chart:SfCartesianChart.Legend>
+
                     <chart:SplineSeries XBindingPath="AFecha"
-                                        ItemsSource="{Binding Analiticas}"
-                                        YBindingPath="APlaque"
-                                        Type="Cardinal"
-                                        Label="Plaquetas"
-                                        ShowMarkers="True"
-                                        EnableTooltip="True"/>
+                            ItemsSource="{Binding Analiticas}"
+                            YBindingPath="APlaque"
+                            Type="Natural"
+                            Label="Plaquetas"
+                            ShowMarkers="True"
+                            EnableTooltip="True"/>
                 </chart:SfCartesianChart>
             </Grid>
 

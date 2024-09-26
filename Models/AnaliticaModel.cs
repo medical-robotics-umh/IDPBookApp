@@ -6,6 +6,8 @@ public class AnaliticaModel
     public string AName { get; set; }
     public string AFecha { get; set; }
     public int AIgG { get; set; }
+    public int AIgA { get; set; }
+    public int AIgM { get; set; }
     public int AIgG1 { get; set; }
     public int AIgG2 { get; set; }
     public int AIgG3 { get; set; }

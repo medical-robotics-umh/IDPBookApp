@@ -19,7 +19,7 @@
                 <VerticalStackLayout>
                     <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout Spacing="5">
-                            <ImageButton Source="telegram" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavWebCommand}" CommandParameter="https://chat.google.com/room/AAAA9tiUBzs?cls=7">
+                            <ImageButton Source="telegram" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavWebCommand}" CommandParameter="https://t.me/+AVKcFxKJAnhkYWM0">
                                 <ImageButton.Behaviors>
                                     <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
                                 </ImageButton.Behaviors>
@@ -38,7 +38,7 @@
                     <Label Text="AEDIP" HorizontalOptions="Center" FontAttributes="Bold"/>
                 </VerticalStackLayout>
 
-                <VerticalStackLayout Grid.Column="0" Grid.Row="1">
+                <VerticalStackLayout Grid.Row="1">
                     <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout Spacing="5">
                             <ImageButton Source="josep" Aspect="AspectFit" WidthRequest="100" HeightRequest="100" Command="{Binding NavWebCommand}" CommandParameter="https://fcarreras.org/pacientes/enfermedades-hematologicas-ninos/inmunodeficiencias-primarias/"/>
@@ -56,14 +56,14 @@
                     <Label Text="ACADIP" HorizontalOptions="Center" FontAttributes="Bold"/>
                 </VerticalStackLayout>
 
-                <VerticalStackLayout Grid.Column="0" Grid.Row="2">
+                <VerticalStackLayout Grid.Row="2">
                     <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout Spacing="5">
                             <ImageButton Source="ipopi" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavWebCommand}" CommandParameter="https://ipopi.org/"/>
                         </VerticalStackLayout>
                     </Frame>
                     <Label Text="IPOPI" HorizontalOptions="Center" FontAttributes="Bold"/>
-                </VerticalStackLayout>
+                </VerticalStackLayout>                
             </Grid>
             <HorizontalStackLayout Spacing="20" HorizontalOptions="Center" VerticalOptions="End" Margin="0,120,0,0">
                 <Image

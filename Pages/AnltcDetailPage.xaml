@@ -55,6 +55,16 @@
                         <Entry Text="{Binding Analitica.AIgG4}" IsReadOnly="True" VerticalOptions="Center" Placeholder="N/A" WidthRequest="140" HorizontalTextAlignment="Start"/>
                     </HorizontalStackLayout>
 
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="15,0" Spacing="30">
+                        <Label VerticalOptions="Center" Text="IgM" FontAttributes="Bold" WidthRequest="80"/>
+                        <Entry Text="{Binding Analitica.AIgA}" IsReadOnly="True" VerticalOptions="Center" Placeholder="N/A" WidthRequest="140" HorizontalTextAlignment="Start"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="15,0" Spacing="30">
+                        <Label VerticalOptions="Center" Text="IgM" FontAttributes="Bold" WidthRequest="80"/>
+                        <Entry Text="{Binding Analitica.AIgM}" IsReadOnly="True" VerticalOptions="Center" Placeholder="N/A" WidthRequest="140" HorizontalTextAlignment="Start"/>
+                    </HorizontalStackLayout>
+
                     <BoxView Color="Gray"
                      HeightRequest="2"
                      HorizontalOptions="Fill" />

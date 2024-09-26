@@ -4,7 +4,7 @@ public class Tratamiento
 {
     public string TFecha { get; set; }
     public int TTipo { get; set; }
-    public string TPrep { get; set; }
+    public int TPrep { get; set; }
     public int TDosis { get; set; }
     public int TCad { get; set; }
     public bool[] TEfSec { get; set; }

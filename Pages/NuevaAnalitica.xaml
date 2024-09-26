@@ -55,6 +55,16 @@
                         <Entry Text="{Binding AIgG4}" MaxLength="5" TextChanged="Rango5k" VerticalOptions="Center" Placeholder="Rango [0-5000]" WidthRequest="140" HorizontalTextAlignment="Start"  Keyboard="Numeric" ReturnType="Next"/>
                     </HorizontalStackLayout>
 
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="15,0" Spacing="30">
+                        <Label VerticalOptions="Center" Text="IgA" FontAttributes="Bold" WidthRequest="80"/>
+                        <Entry Text="{Binding AIgA}" MaxLength="5" TextChanged="Rango5k" VerticalOptions="Center" Placeholder="Rango [0-5000]" WidthRequest="140" HorizontalTextAlignment="Start"  Keyboard="Numeric" ReturnType="Next"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="15,0" Spacing="30">
+                        <Label VerticalOptions="Center" Text="IgM" FontAttributes="Bold" WidthRequest="80"/>
+                        <Entry Text="{Binding AIgM}" MaxLength="5" TextChanged="Rango5k" VerticalOptions="Center" Placeholder="Rango [0-5000]" WidthRequest="140" HorizontalTextAlignment="Start"  Keyboard="Numeric" ReturnType="Next"/>
+                    </HorizontalStackLayout>
+
                     <BoxView Color="Gray"
                          HeightRequest="2"
                          HorizontalOptions="Fill" />
@@ -67,22 +77,22 @@
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="15,0" Spacing="30">
-                        <Label VerticalOptions="Center" Text="HDL (mg/L)" FontAttributes="Bold" WidthRequest="100"/>
+                        <Label VerticalOptions="Center" Text="HDL (mg/dL)" FontAttributes="Bold" WidthRequest="100"/>
                         <Entry Text="{Binding AHDL}" MaxLength="3" TextChanged="Rango200" VerticalOptions="Center" Placeholder="Rango [0-200]" WidthRequest="140" HorizontalTextAlignment="Start"  Keyboard="Numeric" ReturnType="Next"/>
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="15,0" Spacing="30">
-                        <Label VerticalOptions="Center" Text="LDL (mg/L)" FontAttributes="Bold" WidthRequest="100"/>
+                        <Label VerticalOptions="Center" Text="LDL (mg/dL)" FontAttributes="Bold" WidthRequest="100"/>
                         <Entry Text="{Binding ALDL}" MaxLength="3" TextChanged="Rango500" VerticalOptions="Center" Placeholder="Rango [0-500]" WidthRequest="140" HorizontalTextAlignment="Start"  Keyboard="Numeric" ReturnType="Next"/>
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="15,0" Spacing="30">
-                        <Label VerticalOptions="Center" Text="TG (mg/L)" FontAttributes="Bold" WidthRequest="100"/>
+                        <Label VerticalOptions="Center" Text="TG (mg/dL)" FontAttributes="Bold" WidthRequest="100"/>
                         <Entry Text="{Binding ATG}" MaxLength="4" TextChanged="Rango1k" VerticalOptions="Center" Placeholder="Rango [0-1000]" WidthRequest="140" HorizontalTextAlignment="Start"  Keyboard="Numeric" ReturnType="Next"/>
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="15,0,0,10" Spacing="30">
-                        <Label VerticalOptions="Center" Text="Colesterol total (mg/L)" FontAttributes="Bold" WidthRequest="100"/>
+                        <Label VerticalOptions="Center" Text="Colesterol total (mg/dL)" FontAttributes="Bold" WidthRequest="100"/>
                         <Entry Text="{Binding AColesT}" MaxLength="3" TextChanged="Rango500" VerticalOptions="Center" Placeholder="Rango [0-500]" WidthRequest="140" HorizontalTextAlignment="Start"  Keyboard="Numeric" ReturnType="Next"/>
                     </HorizontalStackLayout>
 

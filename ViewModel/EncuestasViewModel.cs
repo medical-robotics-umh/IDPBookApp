@@ -29,6 +29,8 @@ public partial class EncuestasViewModel : BaseViewModel
                 Cuestionarios.Add(cuest);
             }
         }
+        if (cuestionarios.Count >= 2)
+            Btn_visbl = true;
         Run = false;
     }
 

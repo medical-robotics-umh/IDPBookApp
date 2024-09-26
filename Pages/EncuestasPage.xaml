@@ -6,6 +6,7 @@
              xmlns:model="clr-namespace:IDPBookApp.Models"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:DataType="viewmodel:EncuestasViewModel"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
              Title="EncuestasPage">
     <ScrollView>
         <VerticalStackLayout VerticalOptions="FillAndExpand" >
@@ -54,7 +55,36 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </Frame>
-            
+
+            <Button WidthRequest="250" Text="Mostrar gráficas evolutivas" FontAttributes="Bold" FontSize="Body" Command="{Binding VisibleGrafCommand}" IsVisible="{Binding Btn_visbl}"/>
+
+            <Grid Margin="10,20,20,0" IsVisible="{Binding Graf_visbl}">
+                <chart:SfCartesianChart Title="Estado de salud">
+                    <chart:SfCartesianChart.XAxes>
+                        <chart:CategoryAxis>
+                            <chart:CategoryAxis.Title>
+                                <chart:ChartAxisTitle Text="Fecha"/>
+                            </chart:CategoryAxis.Title>
+                        </chart:CategoryAxis>
+                    </chart:SfCartesianChart.XAxes>
+
+                    <chart:SfCartesianChart.YAxes>
+                        <chart:NumericalAxis>
+                            <chart:NumericalAxis.Title>
+                                <chart:ChartAxisTitle Text="(%)"/>
+                            </chart:NumericalAxis.Title>
+                        </chart:NumericalAxis>
+                    </chart:SfCartesianChart.YAxes>
+
+                    <chart:SplineSeries XBindingPath="QFecha"
+                            ItemsSource="{Binding Cuestionarios}"
+                            YBindingPath="QEscala"
+                            Type="Natural"
+                            ShowMarkers="True"
+                            EnableTooltip="True"/>
+                </chart:SfCartesianChart>
+            </Grid>
+
             <ActivityIndicator IsRunning = "{Binding Run}" Margin = "10" HorizontalOptions = "Center" />
             
         </VerticalStackLayout>

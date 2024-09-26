@@ -1,5 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 using IDPBookApp.DataBase;
 using IDPBookApp.Models;
 using IDPBookApp.Pages;
@@ -17,10 +16,7 @@ public partial class PrbsLabViewModel : BaseViewModel
     }
     public ObservableCollection<AnaliticaModel> Analiticas { get; set; } = new();
     
-    [ObservableProperty]
-    private bool graf_visbl;
-    [ObservableProperty]
-    private bool btn_visbl=false;
+    
 
     async void GetAnltcs()
     {
@@ -59,9 +55,5 @@ public partial class PrbsLabViewModel : BaseViewModel
             });
         Run = false;
     }
-    [RelayCommand]
-    private void VisibleGraf()
-    {
-        Graf_visbl = !Graf_visbl;
-    }
+    
 }

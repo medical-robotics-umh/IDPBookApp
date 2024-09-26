@@ -11,7 +11,7 @@
         <VerticalStackLayout VerticalOptions="FillAndExpand">
             <ImageButton Source="back2" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}">
                 <ImageButton.Behaviors>
-                    <toolkit:IconTintColorBehavior TintColor="#28B463" />
+                    <toolkit:IconTintColorBehavior TintColor="#28B463"/>
                 </ImageButton.Behaviors>
             </ImageButton>
             <Label Text="NUEVO TRATAMIENTO" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
@@ -29,8 +29,25 @@
                     <Label Grid.Row="1" HorizontalOptions="Start" VerticalOptions="Center" Text="Fecha de inicio:" FontAttributes="Bold"/>
                     <DatePicker Date="{Binding TFecha}" Grid.Column="1" Grid.Row="1" VerticalOptions="Center" />
 
-                    <Label Grid.Row="2" HorizontalOptions="Start" VerticalOptions="Start" Text="Preparado:" FontAttributes="Bold" IsVisible="{Binding Intvsbl}"/>
-                    <Editor Text="{Binding TPrep}" Grid.Row="2" Grid.Column="1" Placeholder="Descripción" HorizontalTextAlignment="Start" HorizontalOptions="Fill" HeightRequest="100" IsVisible="{Binding Intvsbl}" />
+                    <Label Grid.Row="2" HorizontalOptions="Start" VerticalOptions="Center" Text="Preparado:" FontAttributes="Bold"/>                  
+                    <Picker SelectedIndex="{Binding TPrep}" Grid.Row="2" Grid.Column="1" Title="▼ Seleccionar marca" HorizontalOptions="Fill" IsVisible="{Binding Subvsbl}">
+                        <Picker.Items>
+                            <x:String>Hizentra®</x:String>
+                            <x:String>Hyqvia®</x:String>
+                            <x:String>Xembify®</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                    <Picker SelectedIndex="{Binding TPrep}" Grid.Row="2" Grid.Column="1" Title="▼ Seleccionar marca" HorizontalOptions="Fill" IsVisible="{Binding Intvsbl}">
+                        <Picker.Items>
+                            <x:String>Privigen®</x:String>
+                            <x:String>Flebogamma®</x:String>
+                            <x:String>Plangamma®</x:String>
+                            <x:String>Gammagard®</x:String>
+                            <x:String>Kiovig®</x:String>
+                            <x:String>Octagamocta®</x:String>
+                        </Picker.Items>
+                    </Picker>
 
                     <Label Grid.Row="3" HorizontalOptions="Start" VerticalOptions="Center" Text="Dosis (gr):" FontAttributes="Bold" IsVisible="{Binding Intvsbl}"/>
                     <Entry Text="{Binding TDosis}" Grid.Row="3" Grid.Column="1" VerticalOptions="Center" Placeholder="Introduce dosis" HorizontalTextAlignment="Start" HorizontalOptions="Fill" IsVisible="{Binding Intvsbl}" Keyboard="Numeric" ReturnType="Next" />
@@ -53,7 +70,7 @@
                     <Label Grid.Row="7" HorizontalOptions="Start" VerticalOptions="Center" Text="Vel. de infusión:" FontAttributes="Bold" IsVisible="{Binding Subvsbl}"/>
                     <Entry Text="{Binding TVelInf}" Grid.Row="7" Grid.Column="1" VerticalOptions="Center" Placeholder="Introduce velocidad" HorizontalTextAlignment="Start"  HorizontalOptions="Fill" IsVisible="{Binding Subvsbl}" Keyboard="Numeric" ReturnType="Go"/>
 
-                    <Label Grid.Row="8" HorizontalOptions="Start" VerticalOptions="Start" Text="Ef. secundarios:" FontAttributes="Bold" />
+                    <!--<Label Grid.Row="8" HorizontalOptions="Start" VerticalOptions="Start" Text="Ef. secundarios:" FontAttributes="Bold" />
                     <Grid ColumnDefinitions="28,*" RowDefinitions="25,25,25,25,25,25,25" Grid.Row="8" Grid.Column="1" Margin="0,0,0,5" HorizontalOptions="Fill">
                         <CheckBox  IsChecked="{Binding Ef1}" Margin="0,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"/>
                         <Label Grid.Column="1" Text="Reacción cutánea." HorizontalOptions="Start" VerticalOptions="Center"/>
@@ -69,14 +86,14 @@
                         <Label Grid.Row="5" Grid.Column="1" Text="Tensión arterial baja." HorizontalOptions="Start" VerticalOptions="Center"/>
                         <CheckBox  Grid.Row="6" IsChecked="{Binding Ef7}" HorizontalOptions="Start" VerticalOptions="Center"/>
                         <Label Grid.Row="6" Grid.Column="1" Text="Anafilaxia." HorizontalOptions="Start" VerticalOptions="Center"/>
-                    </Grid>
+                    </Grid>-->
 
                     <Button Grid.Row="9" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="-100,0,0,0" Text="Agregar" WidthRequest="90" HeightRequest="45" Command="{Binding NewTratCommand}"/>
                     <Button Grid.Row="9" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="100,0,0,0" Text="Salir" BackgroundColor="#E67E22" WidthRequest="90" HeightRequest="45" Command="{Binding BackBtnCommand}"/>
                 </Grid>
             </Frame>
             
-            <ActivityIndicator IsRunning = "{Binding Run}" Margin = "10" HorizontalOptions = "Center" />
+            <ActivityIndicator IsRunning = "{Binding Run}" Margin = "10" HorizontalOptions = "Center"/>
             
         </VerticalStackLayout>
     </ScrollView>
