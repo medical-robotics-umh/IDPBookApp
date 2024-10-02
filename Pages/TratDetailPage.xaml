@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IDPBookApp.Pages.TratDetailPage"
+             xmlns:model="clr-namespace:IDPBookApp.Models"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewmodel="clr-namespace:IDPBookApp.ViewModel"
+             x:DataType="viewmodel:TratDetailViewModel"
+             Title="TratDetailPage">
+    <ScrollView>
+        <VerticalStackLayout Spacing="0">
+            <ImageButton Source="back2" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}">
+                <ImageButton.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="#28B463" />
+                </ImageButton.Behaviors>
+            </ImageButton>
+            <Label Text="{Binding InmTrat.TNom}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
+
+            <Frame Padding="10,10" Margin="10,10" HasShadow="True">
+                <Grid ColumnDefinitions="Auto,*" RowDefinitions="*,*,*,*,*,*,*,*" RowSpacing="5">
+                    <Label Text="T. de tratamiento: " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Frame CornerRadius="5" HasShadow="True" WidthRequest="50" HeightRequest="50" Grid.Column="1" HorizontalOptions="End">
+                        <Image Source="{Binding InmTrat.TTs}" Aspect="Fill" WidthRequest="43" HeightRequest="43">
+                            <Image.Behaviors>
+                                <toolkit:IconTintColorBehavior TintColor="#E67E22"/>
+                            </Image.Behaviors>
+                        </Image>
+                    </Frame>
+                    <Picker SelectedIndex="{Binding InmTrat.TTipo}" Grid.Column="1" Title="N/A"  HeightRequest="35" IsEnabled="False" HorizontalOptions="Start" WidthRequest="90">
+                        <Picker.Items>
+                            <x:String>Intravenoso</x:String>
+                            <x:String>Subcutáneo</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                    <Label Grid.Row="1" HorizontalOptions="Start" VerticalOptions="Center" Text="Fecha de inicio:" FontAttributes="Bold"/>
+                    <Entry Text="{Binding InmTrat.TFecha}" Grid.Column="1" Grid.Row="1" VerticalOptions="Center" IsReadOnly="True"/>
+
+                    <Label Grid.Row="2" HorizontalOptions="Start" VerticalOptions="Center" Text="Preparado:" FontAttributes="Bold" />
+                    <Picker SelectedIndex="{Binding InmTrat.TPrep}" Grid.Row="2" Grid.Column="1" Title="▼ Seleccionar marca" HorizontalOptions="Fill" IsVisible="{Binding Intvsbl}" IsEnabled="False">
+                        <Picker.Items>
+                            <x:String>Privigen®</x:String>
+                            <x:String>Flebogamma®</x:String>
+                            <x:String>Plangamma®</x:String>
+                            <x:String>Gammagard®</x:String>
+                            <x:String>Kiovig®</x:String>
+                            <x:String>Octagamocta®</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <Picker SelectedIndex="{Binding InmTrat.TPrep}" Grid.Row="2" Grid.Column="1" Title="▼ Seleccionar marca" HorizontalOptions="Fill" IsVisible="{Binding Subvsbl}" IsEnabled="False">
+                        <Picker.Items>
+                            <x:String>Hizentra®</x:String>
+                            <x:String>Hyqvia®</x:String>
+                            <x:String>Xembify®</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                    <Label Grid.Row="3" HorizontalOptions="Start" VerticalOptions="Center" Text="Dosis (gr):" FontAttributes="Bold" IsVisible="{Binding Intvsbl}"/>
+                    <Entry Text="{Binding InmTrat.TDosis}" Grid.Row="3" Grid.Column="1" VerticalOptions="Center" Placeholder="N/A" IsVisible="{Binding Intvsbl}" HorizontalTextAlignment="Start" HorizontalOptions="Fill" IsReadOnly="True"/>
+
+                    <Label Grid.Row="4" HorizontalOptions="Start" VerticalOptions="Center" Text="Vel. de infusión:" FontAttributes="Bold" IsVisible="{Binding Subvsbl}"/>
+                    <Entry Text="{Binding InmTrat.TVolInf}" Grid.Row="4" Grid.Column="1" VerticalOptions="Center" Placeholder="N/A" IsVisible="{Binding Subvsbl}" HorizontalTextAlignment="Start" HorizontalOptions="Fill" IsReadOnly="True"/>
+
+                    <Label Grid.Row="5" HorizontalOptions="Start" VerticalOptions="Center" Text="T. de infusión:" FontAttributes="Bold" IsVisible="{Binding Subvsbl}"/>
+                    <Entry Text="{Binding InmTrat.TTimeInf}" Grid.Row="5" Grid.Column="1" VerticalOptions="Center" Placeholder="N/A" IsVisible="{Binding Subvsbl}" HorizontalTextAlignment="Start" HorizontalOptions="Fill" IsReadOnly="True"/>
+
+                    <Label Grid.Row="6" HorizontalOptions="Start" VerticalOptions="Center" Text="Vel. de infusión:" FontAttributes="Bold" IsVisible="{Binding Subvsbl}"/>
+                    <Entry Text="{Binding InmTrat.TVelInf}" Grid.Row="6" Grid.Column="1" VerticalOptions="Center" Placeholder="N/A" IsVisible="{Binding Subvsbl}" HorizontalTextAlignment="Start" HorizontalOptions="Fill" IsReadOnly="True"/>
+
+                    <Label Grid.Row="7" HorizontalOptions="Start" VerticalOptions="Center" Text="Cadencia:" FontAttributes="Bold"/>
+                    <Picker SelectedIndex="{Binding InmTrat.TCad}" Grid.Row="7" Grid.Column="1" Title="N/A" HorizontalOptions="Fill" IsEnabled="False">
+                        <Picker.Items>
+                            <x:String>Semanal</x:String>
+                            <x:String>Cada 2 semanas</x:String>
+                            <x:String>Cada 3 semanas</x:String>
+                            <x:String>Cada 4 semanas</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                    <Button Grid.Row="6" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" Text="Eliminar" BackgroundColor="#28B463" WidthRequest="90" HeightRequest="45"/>
+                </Grid>
+            </Frame>
+            <ActivityIndicator IsRunning="{Binding Run}" Margin="10" HorizontalOptions="Center"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

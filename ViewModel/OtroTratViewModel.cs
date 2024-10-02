@@ -15,10 +15,11 @@ public partial class OtroTratViewModel: BaseViewModel
         GetOtrosTrat();
     }
 
-    public ObservableCollection<OtroTrat> OtrosTratmnts { get; set; } = new();
+    public ObservableCollection<OtroTrat> OtrosTratmnts { get; set; } = [];
 
     async void GetOtrosTrat()
     {
+        Run = true;
         var otrosTratmnts = await FirebaseConnecty.GetOtrosTratModel(firebaseConnecty.pacInfo.Uid);
         if(otrosTratmnts != null && otrosTratmnts.Count > 0)
         {
@@ -28,25 +29,21 @@ public partial class OtroTratViewModel: BaseViewModel
                 OtrosTratmnts.Add(tratamiento);
             }
         }
-    }
-
-    [RelayCommand]
-    async Task GoToNewOtroTratPage()
-    {
-        await Shell.Current.GoToAsync($"{nameof(NewOTratPage)}?Contador={OtrosTratmnts.Count}");
+        Run = false;
     }
 
     [RelayCommand]
     async Task NavOtrTratDtailAsync(OtroTrat tratamiento)
     {
+        Run = true;
         if (tratamiento is null)
             return;
 
         await Shell.Current.GoToAsync($"{nameof(OtroTratDetailPage)}", true,
             new Dictionary<string, object>
             {
-                {"Tratamiento",tratamiento},
-                {"Contador",OtrosTratmnts.Count}
+                {"Tratamiento",tratamiento}
             });
+        Run = false;
     }
 }

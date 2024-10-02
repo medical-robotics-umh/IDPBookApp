@@ -300,7 +300,7 @@ public class FirebaseConnecty
             return null;
         }
     }
-    public static async Task<Tratamiento> GetTratInmunoModel(string idPac)
+    public static async Task<List<Tratamiento>> GetTratInmunoModel(string idPac)
     {
         try
         {
@@ -309,12 +309,16 @@ public class FirebaseConnecty
                                      .Collection("/IDPbookDB")
                                      .Document(idPac)
                                      .Collection("tratamientos")
-                                     .Document("InmunoActual")
+                                     .WhereGreaterThanOrEqualsTo("TId", "ITrat")
                                      .GetAsync();
 
-            var tratamiento = datos.ToObject<Tratamiento>();
+            var tratamientos = new List<Tratamiento>();
+            foreach (var item in datos.Documents)
+            {
+                tratamientos.Add(item.ToObject<Tratamiento>());
+            }
 
-            return tratamiento;
+            return tratamientos;
         }
         catch (Exception ex)
         {

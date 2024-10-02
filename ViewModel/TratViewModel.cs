@@ -1,6 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using IDPBookApp.DataBase;
 using IDPBookApp.Models;
+using IDPBookApp.Pages;
+using System.Collections.ObjectModel;
 
 namespace IDPBookApp.ViewModel;
 
@@ -13,47 +16,39 @@ public partial class TratViewModel : BaseViewModel
         GetTrat();
     }
 
-    [ObservableProperty]
-    Tratamiento tratamiento;
-
-    [ObservableProperty]
-    public bool vsblAct;
-    [ObservableProperty]
-    public bool vsblAct2;
-    [ObservableProperty]
-    public bool subvsbl;
-    [ObservableProperty]
-    public bool intvsbl;
-
-    [ObservableProperty]
-    public string imagen;
+    public ObservableCollection<Tratamiento> Tratamientos { get; set; } = [];
+    public ObservableCollection<Tratamiento> TratAct { get; set; } = [];
 
     async void GetTrat()
     {
         Run = true;
-        Tratamiento = await FirebaseConnecty.GetTratInmunoModel(firebaseConnecty.pacInfo.Uid);
-        if (Tratamiento != null)
+        var tratamientos = await FirebaseConnecty.GetTratInmunoModel(firebaseConnecty.pacInfo.Uid);
+        if (tratamientos != null && tratamientos.Count > 0)
         {
-            VsblAct = true;
-            VsblAct2 = false;
-            if(Tratamiento.TTipo == 0)
+            Tratamientos.Clear();
+            TratAct.Clear();
+            foreach (var tratamiento in tratamientos.AsEnumerable().Reverse().Skip(1))
             {
-                Subvsbl = false;
-                Intvsbl = true;
-                Imagen = "intravenous";
+                Tratamientos.Add(tratamiento);
             }
-            if (Tratamiento.TTipo == 1)
+            var ulTrat = tratamientos.LastOrDefault();
+            if (ulTrat != null)
+                TratAct.Add(ulTrat);
+        }
+        Run = false;
+    }
+
+    [RelayCommand]
+    async Task NavTratDetailAsync(Tratamiento tratamiento)
+    {
+        Run = true;
+        if (tratamiento is null)
+            return;
+        await Shell.Current.GoToAsync($"{nameof(TratDetailPage)}", true,
+            new Dictionary<string, object>
             {
-                Intvsbl = false;                
-                Subvsbl = true;
-                Imagen = "subcutaneous";
-            }
-        }
-        else
-        {
-            VsblAct = false;
-            VsblAct2 = true;
-        }
+                {"InmTrat",tratamiento}
+            });
         Run = false;
     }
 }

@@ -23,7 +23,9 @@ public partial class NewTratViewModel : BaseViewModel
     [ObservableProperty]
     public int tTipo = -1;
     [ObservableProperty]
-    public int tPrep = -1;
+    public int tPrepI = -1;
+    [ObservableProperty]
+    public int tPrepS = -1;
     [ObservableProperty]
     public string tDosis;
     [ObservableProperty]
@@ -36,6 +38,10 @@ public partial class NewTratViewModel : BaseViewModel
     public string tVelInf;
     [ObservableProperty]
     public string tVolInf;
+    [ObservableProperty]
+    public object sPrepI;
+    [ObservableProperty]
+    public object sPrepS;
 
     [ObservableProperty]
     public bool subvsbl;
@@ -54,11 +60,30 @@ public partial class NewTratViewModel : BaseViewModel
         else
         {
             Run = true;
+            var id = "ITrat" + DateTimeOffset.Now.ToUnixTimeSeconds().ToString();
+            var name = "Trat";
+            var tipo = -1;
+            var tt = "Trat";
+            if (TTipo == 0)
+            {
+                name = SPrepI.ToString();
+                tipo = TPrepI;
+                tt = "intra";
+            }
+            if (TTipo == 1)
+            {
+                name = SPrepS.ToString();
+                tipo = TPrepS;
+                tt = "subc";
+            }
             var NuevoTrat = new Tratamiento
             {
+                TId = id,
+                TNom = name,
                 TFecha = TFecha.ToShortDateString(),
+                TTs = tt,
                 TTipo = TTipo,
-                TPrep = TPrep,
+                TPrep = tipo,
                 TDosis = Convert.ToInt32(TDosis),
                 TCad = TCad,
                 TTimeInf = Convert.ToInt32(TTimeInf),
@@ -70,7 +95,7 @@ public partial class NewTratViewModel : BaseViewModel
                              .Collection("IDPbookDB")
                              .Document(firebaseConnecty.pacInfo.Uid)
                              .Collection("tratamientos")
-                             .Document("InmunoActual")
+                             .Document(id)
                              .SetAsync(NuevoTrat);
             Run = false;
             var newPage = new TratPage(tratView)

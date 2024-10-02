@@ -244,6 +244,9 @@
 	  <MauiXaml Update="Pages\Registro.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\TratDetailPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\TratPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

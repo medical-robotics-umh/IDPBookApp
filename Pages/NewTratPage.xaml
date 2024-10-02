@@ -31,7 +31,14 @@
                     </Picker>
 
                     <Label Grid.Row="2" HorizontalOptions="Start" VerticalOptions="Center" Text="Preparado:" FontAttributes="Bold" IsVisible="{Binding Ovsbl}"/>
-                    <Picker SelectedIndex="{Binding TPrep}" Grid.Row="2" Grid.Column="1" Title="▼ Seleccionar marca" HorizontalOptions="Fill" IsVisible="{Binding Intvsbl}">
+                    <Picker SelectedIndex="{Binding TPrepS}" SelectedItem="{Binding SPrepS}" Grid.Row="2" Grid.Column="1" Title="▼ Seleccionar marca" HorizontalOptions="Fill" IsVisible="{Binding Subvsbl}">
+                        <Picker.Items>
+                            <x:String>Hizentra®</x:String>
+                            <x:String>Hyqvia®</x:String>
+                            <x:String>Xembify®</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <Picker SelectedIndex="{Binding TPrepI}" SelectedItem="{Binding SPrepI}" Grid.Row="2" Grid.Column="1" Title="▼ Seleccionar marca" HorizontalOptions="Fill" IsVisible="{Binding Intvsbl}">
                         <Picker.Items>
                             <x:String>Privigen®</x:String>
                             <x:String>Flebogamma®</x:String>
@@ -41,14 +48,7 @@
                             <x:String>Octagamocta®</x:String>
                         </Picker.Items>
                     </Picker>
-                    <Picker SelectedIndex="{Binding TPrep}" Grid.Row="2" Grid.Column="1" Title="▼ Seleccionar marca" HorizontalOptions="Fill" IsVisible="{Binding Subvsbl}">
-                        <Picker.Items>
-                            <x:String>Hizentra®</x:String>
-                            <x:String>Hyqvia®</x:String>
-                            <x:String>Xembify®</x:String>
-                        </Picker.Items>
-                    </Picker>
-                    
+
                     <Label Grid.Row="3" HorizontalOptions="Start" VerticalOptions="Center" Text="Dosis (gr):" FontAttributes="Bold" IsVisible="{Binding Intvsbl}"/>
                     <Entry Text="{Binding TDosis}" Grid.Row="3" Grid.Column="1" VerticalOptions="Center" Placeholder="Introduce dosis en gramos" HorizontalTextAlignment="Start" HorizontalOptions="Fill" IsVisible="{Binding Intvsbl}" Keyboard="Numeric" ReturnType="Next" />
 

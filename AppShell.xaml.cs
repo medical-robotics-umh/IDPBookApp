@@ -39,5 +39,6 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(EncuestasPage), typeof(EncuestasPage));
         Routing.RegisterRoute(nameof(EncuestaDetailPage), typeof(EncuestaDetailPage));
         Routing.RegisterRoute(nameof(NuevaEncuestaPage), typeof(NuevaEncuestaPage));
+        Routing.RegisterRoute(nameof(TratDetailPage), typeof(TratDetailPage));
     }
 }

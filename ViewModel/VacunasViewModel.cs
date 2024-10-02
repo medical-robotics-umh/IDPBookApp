@@ -33,12 +33,6 @@ public partial class VacunasViewModel : BaseViewModel
     }
 
     [RelayCommand]
-    async Task GoToNewVac()
-    {
-        await Shell.Current.GoToAsync($"{nameof(Nueva_Vacuna)}?Contador={Vacunas.Count}");
-    }
-
-    [RelayCommand]
     async Task NavVacunDtailAsync(Vacuna vacuna)
     {
         Run= true;
