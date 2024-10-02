@@ -23,7 +23,7 @@ public partial class NewTratViewModel : BaseViewModel
     [ObservableProperty]
     public int tTipo = -1;
     [ObservableProperty]
-    public int tPrep;
+    public int tPrep = -1;
     [ObservableProperty]
     public string tDosis;
     [ObservableProperty]
@@ -34,26 +34,15 @@ public partial class NewTratViewModel : BaseViewModel
     public string tTimeInf;
     [ObservableProperty]
     public string tVelInf;
-
     [ObservableProperty]
-    public bool ef1;
-    [ObservableProperty]
-    public bool ef2;
-    [ObservableProperty]
-    public bool ef3;
-    [ObservableProperty]
-    public bool ef4;
-    [ObservableProperty]
-    public bool ef5;
-    [ObservableProperty]
-    public bool ef6;
-    [ObservableProperty]
-    public bool ef7;
+    public string tVolInf;
 
     [ObservableProperty]
     public bool subvsbl;
     [ObservableProperty]
     public bool intvsbl;
+    [ObservableProperty]
+    public bool ovsbl;
 
     [RelayCommand]
     async Task NewTrat()
@@ -72,10 +61,9 @@ public partial class NewTratViewModel : BaseViewModel
                 TPrep = TPrep,
                 TDosis = Convert.ToInt32(TDosis),
                 TCad = TCad,
-                TEfSec = new bool[] { Ef1, Ef2, Ef3, Ef4, Ef5, Ef6, Ef7 },
-                THora = THora.ToString(),
                 TTimeInf = Convert.ToInt32(TTimeInf),
-                TVelInf = Convert.ToInt32(TVelInf)
+                TVelInf = Convert.ToInt32(TVelInf),
+                TVolInf = Convert.ToInt32(TVolInf)
             };
             await CrossCloudFirestore.Current
                              .Instance

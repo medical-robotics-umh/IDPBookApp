@@ -14,6 +14,7 @@ public partial class NewTratPage : ContentPage
     {
 		if(BindingContext is NewTratViewModel vm)
 		{
+            vm.Ovsbl = true;
             if (vm.TTipo == 0)
             {
                 vm.Subvsbl = false;

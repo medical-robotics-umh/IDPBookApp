@@ -15,7 +15,7 @@ public partial class VacunasViewModel : BaseViewModel
         GetVacunas();
     }
 
-    public ObservableCollection<Vacuna> Vacunas { get; set; }= new ();
+    public ObservableCollection<Vacuna> Vacunas { get; set; } = [];
 
     async void GetVacunas()
     {
