@@ -6,10 +6,13 @@
              xmlns:model="clr-namespace:IDPBookApp.Models"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:DataType="viewmodel:EncuestasViewModel"
-             xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
+             xmlns:dx="http://schemas.devexpress.com/maui"
              Title="EncuestasPage">
+    <ContentPage.Resources>
+        <dx:SeriesHintOptions x:Key="splineSeriesHintOptions" PointTextPattern="{}{A} : {V}"/>
+    </ContentPage.Resources>
     <ScrollView>
-        <VerticalStackLayout VerticalOptions="FillAndExpand" >
+        <VerticalStackLayout VerticalOptions="FillAndExpand">
             <ImageButton Source="back2" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}">
                 <ImageButton.Behaviors>
                     <toolkit:IconTintColorBehavior TintColor="#28B463" />
@@ -56,33 +59,42 @@
                 </CollectionView>
             </Frame>
 
-            <Button WidthRequest="250" Text="Mostrar gráficas evolutivas" FontAttributes="Bold" FontSize="Body" Command="{Binding VisibleGrafCommand}" IsVisible="{Binding Btn_visbl}"/>
+            <Button Margin="10,5" WidthRequest="250" Text="Mostrar gráficas evolutivas" FontAttributes="Bold" FontSize="Body" Command="{Binding VisibleGrafCommand}" IsVisible="{Binding Btn_visbl}"/>
 
-            <Grid Margin="10,20,20,0" IsVisible="{Binding Graf_visbl}">
-                <chart:SfCartesianChart Title="Estado de salud">
-                    <chart:SfCartesianChart.XAxes>
-                        <chart:CategoryAxis>
-                            <chart:CategoryAxis.Title>
-                                <chart:ChartAxisTitle Text="Fecha"/>
-                            </chart:CategoryAxis.Title>
-                        </chart:CategoryAxis>
-                    </chart:SfCartesianChart.XAxes>
-
-                    <chart:SfCartesianChart.YAxes>
-                        <chart:NumericalAxis>
-                            <chart:NumericalAxis.Title>
-                                <chart:ChartAxisTitle Text="(%)"/>
-                            </chart:NumericalAxis.Title>
-                        </chart:NumericalAxis>
-                    </chart:SfCartesianChart.YAxes>
-
-                    <chart:SplineSeries XBindingPath="QFecha"
-                            ItemsSource="{Binding Cuestionarios}"
-                            YBindingPath="QEscala"
-                            Type="Natural"
-                            ShowMarkers="True"
-                            EnableTooltip="True"/>
-                </chart:SfCartesianChart>
+            <Grid Margin="10,20,20,0" IsVisible="{Binding Graf_visbl}" HeightRequest="300">
+                <dx:ChartView>
+                    <dx:ChartView.AxisY>
+                        <dx:NumericAxisY>
+                            <dx:NumericAxisY.Title>
+                                <dx:AxisTitle Text="(%)"/>
+                            </dx:NumericAxisY.Title>
+                            <dx:NumericAxisY.Label>
+                                <dx:AxisLabel Position="Outside"/>
+                            </dx:NumericAxisY.Label>
+                        </dx:NumericAxisY>
+                    </dx:ChartView.AxisY>
+                    <dx:ChartView.Hint>
+                        <dx:Hint>
+                            <dx:Hint.Behavior>
+                                <dx:TooltipHintBehavior ShowPointTooltip="True"/>
+                            </dx:Hint.Behavior>
+                        </dx:Hint>
+                    </dx:ChartView.Hint>                   
+                    <dx:ChartView.Legend>
+                        <dx:Legend HorizontalPosition="Center"
+                                   VerticalPosition="TopOutside"
+                                   Orientation="LeftToRight"/>
+                    </dx:ChartView.Legend>
+                    <dx:ChartView.Series>
+                        <dx:SplineSeries MarkersVisible="True" DisplayName="Evolución estado de salud" HintOptions="{StaticResource splineSeriesHintOptions}">
+                            <dx:SplineSeries.Data>
+                                <dx:SeriesDataAdapter DataSource="{Binding Cuestionarios}" ArgumentDataMember="QFecha">
+                                    <dx:ValueDataMember Type="Value" Member="QEscala"/>
+                                </dx:SeriesDataAdapter>
+                            </dx:SplineSeries.Data>
+                        </dx:SplineSeries>
+                    </dx:ChartView.Series>
+                </dx:ChartView>
             </Grid>
 
             <ActivityIndicator IsRunning = "{Binding Run}" Margin = "10" HorizontalOptions = "Center" />

@@ -17,9 +17,9 @@
             <Label Text="NUEVO TRATAMIENTO" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
             <Frame Padding="10,10" Margin="15,20" HasShadow="True">
-                <Grid ColumnDefinitions="Auto,*" RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,80" RowSpacing="5">                   
+                <Grid ColumnDefinitions="Auto,*" RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,80" RowSpacing="5">
 
-                    <Label HorizontalOptions="Start" VerticalOptions="Center" Text="Fecha de inicio:" FontAttributes="Bold"/>
+                    <Label HorizontalOptions="Start" VerticalOptions="Center" Text="Fecha de inicio o&#x0a;última administración:" FontAttributes="Bold"/>
                     <DatePicker Date="{Binding TFecha}" Grid.Column="1" VerticalOptions="Center" />
 
                     <Label Grid.Row="1" Text="T. de tratamiento: " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
@@ -52,14 +52,14 @@
                     <Label Grid.Row="3" HorizontalOptions="Start" VerticalOptions="Center" Text="Dosis (gr):" FontAttributes="Bold" IsVisible="{Binding Intvsbl}"/>
                     <Entry Text="{Binding TDosis}" Grid.Row="3" Grid.Column="1" VerticalOptions="Center" Placeholder="Introduce dosis en gramos" HorizontalTextAlignment="Start" HorizontalOptions="Fill" IsVisible="{Binding Intvsbl}" Keyboard="Numeric" ReturnType="Next" />
 
-                    <Label Grid.Row="4" HorizontalOptions="Start" VerticalOptions="Center" Text="Volúmen (ml):" FontAttributes="Bold" IsVisible="{Binding Subvsbl}"/>
-                    <Entry Text="{Binding TVolInf}" Grid.Row="4" Grid.Column="1" VerticalOptions="Center" Placeholder="Introduce volúmen en ml" HorizontalTextAlignment="Start"  HorizontalOptions="Fill" IsVisible="{Binding Subvsbl}" Keyboard="Numeric" ReturnType="Next"/>
+                    <Label Grid.Row="4" HorizontalOptions="Start" VerticalOptions="Center" Text="Volumen (ml):" FontAttributes="Bold" IsVisible="{Binding Subvsbl}"/>
+                    <Entry Text="{Binding TVolInf}" Grid.Row="4" Grid.Column="1" VerticalOptions="Center" Placeholder="Introduce valor en ml" HorizontalTextAlignment="Start"  HorizontalOptions="Fill" IsVisible="{Binding Subvsbl}" Keyboard="Numeric" ReturnType="Next"/>
 
                     <Label Grid.Row="5" HorizontalOptions="Start" VerticalOptions="Center" Text="T. de infusión (min):" FontAttributes="Bold" IsVisible="{Binding Subvsbl}"/>
-                    <Entry Text="{Binding TTimeInf}" Grid.Row="5" Grid.Column="1" VerticalOptions="Center" Placeholder="Introduce en minutos" HorizontalTextAlignment="Start"  HorizontalOptions="Fill" IsVisible="{Binding Subvsbl}" Keyboard="Numeric" ReturnType="Next"/>
+                    <Entry Text="{Binding TTimeInf}" Grid.Row="5" Grid.Column="1" VerticalOptions="Center" Placeholder="Introduce valor en minutos" HorizontalTextAlignment="Start"  HorizontalOptions="Fill" IsVisible="{Binding Subvsbl}" Keyboard="Numeric" ReturnType="Next"/>
 
                     <Label Grid.Row="6" HorizontalOptions="Start" VerticalOptions="Center" Text="Vel. de infusión (ml/min):" FontAttributes="Bold" IsVisible="{Binding Subvsbl}"/>
-                    <Entry Text="{Binding TVelInf}" Grid.Row="6" Grid.Column="1" VerticalOptions="Center" Placeholder="Introduce velocidad en ml/min" HorizontalTextAlignment="Start"  HorizontalOptions="Fill" IsVisible="{Binding Subvsbl}" Keyboard="Numeric" ReturnType="Next"/>
+                    <Entry Text="{Binding TVelInf}" Grid.Row="6" Grid.Column="1" VerticalOptions="Center" Placeholder="Introduce valor en ml/min" HorizontalTextAlignment="Start"  HorizontalOptions="Fill" IsVisible="{Binding Subvsbl}" Keyboard="Numeric" ReturnType="Next"/>
 
                     <Label Grid.Row="7" HorizontalOptions="Start" VerticalOptions="Center" Text="Cadencia:" FontAttributes="Bold" IsVisible="{Binding Ovsbl}"/>
                     <Picker SelectedIndex="{Binding TCad}" Grid.Row="7" Grid.Column="1" Title="▼ Seleccionar cadencia" HorizontalOptions="Fill" IsVisible="{Binding Ovsbl}">

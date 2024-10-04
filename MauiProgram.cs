@@ -3,7 +3,7 @@ using IDPBookApp.Pages;
 using IDPBookApp.ViewModel;
 using Microsoft.Extensions.Logging;
 using CommunityToolkit.Maui;
-using Syncfusion.Maui.Core.Hosting;
+using DevExpress.Maui;
 
 namespace IDPBookApp;
 
@@ -15,7 +15,8 @@ public static class MauiProgram
 		builder
 			.UseMauiApp<App>()
             .UseMauiCommunityToolkit()
-            .ConfigureSyncfusionCore()
+            .UseDevExpress()
+            .UseDevExpressCharts()
             .ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -83,6 +84,10 @@ public static class MauiProgram
         builder.Services.AddTransient<CamPassViewModel>();
         builder.Services.AddTransient<TratDetailPage>();
         builder.Services.AddTransient<TratDetailViewModel>();
+        builder.Services.AddTransient<NewAdminPage>();
+        builder.Services.AddTransient<NewAdminViewModel>();
+        builder.Services.AddTransient<AdminDetailPage>();
+        builder.Services.AddTransient<AdminDetailViewModel>();
 #if DEBUG
         builder.Logging.AddDebug();		
 #endif

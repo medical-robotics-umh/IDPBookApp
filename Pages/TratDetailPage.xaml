@@ -16,8 +16,8 @@
             </ImageButton>
             <Label Text="{Binding InmTrat.TNom}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
-            <Frame Padding="10,10" Margin="10,10" HasShadow="True">
-                <Grid ColumnDefinitions="Auto,*" RowDefinitions="*,*,*,*,*,*,*,*" RowSpacing="5">
+            <Frame Padding="10,10" Margin="15,20" HasShadow="True">
+                <Grid ColumnDefinitions="Auto,*" RowDefinitions="*,*,*,*,*,*,*,*,80" RowSpacing="5">
                     <Label Text="T. de tratamiento: " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
                     <Frame CornerRadius="5" HasShadow="True" WidthRequest="50" HeightRequest="50" Grid.Column="1" HorizontalOptions="End">
                         <Image Source="{Binding InmTrat.TTs}" Aspect="Fill" WidthRequest="43" HeightRequest="43">
@@ -26,7 +26,7 @@
                             </Image.Behaviors>
                         </Image>
                     </Frame>
-                    <Picker SelectedIndex="{Binding InmTrat.TTipo}" Grid.Column="1" Title="N/A"  HeightRequest="35" IsEnabled="False" HorizontalOptions="Start" WidthRequest="90">
+                    <Picker SelectedIndex="{Binding InmTrat.TTipo}" SelectedIndexChanged="Picker_SelectedIndexChanged" Grid.Column="1" Title="N/A" HeightRequest="35" IsEnabled="False" HorizontalOptions="Start" WidthRequest="90">
                         <Picker.Items>
                             <x:String>Intravenoso</x:String>
                             <x:String>Subcutáneo</x:String>
@@ -58,13 +58,13 @@
                     <Label Grid.Row="3" HorizontalOptions="Start" VerticalOptions="Center" Text="Dosis (gr):" FontAttributes="Bold" IsVisible="{Binding Intvsbl}"/>
                     <Entry Text="{Binding InmTrat.TDosis}" Grid.Row="3" Grid.Column="1" VerticalOptions="Center" Placeholder="N/A" IsVisible="{Binding Intvsbl}" HorizontalTextAlignment="Start" HorizontalOptions="Fill" IsReadOnly="True"/>
 
-                    <Label Grid.Row="4" HorizontalOptions="Start" VerticalOptions="Center" Text="Vel. de infusión:" FontAttributes="Bold" IsVisible="{Binding Subvsbl}"/>
+                    <Label Grid.Row="4" HorizontalOptions="Start" VerticalOptions="Center" Text="Volumen (ml):" FontAttributes="Bold" IsVisible="{Binding Subvsbl}"/>
                     <Entry Text="{Binding InmTrat.TVolInf}" Grid.Row="4" Grid.Column="1" VerticalOptions="Center" Placeholder="N/A" IsVisible="{Binding Subvsbl}" HorizontalTextAlignment="Start" HorizontalOptions="Fill" IsReadOnly="True"/>
 
-                    <Label Grid.Row="5" HorizontalOptions="Start" VerticalOptions="Center" Text="T. de infusión:" FontAttributes="Bold" IsVisible="{Binding Subvsbl}"/>
+                    <Label Grid.Row="5" HorizontalOptions="Start" VerticalOptions="Center" Text="T. de infusión (min):" FontAttributes="Bold" IsVisible="{Binding Subvsbl}"/>
                     <Entry Text="{Binding InmTrat.TTimeInf}" Grid.Row="5" Grid.Column="1" VerticalOptions="Center" Placeholder="N/A" IsVisible="{Binding Subvsbl}" HorizontalTextAlignment="Start" HorizontalOptions="Fill" IsReadOnly="True"/>
 
-                    <Label Grid.Row="6" HorizontalOptions="Start" VerticalOptions="Center" Text="Vel. de infusión:" FontAttributes="Bold" IsVisible="{Binding Subvsbl}"/>
+                    <Label Grid.Row="6" HorizontalOptions="Start" VerticalOptions="Center" Text="Vel. de infusión (ml/min): " FontAttributes="Bold" IsVisible="{Binding Subvsbl}"/>
                     <Entry Text="{Binding InmTrat.TVelInf}" Grid.Row="6" Grid.Column="1" VerticalOptions="Center" Placeholder="N/A" IsVisible="{Binding Subvsbl}" HorizontalTextAlignment="Start" HorizontalOptions="Fill" IsReadOnly="True"/>
 
                     <Label Grid.Row="7" HorizontalOptions="Start" VerticalOptions="Center" Text="Cadencia:" FontAttributes="Bold"/>
@@ -77,9 +77,38 @@
                         </Picker.Items>
                     </Picker>
 
-                    <Button Grid.Row="6" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" Text="Eliminar" BackgroundColor="#28B463" WidthRequest="90" HeightRequest="45"/>
+                    <Button IsVisible="{Binding Aux2}" Grid.Row="8" Grid.ColumnSpan="2" HorizontalOptions="End" VerticalOptions="Center" Text="Registrar administración" FontAttributes="Bold" BackgroundColor="#E67E22" HeightRequest="45" Command="{Binding GoToNewAdminCommand}"/>
+                    <Button IsVisible="{Binding Aux2}" Grid.Row="8" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Center" Text="Finalizar tratamiento" FontAttributes="Bold" BackgroundColor="#28B463" HeightRequest="45" Command="{Binding FinalITratCommand}"/>
+                    <Button IsVisible="{Binding Aux3}" Grid.Row="8" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" Text="Eliminar" FontAttributes="Bold" BackgroundColor="#28B463" HeightRequest="45" Command="{Binding EliminarITratCommand}"/>
                 </Grid>
+            </Frame>           
+
+            <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Margin="0,20,0,0">
+                <Label Text="Administraciones" FontSize="Medium" FontAttributes="Bold"/>
+            </HorizontalStackLayout>
+
+            <Frame HorizontalOptions="Center" WidthRequest="300" Padding="0,10" Margin="0,10" HasShadow="True">
+                <CollectionView ItemsSource="{Binding Admins}" EmptyView="Aún no hay registros" HorizontalOptions="Center" SelectionMode="Single">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Admin">
+                            <HorizontalStackLayout Spacing="10" Margin="10,2" HorizontalOptions="FillAndExpand">
+                                <HorizontalStackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TratDetailViewModel}}, Path=NavAdminDetailCommand}"/>
+                                </HorizontalStackLayout.GestureRecognizers>
+                                <Image Source="mortar" Aspect="Fill" WidthRequest="43" HeightRequest="43" Margin="0,3,0,3">
+                                    <Image.Behaviors>
+                                        <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
+                                    </Image.Behaviors>
+                                </Image>
+                                <Label Text="{Binding AdName}" FontAttributes="Bold" VerticalOptions="Center"/>
+                                <Label Text="-" FontAttributes="Bold" VerticalOptions="Center"/>
+                                <Label Text="{Binding AdFecha}" FontAttributes="Bold" VerticalOptions="Center"/>
+                            </HorizontalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
             </Frame>
+
             <ActivityIndicator IsRunning="{Binding Run}" Margin="10" HorizontalOptions="Center"/>
         </VerticalStackLayout>
     </ScrollView>

@@ -4,6 +4,7 @@ using IDPBookApp.DataBase;
 using IDPBookApp.Models;
 using IDPBookApp.Pages;
 using Plugin.CloudFirestore;
+using System;
 
 namespace IDPBookApp.ViewModel;
 
@@ -53,9 +54,9 @@ public partial class NewTratViewModel : BaseViewModel
     [RelayCommand]
     async Task NewTrat()
     {
-        if (TTipo == -1)
+        if (TTipo == -1 || TCad == -1)
         {
-            await App.Current.MainPage.DisplayAlert("Campo incompleto.", "Selecciona el tipo de tratamiento antes de agregar.", "Ok");
+            await App.Current.MainPage.DisplayAlert("Campos incompletos.", "Completa toda la información del tratamiento antes de agregar.", "Ok");
         }
         else
         {
@@ -94,7 +95,7 @@ public partial class NewTratViewModel : BaseViewModel
                              .Instance
                              .Collection("IDPbookDB")
                              .Document(firebaseConnecty.pacInfo.Uid)
-                             .Collection("tratamientos")
+                             .Collection("tratActual")
                              .Document(id)
                              .SetAsync(NuevoTrat);
             Run = false;
@@ -104,6 +105,10 @@ public partial class NewTratViewModel : BaseViewModel
             };
             Navigation.InsertPageBefore(newPage, Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
             await Shell.Current.GoToAsync("../..");
+
+            var cad = TCad + 1;
+            var fecha = TFecha.ToString("yyyyMMdd");
+            await Launcher.Default.OpenAsync("https://calendar.google.com/calendar/event?action=TEMPLATE&text="+name+"&recur=RRULE:FREQ=WEEKLY;INTERVAL="+cad+"&dates="+fecha+"T080000/"+fecha+"T200000&reminder=1d&allDay=true");
         }        
     }
 }

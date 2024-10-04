@@ -19,21 +19,31 @@ public partial class TratViewModel : BaseViewModel
     public ObservableCollection<Tratamiento> Tratamientos { get; set; } = [];
     public ObservableCollection<Tratamiento> TratAct { get; set; } = [];
 
+    [ObservableProperty]
+    public bool aux = true;
+
+
     async void GetTrat()
     {
         Run = true;
-        var tratamientos = await FirebaseConnecty.GetTratInmunoModel(firebaseConnecty.pacInfo.Uid);
+        var tratamientos = await FirebaseConnecty.GetTratInmunoModel(firebaseConnecty.pacInfo.Uid,"tratamientos");
         if (tratamientos != null && tratamientos.Count > 0)
         {
             Tratamientos.Clear();
-            TratAct.Clear();
-            foreach (var tratamiento in tratamientos.AsEnumerable().Reverse().Skip(1))
+            foreach (var tratamiento in tratamientos.AsEnumerable().Reverse())
             {
                 Tratamientos.Add(tratamiento);
             }
-            var ulTrat = tratamientos.LastOrDefault();
+            
+        }
+        var tratact= await FirebaseConnecty.GetTratInmunoModel(firebaseConnecty.pacInfo.Uid, "tratActual");
+        if (tratact != null && tratact.Count > 0)
+        { 
+            TratAct.Clear();
+            var ulTrat = tratact.LastOrDefault();
             if (ulTrat != null)
                 TratAct.Add(ulTrat);
+            Aux = false;
         }
         Run = false;
     }
@@ -47,7 +57,25 @@ public partial class TratViewModel : BaseViewModel
         await Shell.Current.GoToAsync($"{nameof(TratDetailPage)}", true,
             new Dictionary<string, object>
             {
-                {"InmTrat",tratamiento}
+                {"InmTrat",tratamiento},
+                {"Aux2",true},
+                {"Aux3",false}
+            });
+        Run = false;
+    }
+
+    [RelayCommand]
+    async Task NavTratDetail2Async(Tratamiento tratamiento)
+    {
+        Run = true;
+        if (tratamiento is null)
+            return;
+        await Shell.Current.GoToAsync($"{nameof(TratDetailPage)}", true,
+            new Dictionary<string, object>
+            {
+                {"InmTrat",tratamiento},
+                {"Aux2",false},
+                {"Aux3",true}
             });
         Run = false;
     }

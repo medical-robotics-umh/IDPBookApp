@@ -256,6 +256,28 @@ public class FirebaseConnecty
             return null;
         }
     }
+    public static async Task<List<Admin>> GetAdminsModel(string id,string trat)
+    {
+        try
+        {
+            var snapshot = await CrossCloudFirestore.Current.Instance
+                                                    .Collection("/IDPbookDB/" + id + "/tratActual/"+trat+"/administraciones")
+                                                    .GetAsync();
+
+            var docs = new List<Admin>();
+            foreach (var doc in snapshot.Documents)
+            {
+                docs.Add(doc.ToObject<Admin>());
+            }
+            return docs;
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex);
+            await Shell.Current.DisplayAlert("GetAdmins", $"No se pudo accerder: {ex.Message}", "Ok");
+            return null;
+        }
+    }
     public static async Task<List<Paciente>> GetPacientesModel()
     {
         try
@@ -300,7 +322,7 @@ public class FirebaseConnecty
             return null;
         }
     }
-    public static async Task<List<Tratamiento>> GetTratInmunoModel(string idPac)
+    public static async Task<List<Tratamiento>> GetTratInmunoModel(string idPac,string trat)
     {
         try
         {
@@ -308,7 +330,7 @@ public class FirebaseConnecty
                                      .Instance
                                      .Collection("/IDPbookDB")
                                      .Document(idPac)
-                                     .Collection("tratamientos")
+                                     .Collection(trat)
                                      .WhereGreaterThanOrEqualsTo("TId", "ITrat")
                                      .GetAsync();
 

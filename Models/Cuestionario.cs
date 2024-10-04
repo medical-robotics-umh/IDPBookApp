@@ -1,4 +1,4 @@
-﻿    namespace IDPBookApp.Models;
+﻿namespace IDPBookApp.Models;
 
 public class Cuestionario
 {

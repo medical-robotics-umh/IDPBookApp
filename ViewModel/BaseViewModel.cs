@@ -5,7 +5,7 @@ using IDPBookApp.Models;
 namespace IDPBookApp.ViewModel;
 
 [QueryProperty(nameof(Contador), nameof(Contador))]
-
+[QueryProperty(nameof(Trat), nameof(Trat))]
 public partial class BaseViewModel : ObservableObject
 {
     public BaseViewModel()
@@ -35,6 +35,9 @@ public partial class BaseViewModel : ObservableObject
 
     [ObservableProperty]
     int contador;
+
+    [ObservableProperty]
+    string trat;
 
     [ObservableProperty]
     bool validCuest;
