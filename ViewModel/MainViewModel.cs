@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using IDPBookApp.DataBase;
+using static DevExpress.Data.Helpers.ExpressiveSortInfo;
 
 namespace IDPBookApp.ViewModel;
 
@@ -44,7 +45,30 @@ public partial class MainViewModel : BaseViewModel
     {
         try
         {
-            await Launcher.Default.OpenAsync(url);
+            if (url == "llamada")
+            {
+                TimeSpan currentTime = DateTime.Now.TimeOfDay;
+                TimeSpan startTime = new(8, 30, 0);  // 8:30 AM
+                TimeSpan endTime = new(15, 0, 0);    // 3:00 PM
+                if (currentTime >= startTime && currentTime <= endTime)
+                {
+                    //var now = DateTime.UtcNow;
+                    //var start = now.AddMinutes(10).ToString("yyyyMMddTHHmm00Z");
+                    //var end = now.AddMinutes(40).ToString("yyyyMMddTHHmm00Z");
+                    //await Shell.Current.DisplayAlert("Llamada solicitada", "El calendario se abrirá para confirmar la solicitud. Solo presiona 'Guardar' para confirmar.\n\nLa Unidad te llamara en unos minutos.", "Ok");                    
+                    //await Launcher.Default.OpenAsync("https://www.google.com/calendar/render?action=TEMPLATE&text=Llamada Unidad Inmuno.Primarias&location=https://meet.google.com&dates=" + start + "/" + end + "&add=daniel.rodriguez18@goumh.umh.es");
+                    await Shell.Current.DisplayAlert("Iniciando llamada...", "A continuación, se abrirá Google Meet para iniciar la video llamada con la Unidad.", "Ok");
+                    await Launcher.Default.OpenAsync("https://duo.app.goo.gl/gDlDzjEZkNCefSR3HA3Gm8");
+                }
+                else
+                {
+                    await Shell.Current.DisplayAlert("No disponible", "El horario de llamadas es de 8:30 a 15:00.\nIntentalo nuevamente mañana.", "Ok");
+                }
+            }
+            else
+            {
+                await Launcher.Default.OpenAsync(url);
+            }
         }
         catch
         {

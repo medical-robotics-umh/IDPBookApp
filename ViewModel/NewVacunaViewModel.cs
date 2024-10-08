@@ -40,10 +40,10 @@ public partial class NewVacunaViewModel : BaseViewModel
                 var NuevaVacuna = new Vacuna
                 {
                     VId = id,
-                    VFecha = DateTime.Today.ToShortDateString(),
+                    VFecha = DateTime.Today.ToString("dd/MM/yyyy"),
                     VNmbre = VNmbre,
                     VDosis = VDosis,
-                    VAnoUD = VAnoUD.ToShortDateString()
+                    VAnoUD = VAnoUD.ToString("dd/MM/yyyy")
                 };
                 await CrossCloudFirestore.Current
                                  .Instance

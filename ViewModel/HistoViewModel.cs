@@ -28,18 +28,12 @@ public partial class HistoViewModel : BaseViewModel
         if (historias != null && historias.Count > 0)
         {
             Historias.Clear();
-            foreach (var historia in historias)
+            foreach (var historia in historias.AsEnumerable().Reverse())
             {
                 Historias.Add(historia);
             }
         }
         Run = false;
-    }
-
-    [RelayCommand]
-    async Task GoToNewHisto()
-    {
-        await Shell.Current.GoToAsync($"{nameof(NHistorial)}?Contador={Historias.Count}");
     }
 
     [RelayCommand]

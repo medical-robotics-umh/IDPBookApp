@@ -4,7 +4,6 @@ using IDPBookApp.DataBase;
 using IDPBookApp.Models;
 using IDPBookApp.Pages;
 using Plugin.CloudFirestore;
-using System;
 
 namespace IDPBookApp.ViewModel;
 
@@ -81,7 +80,7 @@ public partial class NewTratViewModel : BaseViewModel
             {
                 TId = id,
                 TNom = name,
-                TFecha = TFecha.ToShortDateString(),
+                TFecha = TFecha.ToString("dd/MM/yyyy"),
                 TTs = tt,
                 TTipo = TTipo,
                 TPrep = tipo,
@@ -105,6 +104,7 @@ public partial class NewTratViewModel : BaseViewModel
             };
             Navigation.InsertPageBefore(newPage, Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
             await Shell.Current.GoToAsync("../..");
+            await Shell.Current.DisplayAlert("Tratamiento creado", "El calendario se abrirá para confirmar recordatorios del tratamiento. Solo presiona 'Guardar' para confirmar.", "Ok");
 
             var cad = TCad + 1;
             var fecha = TFecha.ToString("yyyyMMdd");

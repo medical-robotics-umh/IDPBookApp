@@ -22,7 +22,7 @@ public partial class ListViewModel : BaseViewModel
         if (episodios != null && episodios.Count > 0)
         {
             Episodios.Clear();
-            foreach (var episodio in episodios)
+            foreach (var episodio in episodios.AsEnumerable().Reverse())
             {
                 Episodios.Add(episodio);
             }

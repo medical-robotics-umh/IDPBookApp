@@ -45,7 +45,7 @@ public partial class NuevaEncuestaViewModel : BaseViewModel
             {
                 QId = id,
                 QName = "Cuestionario " + Contador.ToString(),
-                QFecha = DateTime.Today.ToShortDateString(),
+                QFecha = DateTime.Today.ToString("dd/MM/yyyy"),
                 QMovil = QMovil,
                 QCuid = QCuid,
                 QActDia = QActDia,
@@ -69,6 +69,7 @@ public partial class NuevaEncuestaViewModel : BaseViewModel
         Run = false;
         if (ValidCuest==true)
         {
+            await Shell.Current.DisplayAlert("Cuestionario registrado", "Los datos se han guardado correctamente.", "Ok");
             var newPage = new EncuestasPage(encuestasViewModel)
             {
                 BindingContext = new EncuestasViewModel(firebaseConnecty)
@@ -78,6 +79,7 @@ public partial class NuevaEncuestaViewModel : BaseViewModel
         }
         else
         {
+            await Shell.Current.DisplayAlert("Cuestionario registrado", "Ya puedes seguir haciendo uso de la aplicación.", "Ok");
             await Shell.Current.GoToAsync("..");
         }
     }

@@ -24,13 +24,13 @@
                     <CheckBox x:Name="check1" CheckedChanged="CheckBox_CheckedChanged1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Margin="175,0,0,0"/>
 
                     <Label Grid.Row="1" Text="Nombre:   " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry Grid.Row="1" Text="{Binding NombPac}" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa nombre" HorizontalTextAlignment="Start"  HeightRequest="35" Keyboard="Text" ReturnType="Next"/>
+                    <Entry Grid.Row="1" Text="{Binding NombPac}" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa nombre" HorizontalTextAlignment="Start"  HeightRequest="35" Keyboard="Text" ReturnType="Go"/>
 
                     <Label Grid.Row="2" Text="Apellidos:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" IsVisible="{Binding PacVsbl}"/>
-                    <Entry Text="{Binding ApllPac}" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" IsVisible="{Binding PacVsbl}" Placeholder="Ingresa apellidos" HorizontalTextAlignment="Start"  HeightRequest="35" Keyboard="Text" ReturnType="Next"/>
+                    <Entry Text="{Binding ApllPac}" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" IsVisible="{Binding PacVsbl}" Placeholder="Ingresa apellidos" HorizontalTextAlignment="Start"  HeightRequest="35" Keyboard="Text" ReturnType="Go"/>
 
                     <Label Grid.Row="3" Text="Correo:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry Text="{Binding EmailPac}" Grid.Row="3" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa correo" HorizontalTextAlignment="Start"  HeightRequest="35" Keyboard="Email" ReturnType="Next"/>
+                    <Entry Text="{Binding EmailPac}" Grid.Row="3" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa correo" HorizontalTextAlignment="Start"  HeightRequest="35" Keyboard="Email" ReturnType="Go"/>
 
                     <Label Grid.Row="4" Text="Sexo:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" IsVisible="{Binding PacVsbl}"/>
                     <Picker Grid.Row="4" Grid.Column="1" Title="▼ Seleccionar sexo"  HeightRequest="35" SelectedItem="{Binding SexG}" IsVisible="{Binding PacVsbl}">

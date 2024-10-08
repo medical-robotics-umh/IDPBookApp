@@ -17,7 +17,7 @@
             <Label Text="{Binding Adminis.AdName}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
             <Frame Padding="10,10" Margin="15,20" HasShadow="True">
-                <Grid ColumnDefinitions="Auto,*" RowDefinitions="auto,auto,80" RowSpacing="5">
+                <Grid ColumnDefinitions="Auto,*" RowDefinitions="auto,auto,auto" RowSpacing="5">
                     <Label HorizontalOptions="Start" VerticalOptions="Start" Text="Fecha de&#x0a;administración:  " FontAttributes="Bold"/>
                     <DatePicker Date="{Binding Adminis.AdFecha}" Grid.Column="1" VerticalOptions="Center" IsEnabled="False"/>
 
@@ -39,7 +39,7 @@
                         <Label Grid.Row="6" Grid.Column="1" Text="Anafilaxia." HorizontalOptions="Start" VerticalOptions="Center"/>
                     </Grid>
 
-                    <Button Grid.Row="2" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" Text="Eliminar" FontAttributes="Bold" BackgroundColor="#28B463" HeightRequest="45" Command="{Binding EliminarAdminCommand}"/>
+                    <Button IsVisible="{Binding Elimvsbl}" Grid.Row="2" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" Text="Eliminar" FontAttributes="Bold" BackgroundColor="#28B463" HeightRequest="45" Command="{Binding EliminarAdminCommand}"/>
                 </Grid>
             </Frame>
 

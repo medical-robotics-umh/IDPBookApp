@@ -24,7 +24,7 @@ public partial class VacunasViewModel : BaseViewModel
         if (vacunas != null && vacunas.Count > 0)
         {
             Vacunas.Clear();
-            foreach (var item in vacunas)
+            foreach (var item in vacunas.AsEnumerable().Reverse())
             {
                 Vacunas.Add(item);
             }

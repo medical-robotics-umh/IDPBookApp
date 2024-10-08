@@ -87,7 +87,7 @@ public partial class NewHistoViewModel : BaseViewModel
                 {
                     HId = id,
                     HTitl = HTitl,
-                    Hfecha = DateTime.Today.ToShortDateString(),
+                    Hfecha = DateTime.Today.ToString("dd/MM/yyyy"),
                     HfDiag = FDiag.ToString(),
                     HActivo = Activ,
                     HTDiag = HTDiag,

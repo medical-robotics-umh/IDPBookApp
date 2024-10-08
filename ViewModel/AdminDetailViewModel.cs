@@ -2,11 +2,11 @@
 using CommunityToolkit.Mvvm.Input;
 using IDPBookApp.DataBase;
 using IDPBookApp.Models;
-using IDPBookApp.Pages;
 
 namespace IDPBookApp.ViewModel;
 
 [QueryProperty(nameof(Adminis), nameof(Adminis))]
+[QueryProperty(nameof(Elimvsbl), nameof(Elimvsbl))]
 
 public partial class AdminDetailViewModel : BaseViewModel
 {
@@ -20,16 +20,17 @@ public partial class AdminDetailViewModel : BaseViewModel
 
     [ObservableProperty]
     Admin adminis;
+    [ObservableProperty]
+    bool elimvsbl;
 
     [RelayCommand]
     async Task EliminarAdmin()
     {
-        bool ans = await Shell.Current.DisplayAlert("¡Aviso!", "Los datos no se podrán recuperar.\n\n¿Confirmas la eliminación del documento?", "Si", "No");
+        bool ans = await Shell.Current.DisplayAlert("¡Aviso!", "Los datos no se podrán recuperar.\n\n¿Confirmas la eliminación de la administración?", "Si", "No");
         if (ans == true)
         {
             Run = true;
             await FirebaseConnecty.ElimData(firebaseConnecty.pacInfo.Uid, "tratActual/"+Trat+"/administraciones", Adminis.AdId);
-            // si voy a eliminar desde tratamientos anteriores, debo cambiar tratamientios por tratActual
             await Shell.Current.DisplayAlert("Documento eliminado", "Los datos se han eliminado exitosamente.", "Ok");
             Run = false;
             await Shell.Current.GoToAsync("../..");

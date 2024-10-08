@@ -53,11 +53,11 @@ public partial class NewOTratViewModel : BaseViewModel
                 var NuevoTrat = new OtroTrat
                 {
                     Id = id,
-                    OTFecha = DateTime.Today.ToShortDateString(),
+                    OTFecha = DateTime.Today.ToString("dd/MM/yyyy"),
                     OTNombre = OTNombre,
                     OTDosis = OTDosis,
                     OTCad = OTCad,
-                    OTFini = OTFini.ToShortDateString(),
+                    OTFini = OTFini.ToString("dd/MM/yyyy"),
                     OTFfin = fecha,
                     OTCronc = TCronc
                 };

@@ -76,7 +76,7 @@ public partial class NewDataViewModel : BaseViewModel
             {
                 EId = id,
                 EName = "Episodio " + Contador.ToString(),
-                EFecha = Fecha_Epis.ToShortDateString(),
+                EFecha = Fecha_Epis.ToString("dd/MM/yyyy"),
                 EAtenPrim = Aten,
                 EUrgHosp = Urg,
                 EDurac = Durac_entry,

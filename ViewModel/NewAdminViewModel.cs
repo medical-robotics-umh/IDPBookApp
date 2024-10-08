@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using IDPBookApp.DataBase;
 using IDPBookApp.Models;
-using IDPBookApp.Pages;
 using Plugin.CloudFirestore;
 
 namespace IDPBookApp.ViewModel;
@@ -49,7 +43,7 @@ public partial class NewAdminViewModel : BaseViewModel
         var NuevoTrat = new Admin
         {
             AdId = id,
-            AdFecha = AdFecha.ToShortDateString(),
+            AdFecha = AdFecha.ToString("dd/MM/yyyy"),
             AdName = "Administración "+Contador.ToString(),
             Ef0 = Ef0,
             Ef1 = Ef1,
@@ -70,6 +64,7 @@ public partial class NewAdminViewModel : BaseViewModel
                          .Document(id)
                          .SetAsync(NuevoTrat);
         Run = false;
+        await Shell.Current.DisplayAlert("Administración registrada", "Los datos se han guardado correctamente.", "Ok");
         await Shell.Current.GoToAsync("../..");
     }
 }

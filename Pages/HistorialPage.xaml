@@ -18,7 +18,7 @@
 
             <Frame Margin="0,30,0,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125" x:Name="estado" HorizontalOptions="Center" IsVisible="{Binding VsblHis}">
                 <VerticalStackLayout>
-                    <ImageButton Source="files_medical" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding GoToNewHistoCommand}">
+                    <ImageButton Source="files_medical" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="NHistorial">
                         <ImageButton.Behaviors>
                             <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
                         </ImageButton.Behaviors>

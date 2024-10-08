@@ -66,7 +66,7 @@ public partial class NewAnltcViewModel : BaseViewModel
             {
                 AId = id,
                 AName="Analítica "+Contador.ToString(),
-                AFecha=Date.ToShortDateString(),
+                AFecha=Date.ToString("dd/MM/yyyy"),
                 AIgG=Convert.ToInt32(AIgG),
                 AIgG1= Convert.ToInt32(AIgG1),
                 AIgG2= Convert.ToInt32(AIgG2),

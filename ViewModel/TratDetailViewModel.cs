@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Runtime.Intrinsics.X86;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using IDPBookApp.DataBase;
 using IDPBookApp.Models;
 using IDPBookApp.Pages;
 using Plugin.CloudFirestore;
+using System.Collections.ObjectModel;
 
 namespace IDPBookApp.ViewModel;
 
@@ -47,8 +40,10 @@ public partial class TratDetailViewModel : BaseViewModel
     {
         await Task.Delay(50);
         Run = true;
-        var admins = await FirebaseConnecty.GetAdminsModel(firebaseConnecty.pacInfo.Uid,InmTrat.TId);
-        // Hay que modificar el método porque si ingreso desde trat anteriores, deberia descargar las admisnitraciones desde tratamientos y no desde tratActual
+        var ruta = "tratActual";
+        if (Aux3 == true)
+            ruta = "tratamientos";
+        var admins = await FirebaseConnecty.GetAdminsModel(firebaseConnecty.pacInfo.Uid,InmTrat.TId,ruta);
         if (admins != null && admins.Count > 0)
         {
             Admins.Clear();
@@ -70,7 +65,8 @@ public partial class TratDetailViewModel : BaseViewModel
             new Dictionary<string, object>
             {
                 {"Adminis",admin},
-                {"Trat",InmTrat.TId}
+                {"Trat",InmTrat.TId},
+                {"Elimvsbl", Aux2}
             });
         Run = false;
     }
@@ -92,9 +88,9 @@ public partial class TratDetailViewModel : BaseViewModel
         bool ans = await Shell.Current.DisplayAlert("¡Aviso!", "¿Confirmas la finalización del tratamiento?", "Si", "No");
         if (ans == true)
         {
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
             Run = true;
             var fecha = DateTime.Parse(InmTrat.TFecha).ToString("yyyy/MM/dd");
-            Console.WriteLine(fecha);
             await CrossCloudFirestore.Current
                              .Instance
                              .Collection("IDPbookDB")
@@ -102,16 +98,30 @@ public partial class TratDetailViewModel : BaseViewModel
                              .Collection("tratamientos")
                              .Document(InmTrat.TId)
                              .SetAsync(InmTrat);
-            // ciclo for para guardar las admisnistraciones
-            await FirebaseConnecty.ElimData(firebaseConnecty.pacInfo.Uid, "tratActual", InmTrat.TId);
-            await Shell.Current.DisplayAlert("Tratamiento finalizado", "Los datos del tratamiento se han archivado exitosamente.", "Ok");
-            Run = false;
+
+            var administracionesSnapshot = await CrossCloudFirestore.Current
+                .Instance
+                .Collection("IDPbookDB/"+ firebaseConnecty.pacInfo.Uid+"/tratActual/"+ InmTrat.TId+ "/administraciones")
+                .GetAsync();
+            foreach (var adminDoc in administracionesSnapshot.Documents)
+            {
+                var adminData = adminDoc.ToObject<Admin>();
+                await CrossCloudFirestore.Current
+                             .Instance
+                             .Collection("IDPbookDB/" + firebaseConnecty.pacInfo.Uid + "/tratamientos/" + InmTrat.TId + "/administraciones")
+                             .Document(adminDoc.Id)
+                             .SetAsync(adminData);
+            }
+            await FirebaseConnecty.EliminarTrat(firebaseConnecty.pacInfo.Uid, "tratActual", InmTrat.TId);            
+            Run = false;            
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             var newPage = new TratPage(viewModel)
             {
                 BindingContext = new TratViewModel(firebaseConnecty)
             };
             Navigation.InsertPageBefore(newPage, Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
-            await Shell.Current.GoToAsync("../..");            
+            await Shell.Current.GoToAsync("../..");
+            await Shell.Current.DisplayAlert("Tratamiento finalizado", "Los datos del tratamiento se han archivado exitosamente. \n\nEl calendario se abrirá para eliminar los recordatorios. Selecciona el evento y elige 'Todos los eventos' para eliminar todos los recordatorios.", "Ok");
             await Launcher.Default.OpenAsync("https://calendar.google.com/calendar/r/day/"+fecha);
         }
     }
@@ -123,7 +133,7 @@ public partial class TratDetailViewModel : BaseViewModel
         if (ans == true)
         {
             Run = true;
-            await FirebaseConnecty.ElimData(firebaseConnecty.pacInfo.Uid, "tratamientos", InmTrat.TId);
+            await FirebaseConnecty.EliminarTrat(firebaseConnecty.pacInfo.Uid, "tratamientos", InmTrat.TId);
             await Shell.Current.DisplayAlert("Tratamiento eliminado", "Los datos se han eliminado exitosamente.", "Ok");
             Run = false;
             var newPage = new TratPage(viewModel)

@@ -116,8 +116,10 @@ public class FirebaseConnecty
                 var lista = new List<string>
                 {
                     "analiticas",
+                    "cuestionarios",
                     "episodios",
                     "historial",
+                    "tratActual",
                     "tratamientos",
                     "vacunas"
                 };
@@ -128,6 +130,18 @@ public class FirebaseConnecty
                                                     .GetAsync();
                     foreach (var document in snapshot.Documents)
                     {
+                        if (item == "tratamientos" || item == "tratActual")
+                        {
+                            // Elimina subcolección "administraciones" si existe
+                            var adminSnapshot = await document.Reference
+                                                              .Collection("administraciones")
+                                                              .GetAsync();
+
+                            foreach (var adminDoc in adminSnapshot.Documents)
+                            {
+                                await adminDoc.Reference.DeleteAsync(); // Elimina cada documento dentro de "administraciones"
+                            }
+                        }
                         await document.Reference.DeleteAsync();
                     }
                 }                
@@ -256,12 +270,12 @@ public class FirebaseConnecty
             return null;
         }
     }
-    public static async Task<List<Admin>> GetAdminsModel(string id,string trat)
+    public static async Task<List<Admin>> GetAdminsModel(string id,string trat,string ruta)
     {
         try
         {
             var snapshot = await CrossCloudFirestore.Current.Instance
-                                                    .Collection("/IDPbookDB/" + id + "/tratActual/"+trat+"/administraciones")
+                                                    .Collection("/IDPbookDB/"+id+"/"+ruta+"/"+trat+"/administraciones")
                                                     .GetAsync();
 
             var docs = new List<Admin>();
@@ -434,6 +448,34 @@ public class FirebaseConnecty
         catch (Exception ex)
         {
             await Shell.Current.DisplayAlert("Eliminar Docs", $"No se pudo eliminar:\n\n {ex.Message}", "Ok");
+        }
+    }
+
+    public static async Task EliminarTrat(string uid,string tipo,string documentId)
+    {
+        try
+        {
+            var documentReference = CrossCloudFirestore.Current
+                             .Instance
+                             .Collection("/IDPbookDB/"+uid+"/"+tipo)
+                             .Document(documentId);
+
+            // Aquí eliminamos una subcolección conocida como "administraciones"
+            var adminCollection = documentReference.Collection("administraciones");
+            var adminDocuments = await adminCollection.GetAsync();
+
+            foreach (var adminDoc in adminDocuments.Documents)
+            {
+                // Eliminar cada documento de la subcolección "administraciones"
+                await adminCollection.Document(adminDoc.Id).DeleteAsync();
+            }
+
+            // Después de eliminar la subcolección, eliminamos el documento principal
+            await documentReference.DeleteAsync();
+        }
+        catch (Exception ex)
+        {
+            await Shell.Current.DisplayAlert("Eliminar Trat.", $"No se pudo eliminar:\n\n {ex.Message}", "Ok");
         }
     }
 

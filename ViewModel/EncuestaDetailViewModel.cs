@@ -44,6 +44,7 @@ public partial class EncuestaDetailViewModel : BaseViewModel
         else
         {
             await Shell.Current.DisplayAlert("¡Aviso!", "No se puede eliminar el cuestionario porque es el único en la base de datos.\n\nAgrega un nuevo cuestionario y posteriormente elimina este cuestionario.", "Ok");
+            await Shell.Current.GoToAsync("..");
         }
     }
 }

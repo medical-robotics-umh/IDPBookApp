@@ -34,7 +34,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<CitasPage>();
         builder.Services.AddSingleton<DocsPage>();
         builder.Services.AddSingleton<RedPage>();
-        builder.Services.AddSingleton<ContactoPage>();
+        builder.Services.AddTransient<ContactoPage>();
         builder.Services.AddTransient<Registro>();
         builder.Services.AddTransient<EpisodiosPage>();
         builder.Services.AddTransient<NEpisPage>();

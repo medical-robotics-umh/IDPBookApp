@@ -34,7 +34,7 @@
                 <VerticalStackLayout Grid.Column="1">
                     <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="150" HeightRequest="150">
                         <VerticalStackLayout Spacing="5" VerticalOptions="Center">
-                            <ImageButton Source="costumer" Aspect="Fill" WidthRequest="130" HeightRequest="130" Command="{Binding NavWebCommand}" CommandParameter="https://duo.app.goo.gl/0rzYklevOW6hZDfvW2cqS8">
+                            <ImageButton Source="costumer" Aspect="Fill" WidthRequest="130" HeightRequest="130" Command="{Binding NavWebCommand}" CommandParameter="llamada">
                                 <ImageButton.Behaviors>
                                     <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
                                 </ImageButton.Behaviors>
@@ -46,12 +46,12 @@
                     <Label Text="Primarias" HorizontalOptions="Center" FontAttributes="Bold"/>
                 </VerticalStackLayout>
 
-                <VerticalStackLayout Grid.Row="1">
+                <VerticalStackLayout Grid.Row="1" IsVisible="{Binding Auth}">
                     <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="150" HeightRequest="150">
                         <VerticalStackLayout Spacing="5" VerticalOptions="Center">
-                            <ImageButton Source="users_medical" Aspect="Fill" WidthRequest="130" HeightRequest="130" Command="{Binding NavWebCommand}" CommandParameter="https://duo.app.goo.gl/4KpNg6aEWQVpcEUQj1QaO8">
+                            <ImageButton Source="users_medical" Aspect="Fill" WidthRequest="130" HeightRequest="130" Command="{Binding NavWebCommand}" CommandParameter="https://duo.app.goo.gl/gDlDzjEZkNCefSR3HA3Gm8">
                                 <ImageButton.Behaviors>
-                                    <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
+                                    <toolkit:IconTintColorBehavior TintColor="#2E86C1"/>
                                 </ImageButton.Behaviors>
                             </ImageButton>
                         </VerticalStackLayout>

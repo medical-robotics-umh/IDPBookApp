@@ -24,7 +24,7 @@ public partial class OtroTratViewModel: BaseViewModel
         if(otrosTratmnts != null && otrosTratmnts.Count > 0)
         {
             OtrosTratmnts.Clear();
-            foreach (var tratamiento in otrosTratmnts)
+            foreach (var tratamiento in otrosTratmnts.AsEnumerable().Reverse())
             {
                 OtrosTratmnts.Add(tratamiento);
             }

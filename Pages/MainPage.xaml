@@ -56,7 +56,7 @@
                 <VerticalStackLayout Grid.Row="1" Grid.Column="0">
                     <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout>
-                            <ImageButton Source="calendar_plus" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding GoToNavCommand}" CommandParameter="CitasPage">
+                            <ImageButton Source="calendar_plus" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="CitasPage">
                                 <ImageButton.Behaviors>
                                     <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
                                 </ImageButton.Behaviors>
@@ -69,7 +69,7 @@
                 <VerticalStackLayout Grid.Row="1" Grid.Column="1">
                     <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout>
-                            <ImageButton Source="file_video" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding GoToNavCommand}" CommandParameter="DocsPage">
+                            <ImageButton Source="file_video" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="DocsPage">
                                 <ImageButton.Behaviors>
                                     <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
                                 </ImageButton.Behaviors>
@@ -82,7 +82,7 @@
                 <VerticalStackLayout Grid.Row="2" Grid.Column="0">
                     <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout>
-                            <ImageButton Source="user_md_chat" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding GoToNavCommand}" CommandParameter="ContactoPage">
+                            <ImageButton Source="user_md_chat" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="ContactoPage">
                                 <ImageButton.Behaviors>
                                     <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
                                 </ImageButton.Behaviors>
@@ -95,7 +95,7 @@
                 <VerticalStackLayout Grid.Row="2" Grid.Column="1">
                     <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
                         <VerticalStackLayout>
-                            <ImageButton Source="spain" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding GoToNavCommand}" CommandParameter="RedPage">
+                            <ImageButton Source="spain" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="RedPage">
                                 <ImageButton.Behaviors>
                                     <toolkit:IconTintColorBehavior TintColor="#2E86C1" />
                                 </ImageButton.Behaviors>
