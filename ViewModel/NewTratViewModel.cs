@@ -108,7 +108,7 @@ public partial class NewTratViewModel : BaseViewModel
 
             var cad = TCad + 1;
             var fecha = TFecha.ToString("yyyyMMdd");
-            await Launcher.Default.OpenAsync("https://calendar.google.com/calendar/event?action=TEMPLATE&text="+name+"&recur=RRULE:FREQ=WEEKLY;INTERVAL="+cad+"&dates="+fecha+"T080000/"+fecha+"T200000&reminder=1d&allDay=true");
+            await Launcher.Default.OpenAsync("https://calendar.google.com/calendar/event?action=TEMPLATE&text=Recordatorio administración de "+name+"&recur=RRULE:FREQ=WEEKLY;INTERVAL="+cad+"&dates="+fecha+"T080000/"+fecha+"T200000&reminder=1d&allDay=true");
         }        
     }
 }
