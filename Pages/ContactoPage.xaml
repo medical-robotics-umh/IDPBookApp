@@ -49,7 +49,7 @@
                 <VerticalStackLayout Grid.Row="1" IsVisible="{Binding Auth}">
                     <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="150" HeightRequest="150">
                         <VerticalStackLayout Spacing="5" VerticalOptions="Center">
-                            <ImageButton Source="users_medical" Aspect="Fill" WidthRequest="130" HeightRequest="130" Command="{Binding NavWebCommand}" CommandParameter="https://duo.app.goo.gl/gDlDzjEZkNCefSR3HA3Gm8">
+                            <ImageButton Source="users_medical" Aspect="Fill" WidthRequest="130" HeightRequest="130" Command="{Binding NavWebCommand}" CommandParameter="https://duo.app.goo.gl/7WZNjGG4mO75iu4QxNniAB">
                                 <ImageButton.Behaviors>
                                     <toolkit:IconTintColorBehavior TintColor="#2E86C1"/>
                                 </ImageButton.Behaviors>

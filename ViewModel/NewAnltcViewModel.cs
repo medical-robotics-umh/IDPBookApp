@@ -97,6 +97,7 @@ public partial class NewAnltcViewModel : BaseViewModel
             await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n NewAnltcViewModel", "Aceptar");
         }
         Run = false;
+        await Shell.Current.DisplayAlert("Nueva Analítica registrada", "Los datos se han guardado exitosamente.", "Ok");
         var newPage = new PruebasLabPage(prbsLabViewModel)
         {
             BindingContext = new PrbsLabViewModel(firebaseConnecty)

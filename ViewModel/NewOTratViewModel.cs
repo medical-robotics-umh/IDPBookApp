@@ -73,7 +73,7 @@ public partial class NewOTratViewModel : BaseViewModel
             {
                 await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n NewOTratViewModel", "Aceptar");
             }
-
+            await Shell.Current.DisplayAlert("Nuevo Tratamiento registrado", "Los datos se han guardado exitosamente.", "Ok");
             var newPage = new OtroTratPage(viewModel)
             {
                 BindingContext = new OtroTratViewModel(firebaseConnecty)

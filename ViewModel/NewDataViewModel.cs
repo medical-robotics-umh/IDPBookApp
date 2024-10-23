@@ -110,7 +110,8 @@ public partial class NewDataViewModel : BaseViewModel
             await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n NewDataViewModel", "Aceptar");
         }
         Run = false;
-        //HACK Función para reemplazar el viewmodel y cargar automaticamente la lista de episodios.  
+        //HACK Función para reemplazar el viewmodel y cargar automaticamente la lista de episodios.
+        await Shell.Current.DisplayAlert("Nuevo Episodio registrado", "Los datos se han guardado exitosamente.", "Ok");
         var EP = new EpisodiosPage(listViewModel)
         {
             BindingContext = new ListViewModel(firebaseConnecty)

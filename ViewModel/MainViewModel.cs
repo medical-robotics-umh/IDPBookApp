@@ -51,13 +51,13 @@ public partial class MainViewModel : BaseViewModel
                 TimeSpan endTime = new(15, 0, 0);    // 3:00 PM
                 if (currentTime >= startTime && currentTime <= endTime)
                 {
-                    var now = DateTime.UtcNow;
-                    var start = now.AddMinutes(10).ToString("yyyyMMddTHHmm00Z");
-                    var end = now.AddMinutes(30).ToString("yyyyMMddTHHmm00Z");
-                    await Shell.Current.DisplayAlert("Llamada solicitada", "El calendario se abrirá para confirmar la solicitud. Solo presiona 'Guardar' para confirmar.\n\nLa Unidad te llamara en unos minutos.", "Ok");
-                    await Launcher.Default.OpenAsync("https://www.google.com/calendar/render?action=TEMPLATE&text=Llamada Unidad Inmuno. Primarias&dates=" + start + "/" + end + "&add=idpbook1@gmail.com");
-                    //await Shell.Current.DisplayAlert("Iniciando llamada...", "A continuación, se abrirá Google Meet para iniciar la video llamada con la Unidad.", "Ok");
-                    //await Launcher.Default.OpenAsync("https://duo.app.goo.gl/gDlDzjEZkNCefSR3HA3Gm8");
+                    //var now = DateTime.UtcNow;
+                    //var start = now.AddMinutes(10).ToString("yyyyMMddTHHmm00Z");
+                    //var end = now.AddMinutes(30).ToString("yyyyMMddTHHmm00Z");
+                    //await Shell.Current.DisplayAlert("Llamada solicitada", "El calendario se abrirá para confirmar la solicitud. Solo presiona 'Guardar' para confirmar.\n\nLa Unidad te llamara en unos minutos.", "Ok");
+                    //await Launcher.Default.OpenAsync("https://www.google.com/calendar/render?action=TEMPLATE&text=Llamada Unidad Inmuno. Primarias&dates=" + start + "/" + end + "&add=idpbook1@gmail.com");
+                    await Shell.Current.DisplayAlert("Iniciando llamada...", "A continuación, se abrirá Google Meet para iniciar la video llamada con la Unidad.", "Ok");
+                    await Launcher.Default.OpenAsync("https://duo.app.goo.gl/wDajLjCnSfarP2rY9OCG8F");
                 }
                 else
                 {

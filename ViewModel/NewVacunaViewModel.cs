@@ -59,6 +59,7 @@ public partial class NewVacunaViewModel : BaseViewModel
                 await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n NewVacunaViewModel", "Aceptar");
             }
             Run = false;
+            await Shell.Current.DisplayAlert("Nueva vacuna registrada", "Los datos se han guardado exitosamente.", "Ok");
             var newPage = new VacunasPage(viewModel)
             {
                 BindingContext = new VacunasViewModel(firebaseConnecty)

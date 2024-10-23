@@ -123,7 +123,7 @@
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout HorizontalOptions="Center" HeightRequest="40" Spacing="20" Margin="0,20,0,0">
-                        <Button Text="Registrar" WidthRequest="90" BorderColor="Black" Command="{Binding NewAnltcCommand}"/>
+                        <Button Text="Registrar" WidthRequest="90" Command="{Binding NewAnltcCommand}"/>
                         <Button Text="Cancelar" BackgroundColor="#E67E22" WidthRequest="90" Command="{Binding BackBtnCommand}"/>
                     </HorizontalStackLayout>
                 </VerticalStackLayout>
