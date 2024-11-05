@@ -450,7 +450,6 @@ public class FirebaseConnecty
             await Shell.Current.DisplayAlert("Eliminar Docs", $"No se pudo eliminar:\n\n {ex.Message}", "Ok");
         }
     }
-
     public static async Task EliminarTrat(string uid,string tipo,string documentId)
     {
         try

@@ -7,7 +7,7 @@
              x:DataType="viewmodel:LoginViewModel"
              NavigationPage.HasNavigationBar="False"
              Title="LoginPage">
-    <ContentPage.Content>
+    <ScrollView>
         <Grid
         HorizontalOptions="FillAndExpand"
         VerticalOptions="FillAndExpand">
@@ -16,11 +16,11 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Image
-                    Aspect="Fill"
-                    Source="mainidplogo.png" Margin="50,50,0,50"/>
+                    Aspect="AspectFit"
+                    Source="mainidplogo.png" Margin="50,30,50,30" BackgroundColor="Transparent"/>
             <Frame
             Grid.Row="1"
-            Margin="0,0,0,-20"
+            Margin="0,0,0,-50"
             CornerRadius="50"
             HasShadow="True">
                 <Grid
@@ -91,6 +91,7 @@
                         Pressed="Button_Pressed"
                         FontAttributes="Bold"
                         CornerRadius="20"
+                        WidthRequest="210"
                         Text="¿Olvidaste tu contraseña?" HorizontalOptions="Center"
                         Command="{Binding ChangePassBtnCommand}"
                     />
@@ -111,5 +112,5 @@
                 </Grid>
             </Frame>
         </Grid>
-    </ContentPage.Content>
+    </ScrollView>
 </ContentPage>

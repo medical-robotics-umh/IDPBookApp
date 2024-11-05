@@ -14,7 +14,7 @@
                 </ImageButton.Behaviors>
             </ImageButton>
             <Label Text="CONTACTO SANITARIO" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
-
+    
             <Grid ColumnDefinitions="*,*" RowDefinitions="*,*" VerticalOptions="Center" HorizontalOptions="Center" ColumnSpacing="20" Margin="0,120,0,0">
                 <VerticalStackLayout>
                     <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="150" HeightRequest="150">

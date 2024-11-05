@@ -23,7 +23,7 @@
                     </ImageButton.Behaviors>
                 </ImageButton>
             </Grid>
-            <Image Source="mainidplogo.png" Margin="70,25,25,10" Aspect="AspectFit"/>
+            <Image Source="mainidplogo.png" Margin="60,20,60,10" Aspect="AspectFit"/>
             <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*" VerticalOptions="Center" HorizontalOptions="Center" ColumnSpacing="40">
                 <VerticalStackLayout>
                     <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">

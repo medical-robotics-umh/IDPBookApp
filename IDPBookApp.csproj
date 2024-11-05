@@ -80,6 +80,11 @@
 	  <ApplicationVersion>3</ApplicationVersion>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(TargetFramework)'=='net8.0-ios'">
+	  <CodesignKey>Apple Development: Created via API (G8A6SX44AA)</CodesignKey>
+	  <CodesignProvision>VS: WildCard Development</CodesignProvision>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\logoidpbook.svg" ForegroundScale="0.5" />
@@ -104,6 +109,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Platforms\iOS\GoogleService-Info.plist" />
 	  <None Remove="Resources\Images\background.png" />
 	  <None Remove="Resources\Images\book_plus.svg" />
 	  <None Remove="Resources\Images\book_user.svg" />
@@ -139,6 +145,10 @@
 	  <GoogleServicesJson Include="testdb-9da53.json">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </GoogleServicesJson>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <BundleResource Include="Platforms\iOS\GoogleService-Info.plist" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -266,5 +276,7 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
+
+	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerExceptionIDPBookAppHideInfoBar="True" /></VisualStudio></ProjectExtensions>
 
 </Project>
