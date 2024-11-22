@@ -2,7 +2,6 @@
 using IDPBookApp.DataBase;
 using IDPBookApp.Models;
 using IDPBookApp.Pages;
-using Plugin.CloudFirestore;
 using System.Collections.ObjectModel;
 
 namespace IDPBookApp.ViewModel;
@@ -10,7 +9,7 @@ namespace IDPBookApp.ViewModel;
 public partial class ListaPacViewModel:BaseViewModel
 {
     readonly FirebaseConnecty firebaseConnecty;
-    public ObservableCollection<Paciente> Pacientes { get; set; } = new();
+    public ObservableCollection<Paciente> Pacientes { get; set; } = [];
 
     private readonly ListaPacViewModel listaPacViewModel;
     static INavigation Navigation => Shell.Current.Navigation;
@@ -23,7 +22,7 @@ public partial class ListaPacViewModel:BaseViewModel
     async void GetPacientes()
     {
         Run = true;
-        var pacientes = await FirebaseConnecty.GetPacientesModel();
+        var pacientes = await firebaseConnecty.GetPacientesModel();
         if (pacientes != null && pacientes.Count > 0) 
         { 
             Pacientes.Clear();

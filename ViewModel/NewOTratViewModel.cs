@@ -3,7 +3,6 @@ using CommunityToolkit.Mvvm.Input;
 using IDPBookApp.DataBase;
 using IDPBookApp.Models;
 using IDPBookApp.Pages;
-using Plugin.CloudFirestore;
 
 namespace IDPBookApp.ViewModel;
 
@@ -42,37 +41,24 @@ public partial class NewOTratViewModel : BaseViewModel
         }
         else
         {
-            try
+            var fecha = OTFfin.ToShortDateString();
+            var id = "OTrat" + DateTimeOffset.Now.ToUnixTimeSeconds().ToString();
+            if (TCronc == 0 | TCronc == -1)
             {
-                var fecha = OTFfin.ToShortDateString();
-                var id = "OTrat" + DateTimeOffset.Now.ToUnixTimeSeconds().ToString();
-                if (TCronc == 0 | TCronc == -1)
-                {
-                    fecha = null;
-                }
-                var NuevoTrat = new OtroTrat
-                {
-                    Id = id,
-                    OTFecha = DateTime.Today.ToString("dd/MM/yyyy"),
-                    OTNombre = OTNombre,
-                    OTDosis = OTDosis,
-                    OTCad = OTCad,
-                    OTFini = OTFini.ToString("dd/MM/yyyy"),
-                    OTFfin = fecha,
-                    OTCronc = TCronc
-                };
-                await CrossCloudFirestore.Current
-                                 .Instance
-                                 .Collection("IDPbookDB")
-                                 .Document(firebaseConnecty.pacInfo.Uid)
-                                 .Collection("tratamientos")
-                                 .Document(id)
-                                 .SetAsync(NuevoTrat);
+                fecha = null;
             }
-            catch
+            var NuevoTrat = new OtroTrat
             {
-                await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n NewOTratViewModel", "Aceptar");
-            }
+                Id = id,
+                OTFecha = DateTime.Today.ToString("dd/MM/yyyy"),
+                OTNombre = OTNombre,
+                OTDosis = OTDosis,
+                OTCad = OTCad,
+                OTFini = OTFini.ToString("dd/MM/yyyy"),
+                OTFfin = fecha,
+                OTCronc = TCronc
+            };
+            await firebaseConnecty.SaveData(firebaseConnecty.pacInfo.Uid, "otrosTrat", id, NuevoTrat);
             await Shell.Current.DisplayAlert("Nuevo Tratamiento registrado", "Los datos se han guardado exitosamente.", "Ok");
             var newPage = new OtroTratPage(viewModel)
             {

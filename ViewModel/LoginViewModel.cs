@@ -11,8 +11,9 @@ public partial class LoginViewModel : BaseViewModel
     public LoginViewModel(FirebaseConnecty firebaseConnecty)
     {
         this.firebaseConnecty = firebaseConnecty;
+        _ = firebaseConnecty.SetupFirestore();
         Chequear();
-        VisPass = true;
+        VisPass = true;        
     }
 
     [ObservableProperty]
@@ -41,7 +42,7 @@ public partial class LoginViewModel : BaseViewModel
             UserName = string.Empty; UserPassword = string.Empty;
             if (Auth == false)
             {
-                var cuestInfo = await FirebaseConnecty.GetCuestionariosModel(firebaseConnecty.userInfo.Uid);
+                var cuestInfo = await firebaseConnecty.GetModelList<Cuestionario>(firebaseConnecty.pacInfo.Uid, "cuestionarios");
                 await Shell.Current.GoToAsync($"{nameof(MainPage)}?Auth={Auth}");
                 if (cuestInfo.Any())
                 {
@@ -61,7 +62,15 @@ public partial class LoginViewModel : BaseViewModel
                 }
                 else
                 {
-                    await App.Current.MainPage.DisplayAlert("Cuestinonario calidad de vida", "► Antes de empezar a utilizar IDPBook App, debes realizar el cuestionario de calidad de vida.", "Ok");
+                    bool ans = await App.Current.MainPage.DisplayAlert("Política de Datos","Tu privacidad es nuestra prioridad. Los datos que proporcionas en esta aplicación se almacenan de " +
+                                                            "forma segura en la nube y se utilizan exclusivamente para el funcionamiento de la app y mejorar tu experiencia.\n\n" +
+                                                            "► Nunca compartimos tus datos con terceros.\n► No los utilizamos para publicidad," +
+                                                            "  marketing o análisis externos.\n\n" +
+                                                            "Puedes estar seguro de que tus datos están protegidos y se manejan con el máximo respeto a tu privacidad.\n\n" +
+                                                            "Si deseas revisar nuestra política de privacidad con más detalle, selecciona 'Política de privacidad'.","Política de privacidad","Continuar en la aplicación");
+                    if (ans == true)
+                        await Launcher.Default.OpenAsync("https://nbio.umh.es/privacy-policy/");
+                    await App.Current.MainPage.DisplayAlert("Cuestinonario calidad de vida", "Antes de empezar a utilizar IDPBook App, debes realizar el cuestionario de calidad de vida.", "Ok");
                     await Shell.Current.GoToAsync($"{nameof(NuevaEncuestaPage)}", true,
                         new Dictionary<string, object>
                         {
@@ -107,7 +116,7 @@ public partial class LoginViewModel : BaseViewModel
             Auth = firebaseConnecty.userInfo.IsEmailVerified;
             if (Auth == false)
             {
-                var cuestInfo = await FirebaseConnecty.GetCuestionariosModel(firebaseConnecty.userInfo.Uid);                
+                var cuestInfo = await firebaseConnecty.GetModelList<Cuestionario>(firebaseConnecty.pacInfo.Uid, "cuestionarios");
                 if (cuestInfo.Any())
                 {
                     var lastCuest = cuestInfo.Last();
@@ -126,6 +135,14 @@ public partial class LoginViewModel : BaseViewModel
                 }
                 else
                 {
+                    bool ans = await App.Current.MainPage.DisplayAlert("Política de Datos", "Tu privacidad es nuestra prioridad. Los datos que proporcionas en esta aplicación se almacenan de " +
+                                                            "forma segura en la nube y se utilizan exclusivamente para el funcionamiento de la app y mejorar tu experiencia.\n\n" +
+                                                            "► Nunca compartimos tus datos con terceros.\n► No los utilizamos para publicidad," +
+                                                            "  marketing o análisis externos.\n\n" +
+                                                            "Puedes estar seguro de que tus datos están protegidos y se manejan con el máximo respeto a tu privacidad.\n\n" +
+                                                            "Si deseas revisar nuestra política de privacidad con más detalle, selecciona 'Política de privacidad'.", "Política de privacidad", "Continuar en la aplicación");
+                    if (ans == true)
+                        await Launcher.Default.OpenAsync("https://nbio.umh.es/privacy-policy/");
                     await App.Current.MainPage.DisplayAlert("Cuestinonario calidad de vida", "Antes de empezar a utilizar IDPBook App, debes realizar el cuestionario de calidad de vida.", "Ok");
                     await Shell.Current.GoToAsync($"{nameof(NuevaEncuestaPage)}", true,
                         new Dictionary<string, object>
@@ -141,5 +158,19 @@ public partial class LoginViewModel : BaseViewModel
 
     [RelayCommand]
     Task ChangePassBtn() => Shell.Current.GoToAsync(nameof(CambiarPass));
+
+    [RelayCommand]
+    static async Task DisplayInfo()
+    {
+        await App.Current.MainPage.DisplayAlert("Equipo desarrollador", "Hospital Universitario y Politécnico La Fe\n" +
+                                                                        "► Pedro Moral Moral\n    pedromoralmoral@hotmail.com\n" +
+                                                                        "► Dafne Cabañero\n    marta.dafne.cabanyero@gmail.com\n" +
+                                                                        "► Victor Garcia Bustos\n    victorgarciabustos@gmail.com\n\n" +
+                                                                        "Universidad Miguel Hernández\n" +
+                                                                        "► Daniel Rodríguez\n" +
+                                                                        "► Jose Maria Sabater\n" +
+                                                                        "    medicalroboticsumh@gmail.com\n" +
+                                                                        "    idpbook1@gmail.com", "Ok");
+    }
 }
 

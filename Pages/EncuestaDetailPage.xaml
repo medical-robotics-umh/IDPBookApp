@@ -17,7 +17,7 @@
             <Label Text="{Binding Cuestionario.QName}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
             <Frame HasShadow="True" Margin="12,20" Padding="10,10">
-                <Grid ColumnDefinitions="*" RowDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*" RowSpacing="5">
+                <Grid ColumnDefinitions="*" RowDefinitions="*,*,*,*,*,*,*,*,*,*,*,auto,*,*,auto,*,auto,80" RowSpacing="7">
 
                     <Label VerticalOptions="Center" Text="Movilidad:" HorizontalOptions="Start" FontAttributes="Bold"/>
                     <Picker SelectedIndex="{Binding Cuestionario.QMovil}" Grid.Row="1" Title="▼ Selecciona una opción" HeightRequest="35"  HorizontalOptions="Fill" BackgroundColor="White" IsEnabled="False">
@@ -28,8 +28,8 @@
                         </Picker.Items>
                     </Picker>
 
-                    <Label Grid.Row="3" VerticalOptions="Center" Text="Cuidado personal:" HorizontalOptions="Start" FontAttributes="Bold" />
-                    <Picker SelectedIndex="{Binding Cuestionario.QCuid}" Grid.Row="4" Title="▼ Selecciona una opción" HeightRequest="35"  HorizontalOptions="Fill" BackgroundColor="White" IsEnabled="False">
+                    <Label Grid.Row="2" VerticalOptions="Center" Text="Cuidado personal:" HorizontalOptions="Start" FontAttributes="Bold" />
+                    <Picker SelectedIndex="{Binding Cuestionario.QCuid}" Grid.Row="3" Title="▼ Selecciona una opción" HeightRequest="35"  HorizontalOptions="Fill" BackgroundColor="White" IsEnabled="False">
                         <Picker.Items>
                             <x:String>No tengo problemas con el cuidado personal.</x:String>
                             <x:String>Tengo algunos problemas para levantarme o vestirme solo/a.</x:String>
@@ -37,8 +37,8 @@
                         </Picker.Items>
                     </Picker>
 
-                    <Label Grid.Row="6" VerticalOptions="Center" Text="Actividades diarias:" FontAttributes="Bold" HorizontalOptions="Start" />
-                    <Picker SelectedIndex="{Binding Cuestionario.QActDia}" Grid.Row="7" Title="▼ Selecciona una opción" HeightRequest="35"  HorizontalOptions="Fill" BackgroundColor="White" FontAutoScalingEnabled="True" IsEnabled="False">
+                    <Label Grid.Row="4" VerticalOptions="Center" Text="Actividades diarias:" FontAttributes="Bold" HorizontalOptions="Start" />
+                    <Picker SelectedIndex="{Binding Cuestionario.QActDia}" Grid.Row="5" Title="▼ Selecciona una opción" HeightRequest="35"  HorizontalOptions="Fill" BackgroundColor="White" FontAutoScalingEnabled="True" IsEnabled="False">
                         <Picker.Items>
                             <x:String>No tengo problemas para realizar mis actividades diarias.</x:String>
                             <x:String>Tengo algunos problemas para realizar mis actividades diarias.</x:String>
@@ -46,8 +46,8 @@
                         </Picker.Items>
                     </Picker>
 
-                    <Label Grid.Row="9" VerticalOptions="Center" Text="Dolor/Malestar:" FontAttributes="Bold" HorizontalOptions="Start" />
-                    <Picker SelectedIndex="{Binding Cuestionario.QDolor}" Grid.Row="10" Title="▼ Selecciona una opción"  HeightRequest="35"  HorizontalOptions="Fill" BackgroundColor="White" IsEnabled="False">
+                    <Label Grid.Row="6" VerticalOptions="Center" Text="Dolor/Malestar:" FontAttributes="Bold" HorizontalOptions="Start" />
+                    <Picker SelectedIndex="{Binding Cuestionario.QDolor}" Grid.Row="7" Title="▼ Selecciona una opción"  HeightRequest="35"  HorizontalOptions="Fill" BackgroundColor="White" IsEnabled="False">
                         <Picker.Items>
                             <x:String>No tengo dolor ni malestar.</x:String>
                             <x:String>Tengo moderado dolor o malestar.</x:String>
@@ -55,8 +55,8 @@
                         </Picker.Items>
                     </Picker>
 
-                    <Label Grid.Row="12" VerticalOptions="Center" Text="Ansiedad/Depresión:" FontAttributes="Bold" HorizontalOptions="Start" />
-                    <Picker SelectedIndex="{Binding Cuestionario.QAnsd}" Grid.Row="13" Title="▼ Selecciona una opción" HeightRequest="35"  HorizontalOptions="Fill" BackgroundColor="White" IsEnabled="False">
+                    <Label Grid.Row="8" VerticalOptions="Center" Text="Ansiedad/Depresión:" FontAttributes="Bold" HorizontalOptions="Start" />
+                    <Picker SelectedIndex="{Binding Cuestionario.QAnsd}" Grid.Row="9" Title="▼ Selecciona una opción" HeightRequest="35"  HorizontalOptions="Fill" BackgroundColor="White" IsEnabled="False">
                         <Picker.Items>
                             <x:String>No estoy ansioso/a ni deprimido/a.</x:String>
                             <x:String>Estoy moderadamente ansioso/a o deprimido/a.</x:String>
@@ -64,16 +64,16 @@
                         </Picker.Items>
                     </Picker>
 
-                    <Label Grid.Row="15" VerticalOptions="Center" Text="Su estado de salud hoy:" FontAttributes="Bold" HorizontalOptions="Start" />
-                    <Label Grid.Row="16" VerticalOptions="Center" Text="Por favor, deslice la figura hasta el valor que en su opinion, indique lo bueno o malo que es su estado de salud el día de hoy." FontAttributes="Italic" HorizontalOptions="Start" />
-                    <Image Grid.Row="18" Source="regla.png" Aspect="Fill" Margin="5,0,1,0"/>
-                    <Slider Grid.Row="17" Minimum="0" Maximum="100" HorizontalOptions="Fill" ThumbImageSource="thumb.svg" MaximumTrackColor="White" x:Name="slider" Value="{Binding Cuestionario.QEscala}" IsEnabled="False"/>
-                    <Label Grid.Row="18" VerticalOptions="Center" Text="{Binding Source={x:Reference slider},Path=Value,StringFormat='Valor: {0:F0}'}"  HorizontalOptions="Center" Margin="0,60,0,0"/>
+                    <Label Grid.Row="10" VerticalOptions="Center" Text="Su estado de salud hoy:" FontAttributes="Bold" HorizontalOptions="Start" />
+                    <Label Grid.Row="11" VerticalOptions="Center" Text="Por favor, deslice la figura hasta el valor que en su opinion, indique lo bueno o malo que es su estado de salud el día de hoy." FontAttributes="Italic" HorizontalOptions="Start" />
+                    <Label Grid.Row="12" VerticalOptions="Center" Text="{Binding Source={x:Reference slider},Path=Value,StringFormat='Valor: {0:F0}'}"  HorizontalOptions="Center"/>
+                    <Slider Grid.Row="13" Minimum="0" Maximum="100" HorizontalOptions="Fill" ThumbImageSource="thumb" MaximumTrackColor="White" x:Name="slider" Value="{Binding Cuestionario.QEscala}" IsEnabled="False"/>
+                    <Image Grid.Row="14" Source="regla.png" Aspect="AspectFit"/>
 
-                    <Label Grid.Row="20" VerticalOptions="Center" Text="Describe brevemente el porque de tu puntuación:" FontAttributes="Bold" HorizontalOptions="Start" />
-                    <Editor Text="{Binding Cuestionario.QDesc}" Grid.Row="21" Placeholder="N/A" HorizontalTextAlignment="Start" HorizontalOptions="Fill" HeightRequest="100" IsReadOnly="True"/>
+                    <Label Grid.Row="15" VerticalOptions="Center" Text="Describe brevemente el porque de tu puntuación:" FontAttributes="Bold" HorizontalOptions="Start" />
+                    <Editor Text="{Binding Cuestionario.QDesc}" Grid.Row="16" Placeholder="N/A" HorizontalTextAlignment="Start" HorizontalOptions="Fill" HeightRequest="100" IsReadOnly="True"/>
 
-                    <Button Grid.Row="23" HorizontalOptions="Center" Text="Eliminar" BackgroundColor="#28B463" WidthRequest="90" HeightRequest="45" Command="{Binding ElimCuestCommand}"/>
+                    <Button Grid.Row="17" HorizontalOptions="Center" Text="Eliminar" BackgroundColor="#28B463" WidthRequest="90" HeightRequest="45" Command="{Binding ElimCuestCommand}"/>
                 </Grid>
             </Frame>
         </VerticalStackLayout>

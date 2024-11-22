@@ -21,7 +21,7 @@ public partial class DatosPacViewModel : BaseViewModel
     {
         try
         {
-            Paciente = await FirebaseConnecty.GetPacienteModel(firebaseConnecty.pacInfo.Uid);
+            Paciente = await firebaseConnecty.GetPacienteModel(firebaseConnecty.pacInfo.Uid);
             if (Paciente != null)
             {
                 var nac = DateTime.ParseExact(Paciente.FechNac, "d/m/yyyy", CultureInfo.InvariantCulture);

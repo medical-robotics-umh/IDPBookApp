@@ -22,7 +22,7 @@
                     <DatePicker Date="{Binding Adminis.AdFecha}" Grid.Column="1" VerticalOptions="Center" IsEnabled="False"/>
 
                     <Label Grid.Row="1" HorizontalOptions="Start" VerticalOptions="Start" Text="Ef. secundarios:" FontAttributes="Bold" />
-                    <Grid ColumnDefinitions="28,*" RowDefinitions="25,25,25,25,25,25,25" Grid.Row="1" Grid.Column="1" Margin="0,0,0,5" HorizontalOptions="Fill" IsEnabled="False">
+                    <Grid ColumnDefinitions="28,*" RowDefinitions="25,25,25,25,25,25,25" Grid.Row="1" Grid.Column="1" Margin="0,0,0,5" HorizontalOptions="Fill" IsEnabled="False" ColumnSpacing="10">
                         <CheckBox  IsChecked="{Binding Adminis.Ef0}" Margin="0,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"/>
                         <Label Grid.Column="1" Text="Reacción cutánea." HorizontalOptions="Start" VerticalOptions="Center"/>
                         <CheckBox  Grid.Row="1" IsChecked="{Binding Adminis.Ef1}" HorizontalOptions="Start" VerticalOptions="Center"/>

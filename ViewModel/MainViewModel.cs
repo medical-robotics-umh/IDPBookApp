@@ -87,4 +87,14 @@ public partial class MainViewModel : BaseViewModel
             await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n MainViewModel -> Task OpenNewGmail", "Aceptar");
         }
     }
+
+    public override async Task OnBackButtonPressedAsync()
+    {
+        bool ans = await App.Current.MainPage.DisplayAlert("Saliendo de la aplicación", "¿Desea cerrar sesión?", "Aceptar", "Cancelar");
+        if (ans == true)
+        {
+            firebaseConnecty.LogOut();
+            await Shell.Current.GoToAsync("///LoginPage");
+        }
+    }
 }

@@ -52,7 +52,7 @@ public partial class DetailPageViewModel : BaseViewModel
         if (ans == true)
         {
             Run = true;
-            await FirebaseConnecty.ElimData(firebaseConnecty.pacInfo.Uid, "episodios", Episodio.EId);
+            await firebaseConnecty.ElimDocs(firebaseConnecty.pacInfo.Uid, "episodios", Episodio.EId);
             await Shell.Current.DisplayAlert("Episodio eliminado", "Los datos se han eliminado exitosamente.", "Ok");
             Run = false;
             var EP = new EpisodiosPage(listViewModel)

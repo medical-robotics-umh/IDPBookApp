@@ -1,16 +1,28 @@
-﻿namespace IDPBookApp.Models
+﻿using Google.Cloud.Firestore;
+
+namespace IDPBookApp.Models;
+
+[FirestoreData]
+public class HistoriaModel
 {
-    public class HistoriaModel
-    {
-        public string HId { get; set; }
-        public string HTitl { get; set; }
-        public string Hfecha { get; set; }
-        public string HfDiag { get; set; }
-        public int HActivo { get; set; }
-        public int HTDiag { get; set; }
-        public int HTDiagSub { get; set; }
-        public string HTDiagChar { get; set; }
-        public string HTDiagSubChar { get; set; }
-        public string HAlerg { get; set; }
-    }
+    [FirestoreProperty]
+    public string HId { get; set; }
+    [FirestoreProperty]
+    public string HTitl { get; set; }
+    [FirestoreProperty]
+    public string Hfecha { get; set; }
+    [FirestoreProperty]
+    public string HfDiag { get; set; }
+    [FirestoreProperty]
+    public int HActivo { get; set; }
+    [FirestoreProperty]
+    public int HTDiag { get; set; }
+    [FirestoreProperty]
+    public int HTDiagSub { get; set; }
+    [FirestoreProperty]
+    public string HTDiagChar { get; set; }
+    [FirestoreProperty]
+    public string HTDiagSubChar { get; set; }
+    [FirestoreProperty]
+    public string HAlerg { get; set; }
 }

@@ -20,7 +20,7 @@ public partial class VacunasViewModel : BaseViewModel
     async void GetVacunas()
     {
         Run = true;
-        var vacunas = await FirebaseConnecty.GetVacunasModel(firebaseConnecty.pacInfo.Uid);
+        var vacunas = await firebaseConnecty.GetModelList<Vacuna>(firebaseConnecty.pacInfo.Uid,"vacunas");
         if (vacunas != null && vacunas.Count > 0)
         {
             Vacunas.Clear();

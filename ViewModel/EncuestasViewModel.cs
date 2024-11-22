@@ -15,12 +15,12 @@ public partial class EncuestasViewModel : BaseViewModel
         this.firebaseConnecty = firebaseConnecty;
         GetCuest();
     }
-    public ObservableCollection<Cuestionario> Cuestionarios { get; set; } = new();
+    public ObservableCollection<Cuestionario> Cuestionarios { get; set; } = [];
 
     async void GetCuest()
     {
         Run = true;
-        var cuestionarios = await FirebaseConnecty.GetCuestionariosModel(firebaseConnecty.pacInfo.Uid);
+        var cuestionarios = await firebaseConnecty.GetModelList<Cuestionario>(firebaseConnecty.pacInfo.Uid,"cuestionarios");
         if (cuestionarios != null && cuestionarios.Count > 0)
         {
             Cuestionarios.Clear();

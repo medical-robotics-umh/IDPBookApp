@@ -57,7 +57,7 @@
                     </Picker>
 
                     <Label Grid.Row="6" Text="Sintomas catarrales:  " FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start"/>
-                    <Grid ColumnDefinitions="28,*" RowDefinitions="25,25,25,25,25" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" RowSpacing="1">
+                    <Grid ColumnDefinitions="28,*" RowDefinitions="25,25,25,25,25" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" RowSpacing="1" ColumnSpacing="10">
                         <CheckBox IsEnabled="False" IsChecked="{Binding STos}" Margin="0,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"/>
                         <Label Grid.Column="1" Text="Tos" HorizontalOptions="Start" VerticalOptions="Center"/>
                         <CheckBox IsEnabled="False" Grid.Row="1" IsChecked="{Binding SMoco}" HorizontalOptions="Start" VerticalOptions="Center"/>
@@ -73,7 +73,7 @@
                     <Entry Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Episodio.ESinCataChar}" IsReadOnly="True" Margin="0,138,0,0" VerticalOptions="Start" Placeholder="N/A" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand"  HeightRequest="35"/>
 
                     <Label Grid.Row="7" Text="Sintomas digestivos:" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start"/>
-                    <Grid ColumnDefinitions="28,*" RowDefinitions="25,25,25,25" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" RowSpacing="1">
+                    <Grid ColumnDefinitions="28,*" RowDefinitions="25,25,25,25" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" RowSpacing="1" ColumnSpacing="10">
                         <CheckBox IsEnabled="False" IsChecked="{Binding SDiar}" Margin="0,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"/>
                         <Label Grid.Column="1" Text="Diarrea" HorizontalOptions="Start" VerticalOptions="Center"/>
                         <CheckBox IsEnabled="False" Grid.Row="1" IsChecked="{Binding SNaVo}" HorizontalOptions="Start" VerticalOptions="Center"/>
@@ -87,7 +87,7 @@
                     <Entry Text="{Binding Episodio.ESinDigestChar}" IsReadOnly="True" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,115,0,0" VerticalOptions="Start" Placeholder="N/A" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand"  HeightRequest="35" Keyboard="Text"/>
 
                     <Label Grid.Row="8" Text="Sintomas urinarios:" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start"/>
-                    <Grid ColumnDefinitions="28,*" RowDefinitions="25,25,25" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" RowSpacing="1">
+                    <Grid ColumnDefinitions="28,*" RowDefinitions="25,25,25" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" RowSpacing="1" ColumnSpacing="10">
                         <CheckBox IsEnabled="False" IsChecked="{Binding SEscz}" Margin="0,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"/>
                         <Label Grid.Column="1" Text="Escozor al orinar" HorizontalOptions="Start" VerticalOptions="Center"/>
                         <CheckBox IsEnabled="False" Grid.Row="1" IsChecked="{Binding SOOsc}" HorizontalOptions="Start" VerticalOptions="Center"/>
@@ -99,7 +99,7 @@
                     <Entry Text="{Binding Episodio.ESinUriChar}" IsReadOnly="True" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,92,0,0" VerticalOptions="Start" Placeholder="N/A" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand"  HeightRequest="35" Keyboard="Text"/>
 
                     <Label Grid.Row="9" Text="Sintomas cutaneos:" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start"/>
-                    <Grid ColumnDefinitions="28,*" RowDefinitions="25,25,25" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" RowSpacing="1">
+                    <Grid ColumnDefinitions="28,*" RowDefinitions="25,25,25" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" RowSpacing="1" ColumnSpacing="10">
                         <CheckBox IsEnabled="False" IsChecked="{Binding SPicor}" Margin="0,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"/>
                         <Label Grid.Column="1" Text="Picor" HorizontalOptions="Start" VerticalOptions="Center"/>
                         <CheckBox IsEnabled="False" Grid.Row="1" IsChecked="{Binding SDolor}" HorizontalOptions="Start" VerticalOptions="Center"/>

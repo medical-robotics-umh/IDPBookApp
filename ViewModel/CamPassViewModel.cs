@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using IDPBookApp.DataBase;
-using Plugin.CloudFirestore;
 
 namespace IDPBookApp.ViewModel;
 
@@ -35,11 +34,7 @@ public partial class CamPassViewModel : BaseViewModel
         Run = true;
         if (MedCheck == true)
         {
-            var query = await CrossCloudFirestore.Current
-                 .Instance
-                 .Collection("/MedUsers")
-                 .WhereEqualsTo("Correo", UserMail)
-                 .GetAsync();
+            var query = await firebaseConnecty.GetMedUsers(UserMail);
             if (query.Count == 0)
             {
                 await App.Current.MainPage.DisplayAlert("Usuario no encontrado", $"No existe un usuario registrado con el correo:\n\n" + UserMail + "\n\nComprueba el correo o comunicate con el personal médico.", "Ok");

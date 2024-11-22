@@ -3,7 +3,6 @@ using CommunityToolkit.Mvvm.Input;
 using IDPBookApp.DataBase;
 using IDPBookApp.Models;
 using IDPBookApp.Pages;
-using Plugin.CloudFirestore;
 
 namespace IDPBookApp.ViewModel;
 
@@ -23,7 +22,7 @@ public partial class NewDataViewModel : BaseViewModel
     private bool cut_visbl;
     [ObservableProperty]
     private bool trat_visbl;
-                
+
     [ObservableProperty]
     private DateTime fecha_Epis;
     [ObservableProperty]
@@ -56,7 +55,7 @@ public partial class NewDataViewModel : BaseViewModel
     private string antibioDias;
     [ObservableProperty]
     private string otroTrat;
-    
+
     public NewDataViewModel(FirebaseConnecty firebaseConnecty)
     {
         this.firebaseConnecty = firebaseConnecty;
@@ -69,46 +68,33 @@ public partial class NewDataViewModel : BaseViewModel
     {
         Run = true;
         Contador++;
-        try
+        var id = "Ep" + DateTimeOffset.Now.ToUnixTimeSeconds().ToString();
+        var NuevoEpisodio = new EpisodioModel
         {
-            var id = "Ep" + DateTimeOffset.Now.ToUnixTimeSeconds().ToString();
-            var NuevoEpisodio = new EpisodioModel
-            {
-                EId = id,
-                EName = "Episodio " + Contador.ToString(),
-                EFecha = Fecha_Epis.ToString("dd/MM/yyyy"),
-                EAtenPrim = Aten,
-                EUrgHosp = Urg,
-                EDurac = Durac_entry,
-                EIngreso =  Ingreso,
-                EFiebre = Fiebre,
-                ESinCata = new bool[] {STos,SMoco,SDGarg,SDTorax,SSAh},
-                ESinCataChar = OtroSinCat,
-                ESinDigest = new bool[] { SDiar, SNaVo, SEstr, SDAbd},
-                ESinDigestChar = OtroSinDigest,
-                ESinUri = new bool[] { SEscz, SOOsc, SOMal},
-                ESinUriChar = OtroSinUri,
-                ESinCut = new bool[] { SPicor, SDolor, SColR},
-                ESinCutChar = OtroSinCut,
-                EOtroSin = OtroSin,
-                ETrat = Trat,
-                ETratAnt = TratAnti,
-                ETratAntibio = Antibio,
-                ETratDias = AntibioDias,
-                ETratOtros = OtroTrat,
-            };
-            await CrossCloudFirestore.Current
-                             .Instance
-                             .Collection("IDPbookDB")
-                             .Document(firebaseConnecty.pacInfo.Uid)
-                             .Collection("episodios")
-                             .Document(id)
-                             .SetAsync(NuevoEpisodio);
-        }
-        catch
-        {
-            await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n NewDataViewModel", "Aceptar");
-        }
+            EId = id,
+            EName = "Episodio " + Contador.ToString(),
+            EFecha = Fecha_Epis.ToString("dd/MM/yyyy"),
+            EAtenPrim = Aten,
+            EUrgHosp = Urg,
+            EDurac = Durac_entry,
+            EIngreso = Ingreso,
+            EFiebre = Fiebre,
+            ESinCata = [STos, SMoco, SDGarg, SDTorax, SSAh],
+            ESinCataChar = OtroSinCat,
+            ESinDigest = [SDiar, SNaVo, SEstr, SDAbd],
+            ESinDigestChar = OtroSinDigest,
+            ESinUri = [SEscz, SOOsc, SOMal],
+            ESinUriChar = OtroSinUri,
+            ESinCut = [SPicor, SDolor, SColR],
+            ESinCutChar = OtroSinCut,
+            EOtroSin = OtroSin,
+            ETrat = Trat,
+            ETratAnt = TratAnti,
+            ETratAntibio = Antibio,
+            ETratDias = AntibioDias,
+            ETratOtros = OtroTrat,
+        };
+        await firebaseConnecty.SaveData(firebaseConnecty.pacInfo.Uid, "episodios", id, NuevoEpisodio);
         Run = false;
         //HACK Función para reemplazar el viewmodel y cargar automaticamente la lista de episodios.
         await Shell.Current.DisplayAlert("Nuevo Episodio registrado", "Los datos se han guardado exitosamente.", "Ok");

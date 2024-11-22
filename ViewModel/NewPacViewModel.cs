@@ -3,7 +3,6 @@ using CommunityToolkit.Mvvm.Input;
 using IDPBookApp.DataBase;
 using IDPBookApp.Models;
 using IDPBookApp.Pages;
-using Plugin.CloudFirestore;
 
 namespace IDPBookApp.ViewModel;
 
@@ -89,12 +88,8 @@ public partial class NewPacViewModel : BaseViewModel
                         OtroDiag2 = OtroDiag2,
                         FechDiag2 = fecha2,
                         Pass = "12345678"
-                    };                    
-                    await CrossCloudFirestore.Current
-                                    .Instance
-                                    .Collection("IDPbookDB")
-                                    .Document(firebaseConnecty.pacInfo.Uid)
-                                    .SetAsync(NuevoPaciente);
+                    };
+                    await firebaseConnecty.SavePac(firebaseConnecty.pacInfo.Uid,NuevoPaciente);
                     await App.Current.MainPage.DisplayAlert("Correcto", "Se ha creado paciente: " + NombPac, "Ok");
                     NombPac = ApllPac = EmailPac = OtroDiag1 = OtroDiag2 = string.Empty;
                     FNac = FDiag = FDiag1 = FDiag2 = DateTime.Today;

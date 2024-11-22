@@ -7,16 +7,11 @@ using IDPBookApp.Pages;
 namespace IDPBookApp.ViewModel;
 
 [QueryProperty(nameof(Tratamiento), nameof(Tratamiento))]
-public partial class OTratDetailViewModel : BaseViewModel
+public partial class OTratDetailViewModel(FirebaseConnecty firebaseConnecty) : BaseViewModel
 {
-    readonly FirebaseConnecty firebaseConnecty;
+    readonly FirebaseConnecty firebaseConnecty = firebaseConnecty;
     private readonly OtroTratViewModel viewModel;
     static INavigation Navigation => Shell.Current.Navigation;
-
-    public OTratDetailViewModel(FirebaseConnecty firebaseConnecty)
-    {
-        this.firebaseConnecty = firebaseConnecty;
-    }
 
     [ObservableProperty]
     OtroTrat tratamiento;
@@ -28,7 +23,7 @@ public partial class OTratDetailViewModel : BaseViewModel
         if (ans == true)
         {
             Run = true;
-            await FirebaseConnecty.ElimData(firebaseConnecty.pacInfo.Uid, "tratamientos", Tratamiento.Id);
+            await firebaseConnecty.ElimDocs(firebaseConnecty.pacInfo.Uid, "otrosTrat", Tratamiento.Id);
             await Shell.Current.DisplayAlert("Tratamiento eliminado", "Los datos se han eliminado exitosamente.", "Ok");
             Run = false;
             var newPage = new OtroTratPage(viewModel)

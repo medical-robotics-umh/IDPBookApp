@@ -119,7 +119,7 @@
 
                     <HorizontalStackLayout HorizontalOptions="Start" HeightRequest="40" Margin="15,0" Spacing="30">
                         <Label VerticalOptions="Center" Text="Plaquetas (células/uL)" FontAttributes="Bold" WidthRequest="100"/>
-                        <Entry Text="{Binding APlaque}" MaxLength="7" TextChanged="Rango2M" VerticalOptions="Center" Placeholder="Rango [0-2000000]" WidthRequest="140" HorizontalTextAlignment="Start"  Keyboard="Numeric"/>
+                        <Entry Text="{Binding APlaque}" MaxLength="7" TextChanged="Rango2M" VerticalOptions="Center" Placeholder="Rango [0-2000000]" WidthRequest="140" HorizontalTextAlignment="Start"  Keyboard="Numeric" ReturnType="Done"/>
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout HorizontalOptions="Center" HeightRequest="40" Spacing="20" Margin="0,20,0,0">

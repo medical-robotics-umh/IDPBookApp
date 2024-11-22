@@ -3,7 +3,6 @@ using CommunityToolkit.Mvvm.Input;
 using IDPBookApp.DataBase;
 using IDPBookApp.Models;
 using IDPBookApp.Pages;
-using Plugin.CloudFirestore;
 
 namespace IDPBookApp.ViewModel;
 
@@ -77,39 +76,26 @@ public partial class NewHistoViewModel : BaseViewModel
         {
             Run = true;
             var id = "Hstr" + DateTimeOffset.Now.ToUnixTimeSeconds().ToString();
-            try
+            if (HTDiag == 11 | HTitl == "Otro")
             {
-                if (HTDiag == 11 | HTitl == "Otro")
-                {
-                    HTitl = OtroDiag;
-                }
-                var NuevaHisto = new HistoriaModel
-                {
-                    HId = id,
-                    HTitl = HTitl,
-                    Hfecha = DateTime.Today.ToString("dd/MM/yyyy"),
-                    HfDiag = FDiag.ToString(),
-                    HActivo = Activ,
-                    HTDiag = HTDiag,
-                    HTDiagSub = HTDiagSub,
-                    HTDiagChar = OtroDiag,
-                    HTDiagSubChar = Comment,
-                    HAlerg = Aler
-                };
-                await CrossCloudFirestore.Current
-                                 .Instance
-                                 .Collection("IDPbookDB")
-                                 .Document(firebaseConnecty.pacInfo.Uid)
-                                 .Collection("historial")
-                                 .Document(id)
-                                 .SetAsync(NuevaHisto);
+                HTitl = OtroDiag;
             }
-            catch (Exception ex)
+            var NuevaHisto = new HistoriaModel
             {
-                await App.Current.MainPage.DisplayAlert("Algo salio mal", ex.Message, "Aceptar");
-            }
+                HId = id,
+                HTitl = HTitl,
+                Hfecha = DateTime.Today.ToString("dd/MM/yyyy"),
+                HfDiag = FDiag.ToString(),
+                HActivo = Activ,
+                HTDiag = HTDiag,
+                HTDiagSub = HTDiagSub,
+                HTDiagChar = OtroDiag,
+                HTDiagSubChar = Comment,
+                HAlerg = Aler
+            };
+            await firebaseConnecty.SaveData(firebaseConnecty.pacInfo.Uid, "historial", id, NuevaHisto);
             await Shell.Current.DisplayAlert("Nueva historia creada", "Los datos se han guardado exitosamente.", "Ok");
-            Run = false;            
+            Run = false;
             var newPage = new HistorialPage(histoViewModel)
             {
                 BindingContext = new HistoViewModel(firebaseConnecty)

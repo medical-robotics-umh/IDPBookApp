@@ -107,4 +107,9 @@ public partial class BaseViewModel : ObservableObject
     {
         await Shell.Current.GoToAsync("..");
     }
+
+    public virtual Task OnBackButtonPressedAsync()
+    {
+        return Task.CompletedTask;
+    }
 }

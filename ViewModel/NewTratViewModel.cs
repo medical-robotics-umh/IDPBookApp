@@ -3,7 +3,6 @@ using CommunityToolkit.Mvvm.Input;
 using IDPBookApp.DataBase;
 using IDPBookApp.Models;
 using IDPBookApp.Pages;
-using Plugin.CloudFirestore;
 
 namespace IDPBookApp.ViewModel;
 
@@ -62,18 +61,15 @@ public partial class NewTratViewModel : BaseViewModel
             Run = true;
             var id = "ITrat" + DateTimeOffset.Now.ToUnixTimeSeconds().ToString();
             var name = "Trat";
-            var tipo = -1;
             var tt = "Trat";
             if (TTipo == 0)
             {
                 name = SPrepI.ToString();
-                tipo = TPrepI;
                 tt = "intra";
             }
             if (TTipo == 1)
             {
                 name = SPrepS.ToString();
-                tipo = TPrepS;
                 tt = "subc";
             }
             var NuevoTrat = new Tratamiento
@@ -83,20 +79,15 @@ public partial class NewTratViewModel : BaseViewModel
                 TFecha = TFecha.ToString("dd/MM/yyyy"),
                 TTs = tt,
                 TTipo = TTipo,
-                TPrep = tipo,
+                TPrepI = TPrepI,
+                TPrepS = TPrepS,
                 TDosis = Convert.ToInt32(TDosis),
                 TCad = TCad,
                 TTimeInf = Convert.ToInt32(TTimeInf),
                 TVelInf = Convert.ToInt32(TVelInf),
                 TVolInf = Convert.ToInt32(TVolInf)
             };
-            await CrossCloudFirestore.Current
-                             .Instance
-                             .Collection("IDPbookDB")
-                             .Document(firebaseConnecty.pacInfo.Uid)
-                             .Collection("tratActual")
-                             .Document(id)
-                             .SetAsync(NuevoTrat);
+            await firebaseConnecty.SaveData(firebaseConnecty.pacInfo.Uid, "tratActual", id, NuevoTrat);
             Run = false;
             var newPage = new TratPage(tratView)
             {

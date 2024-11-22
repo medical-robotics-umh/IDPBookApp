@@ -36,8 +36,8 @@
                 <Label Text="Listado de cuestionarios" FontSize="Medium" FontAttributes="Bold"/>
             </HorizontalStackLayout>
 
-            <Frame HorizontalOptions="CenterAndExpand" WidthRequest="300" Padding="10,10" Margin="10,10" HasShadow="True">
-                <CollectionView ItemsSource="{Binding Cuestionarios}" EmptyView="Aún no hay cuestionarios" HorizontalOptions="CenterAndExpand" SelectionMode="Single">
+            <Frame HorizontalOptions="CenterAndExpand" WidthRequest="300" Padding="10" Margin="10" HasShadow="True">
+                <CollectionView ItemsSource="{Binding Cuestionarios}" EmptyView="Aún no hay cuestionarios" HorizontalOptions="CenterAndExpand" SelectionMode="Single" MinimumHeightRequest="50">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:Cuestionario">
                             <HorizontalStackLayout Spacing="10" Margin="0,2" HorizontalOptions="CenterAndExpand">

@@ -31,8 +31,8 @@
                 <Label Text="Historial médico" FontSize="Medium" FontAttributes="Bold"/>
             </HorizontalStackLayout>
 
-            <Frame HorizontalOptions="CenterAndExpand" Padding="10,10" Margin="10,10" HasShadow="True">
-                <CollectionView ItemsSource="{Binding Historias}" EmptyView="Aún no hay historias" HorizontalOptions="CenterAndExpand" SelectionMode="Single">
+            <Frame HorizontalOptions="Center" Padding="10" Margin="12,10" HasShadow="True">
+                <CollectionView ItemsSource="{Binding Historias}" EmptyView="Aún no hay historias" HorizontalOptions="CenterAndExpand" SelectionMode="Single" MinimumHeightRequest="50" MinimumWidthRequest="400">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:HistoriaModel">
                             <HorizontalStackLayout Spacing="10" Margin="0,2" HorizontalOptions="StartAndExpand">

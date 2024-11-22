@@ -8,15 +8,9 @@ namespace IDPBookApp.ViewModel;
 [QueryProperty(nameof(Adminis), nameof(Adminis))]
 [QueryProperty(nameof(Elimvsbl), nameof(Elimvsbl))]
 
-public partial class AdminDetailViewModel : BaseViewModel
+public partial class AdminDetailViewModel(FirebaseConnecty firebaseConnecty) : BaseViewModel
 {
-    readonly FirebaseConnecty firebaseConnecty;
-    private readonly TratDetailViewModel viewModel;
-    static INavigation Navigation => Shell.Current.Navigation;
-    public AdminDetailViewModel(FirebaseConnecty firebaseConnecty)
-    {
-        this.firebaseConnecty = firebaseConnecty;
-    }
+    readonly FirebaseConnecty firebaseConnecty = firebaseConnecty;
 
     [ObservableProperty]
     Admin adminis;
@@ -30,7 +24,7 @@ public partial class AdminDetailViewModel : BaseViewModel
         if (ans == true)
         {
             Run = true;
-            await FirebaseConnecty.ElimData(firebaseConnecty.pacInfo.Uid, "tratActual/"+Trat+"/administraciones", Adminis.AdId);
+            await firebaseConnecty.ElimDocs(firebaseConnecty.pacInfo.Uid, "tratActual/"+Trat+"/administraciones", Adminis.AdId);
             await Shell.Current.DisplayAlert("Documento eliminado", "Los datos se han eliminado exitosamente.", "Ok");
             Run = false;
             await Shell.Current.GoToAsync("../..");

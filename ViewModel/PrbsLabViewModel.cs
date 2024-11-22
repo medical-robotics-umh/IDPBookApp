@@ -14,23 +14,21 @@ public partial class PrbsLabViewModel : BaseViewModel
         this.firebaseConnecty = firebaseConnecty;
         GetAnltcs();
     }
-    public ObservableCollection<AnaliticaModel> Analiticas { get; set; } = new();
-    
-    
+    public ObservableCollection<AnaliticaModel> Analiticas { get; set; } = [];
 
     async void GetAnltcs()
     {
         Run = true;
-        var historias = await FirebaseConnecty.GetAnaliticsModel(firebaseConnecty.pacInfo.Uid);
-        if (historias != null && historias.Count > 0)
+        var anltcs = await firebaseConnecty.GetModelList<AnaliticaModel>(firebaseConnecty.pacInfo.Uid, "analiticas");
+        if (anltcs != null && anltcs.Count > 0)
         {
             Analiticas.Clear();
-            foreach (var historia in historias)
+            foreach (var anltca in anltcs)
             {
-                Analiticas.Add(historia);
+                Analiticas.Add(anltca);
             }
         }
-        if (historias.Count>=2)
+        if (anltcs.Count>=2)
             Btn_visbl = true;
         Run = false;
     }

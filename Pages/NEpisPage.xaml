@@ -17,7 +17,7 @@
             <Label Text="NUEVO EPISODIO" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
             <Frame HasShadow="True" Margin="15,20" Padding="10,1,10,10" VerticalOptions="StartAndExpand">
-                <Grid ColumnDefinitions="Auto,*,*" RowDefinitions="40,40,40,40,40,40,Auto,Auto,Auto,Auto,40,40,Auto,Auto,Auto,Auto,80" RowSpacing="3">
+                <Grid ColumnDefinitions="Auto,*,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,80" RowSpacing="8">
                     <Label Text="Fecha de episodio:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
                     <DatePicker Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="StartAndExpand" CharacterSpacing="2" Format="d" Date="{Binding Fecha_Epis}"/>
 
@@ -58,8 +58,8 @@
 
                     <Label Grid.Row="6" Text="Sintomas catarrales: " FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start" Margin="0,10,0,0"/>
                     <Button Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Text="▼ Seleccionar" Command="{Binding VisibleCatCommand}" HeightRequest="38"/>
-                    <Grid IsVisible="{Binding Cata_visbl}" ColumnDefinitions="28,*" RowDefinitions="25,25,25,25,25" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,42,0,0" RowSpacing="1">
-                        <CheckBox IsChecked="{Binding STos}" Margin="0,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"/>
+                    <Grid IsVisible="{Binding Cata_visbl}" ColumnDefinitions="28,*" RowDefinitions="25,25,25,25,25" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,45,0,0" RowSpacing="1" ColumnSpacing="10">
+                        <CheckBox IsChecked="{Binding STos}" HorizontalOptions="Start" VerticalOptions="Center"/>
                         <Label Grid.Column="1" Text="Tos" HorizontalOptions="Start" VerticalOptions="Center"/>
                         <CheckBox Grid.Row="1" IsChecked="{Binding SMoco}" HorizontalOptions="Start" VerticalOptions="Center"/>
                         <Label Grid.Row="1" Grid.Column="1" Text="Moco"  HorizontalOptions="Start" VerticalOptions="Center"/>
@@ -75,8 +75,8 @@
 
                     <Label Grid.Row="7" Text="Sintomas digestivos:" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start" Margin="0,10,0,0"/>
                     <Button Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Text="▼ Seleccionar" Command="{Binding VisibleDigestCommand}" HeightRequest="38"/>
-                    <Grid IsVisible="{Binding Digest_visbl}" ColumnDefinitions="28,*" RowDefinitions="25,25,25,25" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,42,0,0" RowSpacing="1">
-                        <CheckBox IsChecked="{Binding SDiar}" Margin="0,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"/>
+                    <Grid IsVisible="{Binding Digest_visbl}" ColumnDefinitions="28,*" RowDefinitions="25,25,25,25" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,45,0,0" RowSpacing="1" ColumnSpacing="10">
+                        <CheckBox IsChecked="{Binding SDiar}" HorizontalOptions="Start" VerticalOptions="Center"/>
                         <Label Grid.Column="1" Text="Diarrea" HorizontalOptions="Start" VerticalOptions="Center"/>
                         <CheckBox Grid.Row="1" IsChecked="{Binding SNaVo}" HorizontalOptions="Start" VerticalOptions="Center"/>
                         <Label Grid.Row="1" Grid.Column="1" Text="Nausesas o vómito"  HorizontalOptions="Start" VerticalOptions="Center"/>
@@ -90,7 +90,7 @@
 
                     <Label Grid.Row="8" Text="Sintomas urinarios:" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start" Margin="0,10,0,0"/>
                     <Button Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Text="▼ Seleccionar" Command="{Binding VisibleUriCommand}" HeightRequest="38"/>
-                    <Grid IsVisible="{Binding Uri_visbl}" ColumnDefinitions="28,*" RowDefinitions="25,25,25" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,42,0,0" RowSpacing="1">
+                    <Grid IsVisible="{Binding Uri_visbl}" ColumnDefinitions="28,*" RowDefinitions="25,25,25" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,45,0,0" RowSpacing="1" ColumnSpacing="10">
                         <CheckBox IsChecked="{Binding SEscz}" Margin="0,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"/>
                         <Label Grid.Column="1" Text="Escozor al orinar" HorizontalOptions="Start" VerticalOptions="Center"/>
                         <CheckBox Grid.Row="1" IsChecked="{Binding SOOsc}" HorizontalOptions="Start" VerticalOptions="Center"/>
@@ -103,7 +103,7 @@
 
                     <Label Grid.Row="9" Text="Sintomas cutaneos:" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start" Margin="0,10,0,0"/>
                     <Button Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Text="▼ Seleccionar" Command="{Binding VisibleCutanCommand}" HeightRequest="38"/>
-                    <Grid IsVisible="{Binding Cut_visbl}" ColumnDefinitions="28,*" RowDefinitions="25,25,25" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,42,0,0" RowSpacing="1">
+                    <Grid IsVisible="{Binding Cut_visbl}" ColumnDefinitions="28,*" RowDefinitions="25,25,25" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,45,0,0" RowSpacing="1" ColumnSpacing="10">
                         <CheckBox IsChecked="{Binding SPicor}" Margin="0,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"/>
                         <Label Grid.Column="1" Text="Picor" HorizontalOptions="Start" VerticalOptions="Center"/>
                         <CheckBox Grid.Row="1" IsChecked="{Binding SDolor}" HorizontalOptions="Start" VerticalOptions="Center"/>

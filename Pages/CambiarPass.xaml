@@ -22,7 +22,7 @@
                     <CheckBox IsChecked="{Binding MedCheck}" CheckedChanged="CheckBox_CheckedChanged"  Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" Margin="-12,0,0,0"/>
 
                     <Label Grid.Row="1" Text="Correo:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry x:Name="correo" Text="{Binding UserMail}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa correo" HorizontalTextAlignment="Start" HeightRequest="45" Keyboard="Email" ReturnType="Next" Unfocused="VerifcarCorreo"/>
+                    <Entry x:Name="correo" Text="{Binding UserMail}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa correo" HorizontalTextAlignment="Start" HeightRequest="45" Keyboard="Email" ReturnType="Next"/>
 
                     <Label Grid.Row="2" Text="Contraseña:  " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" IsVisible="{Binding Disable}"/>
                     <Entry Text="{Binding NewPassword}" IsPassword="{Binding VPass}" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa nueva contraseña" HorizontalTextAlignment="Start" HeightRequest="45" Keyboard="Text" ReturnType="Next" IsVisible="{Binding Disable}"/>

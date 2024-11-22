@@ -7,16 +7,11 @@ using IDPBookApp.Pages;
 namespace IDPBookApp.ViewModel;
 
 [QueryProperty(nameof(Cuestionario), nameof(Cuestionario))]
-public partial class EncuestaDetailViewModel : BaseViewModel
+public partial class EncuestaDetailViewModel(FirebaseConnecty firebaseConnecty) : BaseViewModel
 {
-    readonly FirebaseConnecty firebaseConnecty;
+    readonly FirebaseConnecty firebaseConnecty = firebaseConnecty;
     private readonly EncuestasViewModel encuestasViewModel;
     static INavigation Navigation => Shell.Current.Navigation;
-
-    public EncuestaDetailViewModel(FirebaseConnecty firebaseConnecty)
-    {
-        this.firebaseConnecty = firebaseConnecty;
-    }
 
     [ObservableProperty]
     Cuestionario cuestionario;
@@ -30,7 +25,7 @@ public partial class EncuestaDetailViewModel : BaseViewModel
             if (ans == true)
             {
                 Run = true;
-                await FirebaseConnecty.ElimData(firebaseConnecty.pacInfo.Uid, "cuestionarios", Cuestionario.QId);
+                await firebaseConnecty.ElimDocs(firebaseConnecty.pacInfo.Uid, "cuestionarios", Cuestionario.QId);
                 await Shell.Current.DisplayAlert("Cuestionario eliminado", "Los datos se han eliminado exitosamente.", "Ok");
                 Run = false;
                 var newPage = new EncuestasPage(encuestasViewModel)

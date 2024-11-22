@@ -37,6 +37,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Label
                     Grid.Row="0"
@@ -85,7 +86,7 @@
                         Pressed="Button_Pressed"
                         CornerRadius="20"
                         FontAttributes="Bold"
-                        Text="Ingresar" />
+                        Text="Ingresar"/>
                     <Button
                         Grid.Row="6"
                         Pressed="Button_Pressed"
@@ -108,7 +109,17 @@
                         Source="ic_logo_umh.png"
                         WidthRequest="80" />
                     </HorizontalStackLayout>
-                    <ActivityIndicator IsRunning = "{Binding Run}" Margin = "20" Grid.Row="7" HorizontalOptions = "Center" />
+                    <Label
+                        Grid.Row="8"
+                        FontAttributes="Bold"
+                        Text="Contacta con el equipo desarrollador."
+                        TextColor="{Binding GrisO}"
+                        HorizontalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding DisplayInfoCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <ActivityIndicator IsRunning = "{Binding Run}" Margin = "20" Grid.Row="8" HorizontalOptions = "Center" />
                 </Grid>
             </Frame>
         </Grid>

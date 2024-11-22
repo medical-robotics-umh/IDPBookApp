@@ -31,8 +31,8 @@
                 <Label Text="Listado de pacientes" FontSize="Medium" FontAttributes="Bold"/>
             </HorizontalStackLayout>
 
-            <Frame HorizontalOptions="Center" WidthRequest="300" Padding="0,10" Margin="0,10" HasShadow="True">
-                <CollectionView ItemsSource="{Binding Pacientes}" EmptyView="Aún no hay pacientes" SelectionMode="Single" HorizontalScrollBarVisibility="Always" HorizontalOptions="Center">
+            <Frame HorizontalOptions="Center" Padding="10,10" Margin="12,10" HasShadow="True">
+                <CollectionView ItemsSource="{Binding Pacientes}" EmptyView="Aún no hay pacientes" SelectionMode="Single" HorizontalScrollBarVisibility="Always" HorizontalOptions="Center" MinimumHeightRequest="50" MinimumWidthRequest="300">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:Paciente">
                             <SwipeView>

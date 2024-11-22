@@ -3,7 +3,6 @@ using CommunityToolkit.Mvvm.Input;
 using IDPBookApp.DataBase;
 using IDPBookApp.Models;
 using IDPBookApp.Pages;
-using Plugin.CloudFirestore;
 using System.Collections.ObjectModel;
 
 namespace IDPBookApp.ViewModel;
@@ -43,7 +42,7 @@ public partial class TratDetailViewModel : BaseViewModel
         var ruta = "tratActual";
         if (Aux3 == true)
             ruta = "tratamientos";
-        var admins = await FirebaseConnecty.GetAdminsModel(firebaseConnecty.pacInfo.Uid,InmTrat.TId,ruta);
+        var admins = await firebaseConnecty.GetAdminsModel(firebaseConnecty.pacInfo.Uid,InmTrat.TId,ruta);
         if (admins != null && admins.Count > 0)
         {
             Admins.Clear();
@@ -88,33 +87,19 @@ public partial class TratDetailViewModel : BaseViewModel
         bool ans = await Shell.Current.DisplayAlert("¡Aviso!", "¿Confirmas la finalización del tratamiento?", "Si", "No");
         if (ans == true)
         {
-            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////COPIA DE ADMINISTRACIONES//////////////////////////////////////////////
             Run = true;
             var fecha = DateTime.Parse(InmTrat.TFecha).ToString("yyyy/MM/dd");
-            await CrossCloudFirestore.Current
-                             .Instance
-                             .Collection("IDPbookDB")
-                             .Document(firebaseConnecty.pacInfo.Uid)
-                             .Collection("tratamientos")
-                             .Document(InmTrat.TId)
-                             .SetAsync(InmTrat);
-
-            var administracionesSnapshot = await CrossCloudFirestore.Current
-                .Instance
-                .Collection("IDPbookDB/"+ firebaseConnecty.pacInfo.Uid+"/tratActual/"+ InmTrat.TId+ "/administraciones")
-                .GetAsync();
-            foreach (var adminDoc in administracionesSnapshot.Documents)
+            await firebaseConnecty.SaveData(firebaseConnecty.pacInfo.Uid,"tratamientos", InmTrat.TId, InmTrat);
+            var administracionesSnapshot = await firebaseConnecty.GetAdminsModel(firebaseConnecty.pacInfo.Uid, InmTrat.TId, "tratActual");
+            foreach (var adminDoc in administracionesSnapshot)
             {
-                var adminData = adminDoc.ToObject<Admin>();
-                await CrossCloudFirestore.Current
-                             .Instance
-                             .Collection("IDPbookDB/" + firebaseConnecty.pacInfo.Uid + "/tratamientos/" + InmTrat.TId + "/administraciones")
-                             .Document(adminDoc.Id)
-                             .SetAsync(adminData);
+                var adminData = adminDoc;
+                await firebaseConnecty.SaveData(firebaseConnecty.pacInfo.Uid, "tratamientos/" + InmTrat.TId + "/administraciones", adminDoc.AdId, adminData);
             }
-            await FirebaseConnecty.EliminarTrat(firebaseConnecty.pacInfo.Uid, "tratActual", InmTrat.TId);            
-            Run = false;            
-            //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            await firebaseConnecty.EliminarTrat(firebaseConnecty.pacInfo.Uid, "tratActual", InmTrat.TId);
+            Run = false;
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             var newPage = new TratPage(viewModel)
             {
                 BindingContext = new TratViewModel(firebaseConnecty)
@@ -133,7 +118,7 @@ public partial class TratDetailViewModel : BaseViewModel
         if (ans == true)
         {
             Run = true;
-            await FirebaseConnecty.EliminarTrat(firebaseConnecty.pacInfo.Uid, "tratamientos", InmTrat.TId);
+            await firebaseConnecty.EliminarTrat(firebaseConnecty.pacInfo.Uid, "tratamientos", InmTrat.TId);
             await Shell.Current.DisplayAlert("Tratamiento eliminado", "Los datos se han eliminado exitosamente.", "Ok");
             Run = false;
             var newPage = new TratPage(viewModel)

@@ -16,7 +16,7 @@ public partial class HistoViewModel : BaseViewModel
         VsblHis = firebaseConnecty.userInfo.IsEmailVerified;
         GetHisto();
     }
-    public ObservableCollection<HistoriaModel> Historias { get; set; } = new();
+    public ObservableCollection<HistoriaModel> Historias { get; set; } = [];
 
     [ObservableProperty]
     public bool vsblHis;
@@ -24,7 +24,7 @@ public partial class HistoViewModel : BaseViewModel
     async void GetHisto()
     {
         Run = true;
-        var historias = await FirebaseConnecty.GetHistoriasModel(firebaseConnecty.pacInfo.Uid);
+        var historias = await firebaseConnecty.GetModelList<HistoriaModel>(firebaseConnecty.pacInfo.Uid, "historial");
         if (historias != null && historias.Count > 0)
         {
             Historias.Clear();

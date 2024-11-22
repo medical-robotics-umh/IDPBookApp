@@ -17,12 +17,12 @@
             <Label Text="NUEVA ADMINISTRACIÓN" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
             <Frame Padding="10,10" Margin="15,20" HasShadow="True">
-                <Grid ColumnDefinitions="Auto,*" RowDefinitions="*,*,80" RowSpacing="5">
+                <Grid ColumnDefinitions="Auto,*" RowDefinitions="auto,auto,80" RowSpacing="5">
                     <Label HorizontalOptions="Start" VerticalOptions="Start" Text="Fecha de&#x0a;administración:  " FontAttributes="Bold"/>
                     <DatePicker Date="{Binding AdFecha}" Grid.Column="1" VerticalOptions="Center" />
                     
-                    <Label Grid.Row="1" HorizontalOptions="Start" VerticalOptions="Start" Text="Ef. secundarios:" FontAttributes="Bold" />
-                    <Grid ColumnDefinitions="28,*" RowDefinitions="25,25,25,25,25,25,25" Grid.Row="1" Grid.Column="1" Margin="0,0,0,5" HorizontalOptions="Fill">
+                    <Label Grid.Row="1" HorizontalOptions="Start" VerticalOptions="Start" Text="Ef. secundarios:" FontAttributes="Bold"/>
+                    <Grid ColumnDefinitions="28,*" RowDefinitions="25,25,25,25,25,25,25" Grid.Row="1" Grid.Column="1" HorizontalOptions="Fill" ColumnSpacing="10">
                         <CheckBox  IsChecked="{Binding Ef0}" Margin="0,0,0,0" HorizontalOptions="Start" VerticalOptions="Center"/>
                         <Label Grid.Column="1" Text="Reacción cutánea." HorizontalOptions="Start" VerticalOptions="Center"/>
                         <CheckBox  Grid.Row="1" IsChecked="{Binding Ef1}" HorizontalOptions="Start" VerticalOptions="Center"/>

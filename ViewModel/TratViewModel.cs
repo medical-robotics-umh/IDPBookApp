@@ -22,11 +22,10 @@ public partial class TratViewModel : BaseViewModel
     [ObservableProperty]
     public bool aux = true;
 
-
     async void GetTrat()
     {
         Run = true;
-        var tratamientos = await FirebaseConnecty.GetTratInmunoModel(firebaseConnecty.pacInfo.Uid,"tratamientos");
+        var tratamientos = await firebaseConnecty.GetModelList<Tratamiento>(firebaseConnecty.pacInfo.Uid, "tratamientos");
         if (tratamientos != null && tratamientos.Count > 0)
         {
             Tratamientos.Clear();
@@ -34,9 +33,8 @@ public partial class TratViewModel : BaseViewModel
             {
                 Tratamientos.Add(tratamiento);
             }
-            
         }
-        var tratact= await FirebaseConnecty.GetTratInmunoModel(firebaseConnecty.pacInfo.Uid, "tratActual");
+        var tratact = await firebaseConnecty.GetModelList<Tratamiento>(firebaseConnecty.pacInfo.Uid, "tratActual");
         if (tratact != null && tratact.Count > 0)
         { 
             TratAct.Clear();

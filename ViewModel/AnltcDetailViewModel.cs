@@ -7,15 +7,11 @@ using IDPBookApp.Pages;
 namespace IDPBookApp.ViewModel;
 
 [QueryProperty("Analitica","Analitica")]
-public partial class AnltcDetailViewModel : BaseViewModel
+public partial class AnltcDetailViewModel(FirebaseConnecty firebaseConnecty) : BaseViewModel
 {
-    readonly FirebaseConnecty firebaseConnecty;
+    readonly FirebaseConnecty firebaseConnecty = firebaseConnecty;
     private readonly PrbsLabViewModel prbsLabViewModel;
     static INavigation Navigation => Shell.Current.Navigation;
-    public AnltcDetailViewModel(FirebaseConnecty firebaseConnecty) 
-    { 
-        this.firebaseConnecty = firebaseConnecty;
-    }
 
     [ObservableProperty]
     AnaliticaModel analitica;
@@ -27,7 +23,7 @@ public partial class AnltcDetailViewModel : BaseViewModel
         if (ans == true)
         {
             Run = true;
-            await FirebaseConnecty.ElimData(firebaseConnecty.pacInfo.Uid, "analiticas", Analitica.AId);
+            await firebaseConnecty.ElimDocs(firebaseConnecty.pacInfo.Uid, "analiticas", Analitica.AId);
             await Shell.Current.DisplayAlert("Analítica eliminada", "Los datos se han eliminado exitosamente.", "Ok");
             Run = false;
             var newPage = new PruebasLabPage(prbsLabViewModel)

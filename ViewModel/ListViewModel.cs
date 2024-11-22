@@ -9,7 +9,7 @@ namespace IDPBookApp.ViewModel;
 public partial class ListViewModel : BaseViewModel
 {
     readonly FirebaseConnecty firebaseConnecty;
-    public ObservableCollection<EpisodioModel> Episodios { get; set; } = new();
+    public ObservableCollection<EpisodioModel> Episodios { get; set; } = [];
     public ListViewModel(FirebaseConnecty firebaseConnecty)
     {
         this.firebaseConnecty = firebaseConnecty;
@@ -18,7 +18,7 @@ public partial class ListViewModel : BaseViewModel
     async void GetEpisodios()
     {
         Run = true;
-        var episodios = await FirebaseConnecty.GetEpisodiosModel(firebaseConnecty.pacInfo.Uid);
+        var episodios = await firebaseConnecty.GetModelList<EpisodioModel>(firebaseConnecty.pacInfo.Uid,"episodios");
         if (episodios != null && episodios.Count > 0)
         {
             Episodios.Clear();

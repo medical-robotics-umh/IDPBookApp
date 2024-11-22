@@ -20,8 +20,8 @@ public partial class OtroTratViewModel: BaseViewModel
     async void GetOtrosTrat()
     {
         Run = true;
-        var otrosTratmnts = await FirebaseConnecty.GetOtrosTratModel(firebaseConnecty.pacInfo.Uid);
-        if(otrosTratmnts != null && otrosTratmnts.Count > 0)
+        var otrosTratmnts = await firebaseConnecty.GetModelList<OtroTrat>(firebaseConnecty.pacInfo.Uid, "otrosTrat");
+        if (otrosTratmnts != null && otrosTratmnts.Count > 0)
         {
             OtrosTratmnts.Clear();
             foreach (var tratamiento in otrosTratmnts.AsEnumerable().Reverse())

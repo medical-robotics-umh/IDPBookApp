@@ -1,9 +1,9 @@
 ﻿using Firebase.Auth;
 using Firebase.Auth.Providers;
 using Firebase.Auth.Repository;
+using Google.Cloud.Firestore;
 using IDPBookApp.Models;
 using IDPBookApp.Pages;
-using Plugin.CloudFirestore;
 using System.Diagnostics;
 using System.Net.Http.Headers;
 
@@ -14,12 +14,28 @@ public class FirebaseConnecty
     {
         ApiKey = "AIzaSyCDhlYSIr_Ic07Ppa_xDYEOl3WiktvSEEs",
         AuthDomain = "idpbook-lafe-umh.firebaseapp.com",
-        Providers = new FirebaseAuthProvider[]
-        {
+        Providers =
+        [
             new GoogleProvider().AddScopes("email"),
             new EmailProvider()
-        },
+        ],
     };
+
+    private FirestoreDb db;
+    public async Task SetupFirestore()
+    {
+        if (db == null)
+        {
+            var stream = await FileSystem.OpenAppPackageFileAsync("idpbook_adminsdk.json");
+            var reader = new StreamReader(stream);
+            var contents = reader.ReadToEnd();
+            db = new FirestoreDbBuilder
+            {
+                ProjectId = "idpbook-lafe-umh",
+                JsonCredentials = contents
+            }.Build();
+        }
+    }
 
     public readonly FileUserRepository MedRepo = new("MedUsers");
     public readonly FileUserRepository PacRepo = new("ListPac");
@@ -57,27 +73,33 @@ public class FirebaseConnecty
         PacRepo.SaveUser(firebaseUserCredential.User);
         (pacInfo,firebaseCredential2) = PacRepo.ReadUser();    
     }
-    public async Task RegistMed(string username, string password, string name)
+    public async Task SavePac<T>(string uid,T modelo)
     {
-        firebaseUserCredential = await client.CreateUserWithEmailAndPasswordAsync(username, password, name);
-        await CrossCloudFirestore.Current
-                                    .Instance
-                                    .Collection("MedUsers")
-                                    .Document()
-                                    .SetAsync(new { Correo = username });
+        try
+        {
+            await db.Collection("IDPbookDB").Document(uid).SetAsync(modelo);
+        }
+        catch (Exception ex)
+        {
+            await Shell.Current.DisplayAlert("SavePac", $"Error:\n\n {ex.Message}", "Ok");
+        }
+    }
+    public async Task RegistMed(string email, string password, string name)
+    {
+        firebaseUserCredential = await client.CreateUserWithEmailAndPasswordAsync(email, password, name);
+        await db.Collection("MedUsers").AddAsync(new { Correo = email });
+        
         var apikey = config.ApiKey;
         var requestUri = "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=" + apikey;
         var idtoken = client.User.GetIdTokenAsync().Result;
-        using (var cliente = new HttpClient())
-        {
-            cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        using var cliente = new HttpClient();
+        cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            var content = new StringContent("{\"requestType\":\"VERIFY_EMAIL\",\"idToken\":\"" + idtoken + "\"}");
-            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+        var content = new StringContent("{\"requestType\":\"VERIFY_EMAIL\",\"idToken\":\"" + idtoken + "\"}");
+        content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-            var response = await cliente.PostAsync(requestUri, content);
-            response.EnsureSuccessStatusCode();
-        }
+        var response = await cliente.PostAsync(requestUri, content);
+        response.EnsureSuccessStatusCode();
     }
     public async Task<bool> CheckUser()
     {
@@ -119,23 +141,20 @@ public class FirebaseConnecty
                     "cuestionarios",
                     "episodios",
                     "historial",
+                    "otrosTrat",
                     "tratActual",
                     "tratamientos",
                     "vacunas"
                 };
                 foreach (var item in lista)
                 {
-                    var snapshot = await CrossCloudFirestore.Current.Instance
-                                                    .Collection("/IDPbookDB/" + firebaseUserCredential.User.Info.Uid + "/"+item)
-                                                    .GetAsync();
+                    var snapshot = await db.Collection("IDPbookDB/" + firebaseUserCredential.User.Info.Uid + "/"+item).GetSnapshotAsync();
                     foreach (var document in snapshot.Documents)
                     {
                         if (item == "tratamientos" || item == "tratActual")
                         {
                             // Elimina subcolección "administraciones" si existe
-                            var adminSnapshot = await document.Reference
-                                                              .Collection("administraciones")
-                                                              .GetAsync();
+                            var adminSnapshot = await document.Reference.Collection("administraciones").GetSnapshotAsync();
 
                             foreach (var adminDoc in adminSnapshot.Documents)
                             {
@@ -145,11 +164,7 @@ public class FirebaseConnecty
                         await document.Reference.DeleteAsync();
                     }
                 }                
-                await CrossCloudFirestore.Current
-                         .Instance
-                         .Collection("/IDPbookDB")
-                         .Document(firebaseUserCredential.User.Info.Uid)
-                         .DeleteAsync();
+                await db.Collection("IDPbookDB").Document(firebaseUserCredential.User.Info.Uid).DeleteAsync();
 
                 await firebaseUserCredential.User.DeleteAsync();
                 var anonimo = await client.SignInAnonymouslyAsync();
@@ -171,24 +186,29 @@ public class FirebaseConnecty
     }
     public async Task ChangePasswordAsync(string correo,string password)
     {
-        var query = await CrossCloudFirestore.Current
-                                     .Instance
-                                     .Collection("/IDPbookDB")
-                                     .WhereEqualsTo("Correo", correo)
-                                     .GetAsync();
+        var query = await db.Collection("IDPbookDB").WhereEqualTo("Correo", correo).GetSnapshotAsync();
         var pacientes = new List<Paciente>();
         foreach (var paciente in query.Documents)
         {
-            pacientes.Add(paciente.ToObject<Paciente>());
+            pacientes.Add(paciente.ConvertTo<Paciente>());
         }
         firebaseUserCredential = await client.SignInWithEmailAndPasswordAsync(correo,pacientes[0].Pass);
         await firebaseUserCredential.User.ChangePasswordAsync(password);
-        await CrossCloudFirestore.Current
-                      .Instance
-                      .Collection("IDPbookDB")
-                      .Document(firebaseUserCredential.User.Uid)
-                      .UpdateAsync("Pass", password);
+        await db.Collection("IDPbookDB").Document(firebaseUserCredential.User.Uid).UpdateAsync("Pass", password);
         //client.SignOut();
+    }
+    public async Task<QuerySnapshot> GetMedUsers(string email)
+    {
+        try
+        {
+            var count = await db.Collection("MedUsers").WhereEqualTo("Correo", email).GetSnapshotAsync();
+            return count;
+        }
+        catch (Exception ex)
+        {
+            await Shell.Current.DisplayAlert("GetMedUsers", $"Error:\n\n{ex.Message}", "Ok");
+            return null;
+        }
     }
     public async Task SendEmailAsync(string correo)
     {
@@ -205,106 +225,34 @@ public class FirebaseConnecty
             response.EnsureSuccessStatusCode();
         }
     }
-    public static async Task<List<EpisodioModel>> GetEpisodiosModel(string rutaEpis)
+    public async Task<List<Admin>> GetAdminsModel(string id,string trat,string ruta)
     {
         try
         {
-            var snapshot = await CrossCloudFirestore.Current.Instance
-                                                    .Collection("/IDPbookDB/"+rutaEpis+"/episodios")
-                                                    .GetAsync();            
-            var episodios = new List<EpisodioModel>();
-            foreach (var episodio in snapshot.Documents)
-            {
-                episodios.Add(episodio.ToObject<EpisodioModel>());              
-            }
-            return episodios;
-        }
-        catch (Exception ex)
-        {
-            Debug.WriteLine(ex);
-            await Shell.Current.DisplayAlert("GetEpisodiosModel", $"No se pudo accerder: {ex.Message}", "Ok");
-            return null;
-        }
-    }
-    public static async Task<List<HistoriaModel>> GetHistoriasModel(string ruta)
-    {
-        try
-        {
-            var snapshot = await CrossCloudFirestore.Current.Instance
-                                                    .Collection("/IDPbookDB/" + ruta + "/historial")
-                                                    .GetAsync();
-
-            var docs = new List<HistoriaModel>();
-            foreach (var doc in snapshot.Documents)
-            {
-                docs.Add(doc.ToObject<HistoriaModel>());
-            }
-            return docs;
-        }
-        catch (Exception ex)
-        {
-            Debug.WriteLine(ex);
-            await Shell.Current.DisplayAlert("GetEpisodiosModel", $"No se pudo accerder: {ex.Message}", "Ok");
-            return null;
-        }
-    }
-    public static async Task<List<AnaliticaModel>> GetAnaliticsModel(string ruta)
-    {
-        try
-        {
-            var snapshot = await CrossCloudFirestore.Current.Instance
-                                                    .Collection("/IDPbookDB/" + ruta + "/analiticas")
-                                                    .GetAsync();
-
-            var docs = new List<AnaliticaModel>();
-            foreach (var doc in snapshot.Documents)
-            {
-                docs.Add(doc.ToObject<AnaliticaModel>());
-            }
-            return docs;
-        }
-        catch (Exception ex)
-        {
-            Debug.WriteLine(ex);
-            await Shell.Current.DisplayAlert("GetAnaliticsModel", $"No se pudo accerder: {ex.Message}", "Ok");
-            return null;
-        }
-    }
-    public static async Task<List<Admin>> GetAdminsModel(string id,string trat,string ruta)
-    {
-        try
-        {
-            var snapshot = await CrossCloudFirestore.Current.Instance
-                                                    .Collection("/IDPbookDB/"+id+"/"+ruta+"/"+trat+"/administraciones")
-                                                    .GetAsync();
-
+            var snapshot = await db.Collection("IDPbookDB/"+id+"/"+ruta+"/"+trat+"/administraciones").GetSnapshotAsync();
             var docs = new List<Admin>();
             foreach (var doc in snapshot.Documents)
             {
-                docs.Add(doc.ToObject<Admin>());
+                docs.Add(doc.ConvertTo<Admin>());
             }
             return docs;
         }
         catch (Exception ex)
         {
             Debug.WriteLine(ex);
-            await Shell.Current.DisplayAlert("GetAdmins", $"No se pudo accerder: {ex.Message}", "Ok");
+            await Shell.Current.DisplayAlert("GetAdmins", $"Error: {ex.Message}", "Ok");
             return null;
         }
     }
-    public static async Task<List<Paciente>> GetPacientesModel()
+    public async Task<List<Paciente>> GetPacientesModel()
     {
         try
         {
-            var query = await CrossCloudFirestore.Current
-                                     .Instance
-                                     .Collection("/IDPbookDB")
-                                     .GetAsync();
-
+            var data = await db.Collection("IDPbookDB").GetSnapshotAsync();
             var pacientes = new List<Paciente>();
-            foreach (var paciente in query.Documents)
+            foreach (var paciente in data.Documents)
             {
-                pacientes.Add(paciente.ToObject<Paciente>());
+                pacientes.Add(paciente.ConvertTo<Paciente>());
             }
             return pacientes;
         }
@@ -315,17 +263,12 @@ public class FirebaseConnecty
             return null;
         }
     }
-    public static async Task<Paciente> GetPacienteModel(string idPac)
+    public async Task<Paciente> GetPacienteModel(string idPac)
     {
         try
         {
-            var datos = await CrossCloudFirestore.Current
-                                     .Instance
-                                     .Collection("/IDPbookDB")
-                                     .Document(idPac)
-                                     .GetAsync();
-
-            var paciente = datos.ToObject<Paciente>();
+            var datos = await db.Collection("IDPbookDB").Document(idPac).GetSnapshotAsync();
+            var paciente = datos.ConvertTo<Paciente>();
             
             return paciente;
         }
@@ -336,132 +279,54 @@ public class FirebaseConnecty
             return null;
         }
     }
-    public static async Task<List<Tratamiento>> GetTratInmunoModel(string idPac,string trat)
+    public async Task<List<T>> GetModelList<T>(string uid,string tipo)
     {
         try
         {
-            var datos = await CrossCloudFirestore.Current
-                                     .Instance
-                                     .Collection("/IDPbookDB")
-                                     .Document(idPac)
-                                     .Collection(trat)
-                                     .WhereGreaterThanOrEqualsTo("TId", "ITrat")
-                                     .GetAsync();
-
-            var tratamientos = new List<Tratamiento>();
-            foreach (var item in datos.Documents)
-            {
-                tratamientos.Add(item.ToObject<Tratamiento>());
-            }
-
-            return tratamientos;
-        }
-        catch (Exception ex)
-        {
-            Debug.WriteLine(ex);
-            await Shell.Current.DisplayAlert("GetTratInmuno", $"No se pudo obtener documento: {ex.Message}", "Ok");
-            return null;
-        }
-    }
-    public static async Task<List<OtroTrat>> GetOtrosTratModel(string idPac)
-    {
-        try
-        {
-            var datos = await CrossCloudFirestore.Current
-                                     .Instance
-                                     .Collection("/IDPbookDB")
-                                     .Document(idPac)
-                                     .Collection("tratamientos")
-                                     .WhereGreaterThanOrEqualsTo("Id","OTrat")
-                                     .GetAsync();
-
-            var tratamientos = new List<OtroTrat>();
-            foreach (var otroTrat in datos.Documents)
-            {
-                tratamientos.Add(otroTrat.ToObject<OtroTrat>());
-            }
-            return tratamientos;
-        }
-        catch (Exception ex)
-        {
-            Debug.WriteLine(ex);
-            await Shell.Current.DisplayAlert("GetPaciente", $"No se pudo obtener paciente: {ex.Message}", "Ok");
-            return null;
-        }
-    }
-    public static async Task<List<Vacuna>> GetVacunasModel(string ruta)
-    {
-        try
-        {
-            var snapshot = await CrossCloudFirestore.Current.Instance
-                                                    .Collection("/IDPbookDB/"+ruta+"/vacunas")
-                                                    .GetAsync();
-
-            var docs = new List<Vacuna>();
+            var snapshot = await db.Collection("IDPbookDB/"+uid+"/"+tipo).GetSnapshotAsync();
+            var docs = new List<T>();
             foreach (var doc in snapshot.Documents)
             {
-                docs.Add(doc.ToObject<Vacuna>());
+                docs.Add(doc.ConvertTo<T>());
             }
             return docs;
         }
         catch (Exception ex)
         {
             Debug.WriteLine(ex);
-            await Shell.Current.DisplayAlert("GetVacunasModel", $"No se pudo accerder: {ex.Message}", "Ok");
+            await Shell.Current.DisplayAlert("GetModelList", $"Error: {ex.Message}", "Ok");
             return null;
         }
     }
-    public static async Task<List<Cuestionario>> GetCuestionariosModel(string ruta)
+    public async Task SaveData<T>(string uid, string tipo, string id_doc, T modelo)
     {
         try
         {
-            var snapshot = await CrossCloudFirestore.Current.Instance
-                                                    .Collection("/IDPbookDB/" + ruta + "/cuestionarios")
-                                                    .GetAsync();
-
-            var docs = new List<Cuestionario>();
-            foreach (var doc in snapshot.Documents)
-            {
-                docs.Add(doc.ToObject<Cuestionario>());
-            }
-            return docs;
+            await db.Collection("IDPbookDB/" + uid + "/" + tipo).Document(id_doc).SetAsync(modelo);
         }
         catch (Exception ex)
         {
-            Debug.WriteLine(ex);
-            await Shell.Current.DisplayAlert("GetCuestionariosModel", $"No se pudo accerder: {ex.Message}", "Ok");
-            return null;
-        }
+            await Shell.Current.DisplayAlert("SaveData", $"Error:\n\n {ex.Message}", "Ok");
+        }        
     }
-    public static async Task ElimData(string uid,string tipo, string ruta)
+    public async Task ElimDocs(string uid, string tipo, string id_doc)
     {
         try
         {
-            await CrossCloudFirestore.Current
-                         .Instance
-                         .Collection("/IDPbookDB")
-                         .Document(uid)
-                         .Collection(tipo)
-                         .Document(ruta)
-                         .DeleteAsync();
+            await db.Collection("IDPbookDB/" + uid + "/" + tipo).Document(id_doc).DeleteAsync();
         }
         catch (Exception ex)
         {
-            await Shell.Current.DisplayAlert("Eliminar Docs", $"No se pudo eliminar:\n\n {ex.Message}", "Ok");
+            await Shell.Current.DisplayAlert("ElimData", $"Error:\n\n {ex.Message}", "Ok");
         }
     }
-    public static async Task EliminarTrat(string uid,string tipo,string documentId)
+    public async Task EliminarTrat(string uid,string tipo,string documentId)
     {
         try
         {
-            var documentReference = CrossCloudFirestore.Current
-                             .Instance
-                             .Collection("/IDPbookDB/"+uid+"/"+tipo)
-                             .Document(documentId);
-
-            // Aquí eliminamos una subcolección conocida como "administraciones"
+            var documentReference = db.Collection("IDPbookDB/" + uid + "/" + tipo).Document(documentId);
             var adminCollection = documentReference.Collection("administraciones");
-            var adminDocuments = await adminCollection.GetAsync();
+            var adminDocuments = await adminCollection.GetSnapshotAsync();
 
             foreach (var adminDoc in adminDocuments.Documents)
             {

@@ -2,15 +2,12 @@
 using CommunityToolkit.Mvvm.Input;
 using IDPBookApp.DataBase;
 using IDPBookApp.Models;
-using Plugin.CloudFirestore;
 
 namespace IDPBookApp.ViewModel;
 
 public partial class NewAdminViewModel : BaseViewModel
 {
     readonly FirebaseConnecty firebaseConnecty;
-    private readonly TratDetailViewModel viewModel;
-    static INavigation Navigation => Shell.Current.Navigation;
     public NewAdminViewModel(FirebaseConnecty firebaseConnecty)
     {
         this.firebaseConnecty = firebaseConnecty;
@@ -54,15 +51,7 @@ public partial class NewAdminViewModel : BaseViewModel
             Ef6 = Ef6,
 
         };
-        await CrossCloudFirestore.Current
-                         .Instance
-                         .Collection("IDPbookDB")
-                         .Document(firebaseConnecty.pacInfo.Uid)
-                         .Collection("tratActual")
-                         .Document(Trat)
-                         .Collection("administraciones")
-                         .Document(id)
-                         .SetAsync(NuevoTrat);
+        await firebaseConnecty.SaveData(firebaseConnecty.pacInfo.Uid, "tratActual/" + Trat + "/administraciones", id,NuevoTrat);
         Run = false;
         await Shell.Current.DisplayAlert("Administración registrada", "Los datos se han guardado correctamente.", "Ok");
         await Shell.Current.GoToAsync("../..");

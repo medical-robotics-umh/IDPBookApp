@@ -17,7 +17,7 @@
             <Label Text="{Binding InmTrat.TNom}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
             <Frame Padding="10,10" Margin="15,20" HasShadow="True">
-                <Grid ColumnDefinitions="Auto,*" RowDefinitions="*,*,*,*,*,*,*,*,80" RowSpacing="5">
+                <Grid ColumnDefinitions="Auto,*" RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,80" RowSpacing="5">
                     <Label Text="T. de tratamiento: " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
                     <Frame CornerRadius="5" HasShadow="True" WidthRequest="50" HeightRequest="50" Grid.Column="1" HorizontalOptions="End">
                         <Image Source="{Binding InmTrat.TTs}" Aspect="Fill" WidthRequest="43" HeightRequest="43">
@@ -26,7 +26,7 @@
                             </Image.Behaviors>
                         </Image>
                     </Frame>
-                    <Picker SelectedIndex="{Binding InmTrat.TTipo}" SelectedIndexChanged="Picker_SelectedIndexChanged" Grid.Column="1" Title="N/A" HeightRequest="35" IsEnabled="False" HorizontalOptions="Start" WidthRequest="90">
+                    <Picker SelectedIndex="{Binding InmTrat.TTipo}" SelectedIndexChanged="Picker_SelectedIndexChanged" Grid.Column="1" Title="N/A" HeightRequest="35" IsEnabled="False" HorizontalOptions="Start" WidthRequest="100">
                         <Picker.Items>
                             <x:String>Intravenoso</x:String>
                             <x:String>Subcutáneo</x:String>
@@ -37,7 +37,7 @@
                     <Entry Text="{Binding InmTrat.TFecha}" Grid.Column="1" Grid.Row="1" VerticalOptions="Center" IsReadOnly="True"/>
 
                     <Label Grid.Row="2" HorizontalOptions="Start" VerticalOptions="Center" Text="Preparado:" FontAttributes="Bold" />
-                    <Picker SelectedIndex="{Binding InmTrat.TPrep}" Grid.Row="2" Grid.Column="1" Title="▼ Seleccionar marca" HorizontalOptions="Fill" IsVisible="{Binding Intvsbl}" IsEnabled="False">
+                    <Picker SelectedIndex="{Binding InmTrat.TPrepI}" Grid.Row="2" Grid.Column="1" Title="▼ Seleccionar marca" HorizontalOptions="Fill" IsVisible="{Binding Intvsbl}" IsEnabled="False">
                         <Picker.Items>
                             <x:String>Privigen®</x:String>
                             <x:String>Flebogamma®</x:String>
@@ -47,7 +47,7 @@
                             <x:String>Octagamocta®</x:String>
                         </Picker.Items>
                     </Picker>
-                    <Picker SelectedIndex="{Binding InmTrat.TPrep}" Grid.Row="2" Grid.Column="1" Title="▼ Seleccionar marca" HorizontalOptions="Fill" IsVisible="{Binding Subvsbl}" IsEnabled="False">
+                    <Picker SelectedIndex="{Binding InmTrat.TPrepS}" Grid.Row="2" Grid.Column="1" Title="▼ Seleccionar marca" HorizontalOptions="Fill" IsVisible="{Binding Subvsbl}" IsEnabled="False">
                         <Picker.Items>
                             <x:String>Hizentra®</x:String>
                             <x:String>Hyqvia®</x:String>
@@ -87,11 +87,11 @@
                 <Label Text="Administraciones" FontSize="Medium" FontAttributes="Bold"/>
             </HorizontalStackLayout>
 
-            <Frame HorizontalOptions="Center" WidthRequest="300" Padding="0,10" Margin="0,10" HasShadow="True">
-                <CollectionView ItemsSource="{Binding Admins}" EmptyView="Aún no hay registros" HorizontalOptions="Center" SelectionMode="Single">
+            <Frame HorizontalOptions="Center" WidthRequest="310" Padding="10" Margin="10" HasShadow="True">
+                <CollectionView ItemsSource="{Binding Admins}" EmptyView="Aún no hay administraciones" HorizontalOptions="Center" SelectionMode="Single" MinimumHeightRequest="50">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:Admin">
-                            <HorizontalStackLayout Spacing="10" Margin="10,2" HorizontalOptions="FillAndExpand">
+                            <HorizontalStackLayout Spacing="10" Margin="0,2" HorizontalOptions="CenterAndExpand">
                                 <HorizontalStackLayout.GestureRecognizers>
                                     <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TratDetailViewModel}}, Path=NavAdminDetailCommand}"/>
                                 </HorizontalStackLayout.GestureRecognizers>

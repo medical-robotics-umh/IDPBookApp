@@ -7,16 +7,11 @@ using IDPBookApp.Pages;
 namespace IDPBookApp.ViewModel;
 
 [QueryProperty(nameof(Vacuna), nameof(Vacuna))]
-public partial class VacunaDetailViewModel : BaseViewModel
+public partial class VacunaDetailViewModel(FirebaseConnecty firebaseConnecty) : BaseViewModel
 {
-    readonly FirebaseConnecty firebaseConnecty;
+    readonly FirebaseConnecty firebaseConnecty = firebaseConnecty;
     private readonly VacunasViewModel viewModel;
     static INavigation Navigation => Shell.Current.Navigation;
-
-    public VacunaDetailViewModel(FirebaseConnecty firebaseConnecty)
-    {
-        this.firebaseConnecty = firebaseConnecty;
-    }
 
     [ObservableProperty]
     Vacuna vacuna;
@@ -28,7 +23,7 @@ public partial class VacunaDetailViewModel : BaseViewModel
         if (ans == true)
         {
             Run = true;
-            await FirebaseConnecty.ElimData(firebaseConnecty.pacInfo.Uid, "vacunas", Vacuna.VId);
+            await firebaseConnecty.ElimDocs(firebaseConnecty.pacInfo.Uid, "vacunas", Vacuna.VId);
             await Shell.Current.DisplayAlert("Vacuna eliminada", "Los datos se han eliminado exitosamente.", "Ok");
             Run = false;
             var newPage = new VacunasPage(viewModel)

@@ -109,7 +109,7 @@ public partial class HistoDetailViewModel : BaseViewModel
         if (ans==true)
         {
             Run = true;
-            await FirebaseConnecty.ElimData(firebaseConnecty.pacInfo.Uid, "historial", Historia.HId);
+            await firebaseConnecty.ElimDocs(firebaseConnecty.pacInfo.Uid, "historial", Historia.HId);
             await Shell.Current.DisplayAlert("Historia eliminada", "Los datos se han eliminado exitosamente.", "Ok");
             Run = false;
             var newPage = new HistorialPage(histoViewModel)
