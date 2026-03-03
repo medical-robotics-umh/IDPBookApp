@@ -19,21 +19,21 @@
                 <Grid ColumnDefinitions="Auto,*" RowDefinitions="50,Auto,auto,Auto,auto,auto,auto,Auto,auto,auto,auto,auto,auto,80" RowSpacing="5">
                     <Label Text="Tipo:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
                     <Label Text="Paciente" Grid.Column="1" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <CheckBox IsChecked="{Binding PacVsbl}" CheckedChanged="CheckBox_CheckedChanged0" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" Margin="45,0,0,0"/>
+                    <CheckBox IsChecked="{Binding Dsbl}" CheckedChanged="CheckBox_CheckedChanged0" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" Margin="45,0,0,0"/>
                     <Label Text="Personal médico " Grid.Column="1" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" Margin="45,0,0,0"/>
                     <CheckBox x:Name="check1" CheckedChanged="CheckBox_CheckedChanged1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Margin="175,0,0,0"/>
 
                     <Label Grid.Row="1" Text="Nombre:   " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
                     <Entry Grid.Row="1" Text="{Binding NombPac}" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa nombre" HorizontalTextAlignment="Start"  HeightRequest="35" Keyboard="Text" ReturnType="Go"/>
 
-                    <Label Grid.Row="2" Text="Apellidos:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" IsVisible="{Binding PacVsbl}"/>
-                    <Entry Text="{Binding ApllPac}" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" IsVisible="{Binding PacVsbl}" Placeholder="Ingresa apellidos" HorizontalTextAlignment="Start"  HeightRequest="35" Keyboard="Text" ReturnType="Go"/>
+                    <Label Grid.Row="2" Text="Apellidos:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" IsVisible="{Binding Dsbl}"/>
+                    <Entry Text="{Binding ApllPac}" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" IsVisible="{Binding Dsbl}" Placeholder="Ingresa apellidos" HorizontalTextAlignment="Start"  HeightRequest="35" Keyboard="Text" ReturnType="Go"/>
 
                     <Label Grid.Row="3" Text="Correo:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
                     <Entry Text="{Binding EmailPac}" Grid.Row="3" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa correo" HorizontalTextAlignment="Start"  HeightRequest="35" Keyboard="Email" ReturnType="Go"/>
 
-                    <Label Grid.Row="4" Text="Sexo:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" IsVisible="{Binding PacVsbl}"/>
-                    <Picker Grid.Row="4" Grid.Column="1" Title="▼ Seleccionar sexo"  HeightRequest="35" SelectedItem="{Binding SexG}" IsVisible="{Binding PacVsbl}">
+                    <Label Grid.Row="4" Text="Sexo:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" IsVisible="{Binding Dsbl}"/>
+                    <Picker Grid.Row="4" Grid.Column="1" Title="▼ Seleccionar sexo"  HeightRequest="35" SelectedItem="{Binding SexG}" IsVisible="{Binding Dsbl}">
                         <Picker.Items>
                             <x:String>femenino</x:String>
                             <x:String>masculino</x:String>
@@ -41,14 +41,14 @@
                         </Picker.Items>
                     </Picker>
 
-                    <Label Grid.Row="5" Text="Fecha Nac. " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" IsVisible="{Binding PacVsbl}"/>
-                    <DatePicker Date="{Binding FNac}" DateSelected="DatePicker_DateSelected"  CharacterSpacing="2" Format="d" Grid.Row="5" Grid.Column="1" HorizontalOptions="Start" IsVisible="{Binding PacVsbl}" />
+                    <Label Grid.Row="5" Text="Fecha Nac. " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" IsVisible="{Binding Dsbl}"/>
+                    <DatePicker Date="{Binding FNac}" DateSelected="DatePicker_DateSelected"  CharacterSpacing="2" Format="d" Grid.Row="5" Grid.Column="1" HorizontalOptions="Start" IsVisible="{Binding Dsbl}"/>
 
-                    <Label Grid.Row="6" Text="Edad:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" IsVisible="{Binding PacVsbl}"/>
-                    <Entry Text="{Binding EdadPac}" Grid.Row="6" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa correo" HorizontalTextAlignment="Start"  HeightRequest="35" IsVisible="{Binding PacVsbl}" IsEnabled="False"/>
+                    <Label Grid.Row="6" Text="Edad:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" IsVisible="{Binding Dsbl}"/>
+                    <Entry Text="{Binding EdadPac}" Grid.Row="6" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa correo" HorizontalTextAlignment="Start"  HeightRequest="35" IsVisible="{Binding Dsbl}" IsEnabled="False"/>
 
-                    <Label Grid.Row="7" Text="Diagnóstico:  " FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start" Margin="0,10,0,0" IsVisible="{Binding PacVsbl}"/>
-                    <Picker IsVisible="{Binding PacVsbl}" SelectedIndex="{Binding DiagPpal}" SelectedIndexChanged="Picker_SelectedIndexChanged" Grid.Row="7" Grid.Column="1" Title="▼ Seleccionar diagnostico"  HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Label Grid.Row="7" Text="Diagnóstico:  " FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="Start" Margin="0,10,0,0" IsVisible="{Binding Dsbl}"/>
+                    <Picker IsVisible="{Binding Dsbl}" SelectedIndex="{Binding DiagPpal}" Grid.Row="7" Grid.Column="1" Title="▼ Seleccionar diagnostico"  HorizontalOptions="Fill" VerticalOptions="Center">
                         <Picker.Items>
                             <x:String>Inmunodeficiencia Común Variable</x:String>
                             <x:String>Agammaglobulinemia ligada al X</x:String>
@@ -65,22 +65,22 @@
                             <x:String>Candidiasis Mucocutanea Crónica</x:String>
                             <x:String>Otro</x:String>
                         </Picker.Items>
-                    </Picker>                    
+                    </Picker>
 
-                    <Label Grid.Row="8" Text="Fecha Diag." FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" IsVisible="{Binding PacVsbl}" IsEnabled="{Binding PacVsbl1}"/>
-                    <DatePicker Date="{Binding FDiag}" IsVisible="{Binding PacVsbl}" IsEnabled="{Binding PacVsbl1}" CharacterSpacing="2" Format="d" Grid.Row="8" Grid.Column="1" HorizontalOptions="Start" />
+                    <Label IsVisible="{Binding FVsbl}" Grid.Row="8" Text="Fecha Diag." FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" />
+                    <DatePicker IsVisible="{Binding FVsbl}" Date="{Binding FDiag}" CharacterSpacing="2" Format="d" Grid.Row="8" Grid.Column="1" HorizontalOptions="Start" />
 
-                    <Label Grid.Row="9" Text="Otro Diag. 1:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" IsVisible="{Binding PacVsbl}"/>
-                    <Entry Text="{Binding OtroDiag1}" IsVisible="{Binding PacVsbl}" Grid.Row="9" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa otro diagnostico 1" HorizontalTextAlignment="Start"  HeightRequest="35" ReturnType="Next"/>
+                    <Label Grid.Row="9" Text="Otro Diag. 1:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" IsVisible="{Binding DiagVsbl}"/>
+                    <Entry Text="{Binding OtroDiag1}" IsVisible="{Binding DiagVsbl}" Grid.Row="9" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa otro diagnostico 1" HorizontalTextAlignment="Start"  HeightRequest="35" ReturnType="Next"/>
 
-                    <Label Grid.Row="10" Text="Fecha Diag. 1:  " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" IsVisible="{Binding PacVsbl}"/>
-                    <DatePicker Date="{Binding FDiag1}" IsVisible="{Binding PacVsbl}" CharacterSpacing="2" Format="d" Grid.Row="10" Grid.Column="1" HorizontalOptions="Start" />
+                    <Label Grid.Row="10" Text="Fecha Diag. 1:  " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" IsVisible="{Binding DiagVsbl}"/>
+                    <DatePicker Date="{Binding FDiag1}" IsVisible="{Binding DiagVsbl}" CharacterSpacing="2" Format="d" Grid.Row="10" Grid.Column="1" HorizontalOptions="Start" />
 
-                    <Label Grid.Row="11" Text="Otro Diag. 2:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" IsVisible="{Binding PacVsbl}"/>
-                    <Entry Text="{Binding OtroDiag2}" IsVisible="{Binding PacVsbl}" Grid.Row="11" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa otro diagnostico 2" HorizontalTextAlignment="Start"  HeightRequest="35" ReturnType="Next"/>
+                    <Label Grid.Row="11" Text="Otro Diag. 2:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" IsVisible="{Binding DiagVsbl}"/>
+                    <Entry Text="{Binding OtroDiag2}" IsVisible="{Binding DiagVsbl}" Grid.Row="11" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa otro diagnostico 2" HorizontalTextAlignment="Start"  HeightRequest="35" ReturnType="Next"/>
 
-                    <Label Grid.Row="12" Text="Fecha Diag. 2:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" IsVisible="{Binding PacVsbl}"/>
-                    <DatePicker Date="{Binding FDiag2}" IsVisible="{Binding PacVsbl}" CharacterSpacing="2" Format="d" Grid.Row="12" Grid.Column="1" HorizontalOptions="Start" />
+                    <Label Grid.Row="12" Text="Fecha Diag. 2:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start" IsVisible="{Binding DiagVsbl}"/>
+                    <DatePicker Date="{Binding FDiag2}" IsVisible="{Binding DiagVsbl}" CharacterSpacing="2" Format="d" Grid.Row="12" Grid.Column="1" HorizontalOptions="Start" />
 
                     <Button Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="-100,0,0,0" Text="Agregar" WidthRequest="90" HeightRequest="45" Command="{Binding NewUserCommand}"/>
                     <Button Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="100,0,0,0" Text="Salir" BackgroundColor="#E67E22" WidthRequest="90" HeightRequest="45" Command="{Binding BackBtnCommand}"/>

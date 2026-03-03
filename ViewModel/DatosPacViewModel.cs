@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using IDPBookApp.DataBase;
 using System.Globalization;
 
@@ -13,9 +14,17 @@ public partial class DatosPacViewModel : BaseViewModel
     }
 
     [ObservableProperty]
-    int fecha;
+    int edad;
     [ObservableProperty]
-    bool vsbl = true;
+    bool vsbl = false;
+    [ObservableProperty]
+    bool vsbl2 = false;
+    [ObservableProperty]
+    bool vsbl3 = false;
+    [ObservableProperty]
+    int diag;
+    [ObservableProperty]
+    bool editt = false;
 
     async void GetPac()
     {
@@ -30,16 +39,63 @@ public partial class DatosPacViewModel : BaseViewModel
                 {
                     añosTranscurridos--; //Resta un año si el cumpleaños aún no ha ocurrido este año
                 }
-                Fecha = añosTranscurridos;
+                Edad = añosTranscurridos;
+                Diag = Paciente.Diagnsc;
             }
-            if (Paciente.Diagnsc == 13)
+            if (Paciente.Diagnsc != 13)
             {
-                Vsbl = false;
+                Vsbl = true;
+            }
+            if (Paciente.OtroDiag1 != null)
+            {
+                Vsbl2 = true;
+            }
+            if (Paciente.OtroDiag2 != null)
+            {
+                Vsbl3 = true;
             }
         }
         catch (Exception ex)
         {
             await Shell.Current.DisplayAlert("AVISO!!!", $"No se pudo obtener paciente: {ex.Message}", "Ok");
         }
+    }
+
+    [RelayCommand]
+    async Task Edit()
+    {
+        var aux = await App.Current.MainPage.DisplayAlert("AVISO", "¿Desea actualizar los datos personales?", "Si","No");
+        if (aux)
+        {
+            Editt = true;
+        }
+        else
+        {
+            Editt = false;
+        }
+    }
+
+    [RelayCommand]
+    async Task Save()
+    {
+        Paciente.Diagnsc = Diag;
+        await firebaseConnecty.SavePac(firebaseConnecty.pacInfo.Uid, Paciente);
+        await App.Current.MainPage.DisplayAlert("Correcto", "Se han actualizado los datos del usuario: " + Paciente.Nombre, "Ok");
+        Editt = false;
+    }
+
+    partial void OnDiagChanged(int value)
+    {
+        if (value == -1)
+        {
+            Vsbl = false;
+            Vsbl2 = false;
+            Vsbl3 = false;
+            return;
+        }
+        bool aux = value == 13;
+        Vsbl = !aux;
+        Vsbl2 = aux;
+        Vsbl3 = aux;
     }
 }

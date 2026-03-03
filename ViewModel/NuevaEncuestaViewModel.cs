@@ -31,38 +31,45 @@ public partial class NuevaEncuestaViewModel(FirebaseConnecty firebaseConnecty) :
     [RelayCommand]
     async Task NewCuest()
     {
-        Run = true;
-        Contador++;
-        var id = "Cuest" + DateTimeOffset.Now.ToUnixTimeSeconds().ToString();
-        var NuevoCuest = new Cuestionario
+        if (QEscala != 0)
         {
-            QId = id,
-            QName = "Cuestionario " + Contador.ToString(),
-            QFecha = DateTime.Today.ToString("dd/MM/yyyy"),
-            QMovil = QMovil,
-            QCuid = QCuid,
-            QActDia = QActDia,
-            QDolor = QDolor,
-            QAnsd = QAnsd,
-            QEscala = Math.Round(QEscala, 0),
-            QDesc = QDesc
-        };
-        await firebaseConnecty.SaveData(firebaseConnecty.pacInfo.Uid, "cuestionarios", id, NuevoCuest);
-        Run = false;
-        if (ValidCuest == true)
-        {
-            await Shell.Current.DisplayAlert("Cuestionario registrado", "Los datos se han guardado correctamente.", "Ok");
-            var newPage = new EncuestasPage(encuestasViewModel)
+            Run = true;
+            Contador++;
+            var id = "Cuest" + DateTimeOffset.Now.ToUnixTimeSeconds().ToString();
+            var NuevoCuest = new Cuestionario
             {
-                BindingContext = new EncuestasViewModel(firebaseConnecty)
+                QId = id,
+                QName = "Cuestionario " + Contador.ToString(),
+                QFecha = DateTime.Today.ToString("dd/MM/yyyy"),
+                QMovil = QMovil,
+                QCuid = QCuid,
+                QActDia = QActDia,
+                QDolor = QDolor,
+                QAnsd = QAnsd,
+                QEscala = Math.Round(QEscala, 0),
+                QDesc = QDesc
             };
-            Navigation.InsertPageBefore(newPage, Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
-            await Shell.Current.GoToAsync("../..");
+            await firebaseConnecty.SaveData(firebaseConnecty.pacInfo.Uid, "cuestionarios", id, NuevoCuest);
+            Run = false;
+            if (ValidCuest == true)
+            {
+                await Shell.Current.DisplayAlert("Cuestionario registrado", "Los datos se han guardado correctamente.", "Ok");
+                var newPage = new EncuestasPage(encuestasViewModel)
+                {
+                    BindingContext = new EncuestasViewModel(firebaseConnecty)
+                };
+                Navigation.InsertPageBefore(newPage, Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
+                await Shell.Current.GoToAsync("../..");
+            }
+            else
+            {
+                await Shell.Current.DisplayAlert("Cuestionario registrado", "Ya puedes seguir haciendo uso de la aplicación.", "Ok");
+                await Shell.Current.GoToAsync("/MainPage");
+            }
         }
         else
         {
-            await Shell.Current.DisplayAlert("Cuestionario registrado", "Ya puedes seguir haciendo uso de la aplicación.", "Ok");
-            await Shell.Current.GoToAsync("/MainPage");
+            await Shell.Current.DisplayAlert("Campo incompleto", "La escala de dolor es un campo obligatorio, revisa que se haya seleccionado correctamente", "Ok");
         }
     }
     public override async Task OnBackButtonPressedAsync()

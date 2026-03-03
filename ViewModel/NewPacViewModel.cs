@@ -39,13 +39,26 @@ public partial class NewPacViewModel : BaseViewModel
     [ObservableProperty]
     public int diagPpal = -1;
     [ObservableProperty]
-    private bool diagncsVisbl;
+    public bool dsbl = true;
     [ObservableProperty]
-    public bool pacVsbl = true;
+    public bool diagVsbl = false;
     [ObservableProperty]
-    public bool pacVsbl1 = true;
+    public bool fVsbl = false;
     [ObservableProperty]
     public string sexG;
+
+    partial void OnDiagPpalChanged(int value)
+    {
+        if (value == -1)
+        {
+            FVsbl = false;
+            DiagVsbl = false;
+            return;
+        }
+        bool aux = value == 13;
+        FVsbl = !aux;
+        DiagVsbl = aux;
+    }
 
     [RelayCommand]
     async Task NewUser()
@@ -53,7 +66,7 @@ public partial class NewPacViewModel : BaseViewModel
         if (NombPac != string.Empty)
         {
             Run = true;
-            if (PacVsbl == true)
+            if (Dsbl == true)
             {            
                 try
                 {                    
@@ -117,7 +130,7 @@ public partial class NewPacViewModel : BaseViewModel
                     }
                 }                
             }
-            else if (PacVsbl == false)
+            else if (Dsbl == false)
             {
                 try
                 {

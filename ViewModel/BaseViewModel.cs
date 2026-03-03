@@ -113,3 +113,5 @@ public partial class BaseViewModel : ObservableObject
         return Task.CompletedTask;
     }
 }
+//dotnet publish -f net8.0-ios -c Release -p:ArchiveOnBuild=true -p:ServerAddress=192.168.1.10 -p:ServerUser=jose -p:ServerPassword=2186123 -p:TcpPort=58181 -p:_DotNetRootRemoteDirectory=/Users/jose/Library/Caches/Xamarin/XMA/SDKs/dotnet/
+//dotnet publish -f net8.0-ios -c Release /p:ArchiveOnBuild=true /p:ServerAddress=192.168.1.10 /p:ServerUser=jose /p:ServerPassword=1535187 /p:TcpPort=58181 /p:_DotNetRootRemoteDirectory=/Users/jose/Library/Caches/Xamarin/XMA/SDKs/dotnet/

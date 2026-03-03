@@ -29,7 +29,7 @@ public partial class Registro : ContentPage
         {
             vm.DiagPpal = -1;
             vm.SexG = null;
-            vm.PacVsbl = e.Value;
+            vm.Dsbl = e.Value;
             check1.IsChecked = !e.Value;
         }
     }
@@ -39,21 +39,7 @@ public partial class Registro : ContentPage
         {
             vm.DiagPpal = -1;
             vm.SexG = null;
-            vm.PacVsbl = !e.Value;
-        }
-    }
-
-    private void Picker_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        var picker = (Picker)sender;
-        int select = picker.SelectedIndex;
-        if (BindingContext is NewPacViewModel vm)
-        {
-            vm.PacVsbl1 = true;
-            if (select == 13)
-            {
-                vm.PacVsbl1 = false;
-            }
+            vm.Dsbl = !e.Value;
         }
     }
 }

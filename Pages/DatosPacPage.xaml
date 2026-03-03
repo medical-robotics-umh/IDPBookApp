@@ -16,18 +16,18 @@
             <Label Text="DATOS PACIENTE" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
             <Frame HasShadow="True" Margin="10,20" Padding="10" VerticalOptions="CenterAndExpand">
-                <Grid ColumnDefinitions="Auto,*" RowDefinitions="45,45,45,45,45,45,45,Auto,45,45,45,45" RowSpacing="5">
+                <Grid ColumnDefinitions="Auto,*" RowDefinitions="45,45,45,45,45,45,45,Auto,45,45,45,45,80" RowSpacing="5">
                     <Label Text="Nombre:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry Text="{Binding Paciente.Nombre}" IsReadOnly="True" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa nombre" HorizontalTextAlignment="Start" HeightRequest="35" Keyboard="Text"/>
+                    <Entry Text="{Binding Paciente.Nombre}" IsEnabled="{Binding Editt}" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa nombre" HorizontalTextAlignment="Start" HeightRequest="35" Keyboard="Text"/>
 
                     <Label Grid.Row="1" Text="Apellidos:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry Text="{Binding Paciente.Apelld}" IsReadOnly="True" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa apellidos" HorizontalTextAlignment="Start" HeightRequest="35" Keyboard="Text"/>
+                    <Entry Text="{Binding Paciente.Apelld}" IsEnabled="{Binding Editt}" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa apellidos" HorizontalTextAlignment="Start" HeightRequest="35" Keyboard="Text"/>
 
                     <Label Grid.Row="2" Text="Correo:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry Text="{Binding Paciente.Correo}"  IsReadOnly="True" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa correo" HorizontalTextAlignment="Start" HeightRequest="35" Keyboard="Email"/>
+                    <Entry Text="{Binding Paciente.Correo}" IsEnabled="False" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa correo" HorizontalTextAlignment="Start" HeightRequest="35" Keyboard="Email"/>
 
                     <Label Grid.Row="3" Text="Sexo:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Picker SelectedItem="{Binding Paciente.Gener}" Grid.Row="3" Grid.Column="1" Title="▼ Seleccionar sexo"  HeightRequest="35"  IsEnabled="False">
+                    <Picker SelectedItem="{Binding Paciente.Gener}" Grid.Row="3" Grid.Column="1" Title="▼ Seleccionar sexo"  HeightRequest="35"  IsEnabled="{Binding Editt}">
                         <Picker.Items>
                             <x:String>femenino</x:String>
                             <x:String>masculino</x:String>
@@ -36,13 +36,13 @@
                     </Picker>
 
                     <Label Grid.Row="4" Text="Fecha Nac. " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry Text="{Binding Paciente.FechNac}"  CharacterSpacing="2" Grid.Row="4" Grid.Column="1" HorizontalOptions="Fill" IsReadOnly="True"/>
+                    <Entry Text="{Binding Paciente.FechNac}" IsEnabled="{Binding Editt}" CharacterSpacing="2" Grid.Row="4" Grid.Column="1" HorizontalOptions="Fill"/>
 
                     <Label Grid.Row="5" Text="Edad:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry Text="{Binding Fecha}" Grid.Row="5" Grid.Column="1" HorizontalTextAlignment="Start" VerticalOptions="Center" HorizontalOptions="Fill"  HeightRequest="35" IsReadOnly="True"/>
+                    <Entry Text="{Binding Edad}" Grid.Row="5" Grid.Column="1" HorizontalTextAlignment="Start" VerticalOptions="Center" HorizontalOptions="Fill"  HeightRequest="35" IsEnabled="False"/>
 
                     <Label Grid.Row="6" Text="Diagnóstico:  " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Picker IsEnabled="False" SelectedIndex="{Binding Paciente.Diagnsc}" Grid.Row="6" Grid.Column="1" Title="Seleccionar diagnostico" HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Picker SelectedIndex="{Binding Diag}" IsEnabled="{Binding Editt}" Grid.Row="6" Grid.Column="1" Title="Seleccionar diagnostico" HorizontalOptions="Fill" VerticalOptions="Center">
                         <Picker.Items>
                             <x:String>Inmunodeficiencia Común Variable</x:String>
                             <x:String>Agammaglobulinemia ligada al X</x:String>
@@ -59,22 +59,25 @@
                             <x:String>Candidiasis Mucocutanea Crónica</x:String>
                             <x:String>Otro</x:String>
                         </Picker.Items>
-                    </Picker>                    
+                    </Picker>
 
                     <Label IsVisible="{Binding Vsbl}" Grid.Row="7" Text="Fecha Diag." FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry IsVisible="{Binding Vsbl}" Text="{Binding Paciente.FechDiag}"  IsReadOnly="True" CharacterSpacing="2" Grid.Row="7" Grid.Column="1" HorizontalOptions="Fill" Placeholder="N/A"/>
+                    <Entry IsVisible="{Binding Vsbl}" IsEnabled="{Binding Editt}" Text="{Binding Paciente.FechDiag}" CharacterSpacing="2" Grid.Row="7" Grid.Column="1" HorizontalOptions="Fill" Placeholder="N/A"/>
 
-                    <Label Grid.Row="8" Text="Otro Diag:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry Text="{Binding Paciente.OtroDiag1}" IsReadOnly="True" Grid.Row="8" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="N/A" HorizontalTextAlignment="Start"  HeightRequest="35"/>
+                    <Label IsVisible="{Binding Vsbl2}" Grid.Row="8" Text="Otro Diag:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Entry IsVisible="{Binding Vsbl2}" IsEnabled="{Binding Editt}" Text="{Binding Paciente.OtroDiag1}" Grid.Row="8" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="N/A" HorizontalTextAlignment="Start"  HeightRequest="35"/>
 
-                    <Label Grid.Row="9" Text="Fecha Diag." FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry Text="{Binding Paciente.FechDiag1}"  IsReadOnly="True" CharacterSpacing="2" Grid.Row="9" Grid.Column="1" HorizontalOptions="Fill" Placeholder="N/A"/>
+                    <Label IsVisible="{Binding Vsbl2}" Grid.Row="9" Text="Fecha Diag." FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Entry IsVisible="{Binding Vsbl2}" IsEnabled="{Binding Editt}" Text="{Binding Paciente.FechDiag1}" CharacterSpacing="2" Grid.Row="9" Grid.Column="1" HorizontalOptions="Fill" Placeholder="N/A"/>
 
-                    <Label Grid.Row="10" Text="Otro Diag:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry Text="{Binding Paciente.OtroDiag2}" IsReadOnly="True" Grid.Row="10" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="N/A" HorizontalTextAlignment="Start"  HeightRequest="35"/>
+                    <Label IsVisible="{Binding Vsbl3}" Grid.Row="10" Text="Otro Diag:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Entry IsVisible="{Binding Vsbl3}" IsEnabled="{Binding Editt}" Text="{Binding Paciente.OtroDiag2}" Grid.Row="10" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="N/A" HorizontalTextAlignment="Start"  HeightRequest="35"/>
 
-                    <Label Grid.Row="11" Text="Fecha Diag." FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Entry Text="{Binding Paciente.FechDiag2}" IsReadOnly="True" CharacterSpacing="2" Grid.Row="11" Grid.Column="1" HorizontalOptions="Fill" Placeholder="N/A"/>
+                    <Label IsVisible="{Binding Vsbl3}" Grid.Row="11" Text="Fecha Diag." FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Entry IsVisible="{Binding Vsbl3}" IsEnabled="{Binding Editt}" Text="{Binding Paciente.FechDiag2}" CharacterSpacing="2" Grid.Row="11" Grid.Column="1" HorizontalOptions="Fill" Placeholder="N/A"/>
+
+                    <Button Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="-100,0,0,0" Text="Editar" BackgroundColor="#E67E22" WidthRequest="90" HeightRequest="45" Command="{Binding EditCommand}"/>
+                    <Button Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="100,0,0,0" Text="Guardar" WidthRequest="90" HeightRequest="45" Command="{Binding SaveCommand}" IsEnabled="{Binding Editt}"/>
                 </Grid>
             </Frame>
         </VerticalStackLayout>

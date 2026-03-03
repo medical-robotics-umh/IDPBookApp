@@ -120,4 +120,6 @@ public partial class HistoDetailViewModel : BaseViewModel
             await Shell.Current.GoToAsync("../..");
         }
     }
+
+
 }

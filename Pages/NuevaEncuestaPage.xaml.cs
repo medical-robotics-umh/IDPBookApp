@@ -6,7 +6,7 @@ public partial class NuevaEncuestaPage : ContentPage
 {
     public NuevaEncuestaPage(NuevaEncuestaViewModel viewModel)
     {
-        InitializeComponent();
+        InitializeComponent();       
         BindingContext = viewModel;
     }
     protected override bool OnBackButtonPressed()
@@ -21,7 +21,7 @@ public partial class NuevaEncuestaPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        Shell.Current.Navigating += OnNavigating;
+        Shell.Current.Navigating += OnNavigating;      
     }
     protected override void OnDisappearing()
     {

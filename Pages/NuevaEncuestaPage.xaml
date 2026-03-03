@@ -18,7 +18,7 @@
             <Label Text="NUEVO CUESTIONARIO" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
             <Frame HasShadow="True" Margin="12,20" Padding="10,10">
-                <Grid ColumnDefinitions="*" RowDefinitions="*,*,*,*,*,*,*,*,*,*,*,auto,*,*,auto,*,auto,80" RowSpacing="7">
+                <Grid ColumnDefinitions="*" RowDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,auto,*,*,auto,*,auto,80" RowSpacing="5">
 
                     <Label VerticalOptions="Center" Text="Movilidad:" HorizontalOptions="Start" FontAttributes="Bold"/>
                     <Picker SelectedIndex="{Binding QMovil}" Grid.Row="1" Title="▼ Selecciona una opción" HeightRequest="35"  HorizontalOptions="Fill" >
@@ -66,16 +66,21 @@
                     </Picker>
 
                     <Label Grid.Row="10" VerticalOptions="Center" Text="Su estado de salud hoy:" FontAttributes="Bold" HorizontalOptions="Start" />
-                    <Label Grid.Row="11" VerticalOptions="Center" Text="Por favor, deslice la figura hasta el valor que en su opinion, indique lo bueno o malo que es su estado de salud el día de hoy." FontAttributes="Italic" HorizontalOptions="Start" />
-                    <Label Grid.Row="12" VerticalOptions="Center" Text="{Binding Source={x:Reference slider},Path=Value,StringFormat='Valor: {0:F0}'}"  HorizontalOptions="Center"/>
-                    <Slider Grid.Row="13" Minimum="0" Maximum="100" HorizontalOptions="Fill" ThumbImageSource="thumb" MaximumTrackColor="White" x:Name="slider" Value="{Binding QEscala}"/>
-                    <Image Grid.Row="14" Source="regla.png" Aspect="AspectFit"/>
+                    <HorizontalStackLayout Spacing="5" Grid.Row="11">
+                        <Label Text="Por favor, deslice la figura (" VerticalOptions="Center" FontAttributes="Italic"/>
+                        <Image Source="thumb" HeightRequest="25" WidthRequest="25" VerticalOptions="Center"/>
+                        <Label Text=") hasta el valor que en su" VerticalOptions="Center" FontAttributes="Italic"/>
+                    </HorizontalStackLayout>
+                    <Label Grid.Row="12" VerticalOptions="Center" Text="opinion, indique lo bueno o malo que es su estado de salud el día de hoy." FontAttributes="Italic" HorizontalOptions="Start" Margin="0,-8,0,0"/>
+                    <Label Grid.Row="13" VerticalOptions="Center" Text="{Binding Source={x:Reference slider},Path=Value,StringFormat='Valor: {0:F0}'}"  HorizontalOptions="Center" FontAttributes="Bold"/>
+                    <Slider Grid.Row="14" Minimum="0" Maximum="100" HorizontalOptions="Fill" ThumbImageSource="thumb" MaximumTrackColor="White" x:Name="slider" Value="{Binding QEscala}"/>
+                    <Image Grid.Row="15" Source="regla.png" Aspect="AspectFit"/>
 
-                    <Label Grid.Row="15" VerticalOptions="Center" Text="Describe brevemente el porque de tu puntuación:" FontAttributes="Bold" HorizontalOptions="Start" />
+                    <Label Grid.Row="16" VerticalOptions="Center" Text="Describe brevemente el porque de tu puntuación:" FontAttributes="Bold" HorizontalOptions="Start" />
                     <Editor Text="{Binding QDesc}" Grid.Row="16" Placeholder="Descripción" HorizontalTextAlignment="Start" HorizontalOptions="Fill" HeightRequest="100" />
 
-                    <Button Grid.Row="17"  HorizontalOptions="Center" Margin="-100,0,0,0" Text="Agregar" WidthRequest="90" HeightRequest="45" Command="{Binding NewCuestCommand}"/>
-                    <Button Grid.Row="17"  HorizontalOptions="Center" Margin="100,0,0,0" Text="Salir" BackgroundColor="#E67E22" WidthRequest="90" HeightRequest="45" Command="{Binding BackBtnCommand}" IsEnabled="{Binding ValidCuest}"/>
+                    <Button Grid.Row="18"  HorizontalOptions="Center" Margin="-100,0,0,0" Text="Agregar" WidthRequest="90" HeightRequest="45" Command="{Binding NewCuestCommand}"/>
+                    <Button Grid.Row="18"  HorizontalOptions="Center" Margin="100,0,0,0" Text="Salir" BackgroundColor="#E67E22" WidthRequest="90" HeightRequest="45" Command="{Binding BackBtnCommand}" IsEnabled="{Binding ValidCuest}"/>
                 </Grid>
             </Frame>
             
