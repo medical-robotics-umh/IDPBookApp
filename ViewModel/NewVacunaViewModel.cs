@@ -24,7 +24,7 @@ public partial class NewVacunaViewModel(FirebaseConnecty firebaseConnecty) : Bas
     {
         if (VNmbre == string.Empty || VNmbre == null)
         {
-            await App.Current.MainPage.DisplayAlert("Campo vacio.", "Ingresar nombre de la vacuna antes de guardar.", "Ok");
+            await Shell.Current.DisplayAlert("Campo vacio.", "Ingresar nombre de la vacuna antes de guardar.", "Ok");
         }
         else
         {

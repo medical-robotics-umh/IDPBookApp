@@ -45,6 +45,8 @@ public class FirebaseConnecty
     private FirebaseCredential firebaseCredential2;
     public UserCredential firebaseUserCredential;
     private readonly FirebaseAuthClient client = new(config);
+    private int cntr = -1;
+    private string email = "ejem@gmail.com";
 
     public async Task Login(string username, string password)
     {
@@ -57,6 +59,10 @@ public class FirebaseConnecty
             PacRepo.SaveUser(anonimo.User);
             (pacInfo, firebaseCredential2) = PacRepo.ReadUser();
             await anonimo.User.DeleteAsync();
+            // Buscar en la colección "MedUsers" el documento que tenga el campo "Correo" igual a "username" y obtener el valor del campo "Cntr", asignarlo a la variable "cntr"
+            email = username;
+            var query = await db.Collection("MedUsers").WhereEqualTo("Correo", username).GetSnapshotAsync();
+            cntr = query.Documents[0].GetValue<int>("Cntr");
         }
         else
         {
@@ -84,10 +90,10 @@ public class FirebaseConnecty
             await Shell.Current.DisplayAlert("SavePac", $"Error:\n\n {ex.Message}", "Ok");
         }
     }
-    public async Task RegistMed(string email, string password, string name)
+    public async Task RegistMed(string email, string password, string name, int centro)
     {
         firebaseUserCredential = await client.CreateUserWithEmailAndPasswordAsync(email, password, name);
-        await db.Collection("MedUsers").AddAsync(new { Correo = email });
+        await db.Collection("MedUsers").AddAsync(new {Correo = email, Cntr = centro});
         
         var apikey = config.ApiKey;
         var requestUri = "https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=" + apikey;
@@ -102,20 +108,30 @@ public class FirebaseConnecty
         response.EnsureSuccessStatusCode();
     }
     public async Task<bool> CheckUser()
-    {
+    {        
         if (MedRepo.UserExists() || PacRepo.UserExists())
         {
             (pacInfo, firebaseCredential2) = PacRepo.ReadUser();            
             (userInfo, firebaseCredential) = MedRepo.ReadUser();
+            email = userInfo.Email;
             var name = userInfo.DisplayName;
+            try
+            {
+                var query = await db.Collection("MedUsers").WhereEqualTo("Correo", userInfo.Email).GetSnapshotAsync();
+                cntr = query.Documents[0].GetValue<int>("Cntr");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
             //Falta asignar "userCredential" a "client", porque el metodo de SignOut() no reconoce ningun objeto, es decir no se ha inicado sesión explicitamente, si no por el repositorio.
             await Shell.Current.GoToAsync(nameof(MainPage));
-            await App.Current.MainPage.DisplayAlert("Bienvenido(a)", "Hola " + name + ", has iniciado sesión correctamente.", "Ok");
+            await Shell.Current.DisplayAlert("Bienvenido(a)", "Hola " + name + ", has iniciado sesión correctamente.", "Ok");
             return true;
         }
         else
         {
-            await App.Current.MainPage.DisplayAlert("Aviso", "Sesión caducada", "Ok");
+            await Shell.Current.DisplayAlert("Aviso", "Sesión caducada", "Ok");
             return false;
         }
     }
@@ -246,9 +262,51 @@ public class FirebaseConnecty
     }
     public async Task<List<Paciente>> GetPacientesModel()
     {
-        try
+        if (email == "idpbook1@gmail.com" || email == "catnogmun@gmail.com")
         {
-            var data = await db.Collection("IDPbookDB").GetSnapshotAsync();
+            try
+            {
+                var data = await db.Collection("IDPbookDB").GetSnapshotAsync();
+                var pacientes = new List<Paciente>();
+                foreach (var paciente in data.Documents)
+                {
+                    pacientes.Add(paciente.ConvertTo<Paciente>());
+                }
+                return pacientes;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                await Shell.Current.DisplayAlert("GetPacientesModel", $"No se pudo accerder: {ex.Message}", "Ok");
+                return null;
+            }
+        }
+        else
+        {
+            try
+            {
+                var data = await db.Collection("IDPbookDB").WhereEqualTo("Cntr", cntr).GetSnapshotAsync();
+                var pacientes = new List<Paciente>();
+                foreach (var paciente in data.Documents)
+                {
+                    pacientes.Add(paciente.ConvertTo<Paciente>());
+                }
+                return pacientes;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                await Shell.Current.DisplayAlert("GetPacientesModel", $"No se pudo accerder: {ex.Message}", "Ok");
+                return null;
+            }
+        }
+    }
+
+    public async Task<List<Paciente>> GetPacientesCntrModel()
+    {
+        try
+        {            
+            var data = await db.Collection("IDPbookDB").WhereEqualTo("Cntr", cntr).GetSnapshotAsync();
             var pacientes = new List<Paciente>();
             foreach (var paciente in data.Documents)
             {
@@ -263,6 +321,7 @@ public class FirebaseConnecty
             return null;
         }
     }
+
     public async Task<Paciente> GetPacienteModel(string idPac)
     {
         try

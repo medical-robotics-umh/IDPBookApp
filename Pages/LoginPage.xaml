@@ -9,8 +9,8 @@
              Title="LoginPage">
     <ScrollView>
         <Grid
-        HorizontalOptions="FillAndExpand"
-        VerticalOptions="FillAndExpand">
+        HorizontalOptions="Fill"
+        VerticalOptions="Fill">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
@@ -18,16 +18,15 @@
             <Image
                     Aspect="AspectFit"
                     Source="mainidplogo.png" Margin="50,30,50,30" BackgroundColor="Transparent"/>
-            <Frame
+            <Border
             Grid.Row="1"
             Margin="0,0,0,-50"
-            CornerRadius="50"
-            HasShadow="True">
+            StrokeShape="RoundRectangle 50">
                 <Grid
                     Margin="10,0"
-                    HorizontalOptions="FillAndExpand"
+                    HorizontalOptions="Fill"
                     RowSpacing="30"
-                    VerticalOptions="FillAndExpand">
+                    VerticalOptions="Fill">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -43,30 +42,30 @@
                     Grid.Row="0"
                     FontAttributes="Bold"
                     FontSize="24"
-                    HorizontalOptions="CenterAndExpand"
+                    HorizontalOptions="Center"
                     Text="Bienvenido"/>
                     <Label
                     Grid.Row="1"
                     Margin="0,-20,0,0"
-                    HorizontalOptions="CenterAndExpand"
+                    HorizontalOptions="Center"
                     Text="Ingresa con tu cuenta habitual."/>
                     <Entry
                         x:Name="nom"
                     Grid.Row="2"
                     Margin="0,20,0,0"
-                    HorizontalOptions="FillAndExpand"
+                    HorizontalOptions="Fill"
                     Placeholder="Correo"
                     Text="{Binding UserName}"
-                    VerticalOptions="FillAndExpand"
+                    VerticalOptions="Fill"
                         Keyboard="Email"/>
                     <Entry
                         x:Name="pas"
                     Grid.Row="3"
-                    HorizontalOptions="FillAndExpand"
+                    HorizontalOptions="Fill"
                     IsPassword="{Binding VisPass}"
                     Placeholder="Contraseña"
                     Text="{Binding UserPassword}"
-                    VerticalOptions="FillAndExpand"/>
+                    VerticalOptions="Fill"/>
                     <CheckBox 
                         Grid.Row="4"
                         IsChecked="{Binding VisPass}"
@@ -121,7 +120,7 @@
                     </Label>
                     <ActivityIndicator IsRunning = "{Binding Run}" Margin = "20" Grid.Row="8" HorizontalOptions = "Center" />
                 </Grid>
-            </Frame>
+            </Border>
         </Grid>
     </ScrollView>
 </ContentPage>

@@ -16,16 +16,16 @@
             </ImageButton>
             <Label Text="{Binding InmTrat.TNom}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
-            <Frame Padding="10,10" Margin="15,20" HasShadow="True">
+            <Border Padding="10,10" Margin="15,20">
                 <Grid ColumnDefinitions="Auto,*" RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,80" RowSpacing="5">
                     <Label Text="T. de tratamiento: " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Frame CornerRadius="5" HasShadow="True" WidthRequest="50" HeightRequest="50" Grid.Column="1" HorizontalOptions="End">
+                    <Border StrokeShape="RoundRectangle 5" WidthRequest="50" HeightRequest="50" Grid.Column="1" HorizontalOptions="End">
                         <Image Source="{Binding InmTrat.TTs}" Aspect="Fill" WidthRequest="43" HeightRequest="43">
                             <Image.Behaviors>
                                 <toolkit:IconTintColorBehavior TintColor="#E67E22"/>
                             </Image.Behaviors>
                         </Image>
-                    </Frame>
+                    </Border>
                     <Picker SelectedIndex="{Binding InmTrat.TTipo}" SelectedIndexChanged="Picker_SelectedIndexChanged" Grid.Column="1" Title="N/A" HeightRequest="35" IsEnabled="False" HorizontalOptions="Start" WidthRequest="100">
                         <Picker.Items>
                             <x:String>Intravenoso</x:String>
@@ -81,17 +81,17 @@
                     <Button IsVisible="{Binding Aux2}" Grid.Row="8" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Center" Text="Finalizar tratamiento" FontAttributes="Bold" BackgroundColor="#28B463" HeightRequest="45" Command="{Binding FinalITratCommand}"/>
                     <Button IsVisible="{Binding Aux3}" Grid.Row="8" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" Text="Eliminar" FontAttributes="Bold" BackgroundColor="#28B463" HeightRequest="45" Command="{Binding EliminarITratCommand}"/>
                 </Grid>
-            </Frame>           
+            </Border>           
 
-            <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Margin="0,20,0,0">
+            <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
                 <Label Text="Administraciones" FontSize="Medium" FontAttributes="Bold"/>
             </HorizontalStackLayout>
 
-            <Frame HorizontalOptions="Center" WidthRequest="310" Padding="10" Margin="10" HasShadow="True">
+            <Border HorizontalOptions="Center" WidthRequest="310" Padding="10" Margin="10" >
                 <CollectionView ItemsSource="{Binding Admins}" EmptyView="Aún no hay administraciones" HorizontalOptions="Center" SelectionMode="Single" MinimumHeightRequest="50">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:Admin">
-                            <HorizontalStackLayout Spacing="10" Margin="0,2" HorizontalOptions="CenterAndExpand">
+                            <HorizontalStackLayout Spacing="10" Margin="0,2" HorizontalOptions="Center">
                                 <HorizontalStackLayout.GestureRecognizers>
                                     <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TratDetailViewModel}}, Path=NavAdminDetailCommand}"/>
                                 </HorizontalStackLayout.GestureRecognizers>
@@ -107,7 +107,7 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-            </Frame>
+            </Border>
 
             <ActivityIndicator IsRunning="{Binding Run}" Margin="10" HorizontalOptions="Center"/>
         </VerticalStackLayout>

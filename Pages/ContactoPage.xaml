@@ -7,7 +7,7 @@
              x:DataType="viewmodel:MainViewModel"
              Title="ContactoPage">
     <ScrollView>
-        <VerticalStackLayout VerticalOptions="FillAndExpand">
+        <VerticalStackLayout VerticalOptions="Fill">
             <ImageButton Source="back2" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}">
                 <ImageButton.Behaviors>
                     <toolkit:IconTintColorBehavior TintColor="#28B463" />
@@ -17,7 +17,7 @@
     
             <Grid ColumnDefinitions="*,*" RowDefinitions="*,*" VerticalOptions="Center" HorizontalOptions="Center" ColumnSpacing="20" Margin="0,120,0,0">
                 <VerticalStackLayout>
-                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="150" HeightRequest="150">
+                    <Border Margin="1,10,1,7" StrokeShape="RoundRectangle 10" Padding="10" WidthRequest="150" HeightRequest="150">
                         <VerticalStackLayout Spacing="5" VerticalOptions="Center">
                             <ImageButton Source="mail" Aspect="Fill" WidthRequest="120" HeightRequest="120" Command="{Binding OpenNewGmailEmailCommand}">
                                 <ImageButton.Behaviors>
@@ -25,14 +25,14 @@
                                 </ImageButton.Behaviors>
                             </ImageButton>
                         </VerticalStackLayout>
-                    </Frame>
+                    </Border>
                     <Label Text="E-mail Unidad de" HorizontalOptions="Center" FontAttributes="Bold"/>
                     <Label Text="Inmunodeficiencias" HorizontalOptions="Center" FontAttributes="Bold"/>
                     <Label Text="Primarias" HorizontalOptions="Center" FontAttributes="Bold"/>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Grid.Column="1">
-                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="150" HeightRequest="150">
+                    <Border Margin="1,10,1,7" StrokeShape="RoundRectangle 10" Padding="10" WidthRequest="150" HeightRequest="150">
                         <VerticalStackLayout Spacing="5" VerticalOptions="Center">
                             <ImageButton Source="costumer" Aspect="Fill" WidthRequest="130" HeightRequest="130" Command="{Binding NavWebCommand}" CommandParameter="llamada">
                                 <ImageButton.Behaviors>
@@ -40,14 +40,14 @@
                                 </ImageButton.Behaviors>
                             </ImageButton>
                         </VerticalStackLayout>
-                    </Frame>
+                    </Border>
                     <Label Text="Llamada Unidad de" HorizontalOptions="Center" FontAttributes="Bold"/>
                     <Label Text="Inmunodeficiencias" HorizontalOptions="Center" FontAttributes="Bold"/>
                     <Label Text="Primarias" HorizontalOptions="Center" FontAttributes="Bold"/>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Grid.Row="1" IsVisible="{Binding Auth}">
-                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="150" HeightRequest="150">
+                    <Border Margin="1,10,1,7" StrokeShape="RoundRectangle 10" Padding="10" WidthRequest="150" HeightRequest="150">
                         <VerticalStackLayout Spacing="5" VerticalOptions="Center">
                             <ImageButton Source="users_medical" Aspect="Fill" WidthRequest="130" HeightRequest="130" Command="{Binding NavWebCommand}" CommandParameter="https://duo.app.goo.gl/7WZNjGG4mO75iu4QxNniAB">
                                 <ImageButton.Behaviors>
@@ -55,7 +55,7 @@
                                 </ImageButton.Behaviors>
                             </ImageButton>
                         </VerticalStackLayout>
-                    </Frame>
+                    </Border>
                     <Label Text="Llamada Grupal" HorizontalOptions="Center" FontAttributes="Bold"/>
                 </VerticalStackLayout>
             </Grid>

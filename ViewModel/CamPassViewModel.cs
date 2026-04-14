@@ -37,12 +37,12 @@ public partial class CamPassViewModel : BaseViewModel
             var query = await firebaseConnecty.GetMedUsers(UserMail);
             if (query.Count == 0)
             {
-                await App.Current.MainPage.DisplayAlert("Usuario no encontrado", $"No existe un usuario registrado con el correo:\n\n" + UserMail + "\n\nComprueba el correo o comunicate con el personal médico.", "Ok");
+                await Shell.Current.DisplayAlert("Usuario no encontrado", $"No existe un usuario registrado con el correo:\n\n" + UserMail + "\n\nComprueba el correo o comunicate con el personal médico.", "Ok");
             }
             else
             {
                 await firebaseConnecty.SendEmailAsync(UserMail);
-                await App.Current.MainPage.DisplayAlert("Solicitud correcta", "Se ha enviado un email con las instrucciones para restablecer tu contraseña, por favor revisa tu correo.", "Salir");
+                await Shell.Current.DisplayAlert("Solicitud correcta", "Se ha enviado un email con las instrucciones para restablecer tu contraseña, por favor revisa tu correo.", "Salir");
                 UserMail = string.Empty;
             }
         }
@@ -57,7 +57,7 @@ public partial class CamPassViewModel : BaseViewModel
                         try
                         {
                             await firebaseConnecty.ChangePasswordAsync(UserMail, VerfPassword);
-                            var ban = await App.Current.MainPage.DisplayAlert("Solicitud correcta", "Se ha actualizado la contraseña para el usuario:\n\n" + UserMail, "Iniciar sesión", "Salir");
+                            var ban = await Shell.Current.DisplayAlert("Solicitud correcta", "Se ha actualizado la contraseña para el usuario:\n\n" + UserMail, "Iniciar sesión", "Salir");
                             if (ban == true)
                             {
                                 await Shell.Current.GoToAsync("..");
@@ -68,11 +68,11 @@ public partial class CamPassViewModel : BaseViewModel
                         {
                             if (ex.Message.Contains("Index"))
                             {
-                                await App.Current.MainPage.DisplayAlert("Usuario no encontrado.", $"No existe un usuario registrado con el correo:\n\n" + UserMail + "\n\nComprueba el correo o comunicate con el personal médico.", "Ok");
+                                await Shell.Current.DisplayAlert("Usuario no encontrado.", $"No existe un usuario registrado con el correo:\n\n" + UserMail + "\n\nComprueba el correo o comunicate con el personal médico.", "Ok");
                             }
                             if (ex.Message.Contains("MISSING_PASSWORD"))
                             {
-                                await App.Current.MainPage.DisplayAlert("Usuario incorrecto.", $"Al parecer, el usuario:\n\n" + UserMail + "\n\nPertenece al personal médico, intenta de nuevo asegurandote de marcar la casilla Per. médico.", "Ok");
+                                await Shell.Current.DisplayAlert("Usuario incorrecto.", $"Al parecer, el usuario:\n\n" + UserMail + "\n\nPertenece al personal médico, intenta de nuevo asegurandote de marcar la casilla Per. médico.", "Ok");
                             }
                         }
                     }

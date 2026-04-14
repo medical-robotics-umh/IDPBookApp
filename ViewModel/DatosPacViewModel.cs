@@ -64,7 +64,7 @@ public partial class DatosPacViewModel : BaseViewModel
     [RelayCommand]
     async Task Edit()
     {
-        var aux = await App.Current.MainPage.DisplayAlert("AVISO", "¿Desea actualizar los datos personales?", "Si","No");
+        var aux = await Shell.Current.DisplayAlert("AVISO", "¿Desea actualizar los datos personales?", "Si","No");
         if (aux)
         {
             Editt = true;
@@ -80,7 +80,7 @@ public partial class DatosPacViewModel : BaseViewModel
     {
         Paciente.Diagnsc = Diag;
         await firebaseConnecty.SavePac(firebaseConnecty.pacInfo.Uid, Paciente);
-        await App.Current.MainPage.DisplayAlert("Correcto", "Se han actualizado los datos del usuario: " + Paciente.Nombre, "Ok");
+        await Shell.Current.DisplayAlert("Correcto", "Se han actualizado los datos del usuario: " + Paciente.Nombre, "Ok");
         Editt = false;
     }
 

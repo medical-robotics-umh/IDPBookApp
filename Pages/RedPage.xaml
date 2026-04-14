@@ -7,7 +7,7 @@
              x:DataType="viewmodel:MainViewModel"
              Title="RedPage">
     <ScrollView>
-        <VerticalStackLayout VerticalOptions="FillAndExpand">
+        <VerticalStackLayout VerticalOptions="Fill">
             <ImageButton Source="back2" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}">
                 <ImageButton.Behaviors>
                     <toolkit:IconTintColorBehavior TintColor="#28B463" />
@@ -17,7 +17,7 @@
 
             <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*" VerticalOptions="Center" HorizontalOptions="Center" ColumnSpacing="40" Margin="0,120,0,0">
                 <VerticalStackLayout>
-                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                    <Border Margin="1,10,1,7" StrokeShape="RoundRectangle 10" Padding="10" WidthRequest="125">
                         <VerticalStackLayout Spacing="5">
                             <ImageButton Source="telegram" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavWebCommand}" CommandParameter="https://t.me/+AVKcFxKJAnhkYWM0">
                                 <ImageButton.Behaviors>
@@ -25,43 +25,43 @@
                                 </ImageButton.Behaviors>
                             </ImageButton>
                         </VerticalStackLayout>
-                    </Frame>
+                    </Border>
                     <Label Text="Telegram" HorizontalOptions="Center" FontAttributes="Bold"/>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Grid.Column="1">
-                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                    <Border Margin="1,10,1,7" StrokeShape="RoundRectangle 10" Padding="10" WidthRequest="125">
                         <VerticalStackLayout Spacing="5">
                             <ImageButton Source="aedip" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavWebCommand}" CommandParameter="https://aedip.com/"/>
                         </VerticalStackLayout>
-                    </Frame>
+                    </Border>
                     <Label Text="AEDIP" HorizontalOptions="Center" FontAttributes="Bold"/>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Grid.Row="1">
-                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                    <Border Margin="1,10,1,7" StrokeShape="RoundRectangle 10" Padding="10" WidthRequest="125">
                         <VerticalStackLayout Spacing="5">
                             <ImageButton Source="josep" Aspect="AspectFit" WidthRequest="100" HeightRequest="100" Command="{Binding NavWebCommand}" CommandParameter="https://fcarreras.org/pacientes/enfermedades-hematologicas-ninos/inmunodeficiencias-primarias/"/>
                         </VerticalStackLayout>
-                    </Frame>
+                    </Border>
                     <Label Text="Fund. Josep Carreras" HorizontalOptions="Center" FontAttributes="Bold"/>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Grid.Column="1" Grid.Row="1">
-                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                    <Border Margin="1,10,1,7" StrokeShape="RoundRectangle 10" Padding="10" WidthRequest="125">
                         <VerticalStackLayout Spacing="5">
                             <ImageButton Source="acadip" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavWebCommand}" CommandParameter="https://acadip.org/es/quienes-somos/"/>
                         </VerticalStackLayout>
-                    </Frame>
+                    </Border>
                     <Label Text="ACADIP" HorizontalOptions="Center" FontAttributes="Bold"/>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Grid.Row="2">
-                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                    <Border Margin="1,10,1,7" StrokeShape="RoundRectangle 10" Padding="10" WidthRequest="125">
                         <VerticalStackLayout Spacing="5">
                             <ImageButton Source="ipopi" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavWebCommand}" CommandParameter="https://ipopi.org/"/>
                         </VerticalStackLayout>
-                    </Frame>
+                    </Border>
                     <Label Text="IPOPI" HorizontalOptions="Center" FontAttributes="Bold"/>
                 </VerticalStackLayout>                
             </Grid>

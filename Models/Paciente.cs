@@ -8,6 +8,8 @@ public class Paciente
     [FirestoreProperty]
     public string IdMed { get; set; }
     [FirestoreProperty]
+    public int Cntr { get; set; }
+    [FirestoreProperty]
     public string Nombre { get; set; }
     [FirestoreProperty]
     public string Apelld { get; set; }

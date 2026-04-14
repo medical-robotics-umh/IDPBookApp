@@ -15,8 +15,8 @@
             </ImageButton>
             <Label Text="DATOS PACIENTE" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
-            <Frame HasShadow="True" Margin="10,20" Padding="10" VerticalOptions="CenterAndExpand">
-                <Grid ColumnDefinitions="Auto,*" RowDefinitions="45,45,45,45,45,45,45,Auto,45,45,45,45,80" RowSpacing="5">
+            <Border Margin="10,20" Padding="10" VerticalOptions="Center">
+                <Grid ColumnDefinitions="Auto,*" RowDefinitions="45,45,45,45,45,45,45,Auto,Auto,Auto,Auto,Auto,45,80" RowSpacing="5">
                     <Label Text="Nombre:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
                     <Entry Text="{Binding Paciente.Nombre}" IsEnabled="{Binding Editt}" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Fill" Placeholder="Ingresa nombre" HorizontalTextAlignment="Start" HeightRequest="35" Keyboard="Text"/>
 
@@ -76,10 +76,29 @@
                     <Label IsVisible="{Binding Vsbl3}" Grid.Row="11" Text="Fecha Diag." FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
                     <Entry IsVisible="{Binding Vsbl3}" IsEnabled="{Binding Editt}" Text="{Binding Paciente.FechDiag2}" CharacterSpacing="2" Grid.Row="11" Grid.Column="1" HorizontalOptions="Fill" Placeholder="N/A"/>
 
-                    <Button Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="-100,0,0,0" Text="Editar" BackgroundColor="#E67E22" WidthRequest="90" HeightRequest="45" Command="{Binding EditCommand}"/>
-                    <Button Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="100,0,0,0" Text="Guardar" WidthRequest="90" HeightRequest="45" Command="{Binding SaveCommand}" IsEnabled="{Binding Editt}"/>
+                    <Label Grid.Row="12" Text="Centro:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Picker SelectedIndex="{Binding Paciente.Cntr}" IsEnabled="{Binding Editt}" Grid.Row="12" Grid.Column="1" Title="▼ Seleccionar centro médico"  HorizontalOptions="Fill" VerticalOptions="Center">
+                        <Picker.Items>
+                            <x:String>Hospital Universitario La Paz</x:String>
+                            <x:String>Hospital Gregorio Marañón</x:String>
+                            <x:String>Hospital General de Alicante</x:String>
+                            <x:String>Hospital Reína Sofía</x:String>
+                            <x:String>Hospital Dr. Negrín</x:String>
+                            <x:String>Hospital Universitario de Puerto Real</x:String>
+                            <x:String>Hospital de Bellvitge</x:String>
+                            <x:String>Hospital Germans Trias i Pujol</x:String>
+                            <x:String>Hospital Universitari i Politècnic La Fe</x:String>
+                            <x:String>Hospital Universitario de Cruces</x:String>
+                            <x:String>Hospital del Mar</x:String>
+                            <x:String>Hospital Sant Joan de Deu</x:String>
+                            <x:String>Hospital Universitario Lozano Blesa</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                    <Button Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="-100,0,0,0" Text="Editar" BackgroundColor="#E67E22" WidthRequest="90" HeightRequest="45" Command="{Binding EditCommand}"/>
+                    <Button Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="100,0,0,0" Text="Guardar" WidthRequest="90" HeightRequest="45" Command="{Binding SaveCommand}" IsEnabled="{Binding Editt}"/>
                 </Grid>
-            </Frame>
+            </Border>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

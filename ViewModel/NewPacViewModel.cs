@@ -46,6 +46,8 @@ public partial class NewPacViewModel : BaseViewModel
     public bool fVsbl = false;
     [ObservableProperty]
     public string sexG;
+    [ObservableProperty]
+    public int centro = -1;
 
     partial void OnDiagPpalChanged(int value)
     {
@@ -89,6 +91,7 @@ public partial class NewPacViewModel : BaseViewModel
                     var NuevoPaciente = new Paciente
                     {
                         IdMed = firebaseConnecty.userInfo.Uid,
+                        Cntr = Centro,
                         Nombre = NombPac,
                         Apelld = ApllPac,
                         Correo = EmailPac,
@@ -103,7 +106,7 @@ public partial class NewPacViewModel : BaseViewModel
                         Pass = "12345678"
                     };
                     await firebaseConnecty.SavePac(firebaseConnecty.pacInfo.Uid,NuevoPaciente);
-                    await App.Current.MainPage.DisplayAlert("Correcto", "Se ha creado paciente: " + NombPac, "Ok");
+                    await Shell.Current.DisplayAlert("Correcto", "Se ha creado paciente: " + NombPac, "Ok");
                     NombPac = ApllPac = EmailPac = OtroDiag1 = OtroDiag2 = string.Empty;
                     FNac = FDiag = FDiag1 = FDiag2 = DateTime.Today;
                     var Pac = new ListaPacientesPage(listaPacViewModel)
@@ -118,15 +121,15 @@ public partial class NewPacViewModel : BaseViewModel
                 {
                     if (ex.Message.Contains("MISSING_EMAIL"))
                     {
-                        await App.Current.MainPage.DisplayAlert("Aviso", "Favor ingresa un correo para el usuario nuevo.", "Ok");
+                        await Shell.Current.DisplayAlert("Aviso", "Favor ingresa un correo para el usuario nuevo.", "Ok");
                     }
                     if (ex.Message.Contains("INVALID_EMAIL"))
                     {
-                        await App.Current.MainPage.DisplayAlert("Aviso", "El correo proporcionado no es valido", "Ok");
+                        await Shell.Current.DisplayAlert("Aviso", "El correo proporcionado no es valido", "Ok");
                     }
                     if (ex.Message.Contains("EMAIL_EXISTS"))
                     {
-                        await App.Current.MainPage.DisplayAlert("Aviso", "Ya existe un paciente con el correo proporcionado, intenta de nuevo con un correo nuevo.", "Ok");
+                        await Shell.Current.DisplayAlert("Aviso", "Ya existe un paciente con el correo proporcionado, intenta de nuevo con un correo nuevo.", "Ok");
                     }
                 }                
             }
@@ -134,23 +137,24 @@ public partial class NewPacViewModel : BaseViewModel
             {
                 try
                 {
-                    await firebaseConnecty.RegistMed(EmailPac, "0987654", NombPac);                  
-                    await App.Current.MainPage.DisplayAlert("Correcto", "Se ha creado personal médico: " + NombPac + ". Se ha enviado correo de autenticación al correo del usuario.", "Ok");
+                    await firebaseConnecty.RegistMed(EmailPac, "0987654", NombPac, Centro);                  
+                    await Shell.Current.DisplayAlert("Correcto", "Se ha creado personal médico: " + NombPac + ". Se ha enviado correo de autenticación al correo del usuario.", "Ok");
                     NombPac = ApllPac = EmailPac = string.Empty;
+                    Centro = -1;
                 }
                 catch (Exception ex)
                 {
                     if (ex.Message.Contains("MISSING_EMAIL"))
                     {
-                        await App.Current.MainPage.DisplayAlert("Aviso", "Favor ingresa un correo para el usuario nuevo.", "Ok");
+                        await Shell.Current.DisplayAlert("Aviso", "Favor ingresa un correo para el usuario nuevo.", "Ok");
                     }
                     if (ex.Message.Contains("INVALID_EMAIL"))
                     {
-                        await App.Current.MainPage.DisplayAlert("Aviso", "El correo proporcionado no es valido.", "Ok");
+                        await Shell.Current.DisplayAlert("Aviso", "El correo proporcionado no es valido.", "Ok");
                     }
                     if (ex.Message.Contains("EMAIL_EXISTS"))
                     {
-                        await App.Current.MainPage.DisplayAlert("Aviso", "Ya existe un personal médico con el correo proporcionado, intenta de nuevo con un correo nuevo.", "Ok");
+                        await Shell.Current.DisplayAlert("Aviso", "Ya existe un personal médico con el correo proporcionado, intenta de nuevo con un correo nuevo.", "Ok");
                     }
                 }
             }
@@ -158,7 +162,7 @@ public partial class NewPacViewModel : BaseViewModel
         }
         else
         {
-            await App.Current.MainPage.DisplayAlert("Importante", "Favor ingresa el nombre del usuario nuevo.", "Ok");
+            await Shell.Current.DisplayAlert("Importante", "Favor ingresa el nombre del usuario nuevo.", "Ok");
         }
     }
 }

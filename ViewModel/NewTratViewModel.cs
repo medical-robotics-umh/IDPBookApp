@@ -54,7 +54,7 @@ public partial class NewTratViewModel : BaseViewModel
     {
         if (TTipo == -1 || TCad == -1)
         {
-            await App.Current.MainPage.DisplayAlert("Campos incompletos.", "Completa toda la información del tratamiento antes de agregar.", "Ok");
+            await Shell.Current.DisplayAlert("Campos incompletos.", "Completa toda la información del tratamiento antes de agregar.", "Ok");
         }
         else
         {

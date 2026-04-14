@@ -8,7 +8,7 @@
              x:DataType="viewmodel:AdminDetailViewModel"
              Title="AdminDetailPage">
     <ScrollView>
-        <VerticalStackLayout VerticalOptions="FillAndExpand">
+        <VerticalStackLayout VerticalOptions="Fill">
             <ImageButton Source="back2" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}">
                 <ImageButton.Behaviors>
                     <toolkit:IconTintColorBehavior TintColor="#28B463"/>
@@ -16,7 +16,7 @@
             </ImageButton>
             <Label Text="{Binding Adminis.AdName}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
-            <Frame Padding="10,10" Margin="15,20" HasShadow="True">
+            <Border Padding="10,10" Margin="15,20">
                 <Grid ColumnDefinitions="Auto,*" RowDefinitions="auto,auto,auto" RowSpacing="5">
                     <Label HorizontalOptions="Start" VerticalOptions="Start" Text="Fecha de&#x0a;administración:  " FontAttributes="Bold"/>
                     <DatePicker Date="{Binding Adminis.AdFecha}" Grid.Column="1" VerticalOptions="Center" IsEnabled="False"/>
@@ -41,7 +41,7 @@
 
                     <Button IsVisible="{Binding Elimvsbl}" Grid.Row="2" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" Text="Eliminar" FontAttributes="Bold" BackgroundColor="#28B463" HeightRequest="45" Command="{Binding EliminarAdminCommand}"/>
                 </Grid>
-            </Frame>
+            </Border>
 
             <ActivityIndicator IsRunning = "{Binding Run}" Margin = "10" HorizontalOptions = "Center"/>
 

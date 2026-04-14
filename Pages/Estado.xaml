@@ -18,7 +18,7 @@
             
             <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*" VerticalOptions="Center" HorizontalOptions="Center" ColumnSpacing="40" Margin="0,40,0,0">
                 <VerticalStackLayout>
-                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                    <Border Margin="1,10,1,7" StrokeShape="RoundRectangle 10" Padding="10" WidthRequest="125">
                         <VerticalStackLayout Spacing="5">
                             <ImageButton Source="procedures" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="EpisodiosPage">
                                 <ImageButton.Behaviors>
@@ -26,12 +26,12 @@
                                 </ImageButton.Behaviors>
                             </ImageButton>
                         </VerticalStackLayout>
-                    </Frame>
+                    </Border>
                     <Label Text="Episodios" HorizontalOptions="Center" FontAttributes="Bold"/>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Grid.Column="1">
-                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                    <Border Margin="1,10,1,7" StrokeShape="RoundRectangle 10" Padding="10" WidthRequest="125">
                         <VerticalStackLayout Spacing="5">
                             <ImageButton Source="microscope" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="PruebasLabPage">
                                 <ImageButton.Behaviors>
@@ -39,13 +39,13 @@
                                 </ImageButton.Behaviors>
                             </ImageButton>
                         </VerticalStackLayout>
-                    </Frame>
+                    </Border>
                     <Label Text="Pruebas de" HorizontalOptions="Center" FontAttributes="Bold"/>
                     <Label Text="laboratorio" HorizontalOptions="Center" FontAttributes="Bold"/>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Grid.Row="1" Grid.Column="0">
-                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                    <Border Margin="1,10,1,7" StrokeShape="RoundRectangle 10" Padding="10" WidthRequest="125">
                         <VerticalStackLayout Spacing="5">
                             <ImageButton Source="prescription_bottle" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="TratPage">
                                 <ImageButton.Behaviors>
@@ -53,13 +53,13 @@
                                 </ImageButton.Behaviors>
                             </ImageButton>
                         </VerticalStackLayout>
-                    </Frame>
+                    </Border>
                     <Label Text="Tratamiento con" HorizontalOptions="Center" FontAttributes="Bold"/>
                     <Label Text="Inmunoglobulinas" HorizontalOptions="Center" FontAttributes="Bold"/>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Grid.Row="1" Grid.Column="1">
-                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                    <Border Margin="1,10,1,7" StrokeShape="RoundRectangle 10" Padding="10" WidthRequest="125">
                         <VerticalStackLayout Spacing="5">
                             <ImageButton Source="capsules" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="OtroTratPage">
                                 <ImageButton.Behaviors>
@@ -67,12 +67,12 @@
                                 </ImageButton.Behaviors>
                             </ImageButton>
                         </VerticalStackLayout>
-                    </Frame>
+                    </Border>
                     <Label Text="Otros tratamientos" HorizontalOptions="Center" FontAttributes="Bold"/>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Grid.Row="2" Grid.Column="0">
-                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                    <Border Margin="1,10,1,7" StrokeShape="RoundRectangle 10" Padding="10" WidthRequest="125">
                         <VerticalStackLayout Spacing="5">
                             <ImageButton Source="vaccine" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="VacunasPage">
                                 <ImageButton.Behaviors>
@@ -80,12 +80,12 @@
                                 </ImageButton.Behaviors>
                             </ImageButton>
                         </VerticalStackLayout>
-                    </Frame>
+                    </Border>
                     <Label Text="Vacunación" HorizontalOptions="Center" FontAttributes="Bold"/>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Grid.Row="2" Grid.Column="1">
-                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                    <Border Margin="1,10,1,7" StrokeShape="RoundRectangle 10" Padding="10" WidthRequest="125">
                         <VerticalStackLayout Spacing="5">
                             <ImageButton Source="evaluation" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="EncuestasPage">
                                 <ImageButton.Behaviors>
@@ -93,7 +93,7 @@
                                 </ImageButton.Behaviors>
                             </ImageButton>
                         </VerticalStackLayout>
-                    </Frame>
+                    </Border>
                     <Label Text="Cuestionario Calidad" HorizontalOptions="Center" FontAttributes="Bold"/>
                     <Label Text="de vida" HorizontalOptions="Center" FontAttributes="Bold"/>
                 </VerticalStackLayout>

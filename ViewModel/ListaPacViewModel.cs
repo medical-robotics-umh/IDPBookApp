@@ -20,7 +20,7 @@ public partial class ListaPacViewModel:BaseViewModel
     }
 
     async void GetPacientes()
-    {
+    {        
         Run = true;
         var pacientes = await firebaseConnecty.GetPacientesModel();
         if (pacientes != null && pacientes.Count > 0) 
@@ -37,7 +37,7 @@ public partial class ListaPacViewModel:BaseViewModel
     [RelayCommand]
     private async Task GetIdPaciente(Paciente paciente)
     {
-        string ans = await App.Current.MainPage.DisplayActionSheet("¿Que acción desear realizar con los datos de " + paciente.Nombre + "?", "Cancelar",null, "Obtener datos", "Eliminar paciente");
+        string ans = await Shell.Current.DisplayActionSheet("¿Que acción desear realizar con los datos de " + paciente.Nombre + "?", "Cancelar",null, "Obtener datos", "Eliminar paciente");
         if (ans == "Obtener datos")
         {
             Run = true;
@@ -48,12 +48,12 @@ public partial class ListaPacViewModel:BaseViewModel
         }
         else if (ans == "Eliminar paciente")
         {
-            bool ans2 = await App.Current.MainPage.DisplayAlert("¡Aviso!", "Si eliminas el paciente, los datos no se podrán recuperar.\n\n¿Confirmas la eliminación del paciente?", "Si", "No");
+            bool ans2 = await Shell.Current.DisplayAlert("¡Aviso!", "Si eliminas el paciente, los datos no se podrán recuperar.\n\n¿Confirmas la eliminación del paciente?", "Si", "No");
             if (ans2 == true)
             {
                 Run=true;
                 await firebaseConnecty.ChangePac(paciente.Correo, paciente.Pass, false);
-                await App.Current.MainPage.DisplayAlert("Paciente eliminado", "El paciente:\n\n" + paciente.Nombre + " " + paciente.Apelld + "\n\nha sido eliminado exitosamente", "Ok");
+                await Shell.Current.DisplayAlert("Paciente eliminado", "El paciente:\n\n" + paciente.Nombre + " " + paciente.Apelld + "\n\nha sido eliminado exitosamente", "Ok");
                 Run = false;
                 await Shell.Current.GoToAsync(nameof(MainPage));
             }   

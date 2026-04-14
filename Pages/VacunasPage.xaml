@@ -8,7 +8,7 @@
              x:DataType="viewmodel:VacunasViewModel"
              Title="VacunasPage">
     <ScrollView>
-        <VerticalStackLayout VerticalOptions="FillAndExpand">
+        <VerticalStackLayout VerticalOptions="Fill">
             <ImageButton Source="back2" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}">
                 <ImageButton.Behaviors>
                     <toolkit:IconTintColorBehavior TintColor="#28B463" />
@@ -16,7 +16,7 @@
             </ImageButton>
             <Label Text="VACUNACIÓN" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
-            <Frame Margin="0,30,0,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125" x:Name="estado" HorizontalOptions="Center">
+            <Border Margin="0,30,0,7" StrokeShape="RoundRectangle 10" Padding="10" WidthRequest="125" x:Name="estado" HorizontalOptions="Center">
                 <VerticalStackLayout>
                     <ImageButton Source="files_medical" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavegarCommand}" CommandParameter="Nueva_Vacuna">
                         <ImageButton.Behaviors>
@@ -24,18 +24,18 @@
                         </ImageButton.Behaviors>
                     </ImageButton>
                 </VerticalStackLayout>
-            </Frame>
+            </Border>
             <Label Text="Agregar nueva vacuna" HorizontalOptions="Center" FontAttributes="Bold"/>
 
-            <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Margin="0,30,0,0">
+            <HorizontalStackLayout HorizontalOptions="Center" Margin="0,30,0,0">
                 <Label Text="Listado de vacunas" FontSize="Medium" FontAttributes="Bold"/>
             </HorizontalStackLayout>
 
-            <Frame HorizontalOptions="CenterAndExpand" Padding="10,10" Margin="12,10" HasShadow="True">
+            <Border HorizontalOptions="Center" Padding="10,10" Margin="12,10">
                 <CollectionView ItemsSource="{Binding Vacunas}" EmptyView="Aún no hay vacunas" HorizontalOptions="Center" SelectionMode="Single" MinimumHeightRequest="50" MinimumWidthRequest="400">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:Vacuna">
-                            <HorizontalStackLayout Spacing="10" Margin="0,2" HorizontalOptions="StartAndExpand">
+                            <HorizontalStackLayout Spacing="10" Margin="0,2" HorizontalOptions="Start">
                                 <HorizontalStackLayout.GestureRecognizers>
                                     <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:VacunasViewModel}}, Path=NavVacunDtailCommand}"/>
                                 </HorizontalStackLayout.GestureRecognizers>
@@ -51,7 +51,7 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-            </Frame>
+            </Border>
             
             <ActivityIndicator IsRunning = "{Binding Run}" Margin = "10" HorizontalOptions = "Center" />
                         

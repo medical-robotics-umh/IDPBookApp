@@ -7,7 +7,7 @@
              x:DataType="viewmodel:MainViewModel"
              Title="DocsPage">
     <ScrollView>
-        <VerticalStackLayout VerticalOptions="FillAndExpand">
+        <VerticalStackLayout VerticalOptions="Fill">
             <ImageButton Source="back2" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}">
                 <ImageButton.Behaviors>
                     <toolkit:IconTintColorBehavior TintColor="#28B463" />
@@ -17,7 +17,7 @@
 
             <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*" VerticalOptions="Center" HorizontalOptions="Center" ColumnSpacing="40" Margin="0,120,0,0">
                 <VerticalStackLayout>
-                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                    <Border Margin="1,10,1,7" StrokeShape="RoundRectangle 10" Padding="10" WidthRequest="125">
                         <VerticalStackLayout Spacing="5">
                             <ImageButton Source="bookmark" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavWebCommand}" CommandParameter="https://drive.google.com/drive/folders/1SDSi4fPLPCWrm4bAsB9wNj-Ne-V-e6z5?usp=sharing">
                                 <ImageButton.Behaviors>
@@ -25,12 +25,12 @@
                                 </ImageButton.Behaviors>
                             </ImageButton>
                         </VerticalStackLayout>
-                    </Frame>
+                    </Border>
                     <Label Text="Documentos" HorizontalOptions="Center" FontAttributes="Bold"/>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Grid.Column="1">
-                    <Frame Margin="1,10,1,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125">
+                    <Border Margin="1,10,1,7" StrokeShape="RoundRectangle 10" Padding="10" WidthRequest="125">
                         <VerticalStackLayout Spacing="5">
                             <ImageButton Source="film" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding NavWebCommand}" CommandParameter="https://www.youtube.com/user/nuevohospitallafe1">
                                 <ImageButton.Behaviors>
@@ -38,7 +38,7 @@
                                 </ImageButton.Behaviors>
                             </ImageButton>
                         </VerticalStackLayout>
-                    </Frame>
+                    </Border>
                     <Label Text="Canal de Youtube" HorizontalOptions="Center" FontAttributes="Bold"/>
                 </VerticalStackLayout>
             </Grid>

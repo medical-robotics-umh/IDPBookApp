@@ -16,7 +16,7 @@
             </ImageButton>
             <Label Text="NUEVA HISTORIA" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
-            <Frame HasShadow="True" Margin="18" Padding="10">
+            <Border Margin="18" Padding="10">
                 <Grid ColumnDefinitions="auto,*" RowDefinitions="auto,auto,auto,auto,auto,auto,auto,80" RowSpacing="5">
                     <Label Text="Año diagnostico:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>                    
                     <Picker ItemsSource="{Binding Years}" SelectedItem="{Binding FDiag}" SelectedIndex="{Binding FDiagIndx}" Grid.Column="1" Title="Seleccionar año"  HorizontalOptions="Start" VerticalOptions="Center"/>
@@ -193,7 +193,7 @@
                     <Button Grid.Row="7" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="-100,0,0,0" Text="Agregar" WidthRequest="90" HeightRequest="45" Command="{Binding NewHistoCommand}"/>
                     <Button Grid.Row="7" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="100,0,0,0" Text="Salir" BackgroundColor="#E67E22" WidthRequest="90" HeightRequest="45" Command="{Binding BackBtnCommand}"/>
                 </Grid>
-            </Frame>
+            </Border>
             
             <ActivityIndicator IsRunning = "{Binding Run}" Margin = "10" HorizontalOptions = "Center"/>
             

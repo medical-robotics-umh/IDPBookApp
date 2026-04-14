@@ -16,10 +16,10 @@
 
             <Label Text="{Binding Episodio.EName}" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
-            <Frame HasShadow="True" Margin="15,20" Padding="10,1,10,10" VerticalOptions="CenterAndExpand">
+            <Border Margin="15,20" Padding="10,1,10,10" VerticalOptions="Center">
                 <Grid ColumnDefinitions="Auto,*,*" RowDefinitions="40,40,40,40,40,40,Auto,Auto,Auto,Auto,40,40,40,40,40,40,80" RowSpacing="10">
                     <Label Text="Fecha de episodio:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <Label Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="{Binding Episodio.EFecha}"/>
+                    <Label Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Start" Text="{Binding Episodio.EFecha}"/>
 
                     <Label Grid.Row="1" Text="¿Visita a atención&#10;primaria?" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
                     <Picker SelectedIndex="{Binding Episodio.EAtenPrim}" IsEnabled="False" Grid.Row="1" Grid.Column="1" Title="▼ Seleccionar Sí/No" HorizontalOptions="Fill" VerticalOptions="Center">
@@ -140,7 +140,7 @@
 
                     <Button Grid.Row="16" Grid.ColumnSpan="3" HorizontalOptions="Center" Text="Eliminar" BackgroundColor="#28B463" WidthRequest="90" HeightRequest="45" Command="{Binding ElimHistoCommand}"/>
                 </Grid>
-            </Frame>
+            </Border>
         </StackLayout>
     </ScrollView>
 </ContentPage>

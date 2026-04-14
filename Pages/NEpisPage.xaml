@@ -16,10 +16,10 @@
             </ImageButton>
             <Label Text="NUEVO EPISODIO" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
-            <Frame HasShadow="True" Margin="15,20" Padding="10,1,10,10" VerticalOptions="StartAndExpand">
+            <Border Margin="15,20" Padding="10,1,10,10" VerticalOptions="Start">
                 <Grid ColumnDefinitions="Auto,*,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,80" RowSpacing="8">
                     <Label Text="Fecha de episodio:" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
-                    <DatePicker Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="StartAndExpand" CharacterSpacing="2" Format="d" Date="{Binding Fecha_Epis}"/>
+                    <DatePicker Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Start" CharacterSpacing="2" Format="d" Date="{Binding Fecha_Epis}"/>
 
                     <Label Grid.Row="1" Text="¿Visita a atención&#10;primaria?" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
                     <Picker SelectedIndex="{Binding Aten}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Title="▼ Seleccionar Sí/No"  HorizontalOptions="Fill" VerticalOptions="Center">
@@ -145,7 +145,7 @@
                     <Button Grid.Row="16" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Center" Margin="-100,0,0,0" Text="Agregar" WidthRequest="90" HeightRequest="45" Command="{Binding CargarCommand}"/>
                     <Button Grid.Row="16" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Center" Margin="100,0,0,0" Text="Salir" BackgroundColor="#E67E22" WidthRequest="90" HeightRequest="45" Command="{Binding BackBtnCommand}"/>
                 </Grid>
-            </Frame>
+            </Border>
 
             <ActivityIndicator IsRunning = "{Binding Run}" Margin = "10" HorizontalOptions = "Center" />
             

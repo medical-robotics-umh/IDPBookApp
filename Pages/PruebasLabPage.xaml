@@ -12,7 +12,7 @@
         <dx:SeriesHintOptions x:Key="splineSeriesHintOptions" PointTextPattern="{}{A} : {V}"/>
     </ContentPage.Resources>
     <ScrollView>
-        <VerticalStackLayout VerticalOptions="FillAndExpand">
+        <VerticalStackLayout VerticalOptions="Fill">
             <ImageButton Source="back2" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}">
                 <ImageButton.Behaviors>
                     <toolkit:IconTintColorBehavior TintColor="#28B463" />
@@ -20,7 +20,7 @@
             </ImageButton>
             <Label Text="PRUEBAS DE LABORATORIO" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-28,0,0"/>
 
-            <Frame Margin="0,30,0,7" CornerRadius="10" HasShadow="True" Padding="10" WidthRequest="125" x:Name="estado" HorizontalOptions="Center">
+            <Border Margin="0,30,0,7" StrokeShape="RoundRectangle 10" Padding="10" WidthRequest="125" x:Name="estado" HorizontalOptions="Center">
                 <VerticalStackLayout>
                     <ImageButton Source="files_medical" Aspect="Fill" WidthRequest="100" HeightRequest="100" Command="{Binding GoToNewAnltcCommand}">
                         <ImageButton.Behaviors>
@@ -28,18 +28,18 @@
                         </ImageButton.Behaviors>
                     </ImageButton>
                 </VerticalStackLayout>
-            </Frame>
+            </Border>
             <Label Text="Agregar nueva prueba de laboratorio" HorizontalOptions="Center" FontAttributes="Bold"/>
 
-            <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Margin="0,30,0,0">
+            <HorizontalStackLayout HorizontalOptions="Center" Margin="0,30,0,0">
                 <Label Text="Listado de pruebas" FontSize="Medium" FontAttributes="Bold"/>
             </HorizontalStackLayout>
 
-            <Frame HorizontalOptions="Center" WidthRequest="270" Padding="10,10" Margin="10" HasShadow="True">
+            <Border HorizontalOptions="Center" WidthRequest="270" Padding="10,10" Margin="10">
                 <CollectionView ItemsSource="{Binding Analiticas}" EmptyView="Aún no hay analíticas" HorizontalOptions="Center" SelectionMode="Single" MinimumHeightRequest="50">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:AnaliticaModel">
-                            <HorizontalStackLayout Spacing="10" Margin="0,2" HorizontalOptions="CenterAndExpand">
+                            <HorizontalStackLayout Spacing="10" Margin="0,2" HorizontalOptions="Center">
                                 <HorizontalStackLayout.GestureRecognizers>
                                     <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:PrbsLabViewModel}}, Path=NavAnltcDtailCommand}"/>
                                 </HorizontalStackLayout.GestureRecognizers>
@@ -55,7 +55,7 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-            </Frame>
+            </Border>
 
             <Button WidthRequest="250" Text="Mostrar gráficas evolutivas" FontAttributes="Bold" FontSize="Body" Command="{Binding VisibleGrafCommand}" IsVisible="{Binding Btn_visbl}"/>
 

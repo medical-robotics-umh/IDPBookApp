@@ -8,7 +8,7 @@
              x:DataType="viewmodel:NewTratViewModel"
              Title="Trat_Inmuno">
     <ScrollView>
-        <VerticalStackLayout VerticalOptions="FillAndExpand">
+        <VerticalStackLayout VerticalOptions="Fill">
             <ImageButton Source="back2" Aspect="Fill" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start" Margin="20,20,0,0" Command="{Binding BackBtnCommand}">
                 <ImageButton.Behaviors>
                     <toolkit:IconTintColorBehavior TintColor="#28B463"/>
@@ -16,7 +16,7 @@
             </ImageButton>
             <Label Text="NUEVO TRATAMIENTO" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
-            <Frame Padding="10,10" Margin="15,20" HasShadow="True">
+            <Border Padding="10,10" Margin="15,20" >
                 <Grid ColumnDefinitions="Auto,*" RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,80" RowSpacing="5">
 
                     <Label HorizontalOptions="Start" VerticalOptions="Center" Text="Fecha de inicio o&#x0a;última administración:" FontAttributes="Bold"/>
@@ -74,7 +74,7 @@
                     <Button Grid.Row="8" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="-100,0,0,0" Text="Agregar" WidthRequest="90" HeightRequest="45" Command="{Binding NewTratCommand}"/>
                     <Button Grid.Row="8" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="100,0,0,0" Text="Salir" BackgroundColor="#E67E22" WidthRequest="90" HeightRequest="45" Command="{Binding BackBtnCommand}"/>
                 </Grid>
-            </Frame>
+            </Border>
             
             <ActivityIndicator IsRunning = "{Binding Run}" Margin = "10" HorizontalOptions = "Center"/>
             

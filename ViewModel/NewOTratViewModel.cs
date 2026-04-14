@@ -37,7 +37,7 @@ public partial class NewOTratViewModel : BaseViewModel
     {
         if (OTNombre == string.Empty || OTNombre == null)
         {
-            await App.Current.MainPage.DisplayAlert("Campo vacio.", "Ingresar nombre del tratamiento antes de guardarlo.", "Ok");
+            await Shell.Current.DisplayAlert("Campo vacio.", "Ingresar nombre del tratamiento antes de guardarlo.", "Ok");
         }
         else
         {

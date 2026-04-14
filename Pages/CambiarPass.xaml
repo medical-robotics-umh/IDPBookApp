@@ -16,7 +16,7 @@
             </ImageButton>
             <Label Text="RESTABLECER CONTRASEÑA" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,-30,0,0"/>
 
-            <Frame HasShadow="True" Margin="10,20" Padding="10" VerticalOptions="CenterAndExpand">
+            <Border Margin="10,20" Padding="10" VerticalOptions="Center">
                 <Grid ColumnDefinitions="Auto,*,Auto" RowDefinitions="45,auto,auto,auto,auto,80" RowSpacing="10">
                     <Label Text="Per. médico: " FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"/>
                     <CheckBox IsChecked="{Binding MedCheck}" CheckedChanged="CheckBox_CheckedChanged"  Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" Margin="-12,0,0,0"/>
@@ -38,7 +38,7 @@
                     <Button Grid.Row="5"  Grid.ColumnSpan="3" HorizontalOptions="Center" Margin="-130,0,0,0" Text="Confirmar" WidthRequest="120" HeightRequest="45" Command="{Binding SendNewPassCommand}"/>
                     <Button Grid.Row="5"  Grid.ColumnSpan="3" HorizontalOptions="Center" Margin="130,0,0,0" Text="Salir" BackgroundColor="#E67E22" WidthRequest="120" HeightRequest="45" Command="{Binding BackBtnCommand}"/>
                 </Grid>
-            </Frame>
+            </Border>
             
             <ActivityIndicator IsRunning = "{Binding Run}" Margin = "10" HorizontalOptions = "Center" />
             

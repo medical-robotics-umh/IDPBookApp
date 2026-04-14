@@ -31,7 +31,7 @@ public partial class MainViewModel : BaseViewModel
     [RelayCommand]
     async Task LogOutBtn()
     {
-        bool ans = await App.Current.MainPage.DisplayAlert("Saliendo de la aplicación", "¿Desea cerrar sesión?", "Aceptar", "Cancelar");
+        bool ans = await Shell.Current.DisplayAlert("Saliendo de la aplicación", "¿Desea cerrar sesión?", "Aceptar", "Cancelar");
         if (ans == true)
         {
             firebaseConnecty.LogOut();
@@ -71,7 +71,7 @@ public partial class MainViewModel : BaseViewModel
         }
         catch
         {
-            await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n MainViewModel -> Task NavWeb", "Aceptar");
+            await Shell.Current.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n MainViewModel -> Task NavWeb", "Aceptar");
         }
     }
 
@@ -84,13 +84,13 @@ public partial class MainViewModel : BaseViewModel
         }
         catch
         {
-            await App.Current.MainPage.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n MainViewModel -> Task OpenNewGmail", "Aceptar");
+            await Shell.Current.DisplayAlert("Algo salio mal", $"Se ha producido un error en:\n MainViewModel -> Task OpenNewGmail", "Aceptar");
         }
     }
 
     public override async Task OnBackButtonPressedAsync()
     {
-        bool ans = await App.Current.MainPage.DisplayAlert("Saliendo de la aplicación", "¿Desea cerrar sesión?", "Aceptar", "Cancelar");
+        bool ans = await Shell.Current.DisplayAlert("Saliendo de la aplicación", "¿Desea cerrar sesión?", "Aceptar", "Cancelar");
         if (ans == true)
         {
             firebaseConnecty.LogOut();

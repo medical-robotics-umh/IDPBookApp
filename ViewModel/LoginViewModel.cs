@@ -37,7 +37,7 @@ public partial class LoginViewModel : BaseViewModel
         try
         {
             await firebaseConnecty.Login(UserName, UserPassword);
-            await App.Current.MainPage.DisplayAlert("Bienvenido(a).", "Sesión iniciada correctamente", "Ok");
+            await Shell.Current.DisplayAlert("Bienvenido(a).", "Sesión iniciada correctamente", "Ok");
             Auth = firebaseConnecty.firebaseUserCredential.User.Info.IsEmailVerified;
             UserName = string.Empty; UserPassword = string.Empty;
             if (Auth == false)
@@ -51,7 +51,7 @@ public partial class LoginViewModel : BaseViewModel
                     var dif = DateTime.Today.Subtract(fechaUltimoCuestionario);
                     if (dif.Days > 183)
                     {                        
-                        await App.Current.MainPage.DisplayAlert("Cuestinonario calidad de vida", "► Han pasado 6 meses desde la última vez que has realizado el cuestionario.\n► Antes de utilizar IDPBook, debes realizar uno nuevo.", "Ok");
+                        await Shell.Current.DisplayAlert("Cuestinonario calidad de vida", "► Han pasado 6 meses desde la última vez que has realizado el cuestionario.\n► Antes de utilizar IDPBook, debes realizar uno nuevo.", "Ok");
                         await Shell.Current.GoToAsync($"{nameof(NuevaEncuestaPage)}", true,
                             new Dictionary<string, object>
                             {
@@ -62,7 +62,7 @@ public partial class LoginViewModel : BaseViewModel
                 }
                 else
                 {
-                    bool ans = await App.Current.MainPage.DisplayAlert("Política de Datos","Tu privacidad es nuestra prioridad. Los datos que proporcionas en esta aplicación se almacenan de " +
+                    bool ans = await Shell.Current.DisplayAlert("Política de Datos","Tu privacidad es nuestra prioridad. Los datos que proporcionas en esta aplicación se almacenan de " +
                                                             "forma segura en la nube y se utilizan exclusivamente para el funcionamiento de la app y mejorar tu experiencia.\n\n" +
                                                             "► Nunca compartimos tus datos con terceros.\n► No los utilizamos para publicidad," +
                                                             "  marketing o análisis externos.\n\n" +
@@ -70,7 +70,7 @@ public partial class LoginViewModel : BaseViewModel
                                                             "Si deseas revisar nuestra política de privacidad con más detalle, selecciona 'Política de privacidad'.","Política de privacidad","Continuar en la aplicación");
                     if (ans == true)
                         await Launcher.Default.OpenAsync("https://nbio.umh.es/privacy-policy/");
-                    await App.Current.MainPage.DisplayAlert("Cuestinonario calidad de vida", "Antes de empezar a utilizar IDPBook App, debes realizar el cuestionario de calidad de vida.", "Ok");
+                    await Shell.Current.DisplayAlert("Cuestinonario calidad de vida", "Antes de empezar a utilizar IDPBook App, debes realizar el cuestionario de calidad de vida.", "Ok");
                     await Shell.Current.GoToAsync($"{nameof(NuevaEncuestaPage)}", true,
                         new Dictionary<string, object>
                         {
@@ -89,19 +89,19 @@ public partial class LoginViewModel : BaseViewModel
         {
             if (ex.Message.Contains("INVALID_LOGIN_CREDENTIALS"))
             {
-                await App.Current.MainPage.DisplayAlert("Credenciales invalidas", "Posibles causas:\n\n► La contraseña es incorrecta.\n► El correo no esta registrado en IDPBook.", "Ok");
+                await Shell.Current.DisplayAlert("Credenciales invalidas", "Posibles causas:\n\n► La contraseña es incorrecta.\n► El correo no esta registrado en IDPBook.", "Ok");
             }
             if (ex.Message.Contains("INVALID_EMAIL"))
             {
-                await App.Current.MainPage.DisplayAlert("Correo invalido", "Revisa que el correo no contenga espacios en blanco o cualquier caracter especial no permitido.", "Ok");
+                await Shell.Current.DisplayAlert("Correo invalido", "Revisa que el correo no contenga espacios en blanco o cualquier caracter especial no permitido.", "Ok");
             }
             if (ex.Message.Contains("MISSING_EMAIL"))
             {
-                await App.Current.MainPage.DisplayAlert("No hay correo", "Escribe un correo registrado en IDPBook.", "Ok");
+                await Shell.Current.DisplayAlert("No hay correo", "Escribe un correo registrado en IDPBook.", "Ok");
             }
             if (ex.Message.Contains("MISSING_PASSWORD"))
             {
-                await App.Current.MainPage.DisplayAlert("No hay contraseña", $"Escribe la contraseña asignada al correo:\n\n" + UserName, "Ok");
+                await Shell.Current.DisplayAlert("No hay contraseña", $"Escribe la contraseña asignada al correo:\n\n" + UserName, "Ok");
             }
         }
         Run = false;
@@ -124,7 +124,7 @@ public partial class LoginViewModel : BaseViewModel
                     var dif = DateTime.Today.Subtract(fechaUltimoCuestionario);
                     if (dif.Days > 183)
                     {
-                        await App.Current.MainPage.DisplayAlert("Cuestinonario calidad de vida", "► Han pasado 6 meses desde la última vez que has realizado el cuestionario.\n► Antes de utilizar IDPBook, debes realizar uno nuevo.", "Ok");
+                        await Shell.Current.DisplayAlert("Cuestinonario calidad de vida", "► Han pasado 6 meses desde la última vez que has realizado el cuestionario.\n► Antes de utilizar IDPBook, debes realizar uno nuevo.", "Ok");
                         await Shell.Current.GoToAsync($"{nameof(NuevaEncuestaPage)}", true,
                             new Dictionary<string, object>
                             {
@@ -135,7 +135,7 @@ public partial class LoginViewModel : BaseViewModel
                 }
                 else
                 {
-                    bool ans = await App.Current.MainPage.DisplayAlert("Política de Datos", "Tu privacidad es nuestra prioridad. Los datos que proporcionas en esta aplicación se almacenan de " +
+                    bool ans = await Shell.Current.DisplayAlert("Política de Datos", "Tu privacidad es nuestra prioridad. Los datos que proporcionas en esta aplicación se almacenan de " +
                                                             "forma segura en la nube y se utilizan exclusivamente para el funcionamiento de la app y mejorar tu experiencia.\n\n" +
                                                             "► Nunca compartimos tus datos con terceros.\n► No los utilizamos para publicidad," +
                                                             "  marketing o análisis externos.\n\n" +
@@ -143,7 +143,7 @@ public partial class LoginViewModel : BaseViewModel
                                                             "Si deseas revisar nuestra política de privacidad con más detalle, selecciona 'Política de privacidad'.", "Política de privacidad", "Continuar en la aplicación");
                     if (ans == true)
                         await Launcher.Default.OpenAsync("https://nbio.umh.es/privacy-policy/");
-                    await App.Current.MainPage.DisplayAlert("Cuestinonario calidad de vida", "Antes de empezar a utilizar IDPBook App, debes realizar el cuestionario de calidad de vida.", "Ok");
+                    await Shell.Current.DisplayAlert("Cuestinonario calidad de vida", "Antes de empezar a utilizar IDPBook App, debes realizar el cuestionario de calidad de vida.", "Ok");
                     await Shell.Current.GoToAsync($"{nameof(NuevaEncuestaPage)}", true,
                         new Dictionary<string, object>
                         {
@@ -162,7 +162,7 @@ public partial class LoginViewModel : BaseViewModel
     [RelayCommand]
     static async Task DisplayInfo()
     {
-        await App.Current.MainPage.DisplayAlert("Equipo desarrollador", "Hospital Universitario y Politécnico La Fe\n" +
+        await Shell.Current.DisplayAlert("Equipo desarrollador", "Hospital Universitario y Politécnico La Fe\n" +
                                                                         "► Pedro Moral Moral\n    pedromoralmoral@hotmail.com\n" +
                                                                         "► Dafne Cabañero\n    marta.dafne.cabanyero@gmail.com\n" +
                                                                         "► Victor Garcia Bustos\n    victorgarciabustos@gmail.com\n\n" +
