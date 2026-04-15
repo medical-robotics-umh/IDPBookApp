@@ -26,6 +26,7 @@
                     Margin="10,0"
                     HorizontalOptions="Fill"
                     RowSpacing="30"
+                    Padding="0,20"
                     VerticalOptions="Fill">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
