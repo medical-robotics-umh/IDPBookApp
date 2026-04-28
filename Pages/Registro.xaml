@@ -98,6 +98,8 @@
                             <x:String>Hospital del Mar</x:String>
                             <x:String>Hospital Sant Joan de Deu</x:String>
                             <x:String>Hospital Universitario Lozano Blesa</x:String>
+                            <x:String>Hospital Universitari Son Espases</x:String>
+                            <x:String>Hospital Virgen del Rocio</x:String>
                         </Picker.Items>
                     </Picker>
 
