@@ -59,7 +59,7 @@
                     <Label Text="Llamada Grupal" HorizontalOptions="Center" FontAttributes="Bold"/>
                 </VerticalStackLayout>
             </Grid>
-            <HorizontalStackLayout Spacing="20" HorizontalOptions="Center" VerticalOptions="End" Margin="0,100,0,0">
+            <!--<HorizontalStackLayout Spacing="20" HorizontalOptions="Center" VerticalOptions="End" Margin="0,100,0,0">
                 <Image
                 Aspect="AspectFit"
                 HeightRequest="80"
@@ -71,7 +71,7 @@
                 HeightRequest="80"
                 Source="ic_logo_umh.png"
                 WidthRequest="60" />
-            </HorizontalStackLayout>
+            </HorizontalStackLayout>-->
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

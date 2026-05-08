@@ -16,7 +16,7 @@
 		<ApplicationTitle>IDPBook</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.mru.idpbookapp</ApplicationId>
+		<ApplicationId>com.companyname.idpbookapp</ApplicationId>
 		<ApplicationIdGuid>c4f484ac-4faa-43c7-9f4b-f79d79da1058</ApplicationIdGuid>
 
 		<!-- Versions -->
@@ -80,7 +80,7 @@
 
 	<PropertyGroup Condition="'$(TargetFramework)'=='net9.0-ios'">
 	  <CodesignKey>Apple Development: Created via API (G8A6SX44AA)</CodesignKey>
-	  <CodesignProvision>VS: WildCard Development</CodesignProvision>
+	  <CodesignProvision>VS: com.companyname.idpbookapp Development</CodesignProvision>
 	  <ProvisioningType>automatic</ProvisioningType>
 	</PropertyGroup>
 
@@ -93,7 +93,15 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-android35.0|AnyCPU'">
-	  <AndroidPackageFormat>apk</AndroidPackageFormat>
+	  <AndroidPackageFormat>aab</AndroidPackageFormat>
+	  <AndroidUseAapt2>True</AndroidUseAapt2>
+	  <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-android35.0|AnyCPU'">
+	  <AndroidUseAapt2>True</AndroidUseAapt2>
+	  <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
+	  <AndroidPackageFormat>aab</AndroidPackageFormat>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -102,7 +110,7 @@
 		
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\trilogo.svg" BaseSize="350,231" Color="#ffffff" />
+		<MauiSplashScreen Include="Resources\Splash\logos.svg" BaseSize="350,231" Color="#ffffff" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />

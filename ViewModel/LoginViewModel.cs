@@ -162,15 +162,13 @@ public partial class LoginViewModel : BaseViewModel
     [RelayCommand]
     static async Task DisplayInfo()
     {
-        await Shell.Current.DisplayAlert("Equipo desarrollador", "Hospital Universitario y Politécnico La Fe\n" +
-                                                                        "► Pedro Moral Moral\n    pedromoralmoral@hotmail.com\n" +
-                                                                        "► Dafne Cabañero\n    marta.dafne.cabanyero@gmail.com\n" +
-                                                                        "► Victor Garcia Bustos\n    victorgarciabustos@gmail.com\n\n" +
-                                                                        "Universidad Miguel Hernández\n" +
-                                                                        "► Daniel Rodríguez\n" +
-                                                                        "► Jose Maria Sabater\n" +
-                                                                        "    medicalroboticsumh@gmail.com\n" +
-                                                                        "    idpbook1@gmail.com", "Ok");
+        await Shell.Current.DisplayAlert("Equipo desarrollador","► Pedro Moral - Investigador Hospital La Fe\n    pedromoralmoral@hotmail.com\n" +
+                                                                "► Dafne Cabañero - Investigadora Hospital La Fe\n    marta.dafne.cabanyero@gmail.com\n" +
+                                                                "► Victor Garcia - Investigador Hospital La Fe\n    victorgarciabustos@gmail.com\n\n" +
+                                                                "► Daniel Rodríguez - Investigador UMH\n" +
+                                                                "► Jose Maria Sabater - Investigador UMH\n" +
+                                                                "    medicalroboticsumh@gmail.com\n" +
+                                                                "    idpbook1@gmail.com", "Ok");
     }
 }
 
